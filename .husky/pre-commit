@@ -4,4 +4,3 @@
 bun run prettier:fix
 bun run lint:fix
 git add -A
-bun test:ci
