@@ -1,33 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const SignupPage = () => {
   const { user, signup, loginWithGoogle } = useAuth();
-  const Router = useRouter();
+  const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  useEffect(() => {
+    if (user) {
+      router.push("/home");
+    }
+  }, [router, user]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       await signup(email, password);
-      Router.push("/home");
+      router.push("/home");
     } catch (error) {
       console.log(error);
     }
   };
 
-    const handleLoginWithGoogle = async () => {
-        try {
-            await loginWithGoogle();
-            Router.push("/home");
-        } catch (error) {
-            console.log(error);
-        }
-    };
+  const handleLoginWithGoogle = async () => {
+    try {
+      await loginWithGoogle();
+      router.push("/home");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -57,7 +63,9 @@ const SignupPage = () => {
         <button type="submit">Sign Up</button>
       </form>
       <div>
-        <button type="button" onClick={handleLoginWithGoogle}>Login with Google</button>
+        <button type="button" onClick={handleLoginWithGoogle}>
+          Login with Google
+        </button>
       </div>
     </div>
   );

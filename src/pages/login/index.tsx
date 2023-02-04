@@ -1,20 +1,25 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
 
 const LoginPage = () => {
   const { user, login, loginWithGoogle } = useAuth();
   const router = useRouter();
 
-  const [email, setEmail] = React.useState<string>("");
-  const [password, setPassword] = React.useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  useEffect(() => {
+    if (user) {
+      router.push("/home");
+    }
+  }, [router, user]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      await  login(email, password);
+      await login(email, password);
       router.push("/home");
     } catch (error) {
       console.log(error);
@@ -60,7 +65,9 @@ const LoginPage = () => {
         </form>
       </div>
       <div>
-        <button type="button" onClick={handleLoginWithGoogle}>Login with Google</button>
+        <button type="button" onClick={handleLoginWithGoogle}>
+          Login with Google
+        </button>
       </div>
     </div>
   );
