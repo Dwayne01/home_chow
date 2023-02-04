@@ -7,6 +7,8 @@ const Home = () => {
   const { user, logout } = useAuth();
   const router = useRouter();
 
+  console.log(user);
+
   return (
     <div>
       <h1>Home</h1>

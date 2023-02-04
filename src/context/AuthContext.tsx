@@ -1,24 +1,26 @@
-import { createContext, useContext, useEffect, useState } from 'react'
-import { auth } from '../config/firebase'
+import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "../config/firebase";
 import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
   signOut,
-} from 'firebase/auth'
+} from "firebase/auth";
 
-const AuthContext = createContext<any>({})
+const AuthContext = createContext<any>({});
 
-export const useAuth = () => useContext(AuthContext)
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) => {
-  const [user, setUser] = useState<any>(null)
-  const [loading, setLoading] = useState(true)
-  
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -26,32 +28,39 @@ export const AuthContextProvider = ({
           uid: user.uid,
           email: user.email,
           displayName: user.displayName,
-        })
+        });
       } else {
-        setUser(null)
+        setUser(null);
       }
-      setLoading(false)
-    })
+      setLoading(false);
+    });
 
-    return () => unsubscribe()
-  }, [])
+    return () => unsubscribe();
+  }, []);
 
   const signup = (email: string, password: string) => {
-    return createUserWithEmailAndPassword(auth, email, password)
-  }
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
   const login = (email: string, password: string) => {
-    return signInWithEmailAndPassword(auth, email, password)
-  }
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const loginWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  };
 
   const logout = async () => {
-    setUser(null)
-    await signOut(auth)
-  }
+    setUser(null);
+    await signOut(auth);
+  };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider
+      value={{ user, login, signup, loginWithGoogle, logout }}
+    >
       {loading ? null : children}
     </AuthContext.Provider>
-  )
-}
+  );
+};

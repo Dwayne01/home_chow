@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 
 const LoginPage = () => {
-  const { user, login } = useAuth();
+  const { user, login, loginWithGoogle } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = React.useState<string>("");
@@ -15,6 +15,15 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await  login(email, password);
+      router.push("/home");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleLoginWithGoogle = async () => {
+    try {
+      await loginWithGoogle();
       router.push("/home");
     } catch (error) {
       console.log(error);
@@ -51,7 +60,7 @@ const LoginPage = () => {
         </form>
       </div>
       <div>
-        <button type="submit">Login with Google</button>
+        <button type="button" onClick={handleLoginWithGoogle}>Login with Google</button>
       </div>
     </div>
   );

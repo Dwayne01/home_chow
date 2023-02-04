@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const SignupPage = () => {
-  const { user, signup } = useAuth();
+  const { user, signup, loginWithGoogle } = useAuth();
   const Router = useRouter();
 
   const [email, setEmail] = useState<string>("");
@@ -19,6 +19,15 @@ const SignupPage = () => {
       console.log(error);
     }
   };
+
+    const handleLoginWithGoogle = async () => {
+        try {
+            await loginWithGoogle();
+            Router.push("/home");
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
   return (
     <div>
@@ -48,7 +57,7 @@ const SignupPage = () => {
         <button type="submit">Sign Up</button>
       </form>
       <div>
-        <button type="submit">Login with Google</button>
+        <button type="button" onClick={handleLoginWithGoogle}>Login with Google</button>
       </div>
     </div>
   );
