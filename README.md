@@ -9,5 +9,13 @@ Homechow is a technology-driven startup that connects busy customers with small 
 ## install packages
 `bun install`
 # Start Project
-`bun run dev`
+`bun run d
 
+# Graphql Usage
+- Front-side
+* In index File (Fetching)
+`import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';`
+`const client = new ApolloClient({`
+`uri: 'https://example.com/',`  `uri: 'server//localhost or hosted localhost address `
+`cache: new InMemoryCache(),`
+`});`
