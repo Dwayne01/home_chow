@@ -1,33 +1,35 @@
 {
-  "name": "homechow",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+	"name": "homechow",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
 		"lint:fix": "eslint . --ext ts --ext tsx --ext js --fix",
-		"prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
-		"prettier:check": "prettier --check \"**/*.{ts,tsx,js,jsx}\"",
+		"prettier:fix": "prettier --write ./**/*.{ts,tsx,js,jsx}",
+		"prettier:check": "prettier --check ./**/*.{ts,tsx,js,jsx}",
 		"coverage": "yarn test --coverage --watchAll --collectCoverageFrom=\"src/**/*.{ts,tsx,js,jsx}\"",
 		"prepare": "husky install"
-  },
-  "dependencies": {
-    "@next/font": "13.1.6",
-    "@types/node": "18.11.18",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
-    "eslint": "8.33.0",
-    "eslint-config-next": "13.1.6",
-    "eslint-plugin-cypress": "^2.12.1",
-    "eslint-plugin-testing-library": "^5.10.0",
-    "next": "13.1.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.4"
-  },
-  "husky": {
+	},
+	"dependencies": {
+		"@next/font": "13.1.6",
+		"@tailwindcss/forms": "^0.5.3",
+		"@types/node": "18.11.18",
+		"@types/react": "18.0.27",
+		"@types/react-dom": "18.0.10",
+		"eslint": "8.33.0",
+		"eslint-config-next": "13.1.6",
+		"eslint-plugin-cypress": "^2.12.1",
+		"eslint-plugin-testing-library": "^5.10.0",
+		"next": "13.1.6",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"tailwindcss": "^3.2.4",
+		"typescript": "4.9.4"
+	},
+	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
 		}
@@ -45,17 +47,17 @@
 			"react-app/jest"
 		]
 	},
-  "devDependencies":{
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.50.0",
-    "prettier": "^2.8.3",
-    "husky": "^8.0.3",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
-  }
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.50.0",
+		"@typescript-eslint/parser": "^5.50.0",
+		"prettier": "^2.8.3",
+		"husky": "^8.0.3",
+		"eslint-config-prettier": "^8.6.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-hooks": "^4.6.0"
+	}
 }
