@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { useRouter } from "next/router";
+import { User } from "@/types";
 
 const AuthContext = createContext<any>({});
 
@@ -19,18 +20,20 @@ export const AuthContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>();
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser({
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-        });
+        setUser(
+          {
+            uid: user.uid,
+            email: user.email || "",
+            displayName: user.displayName,
+          }
+        );
       } else {
         setUser(null);
       }
