@@ -5,6 +5,7 @@ Homechow is a technology-driven startup that connects busy customers with small 
 - [Bun](https://bun.sh/)
 
 ## Libraries
+- [Storybook](https://storybook.js.org/)
 
 ## install packages
 `bun install`
