@@ -11,7 +11,15 @@ import {
 import { useRouter } from "next/router";
 import { User } from "@/types";
 
-const AuthContext = createContext<any>({});
+const AuthContext = createContext<{
+  user: UserInfo;
+  login: (email: string, password: string) => Promise<boolean>;
+  ...
+}>({
+  user: null,
+  login: () => new Promise(() => {}),
+  ...
+});
 
 export const useAuth = () => useContext(AuthContext);
 
