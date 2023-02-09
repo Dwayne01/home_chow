@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-		"lint:fix": "eslint . --ext ts --ext tsx --ext js --fix",
-		"prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
-		"prettier:check": "prettier --check \"**/*.{ts,tsx,js,jsx}\"",
-		"coverage": "yarn test --coverage --watchAll --collectCoverageFrom=\"src/**/*.{ts,tsx,js,jsx}\"",
-		"prepare": "husky install"
+    "lint:fix": "eslint . --ext ts --ext tsx --ext js --fix",
+    "prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
+    "prettier:check": "prettier --check \"**/*.{ts,tsx,js,jsx}\"",
+    "coverage": "yarn test --coverage --watchAll --collectCoverageFrom=\"src/**/*.{ts,tsx,js,jsx}\"",
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -25,37 +27,49 @@
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "storybook": "^6.5.16",
     "typescript": "4.9.4"
   },
   "husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"src/**/*.{ts,tsx,js,jsx}": [
-			"yarn prettier:fix",
-			"yarn lint",
-			"git add ."
-		]
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-  "devDependencies":{
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "yarn prettier:fix",
+      "yarn lint",
+      "git add ."
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
-    "prettier": "^2.8.3",
-    "husky": "^8.0.3",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "babel-loader": "^8.3.0",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.10",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.3"
   }
 }
