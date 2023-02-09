@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Countdown from './components/countdown';
 
 export default function Document() {
 	return (
@@ -7,7 +6,6 @@ export default function Document() {
 			<Head />
 			<body>
 				<Main />
-				<Countdown />
 				<NextScript />
 			</body>
 		</Html>
