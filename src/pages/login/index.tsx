@@ -16,25 +16,6 @@ const LoginPage = () => {
     }
   }, [router, user]);
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    try {
-      await login(email, password);
-      router.push("/home");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleLoginWithGoogle = async () => {
-    try {
-      await loginWithGoogle();
-      router.push("/home");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div>
       <div>
@@ -42,7 +23,10 @@ const LoginPage = () => {
       </div>
       <h1>Login Page</h1>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={async (e:any)=>{
+          e.preventDefault();
+          await login(email, password);
+        }}>
           <div>
             <label htmlFor="email">Email</label>
             <input
@@ -65,7 +49,7 @@ const LoginPage = () => {
         </form>
       </div>
       <div>
-        <button type="button" onClick={handleLoginWithGoogle}>
+        <button type="button" onClick={loginWithGoogle}>
           Login with Google
         </button>
       </div>

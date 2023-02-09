@@ -41,17 +41,36 @@ export const AuthContextProvider = ({
   }, []);
 
   const signup = (email: string, password: string) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+    try{
+      createUserWithEmailAndPassword(auth, email, password);
+      router.push("/home");
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
 
-  const login = (email: string, password: string) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+  const login =  async (email: string, password: string) => {
+    try{
+       await signInWithEmailAndPassword(auth, email, password)
+      console.log("login success")
+      router.push("/home")
+    }
+    catch(error){
+      console.log(error)
+    }   
+  }
 
   const loginWithGoogle = () => {
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
-  };
+    try{
+      signInWithPopup(auth, provider)
+      router.push("/home")
+    }
+    catch(error){
+      console.log(error)
+    }
+  }
 
   const logout = async () => {
     setUser(null);
