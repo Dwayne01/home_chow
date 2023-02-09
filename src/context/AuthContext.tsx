@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useMemo } from "react";
 import { auth } from "../config/firebase";
 import {
 	onAuthStateChanged,
@@ -11,14 +11,20 @@ import {
 import { useRouter } from "next/router";
 import { User } from "@/types";
 
-const AuthContext = createContext<{
-  user: UserInfo;
-  login: (email: string, password: string) => Promise<boolean>;
-  ...
-}>({
-  user: null,
-  login: () => new Promise(() => {}),
-  ...
+type AuthContextType = {
+	user: User | null;
+	login: (email: string, password: string) => Promise<boolean>;
+	loginWithGoogle: () => Promise<boolean>;
+	logout: () => Promise<boolean>;
+	signup: (email: string, password: string) => Promise<boolean>;
+};
+
+const AuthContext = createContext<AuthContextType>({
+	user: null,
+	login: async (email: string, password: string) => false,
+	loginWithGoogle: async () => false,
+	logout: async () => false,
+	signup: async (email: string, password: string) => false,
 });
 
 export const useAuth = () => useContext(AuthContext);
@@ -28,7 +34,7 @@ export const AuthContextProvider = ({
 }: {
 	children: React.ReactNode;
 }) => {
-	const [user, setUser] = useState<User | null>();
+	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
 	const router = useRouter();
 
@@ -49,45 +55,60 @@ export const AuthContextProvider = ({
 		return () => unsubscribe();
 	}, []);
 
-	const signup = (email: string, password: string) => {
+	const signup = async (email: string, password: string) => {
 		try {
-			createUserWithEmailAndPassword(auth, email, password);
+			await createUserWithEmailAndPassword(auth, email, password);
 			router.push("/home");
+			return true;
 		} catch (error) {
 			console.log(error);
 		}
+		return false;
 	};
 
 	const login = async (email: string, password: string) => {
 		try {
 			await signInWithEmailAndPassword(auth, email, password);
-			console.log("login success");
 			router.push("/home");
+			return true;
 		} catch (error) {
 			console.log(error);
 		}
+		return false;
 	};
 
-	const loginWithGoogle = () => {
+	const loginWithGoogle = async () => {
 		const provider = new GoogleAuthProvider();
 		try {
-			signInWithPopup(auth, provider);
+			await signInWithPopup(auth, provider);
 			router.push("/home");
+			return true;
 		} catch (error) {
 			console.log(error);
 		}
+		return false;
 	};
 
 	const logout = async () => {
 		setUser(null);
 		await signOut(auth);
 		router.push("/");
+		return true;
 	};
 
+	const value = useMemo<AuthContextType>(
+		() => ({
+			user,
+			login,
+			signup,
+			loginWithGoogle,
+			logout,
+		}),
+		[user, login, signup, loginWithGoogle, logout]
+	);
+
 	return (
-		<AuthContext.Provider
-			value={{ user, login, signup, loginWithGoogle, logout }}
-		>
+		<AuthContext.Provider value={value}>
 			{loading ? null : children}
 		</AuthContext.Provider>
 	);

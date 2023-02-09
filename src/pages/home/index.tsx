@@ -8,7 +8,7 @@ const Home = () => {
 	return (
 		<div>
 			<h1>Home</h1>
-			<p>{user.displayName}</p>
+			<p>{user?.displayName}</p>
 			<button onClick={logout}>Logout</button>
 		</div>
 	);
