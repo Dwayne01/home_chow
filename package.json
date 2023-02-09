@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+		"lint:fix": "eslint . --ext ts --ext tsx --ext js --fix",
+		"prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
+		"prettier:check": "prettier --check \"**/*.{ts,tsx,js,jsx}\"",
+		"coverage": "yarn test --coverage --watchAll --collectCoverageFrom=\"src/**/*.{ts,tsx,js,jsx}\"",
+		"prepare": "husky install"
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -16,10 +21,43 @@
     "dotenv": "^16.0.3",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-testing-library": "^5.10.0",
     "firebase": "^9.17.1",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.9.4"
+  },
+  "husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/**/*.{ts,tsx,js,jsx}": [
+			"yarn prettier:fix",
+			"yarn lint",
+			"git add ."
+		]
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+  "devDependencies":{
+    "@typescript-eslint/eslint-plugin": "^5.50.0",
+    "@typescript-eslint/parser": "^5.50.0",
+    "prettier": "^2.8.3",
+    "husky": "^8.0.3",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
