@@ -9,7 +9,7 @@ const Countdown = () => {
 
 	useEffect(() => {
 		const interval = setInterval(() => {
-			const countDownDate = new Date("Jul 1, 2023 00:00:00").getTime();
+			const countDownDate = new Date("April 1, 2023 00:00:00").getTime();
 			const now = new Date().getTime();
 			const difference = countDownDate - now;
 
@@ -19,27 +19,21 @@ const Countdown = () => {
 			);
 			setMinutes(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)));
 			setSeconds(Math.floor((difference % (1000 * 60)) / 1000));
+
 		}, 1000);
 		return () => clearInterval(interval);
 	}, []);
 
 	return (
-		<div className="container mx-auto">
-			<div>
-				<span className="time">{days}</span>
-				<span className="label">Days</span>
-			</div>
-			<div>
-				<span className="time">{hours}</span>
-				<span className="label">Hours</span>
-			</div>
-			<div>
-				<span className="time">{minutes}</span>
-				<span className="label">Minutes</span>
-			</div>
-			<div>
+		<div className="container mx-auto text-center p-10 m-10 border-2">
+			<div className="container mx-auto text-4xl font-bold text-yellow-500">
+				<span className="time">{days} : </span>
+				<span className="time">{hours} : </span>
+				<span className="time">{minutes} : </span>
 				<span className="time">{seconds}</span>
-				<span className="label">Seconds</span>
+			</div>
+			<div className="container mt-5 text-2xl text-stone-500">
+				<span>{days} days left</span>
 			</div>
 		</div>
 	);
