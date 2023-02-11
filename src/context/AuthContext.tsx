@@ -8,16 +8,10 @@ import {
 	ReactNode,
 	useCallback,
 } from "react";
-import {
-	onAuthStateChanged,
-	createUserWithEmailAndPassword,
-	signInWithEmailAndPassword,
-	signInWithPopup,
-	GoogleAuthProvider,
-	signOut,
-} from "firebase/auth";
+import { login, signup, loginWithGoogle, logout,  } from "@/utils";
 import { useRouter } from "next/router";
 import { User } from "@/types";
+import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config/firebase";
 
 type AuthContextType = {
@@ -43,51 +37,45 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	const [loading, setLoading] = useState(true);
 	const router = useRouter();
 
-	const signup = useCallback(
-		async (email: string, password: string) => {
-			try {
-				await createUserWithEmailAndPassword(auth, email, password);
-				router.push("/home");
-				return true;
-			} catch (error) {
-				console.log(error);
-			}
-			return false;
-		},
-		[router]
-	);
-
-	const login = useCallback(
-		async (email: string, password: string) => {
-			try {
-				await signInWithEmailAndPassword(auth, email, password);
-				router.push("/home");
-				return true;
-			} catch (error) {
-				console.log(error);
-			}
-			return false;
-		},
-		[router]
-	);
-
-	const loginWithGoogle = useCallback(async () => {
-		const provider = new GoogleAuthProvider();
+	const handleLogin = useCallback(async (email: string, password: string) => {
 		try {
-			await signInWithPopup(auth, provider);
-			router.push("/home");
+			await login(email, password);
 			return true;
 		} catch (error) {
 			console.log(error);
+			return false;
 		}
-		return false;
-	}, [router]);
+	}, []);
 
-	const logout = useCallback(async () => {
-		setUser(null);
-		await signOut(auth);
-		router.push("/");
-		return true;
+	const handleSignUp = useCallback(async (email: string, password: string) => {
+		try {
+			await signup(email, password);
+			return true;
+		} catch (error) {
+			console.log(error);
+			return false;
+		}
+	}, []);
+
+	const handleLoginWithGoogle = useCallback(async () => {
+		try {
+			await loginWithGoogle();
+			return true;
+		} catch (error) {
+			console.log(error);
+			return false;
+		}
+	}, []);
+
+	const handleLogout = useCallback(async () => {
+		try {
+			await logout();
+			router.push("/login");
+			return true;
+		} catch (error) {
+			console.log(error);
+			return false;
+		}
 	}, [router]);
 
 	useEffect(() => {
@@ -97,6 +85,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 					uid: userInfo.uid,
 					email: userInfo.email || "",
 					displayName: userInfo.displayName,
+					photoURL: userInfo.photoURL,
 				});
 			} else {
 				setUser(null);
@@ -105,17 +94,17 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		});
 
 		return () => unsubscribe();
-	}, []);
+	}, [ ]);
 
 	const value = useMemo<AuthContextType>(
 		() => ({
 			user,
-			login,
-			signup,
-			loginWithGoogle,
-			logout,
+			login: handleLogin,
+			loginWithGoogle: handleLoginWithGoogle,
+			logout: handleLogout,
+			signup: handleSignUp,
 		}),
-		[user, login, signup, loginWithGoogle, logout]
+		[user, handleLogin, handleSignUp, handleLoginWithGoogle, handleLogout]
 	);
 
 	return (
