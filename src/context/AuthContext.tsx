@@ -1,5 +1,13 @@
-import { createContext, useContext, useEffect, useState, useMemo } from "react";
-import { auth } from "../config/firebase";
+/* eslint-disable no-console */
+import {
+	createContext,
+	useContext,
+	useEffect,
+	useState,
+	useMemo,
+	ReactNode,
+	useCallback,
+} from "react";
 import {
 	onAuthStateChanged,
 	createUserWithEmailAndPassword,
@@ -10,6 +18,7 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/router";
 import { User } from "@/types";
+import { auth } from "../config/firebase";
 
 type AuthContextType = {
 	user: User | null;
@@ -21,63 +30,48 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType>({
 	user: null,
-	login: async (email: string, password: string) => false,
+	login: async () => false,
 	loginWithGoogle: async () => false,
 	logout: async () => false,
-	signup: async (email: string, password: string) => false,
+	signup: async () => false,
 });
 
 export const useAuth = () => useContext(AuthContext);
 
-export const AuthContextProvider = ({
-	children,
-}: {
-	children: React.ReactNode;
-}) => {
+export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
 	const router = useRouter();
 
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (user) => {
-			if (user) {
-				setUser({
-					uid: user.uid,
-					email: user.email || "",
-					displayName: user.displayName,
-				});
-			} else {
-				setUser(null);
+	const signup = useCallback(
+		async (email: string, password: string) => {
+			try {
+				await createUserWithEmailAndPassword(auth, email, password);
+				router.push("/home");
+				return true;
+			} catch (error) {
+				console.log(error);
 			}
-			setLoading(false);
-		});
+			return false;
+		},
+		[router]
+	);
 
-		return () => unsubscribe();
-	}, []);
+	const login = useCallback(
+		async (email: string, password: string) => {
+			try {
+				await signInWithEmailAndPassword(auth, email, password);
+				router.push("/home");
+				return true;
+			} catch (error) {
+				console.log(error);
+			}
+			return false;
+		},
+		[router]
+	);
 
-	const signup = async (email: string, password: string) => {
-		try {
-			await createUserWithEmailAndPassword(auth, email, password);
-			router.push("/home");
-			return true;
-		} catch (error) {
-			console.log(error);
-		}
-		return false;
-	};
-
-	const login = async (email: string, password: string) => {
-		try {
-			await signInWithEmailAndPassword(auth, email, password);
-			router.push("/home");
-			return true;
-		} catch (error) {
-			console.log(error);
-		}
-		return false;
-	};
-
-	const loginWithGoogle = async () => {
+	const loginWithGoogle = useCallback(async () => {
 		const provider = new GoogleAuthProvider();
 		try {
 			await signInWithPopup(auth, provider);
@@ -87,14 +81,31 @@ export const AuthContextProvider = ({
 			console.log(error);
 		}
 		return false;
-	};
+	}, [router]);
 
-	const logout = async () => {
+	const logout = useCallback(async () => {
 		setUser(null);
 		await signOut(auth);
 		router.push("/");
 		return true;
-	};
+	}, [router]);
+
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, (userInfo) => {
+			if (userInfo) {
+				setUser({
+					uid: userInfo.uid,
+					email: userInfo.email || "",
+					displayName: userInfo.displayName,
+				});
+			} else {
+				setUser(null);
+			}
+			setLoading(false);
+		});
+
+		return () => unsubscribe();
+	}, []);
 
 	const value = useMemo<AuthContextType>(
 		() => ({

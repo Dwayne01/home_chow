@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAuth } from "../../context/AuthContext";
 
 const SignupPage = () => {
 	const { user, signup, loginWithGoogle } = useAuth();

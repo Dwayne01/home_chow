@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAuth } from "../../context/AuthContext";
 
 const LoginPage = () => {
 	const { user, login, loginWithGoogle } = useAuth();
@@ -39,7 +39,7 @@ const LoginPage = () => {
 						/>
 					</div>
 					<div>
-						<label htmlFor="password">Password</label>
+						<label htmlFor="password" >Password</label>
 						<input
 							type="password"
 							name="password"
