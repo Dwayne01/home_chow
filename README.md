@@ -11,6 +11,7 @@ Homechow is a technology-driven startup that connects busy customers with small 
 ## Libraries
 
 - [Tailwindcss](https://tailwindcss.com/)
+- [Cypress](https://docs.cypress.io/)
 
 ## install packages
 
