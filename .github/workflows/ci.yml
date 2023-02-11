@@ -29,9 +29,6 @@ jobs:
       - name: Run Lint
         run: |
           echo "Running Lint"
-          bun run lint
+          yarn run lint
         env:
           CI: true
-
-
-
