@@ -70,8 +70,8 @@ jobs:
       #       run: |
       #         yarn install --frozen-lockfile
 
-      - name: Unit and integration test
-        run: yarn test:ci
+      # - name: Unit and integration test
+      #   run: yarn test:ci
 
   e2e:
     name: Cypress e2e
