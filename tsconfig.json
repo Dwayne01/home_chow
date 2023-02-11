@@ -20,6 +20,11 @@
 			"react": ["./node_modules/@types/react"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/components/countdown/index.tsx"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		"src/components/countdown/index.tsx"
+	],
 	"exclude": ["node_modules"]
 }

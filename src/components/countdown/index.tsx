@@ -1,4 +1,3 @@
-import React from "react";
 import { useState, useEffect } from "react";
 
 const Countdown = () => {
@@ -19,7 +18,6 @@ const Countdown = () => {
 			);
 			setMinutes(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)));
 			setSeconds(Math.floor((difference % (1000 * 60)) / 1000));
-
 		}, 1000);
 		return () => clearInterval(interval);
 	}, []);
