@@ -1,6 +1,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { ApolloSandbox } from '@apollo/sandbox';
 
+// TODO: Remove this Sandbox component when the backend is ready
 export function EmbeddedSandbox() {
 	return (
 		<ApolloSandbox
