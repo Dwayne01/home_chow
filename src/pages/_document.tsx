@@ -1,4 +1,14 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { ApolloSandbox } from '@apollo/sandbox';
+
+export function EmbeddedSandbox() {
+	return (
+		<ApolloSandbox
+			initialEndpoint='http://localhost:3000/api/graphql'
+			includeCookies={false}
+		/>
+	);
+}
 
 export default function Document() {
 	return (
@@ -8,6 +18,7 @@ export default function Document() {
 				<Main />
 				<NextScript />
 			</body>
+
 		</Html>
 	);
 }

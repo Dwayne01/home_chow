@@ -1,8 +1,16 @@
 {
 	"compilerOptions": {
-		"target": "es5",
-		"lib": ["dom", "dom.iterable", "esnext"],
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"target": "es2018", // or newer if your node.js version supports this, in our case its NestJs
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext",
+			"esnext.asynciterable"
+		],
 		"allowJs": true,
+		"strictPropertyInitialization": false,
 		"skipLibCheck": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
@@ -16,8 +24,12 @@
 		"incremental": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"],
-			"react": ["./node_modules/@types/react"]
+			"@/*": [
+				"./src/*"
+			],
+			"react": [
+				"./node_modules/@types/react"
+			]
 		}
 	},
 	"include": [
@@ -26,5 +38,7 @@
 		"**/*.tsx",
 		"src/components/countdown/index.tsx"
 	],
-	"exclude": ["node_modules"]
+	"exclude": [
+		"node_modules"
+	]
 }
