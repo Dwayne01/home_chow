@@ -4,7 +4,7 @@ import { ApolloSandbox } from '@apollo/sandbox';
 export function EmbeddedSandbox() {
 	return (
 		<ApolloSandbox
-			initialEndpoint='http://localhost:3000/api/graphql'
+			initialEndpoint='http://localhost:3003/api/graphql'
 			includeCookies={false}
 		/>
 	);
