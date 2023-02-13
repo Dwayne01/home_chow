@@ -14,11 +14,12 @@ Homechow is a technology-driven startup that connects busy customers with small 
 - [Tailwindcss](https://tailwindcss.com/)
 - [Cypress](https://docs.cypress.io/)
 - [Firebase](https://firebase.google.com/docs/auth)
+- [GraphQL](https://graphql.org/)
 
 ## install packages
-`bun install`
+`yarn`
 # Start Project
-`bun run d
+`yarn dev`
 
 # Graphql Usage
 - Front-side
