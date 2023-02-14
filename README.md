@@ -4,14 +4,14 @@ Homechow is a technology-driven startup that connects busy customers with small 
 
 ## Requirements
 
-- [Bun](https://bun.sh/)
 - [Node](https://nodejs.org/en/)
 - [NextJs](https://nextjs.org/)
 
+* Make sure to use node version 16 or later.
+
 ## Libraries
 - [Storybook](https://storybook.js.org/)
-
-- [Tailwindcss](https://tailwindcss.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 - [Cypress](https://docs.cypress.io/)
 - [Firebase](https://firebase.google.com/docs/auth)
 - [GraphQL](https://graphql.org/)
