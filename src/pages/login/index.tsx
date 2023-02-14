@@ -30,7 +30,7 @@ const LoginPage = () => {
 					}}
 				>
 					<div>
-						<span>Email</span>
+						<span>Email*</span>
 						<input
 							type="email"
 							name="email"
