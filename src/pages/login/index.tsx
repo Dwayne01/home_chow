@@ -30,21 +30,23 @@ const LoginPage = () => {
 					}}
 				>
 					<div>
-						<label htmlFor="email">Email</label>
+						<span>Email</span>
 						<input
 							type="email"
 							name="email"
 							id="email"
 							onChange={(text) => setEmail(text.target.value)}
+							required
 						/>
 					</div>
 					<div>
-						<label htmlFor="password" >Password</label>
+						<span>Password</span>
 						<input
 							type="password"
 							name="password"
 							id="password"
 							onChange={(text) => setPassword(text.target.value)}
+							required
 						/>
 					</div>
 					<button type="submit">Login</button>

@@ -8,7 +8,7 @@ import {
 	ReactNode,
 	useCallback,
 } from "react";
-import { login, signup, loginWithGoogle, logout,  } from "@/utils";
+import { login, signup, loginWithGoogle, logout } from "@/utils";
 import { useRouter } from "next/router";
 import { User } from "@/types";
 import { onAuthStateChanged } from "firebase/auth";
@@ -94,7 +94,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 		});
 
 		return () => unsubscribe();
-	}, [ ]);
+	}, []);
 
 	const value = useMemo<AuthContextType>(
 		() => ({
