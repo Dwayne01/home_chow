@@ -19,7 +19,7 @@ const LoginPage = () => {
 	return (
 		<div>
 			<div>
-				click to : <Link href="/signup"> sign-up</Link>
+				click to : <Link href="/signup">sign-up</Link>
 			</div>
 			<h1>Login Page</h1>
 			<div>
