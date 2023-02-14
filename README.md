@@ -9,7 +9,6 @@ Homechow is a technology-driven startup that connects busy customers with small 
 - [NextJs](https://nextjs.org/)
 
 ## Libraries
-
 - [Storybook](https://storybook.js.org/)
 
 - [Tailwindcss](https://tailwindcss.com/)
