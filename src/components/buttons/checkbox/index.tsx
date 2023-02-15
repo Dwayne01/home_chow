@@ -5,10 +5,10 @@ const CheckBox = () => {
 
     const handleChange = (
         e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-      ) => {
+    ) => {
         setValue(e.target.value);
     };
- 
+
     useEffect(() => {
         // eslint-disable-next-line no-console
         console.log(value)
@@ -34,5 +34,7 @@ const CheckBox = () => {
                 </label>
             </button>
         </div>
-)}
+    )
+}
+
 export default CheckBox
