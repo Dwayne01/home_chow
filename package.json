@@ -3,9 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev -p :3003",
+		"dev": "next dev -p 3003",
 		"build": "next build",
-		"start": "next start -p :3003",
+		"start": "next start -p 3003",
 		"lint": "next lint",
 		"lint:fix": "eslint . --ext ts --ext tsx --ext js --fix",
 		"prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
@@ -26,6 +26,7 @@
 		"@types/react": "18.0.27",
 		"@types/react-dom": "18.0.10",
 		"autoprefixer": "^10.4.13",
+		"classnames": "^2.3.2",
 		"eslint": "8.33.0",
 		"eslint-config-next": "13.1.6",
 		"eslint-plugin-cypress": "^2.12.1",
@@ -35,8 +36,8 @@
 		"postcss-import": "^15.1.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"storybook": "^6.5.16",
 		"start-server-and-test": "^1.15.3",
+		"storybook": "^6.5.16",
 		"tailwindcss": "^3.2.4",
 		"typescript": "4.9.4"
 	},
@@ -71,14 +72,14 @@
 		"@typescript-eslint/eslint-plugin": "^5.50.0",
 		"@typescript-eslint/parser": "^5.50.0",
 		"cypress": "^12.5.1",
-		"prettier": "^2.8.3",
-		"husky": "^8.0.3",
-		"eslint-config-prettier": "^8.6.0",
-		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-import": "^2.27.5",
 		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-react": "^7.32.2",
-		"eslint-plugin-react-hooks": "^4.6.0"
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"husky": "^8.0.3",
+		"prettier": "^2.8.3"
 	}
 }
