@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classNames";
-import LayoutComponent from "../../components/countdown/layout";
+import LayoutComponent from "../../components/layout";
 
 const ComingSoonPage = () => {
 	const LeftComponent = () => (
