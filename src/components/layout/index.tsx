@@ -1,5 +1,5 @@
 import { ReactNode, Children } from "react";
-import classNames from "classNames";
+import classNames from "classnames";
 
 const LayoutComponent = ({
 	children,
