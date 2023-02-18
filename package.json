@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p :3003",
+    "dev": "next dev -p 3003",
 		"build": "next build",
-		"start": "next start -p :3003",
+		"start": "next start -p 3003",
     "lint": "next lint",
 		"lint:fix": "eslint . --ext ts --ext tsx --ext js --fix",
 		"prettier:fix": "prettier --write '**/(*.js|.ts|.jsx|.tsx|.md)'",
@@ -14,7 +14,7 @@
 		"prepare": "husky install",
     "cypress:open": "cypress open",
 		"cypress:run": "cypress run",
-		"cypress:ci": "start-server-and-test 'yarn dev' :3003 'yarn cypress:run'",
+		"cypress:ci": "start-server-and-test 'yarn dev' 3003 'yarn cypress:run'",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
