@@ -10,10 +10,10 @@ Homechow is a technology-driven startup that connects busy customers with small 
 
 ## Libraries
 - [Storybook](https://storybook.js.org/)
-
 - [Tailwindcss](https://tailwindcss.com/)
 - [Cypress](https://docs.cypress.io/)
 - [Firebase](https://firebase.google.com/docs/auth)
+- [SWR](https://swr.vercel.app/)
 
 ## install packages
 
