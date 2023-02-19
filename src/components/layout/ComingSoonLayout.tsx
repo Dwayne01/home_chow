@@ -12,13 +12,9 @@ const ComingSoonLayout: React.FC<ComingSoonLayoutProps> = ({
 	LeftComponent,
 	RightComponent,
 }): ReactElement => (
-	<div className={classNames("w-full h-screen flex flex-col")}>
+	<div className="w-full h-screen flex flex-col">
 		{/* Header */}
-		<div
-			className={classNames(
-				"w-full flex md:hidden justify-between items-center"
-			)}
-		>
+		<div className="w-full flex md:hidden justify-between items-center">
 			<div>Logo PlaceHolder</div>
 			<div>hamburger menu</div>
 		</div>
