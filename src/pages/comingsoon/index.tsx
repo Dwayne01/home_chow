@@ -1,6 +1,7 @@
 import React from "react";
 import LayoutComponent from "../../components/layout/ComingSoonLayout";
-import Dummy from "../../components/misc/Dummy";
+
+const Dummy = () => <div>Coming Soon</div>;
 
 type ComingSoonPageProps = {
 	LeftComponent?: React.FC;
