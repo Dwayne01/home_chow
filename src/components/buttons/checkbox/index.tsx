@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react'
 
 const CheckBox = () => {
-    const [value, setValue] = useState([] as unknown as string);
+    const [value, setValue] = useState<string[]>([]);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
