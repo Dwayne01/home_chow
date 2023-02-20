@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-// eslint-disable-next-line import/no-unresolved
 import classNames from "classnames";
 
 type ComingSoonLayoutProps = {
