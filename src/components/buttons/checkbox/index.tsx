@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 const CheckBox = () => {
-	const [value, setValue] = useState([] as unknown as string);
+	const [value, setValue] = useState<string[]>([]);
 
-	const handleChange = (
-		e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-	) => {
-		setValue(e.target.value);
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const makeUniqueArray = (arr: string[]) =>
+			arr.filter((item, index) => arr.indexOf(item) === index);
+		if (e.target.checked) {
+			setValue(makeUniqueArray([...value, e.target.value]));
+		} else {
+			setValue(value.filter((item) => item !== e.target.value));
+		}
 	};
 
 	useEffect(() => {
