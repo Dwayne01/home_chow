@@ -4,9 +4,15 @@ const CheckBox = () => {
     const [value, setValue] = useState<string[]>([]);
 
     const handleChange = (
-        e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+        e: React.ChangeEvent<HTMLInputElement>
     ) => {
-        setValue(e.target.value);
+        const makeUniqueArray = (arr: string[]) => 
+            arr.filter((item, index) => arr.indexOf(item) === index);
+        if (e.target.checked) {
+            setValue(makeUniqueArray([...value, e.target.value]));
+        } else {
+            setValue(value.filter((item) => item !== e.target.value));
+        }
     };
 
     useEffect(() => {
