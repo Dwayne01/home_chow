@@ -1,6 +1,5 @@
-import IconButton from "@/components/buttons/iconButton/IconButton";
 import Countdown from "@/components/countdown";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import IconButtonGroup from "../components/buttons/IconButtonGroup";
 
 const ComponentPage = () => (
 	<div>
@@ -8,9 +7,7 @@ const ComponentPage = () => (
 			Components Page
 		</h1>
 		<Countdown />
-		<IconButton icon={FaFacebookF} href="" />
-		<IconButton icon={FaTwitter} href="" />
-		<IconButton icon={FaLinkedinIn} href="" />
+		<IconButtonGroup />
 	</div>
 );
 
