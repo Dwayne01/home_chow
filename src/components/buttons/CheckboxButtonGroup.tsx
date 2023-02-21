@@ -1,11 +1,11 @@
 import React, { useState, ChangeEvent } from "react";
-import CheckboxButton from "../checkboxButton/CheckboxButton";
+import CheckboxButton from "./CheckboxButton";
 
 interface CheckboxButtonGroupProps {
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const CheckboxButtonGroup = (props: CheckboxButtonGroupProps) => {
+const CheckboxButtonGroup = ({ onChange }: CheckboxButtonGroupProps) => {
 	const [value, setValue] = useState<string[]>([]);
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,14 +16,14 @@ const CheckboxButtonGroup = (props: CheckboxButtonGroupProps) => {
 		} else {
 			setValue(value.filter((item) => item !== e.target.value));
 		}
-		props.onChange(e);
+		onChange(e);
 	};
 
 	return (
 		<div className="flex flex-col sm:flex-row sm:gap-5 justify-center mt-5">
-			<CheckboxButton onChange={handleChange} />
-			<CheckboxButton onChange={handleChange} />
-			<CheckboxButton onChange={handleChange} />
+			<CheckboxButton onChange={handleChange} text="I'm a Customer" />
+			<CheckboxButton onChange={handleChange} text="I'm a Driver" />
+			<CheckboxButton onChange={handleChange} text="I'm a Vendor" />
 		</div>
 	);
 };
