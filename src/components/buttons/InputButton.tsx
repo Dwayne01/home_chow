@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 
-const color = {
+const btnColor: { text: string; accent: string; bg: string } = {
 	text: "#718096",
 	accent: "#FFAF02",
 	bg: "#FEFDF0",
@@ -24,11 +24,11 @@ const CheckboxButton = ({
 	return (
 		<label
 			htmlFor="checkbox"
-			className={`container flex justify-center py-4 px-5 rounded-full shadow-[0px_4px_50px_0px_rgba(0,0,0,0.1)] text-xl text-[${color.text}] hover:text-[${color.accent}] hover:bg-[${color.bg}]`}
+			className={`container flex justify-center py-4 px-5 rounded-full shadow-[0px_4px_50px_0px_rgba(0,0,0,0.1)] text-xl text-[${btnColor.text}] hover:text-[${btnColor.accent}] hover:bg-[${btnColor.bg}]`}
 		>
 			{text}
 			<input
-				className={`checkbox ml-4 mt-2 accent-[${color.accent}]`}
+				className={`checkbox ml-4 mt-2 accent-[${btnColor.accent}]`}
 				type="radio"
 				checked={selectedValue === value}
 				value={value}
