@@ -1,5 +1,7 @@
 import Countdown from "@/components/countdown";
+import { AiOutlineSend } from "react-icons/ai";
 import IconButtonGroup from "../components/buttons/IconButtonGroup";
+import IconButtonWithLabel from "../components/buttons/IconButtonWithLabel:";
 
 const ComponentPage = () => (
 	<div>
@@ -8,6 +10,16 @@ const ComponentPage = () => (
 		</h1>
 		<Countdown />
 		<IconButtonGroup />
+		<div className="flex justify-center">
+			<IconButtonWithLabel
+				icon={AiOutlineSend}
+				color="#FCFCFC"
+				bgColor="#EAAA08"
+				borderColor="#FFAF02"
+				label="Notify me"
+				href=""
+			/>
+		</div>
 	</div>
 );
 

@@ -15,7 +15,8 @@ const IconButton = ({
 }) => (
 	<Link
 		href={href}
-		className={`bg-[${bgColor}] rounded-[10px] w-[60px] h-[60px] focus:outline-none focus:ring-2 focus:ring-[${color}] focus:ring-opacity-80 flex justify-center text-2xl items-center`}
+		className="rounded-[10px] w-[60px] h-[60px] flex justify-center text-2xl items-center"
+		style={{ backgroundColor: `${bgColor}` }}
 	>
 		{React.createElement(icon, { color })}
 	</Link>
