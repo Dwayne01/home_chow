@@ -1,7 +1,7 @@
 import Countdown from "@/components/countdown";
 import { AiOutlineSend } from "react-icons/ai";
 import IconButtonGroup from "../components/buttons/IconButtonGroup";
-import IconButtonWithLabel from "../components/buttons/IconButtonWithLabel:";
+import IconButtonWithLabel from "../components/buttons/IconButtonWithLabel";
 
 const ComponentPage = () => (
 	<div>
