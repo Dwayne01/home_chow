@@ -1,4 +1,4 @@
-import CheckboxButtonGroup from "@/components/buttons/CheckboxButtonGroup";
+import InputButtonGroup from "@/components/buttons/InputButtonGroup";
 import Countdown from "@/components/countdown";
 
 const ComponentPage = () => (
@@ -7,7 +7,7 @@ const ComponentPage = () => (
 			Components Page
 		</h1>
 		<Countdown />
-		<CheckboxButtonGroup />
+		<InputButtonGroup />
 	</div>
 );
 
