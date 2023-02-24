@@ -1,5 +1,5 @@
-import InputButtonGroup from "@/components/buttons/InputButtonGroup";
 import Countdown from "@/components/countdown";
+import InputButtonGroup from "@/components/buttons/InputButtonGroup";
 
 const ComponentPage = () => (
 	<div>
