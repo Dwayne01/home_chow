@@ -10,14 +10,15 @@ const ComponentPage = () => (
 		</h1>
 		<Countdown />
 		<IconButtonGroup />
-		<div className="flex justify-center">
+		<div className="flex justify-center mt-5">
 			<IconButtonWithLabel
 				icon={AiOutlineSend}
 				color="#FCFCFC"
 				bgColor="#EAAA08"
 				borderColor="#FFAF02"
 				label="Notify me"
-				href=""
+				onClick={() => {}}
+				iconPosition="right"
 			/>
 		</div>
 	</div>
