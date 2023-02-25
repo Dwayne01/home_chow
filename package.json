@@ -36,6 +36,7 @@
 		"postcss-import": "^15.1.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
+		"react-icons": "^4.7.1",
 		"start-server-and-test": "^1.15.3",
 		"storybook": "^6.5.16",
 		"swr": "^2.0.3",

@@ -7,6 +7,7 @@ module.exports = {
 			colors: {
 				"border-color": " #FFAF02",
 				"primary-color": "#FFAF02",
+				white: "#FCFCFC",
 				"primary-color-light": "#FEFDF0",
 				"secondary-color": "var(--color-secondary)",
 				...defaultTheme.colors,
