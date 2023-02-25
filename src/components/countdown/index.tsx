@@ -23,7 +23,7 @@ const Countdown = () => {
 	}, []);
 
 	return (
-		<div className="container mx-auto text-center p-10 m-10 border-2">
+		<div className="container mx-auto text-center">
 			<div className="container mx-auto text-4xl font-bold text-yellow-500">
 				<span className="time">{days} : </span>
 				<span className="time">{hours} : </span>

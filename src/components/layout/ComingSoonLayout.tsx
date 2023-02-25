@@ -27,7 +27,9 @@ const ComingSoonLayout: React.FC<ComingSoonLayoutProps> = ({
 				className
 			)}
 		>
-			<div className="flex flex-1">{LeftComponent && <LeftComponent />}</div>
+			<div className="flex flex-1 md:min-w-[800px]">
+				{LeftComponent && <LeftComponent />}
+			</div>
 			<div className="hidden flex-1 md:flex">
 				{RightComponent && <RightComponent />}
 			</div>
