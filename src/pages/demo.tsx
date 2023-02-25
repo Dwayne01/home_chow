@@ -13,7 +13,7 @@ const ComponentPage = () => (
 		<div className="flex justify-center mt-5">
 			<IconButtonWithLabel
 				icon={AiOutlineSend}
-				color="#FCFCFC"
+				textColor="#FCFCFC"
 				bgColor="#EAAA08"
 				borderColor="#FFAF02"
 				label="Notify me"
