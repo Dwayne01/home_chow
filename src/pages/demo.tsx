@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
-import CheckboxButton from "@/components/buttons/CheckboxButton";
+import CheckboxButton from "@/components/common/buttons/CheckboxButton";
+import ComingSoonHeader from "@/components/header/ComingSoonHeader";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import IconButton from "@/components/buttons/IconButton";
-import Button from "../components/buttons";
+import IconButton from "@/components/common/buttons/IconButton";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -54,8 +56,17 @@ const ComponentPage = () => {
 					handleClick={() => setSelectedValue("driver")}
 				/>
 			</div>
+			<ComingSoonHeader />
 		</div>
 	);
 };
 
 export default ComponentPage;
+
+export async function getStaticProps({ locale }: { locale: string }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale ?? "en", ["common"])),
+		},
+	};
+}
