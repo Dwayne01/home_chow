@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import Button from "@/components/buttons";
-import CheckboxButton from "@/components/buttons/CheckboxButton";
-import { AiOutlineSend } from "react-icons/ai";
-import IconButton from "@/components/buttons/IconButton";
-import Countdown from "@/components/countdown";
+import Button from "@/components/common/buttons";
+import CheckboxButton from "@/components/common/buttons/CheckboxButton";
+import IconButton from "@/components/common/buttons/IconButton";
+// import Countdown from "@/components/countdown";
 import InputField from "@/components/InputField";
+import React, { useState } from "react";
+import { AiOutlineSend } from "react-icons/ai";
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 const LeftView = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -68,10 +68,10 @@ const LeftView = () => {
 				Sign up for updates to be the first to know when we launch. No spam,
 				just important information and exclusive offers..
 			</p>
-			<div className=" w-full flex justify-center pt-20">
+			{/* <div className=" w-full flex justify-center pt-20">
 				<Countdown />
-			</div>
-			<div className="w-full flex justify-center gap-6 pt-36 items-center ">
+			</div> */}
+			<div className="w-full flex justify-center gap-6 pt-10 items-center ">
 				<IconButton icon={FaFacebookF} color="text-primary-color" href="" />
 				<IconButton icon={FaTwitter} color="text-primary-color" href="" />
 				<IconButton icon={FaLinkedinIn} color="text-primary-color" href="" />
