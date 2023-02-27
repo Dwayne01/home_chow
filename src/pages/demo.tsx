@@ -142,6 +142,22 @@ const ComponentPage = () => {
 							ref={register({ required: true })}
 							options={[]}
 						/>
+						<div>
+							<h1>Heading font - Jost</h1>
+							<p>Normal Text font - Monsterrat</p>
+							<div className="flex flex-col">
+								<div className="bg-primary-color">Primary color</div>
+								<div className="bg-primary-color-deactivated">
+									Primary color deactivated
+								</div>
+								<div className="bg-primary-color-light">
+									Primary color light
+								</div>
+								<div className="text-font-light">Light color for text</div>
+								<div className="border border-border-color">Border color</div>
+								<div className="bg-gray-modern">Gray modern bg color</div>
+							</div>
+						</div>
 					</div>
 				</form>
 			</FormProvider>
