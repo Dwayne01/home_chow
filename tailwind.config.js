@@ -1,15 +1,18 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-	content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
+	content: ["./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
+		...defaultTheme,
 		extend: {
 			colors: {
-				"border-color": " #FFAF02",
-				"primary-color": "#FFAF02",
-				white: "#FCFCFC",
-				"primary-color-light": "#FEFDF0",
+				"primary-color": "var(--color-primary)",
+				"primary-color-deactivated": "var(--color-primary-deactivated)",
+				"primary-color-light": "var(--color-primary-light)",
 				"secondary-color": "var(--color-secondary)",
+				"font-light": "#718096",
+				"border-color": "#D0D5DD",
+				"gray-modern": "#FCFCFD",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
