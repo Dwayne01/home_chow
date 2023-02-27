@@ -1,3 +1,15 @@
 {
-  "aboutUs": "About Us"
+  "aboutUs": "About Us",
+  "mailingAddress": "Mailing Address",
+  "aptUnitSuite": "Apt/Unit/Suite",
+  "city": "City",
+  "postalCode": "Postal Code",
+  "country": "Country",
+  "province": "Province",
+  "streetAddress": "Street Address",
+  "streetAddress2": "Street Address 2",
+  "emailAddress": "Email Address",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "sameAsCreditCard": "Same as Credit Card"
 }

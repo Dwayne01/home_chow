@@ -1,3 +1,15 @@
 {
-    "aboutUs": "À propos de nous"
+  "aboutUs": "À propos de nous",
+  "mailingAddress": "Adresse postale",
+  "aptUnitSuite": "Appt/Unité/Suite",
+  "city": "Ville",
+  "postalCode": "Code Postal",
+  "country": "Pays",
+  "province": "Province",
+  "streetAddress": "Adresse de la rue",
+  "emailAddress": "Adresse e-mail",
+  "password": "Mot de passe",
+  "confirmPassword": "Confirmez le mot de passe",
+  "sameAsCreditCard": "Identique à la carte de crédit"
 }
+

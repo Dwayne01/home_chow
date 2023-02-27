@@ -13,20 +13,25 @@ const Button = ({
 	rootClass,
 	type = "button",
 	disabled,
+	id,
+	loading,
 }: {
 	icon?: IconType;
 	textColor?: string;
 	type?: "button" | "submit" | "reset";
 	label: string;
-	onClick: () => void;
+	onClick?: () => void;
 	iconPosition?: IconPosition;
 	rootClass?: string;
 	disabled?: boolean;
+	loading?: boolean;
+	id?: string;
 }) => (
 	<button
 		type={type}
 		disabled={disabled}
 		onClick={onClick}
+		id={id}
 		className={classNames(
 			"rounded-[10px] flex justify-center items-center hover:bg-yellow-500",
 			"h-[56px] w-[166px] text-2xl text-white",
@@ -51,14 +56,18 @@ const Button = ({
 			)}
 		{iconPosition === "right" && icon && (
 			<>
-				<span
-					className={classNames(
-						"text-lg font-medium mx-2",
-						textColor || "text-primary-color"
-					)}
-				>
-					{label}
-				</span>
+				{!loading ? (
+					<span
+						className={classNames(
+							"text-lg font-medium mx-2",
+							textColor || "text-primary-color"
+						)}
+					>
+						{label}
+					</span>
+				) : (
+					<span>Loading...</span>
+				)}
 				{React.createElement(icon, { color: textColor })}
 			</>
 		)}
