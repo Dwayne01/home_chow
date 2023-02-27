@@ -1,11 +1,9 @@
+import { month, weekday } from "@/constants";
 import { format } from "date-fns";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { BsChatDots } from "react-icons/bs";
 import { IconType } from "react-icons/lib";
-import { CustomerInfo } from "types/Account";
-import { AddressModel } from "types/index";
-import { month, weekday } from "../constants/index";
 
 export const currencyToNumber = (currency: string | number) =>
 	Number(String(currency).split("$").join("").split(",").join(""));
@@ -62,9 +60,6 @@ export const testCanadianPostalCode = (postalCode: string) => {
 
 	return postalCodeRegex.test(postalCode);
 };
-
-export const getFulladdress = (address: AddressModel) =>
-	`${address.addressLine1}, ${address.city}, ${address.region}, ${address.postalCode}, ${address.country}`;
 
 /* -----------------------------------------------
 	Generate the year options for
@@ -142,9 +137,6 @@ export const formatPhoneNumber = (phoneNumberString: string) => {
 	}
 	return null;
 };
-
-export const getFormattedAddress = (user: CustomerInfo) =>
-	`${user?.address?.addressLine1} ${user?.address?.addressLine2} ${user?.address?.city} ${user?.address?.region} ${user?.address.country} ${user?.address?.postalCode}`;
 
 export const convertImgFileToBase64 = (imgData: string) => {
 	const base64Data = Buffer.from(imgData, "binary").toString("base64");

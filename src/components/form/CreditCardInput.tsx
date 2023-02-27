@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { UseFormMethods } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { usePaymentInputs } from "react-payment-inputs";
@@ -12,26 +12,6 @@ const CreditCardInput = ({
 	form: UseFormMethods<any>;
 	getCardType: (type: string) => void;
 }) => {
-	const [showChild, setShowChild] = useState(false);
-
-	useEffect(() => {
-		setShowChild(true);
-	}, []);
-
-	if (!showChild) {
-		return null;
-	}
-
-	return <CreditCardInputChild getCardType={getCardType} form={form} />;
-};
-
-const CreditCardInputChild = ({
-	form,
-	getCardType,
-}: {
-	form: UseFormMethods<any>;
-	getCardType: (type: string) => void;
-}) => {
 	const { t } = useTranslation("accounts");
 	const { register } = form;
 
@@ -39,10 +19,10 @@ const CreditCardInputChild = ({
 		meta,
 		getCardNumberProps,
 		getExpiryDateProps,
-		getCardImageProps,
 		getCVCProps,
+		getCardImageProps,
 	} = usePaymentInputs();
-	const { cardType } = meta;
+	const { cardType } = meta || {};
 
 	useEffect(() => {
 		if (cardType) {
