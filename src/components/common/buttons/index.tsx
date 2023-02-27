@@ -34,7 +34,7 @@ const Button = ({
 		id={id}
 		className={classNames(
 			"rounded-[10px] flex justify-center items-center hover:bg-yellow-500",
-			"h-[56px] w-[166px] text-2xl text-white",
+			"h-[56px] w-[166px] text-2xl text-white ",
 			disabled ? "bg-gray-400" : "bg-primary-color",
 			rootClass || ""
 		)}
@@ -46,7 +46,7 @@ const Button = ({
 					{React.createElement(icon, { color: textColor })}
 					<span
 						className={classNames(
-							"text-lg font-medium mx-2",
+							"text-lg font-bold mx-2",
 							textColor || "text-primary-color"
 						)}
 					>
