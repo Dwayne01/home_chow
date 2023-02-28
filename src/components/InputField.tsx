@@ -44,7 +44,8 @@ const InputField = ({
 				"focus-visible:outline-grey-7",
 				"focus-visible:outline-offset-0",
 				"placeholder-font-light",
-				"placeholder:font-normal",
+				"placeholder:font-medium",
+				"placeholder:text-xl",
 				"font-bold",
 				width,
 				className

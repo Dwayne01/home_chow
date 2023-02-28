@@ -19,7 +19,10 @@ const CheckboxButton = ({
 		htmlFor={name}
 		className={classNames(
 			isChecked ? "bg-primary-color-light" : "bg-white",
-			"px-5 py-4 border border-primary-color border-solid bg-white text-primary-color rounded-full shadow-[0px_4px_50px_0px_rgba(0,0,0,0.1)]",
+			isChecked ? "text-primary-color" : "text-font-light",
+			isChecked ? "border-primary-color" : "border-grey-light",
+			"px-5 py-4 border border-solid bg-white rounded-full shadow-[0px_4px_50px_0px_rgba(0,0,0,0.1)]",
+			"text-xl font-normal",
 			"hover:bg-primary-color-light transition duration-300 ease-in-out whitespace-nowrap",
 			className
 		)}

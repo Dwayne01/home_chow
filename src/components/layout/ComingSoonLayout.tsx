@@ -15,7 +15,7 @@ const ComingSoonLayout: React.FC<ComingSoonLayoutProps> = ({
 }): ReactElement => (
 	<div className="w-full h-screen flex flex-col">
 		{/* Header */}
-		<div className="md:hidden">
+		<div className="md:hidden border-b shadow-md ">
 			<ComingSoonHeader />
 		</div>
 		{/* main container */}
