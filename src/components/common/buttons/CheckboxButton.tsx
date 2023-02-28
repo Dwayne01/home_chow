@@ -29,7 +29,7 @@ const CheckboxButton = ({
 	>
 		{label}
 		<input
-			className="ml-5 accent-primary-color "
+			className="ml-5 accent-primary-color"
 			id={name}
 			name={name}
 			value={value}
