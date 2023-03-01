@@ -11,13 +11,14 @@ const IconButton = ({
 }: {
 	icon: IconType;
 	href: string;
-	color: string;
+	color?: string;
 	bgColor?: string;
 }) => (
 	<Link
 		href={href}
 		className={classNames(
-			"rounded-[10px] w-[60px] h-[60px] text-primary-color flex justify-center text-2xl items-center",
+			"rounded-[10px] w-[60px] h-[60px] flex justify-center text-2xl items-center",
+			color || "text-primary-color",
 			bgColor || "bg-white"
 		)}
 	>
