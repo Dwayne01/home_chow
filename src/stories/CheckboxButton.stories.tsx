@@ -4,6 +4,7 @@ import CheckboxButton from "../components/common/buttons/CheckboxButton";
 export default {
 	title: "Component/Button/CheckboxButton",
 	component: CheckboxButton,
+	argTypes: { clickHandler: { action: "clicked" } },
 } as ComponentMeta<typeof CheckboxButton>;
 
 const Template: ComponentStory<typeof CheckboxButton> = (args) => (

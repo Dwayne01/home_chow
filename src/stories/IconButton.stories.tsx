@@ -5,6 +5,7 @@ import IconButton from "../components/common/buttons/IconButton";
 export default {
 	title: "Component/Button/IconButton",
 	component: IconButton,
+	argTypes: { clickHandler: { action: "clicked" } },
 } as ComponentMeta<typeof IconButton>;
 
 const Template: ComponentStory<typeof IconButton> = (args) => (
