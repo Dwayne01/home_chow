@@ -8,17 +8,20 @@ const IconButton = ({
 	href,
 	color,
 	bgColor,
+	className,
 }: {
 	icon: IconType;
 	href: string;
 	color: string;
 	bgColor?: string;
+	className?: string;
 }) => (
 	<Link
 		href={href}
 		className={classNames(
 			"rounded-[10px] w-[60px] h-[60px] text-primary-color flex justify-center text-2xl items-center",
-			bgColor || "bg-white"
+			bgColor || "bg-white",
+			className
 		)}
 	>
 		{React.createElement(icon, { color })}

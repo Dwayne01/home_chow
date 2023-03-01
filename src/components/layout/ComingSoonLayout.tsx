@@ -14,9 +14,7 @@ const ComingSoonLayout: React.FC<ComingSoonLayoutProps> = ({
 	RightComponent,
 }): ReactElement => (
 	<div className="w-full h-screen flex flex-col">
-		{/* Header */}
 		<ComingSoonHeader />
-		{/* main container */}
 		<div
 			className={classNames(
 				"w-full ",

@@ -1,6 +1,7 @@
 import React from "react";
 import { IconType } from "react-icons";
 import classNames from "classnames";
+import Loader from "../../../../public/assets/svg/Loader";
 
 type IconPosition = "left" | "right";
 
@@ -34,42 +35,28 @@ const Button = ({
 		id={id}
 		className={classNames(
 			"rounded-[10px] flex justify-center items-center hover:bg-yellow-500",
-			"h-[56px] w-[166px] text-2xl text-white",
+			"w-[166px] text-2xl text-white p-3",
 			disabled ? "bg-gray-400" : "bg-primary-color",
 			rootClass || ""
 		)}
 	>
-		{iconPosition === "left" &&
-			icon &&
-			icon(
-				<>
-					{React.createElement(icon, { color: textColor })}
-					<span
-						className={classNames(
-							"text-lg font-medium mx-2",
-							textColor || "text-primary-color"
-						)}
-					>
-						{label}
-					</span>
-				</>
-			)}
-		{iconPosition === "right" && icon && (
-			<>
-				{!loading ? (
-					<span
-						className={classNames(
-							"text-lg font-medium mx-2",
-							textColor || "text-primary-color"
-						)}
-					>
-						{label}
-					</span>
-				) : (
-					<span>Loading...</span>
+		{loading && <Loader size="40px" />}
+
+		{iconPosition === "left" && icon && (
+			<>{React.createElement(icon, { color: textColor })}</>
+		)}
+		{!loading && (
+			<span
+				className={classNames(
+					"text-lg mx-2",
+					textColor || "text-primary-color"
 				)}
-				{React.createElement(icon, { color: textColor })}
-			</>
+			>
+				{label}
+			</span>
+		)}
+		{iconPosition === "right" && icon && (
+			<>{React.createElement(icon, { color: textColor })}</>
 		)}
 	</button>
 );

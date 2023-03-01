@@ -17,9 +17,9 @@ import {
 	numberToCurrency,
 	currencyToNumber,
 } from "../../utils";
-import EyeOpen from "../../../public/assets/svg/assets/EyeOpen";
-import EyeClosed from "../../../public/assets/svg/assets/EyeClosed";
-import FlagCARound from "../../../public/assets/svg/assets/FlagCARound";
+import EyeOpen from "../../../public/assets/svg/EyeOpen";
+import EyeClosed from "../../../public/assets/svg/EyeClosed";
+import FlagCARound from "../../../public/assets/svg/FlagCARound";
 import config from "../../../config";
 
 const CardFieldComponent = (props: any, ref: any) => {

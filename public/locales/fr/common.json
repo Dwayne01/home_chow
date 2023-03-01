@@ -10,6 +10,7 @@
   "emailAddress": "Adresse e-mail",
   "password": "Mot de passe",
   "confirmPassword": "Confirmez le mot de passe",
-  "sameAsCreditCard": "Identique à la carte de crédit"
+  "sameAsCreditCard": "Identique à la carte de crédit",
+  "lastName": "Nom de famille",
+  "firstName": "Prénom"
 }
-
