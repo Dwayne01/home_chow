@@ -37,7 +37,7 @@ const LeftView = () => {
 					label={t("I'm a customer")}
 					value={selectedValue}
 					isChecked={selectedValue === "customer"}
-					className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap"
+					className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap "
 					handleClick={(data) => {
 						setSelectedValue(data);
 					}}
@@ -47,7 +47,7 @@ const LeftView = () => {
 					label={t("I'm a Vendor")}
 					value={selectedValue}
 					isChecked={selectedValue === "vendor"}
-					className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap"
+					className="w-full sm:w-1/2 flex justify-center  rounded-lg md:rounded-[50px] whitespace-nowrap"
 					handleClick={() => setSelectedValue("vendor")}
 				/>
 				<CheckboxButton
@@ -55,7 +55,7 @@ const LeftView = () => {
 					label={t("I'm a Driver")}
 					value={selectedValue}
 					isChecked={selectedValue === "driver"}
-					className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap"
+					className="w-full sm:w-1/2 flex justify-center  rounded-lg md:rounded-[50px] whitespace-nowrap"
 					handleClick={() => setSelectedValue("driver")}
 				/>
 			</div>
