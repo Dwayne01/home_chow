@@ -15,7 +15,9 @@ const ComingSoonLayout: React.FC<ComingSoonLayoutProps> = ({
 }): ReactElement => (
 	<div className="w-full h-screen flex flex-col">
 		{/* Header */}
-		<ComingSoonHeader />
+		<div className="md:hidden border-b shadow-md ">
+			<ComingSoonHeader />
+		</div>
 		{/* main container */}
 		<div
 			className={classNames(
@@ -25,7 +27,9 @@ const ComingSoonLayout: React.FC<ComingSoonLayoutProps> = ({
 				className
 			)}
 		>
-			<div className="flex flex-1">{LeftComponent && <LeftComponent />}</div>
+			<div className="flex flex-1 md:min-w-[800px]">
+				{LeftComponent && <LeftComponent />}
+			</div>
 			<div className="hidden flex-1 md:flex">
 				{RightComponent && <RightComponent />}
 			</div>
