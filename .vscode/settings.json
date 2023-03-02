@@ -2,7 +2,11 @@
   "i18n-ally.localesPaths": [
     "public/locales"
   ],
+<<<<<<< HEAD
   "cSpell.words": [
     "tailwindcss"
   ]
+=======
+  "i18n-ally.keystyle": "nested"
+>>>>>>> 6b0598e1333128a2f71dd616274a695aea19c7cd
 }

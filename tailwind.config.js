@@ -13,11 +13,15 @@ module.exports = {
 				"font-light": "#718096",
 				"border-color": "#D0D5DD",
 				"gray-modern": "#FCFCFD",
+				"grey-light": "#DDDDDD",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
 				...theme("colors"),
 			}),
+			animation: {
+				"bounce-high": "bounce 1s infinite",
+			},
 		},
 		screens: {
 			sm: "640px",
