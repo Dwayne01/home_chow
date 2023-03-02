@@ -16,6 +16,7 @@ import {
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import CodeInput from "@/components/form/CodeInput";
+import SocialAuthButton from "@/components/common/buttons/SocialAuthButton";
 import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
@@ -40,7 +41,7 @@ const ComponentPage = () => {
 				<IconButton icon={FaTwitter} color="text-primary-color" href="" />
 				<IconButton icon={FaLinkedinIn} color="text-primary-color" href="" />
 			</div>
-			<div className="flex justify-center my-10 ">
+			<div className="flex flex-col items-center gap-5">
 				<Button
 					icon={AiOutlineSend}
 					textColor="text-white"
@@ -48,7 +49,9 @@ const ComponentPage = () => {
 					onClick={() => {}}
 					iconPosition="right"
 				/>
+				<SocialAuthButton />
 			</div>
+
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
 				<CheckboxButton
 					name="customer"
