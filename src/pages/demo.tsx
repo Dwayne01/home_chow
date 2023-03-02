@@ -74,6 +74,16 @@ const ComponentPage = () => {
 					bgColor="bg-primary-color"
 					disabled
 				/>
+				<WideIconButton
+					label="Sign in"
+					textColor="text-white"
+					bgColor="bg-primary-color"
+				/>
+				<WideIconButton
+					label="Get Started"
+					textColor="text-white"
+					bgColor="bg-primary-color"
+				/>
 			</div>
 
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
