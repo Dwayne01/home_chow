@@ -2,9 +2,10 @@ import React from "react";
 import { IconType } from "react-icons";
 import classNames from "classnames";
 
-const SocialAuthButton = ({
-	icon,
+const WideIconButton = ({
 	label,
+	icon,
+	iconColor,
 	textColor,
 	bgColor,
 	borderColor,
@@ -14,8 +15,9 @@ const SocialAuthButton = ({
 	id,
 	type = "button",
 }: {
-	icon?: IconType;
 	label: string;
+	icon?: IconType;
+	iconColor?: string;
 	textColor?: string;
 	bgColor?: string;
 	borderColor?: string;
@@ -31,16 +33,24 @@ const SocialAuthButton = ({
 		onClick={onClick}
 		id={id}
 		className={classNames(
-			"w-[360px] h-[44px] flex justify-center items-center text-base leading-6 border rounded-[8px] ",
+			"w-[360px] h-[44px] px-[10px] py-[16px] gap-[12px] flex justify-center items-center text-base leading-6 border rounded-[8px]",
 			textColor || "text-grey-dark",
 			bgColor || "bg-white",
 			borderColor || "border-border-color",
-			rootClass || ""
+			rootClass || "",
+			icon
+				? "drop-shadow-[0_1px_2px_rgba(16,24,40,0.05)]"
+				: "drop-shadow-[0_8px_27px_rgba(47,46,65,0.35)]",
+			disabled ? "opacity-50" : ""
 		)}
 	>
-		{icon ? <>{React.createElement(icon, { color: textColor })}</> : null}
+		{icon ? (
+			<div className="text-2xl">
+				{React.createElement(icon, { color: iconColor })}
+			</div>
+		) : null}
 		{label}
 	</button>
 );
 
-export default SocialAuthButton;
+export default WideIconButton;

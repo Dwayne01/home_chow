@@ -3,7 +3,13 @@ import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import ComingSoonHeader from "@/components/header/ComingSoonHeader";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import {
+	FaFacebookF,
+	FaFacebook,
+	FaTwitter,
+	FaLinkedinIn,
+} from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import IconButton from "@/components/common/buttons/IconButton";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import MailingAddress from "@/components/form/MailingAddress";
@@ -16,7 +22,7 @@ import {
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import CodeInput from "@/components/form/CodeInput";
-import SocialAuthButton from "@/components/common/buttons/SocialAuthButton";
+import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
@@ -49,7 +55,25 @@ const ComponentPage = () => {
 					onClick={() => {}}
 					iconPosition="right"
 				/>
-				<SocialAuthButton />
+				{/* Social Auth buttons */}
+				<WideIconButton label="Sign in with Google" icon={FcGoogle} />
+				<WideIconButton
+					label="Sign in with Facebook"
+					icon={FaFacebook}
+					iconColor="#1877F2"
+				/>
+				<WideIconButton
+					label="Sign in with Twitter"
+					icon={FaTwitter}
+					iconColor="#1DA1F2"
+				/>
+				{/* Sign-in button */}
+				<WideIconButton
+					label="Sign in"
+					textColor="text-white"
+					bgColor="bg-primary-color"
+					disabled
+				/>
 			</div>
 
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
