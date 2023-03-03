@@ -107,7 +107,7 @@ const SubscribeForm = () => {
 					/>
 
 					<Button
-						icon={AiOutlineSend}
+						LeftIconComponent={AiOutlineSend}
 						textColor="text-white"
 						label={t("subscribe")}
 						onClick={() => {}}

@@ -1,5 +1,6 @@
 import SWRFetchTester from "@/components/SWRFetchTester";
 import Head from "next/head";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
 	return (
@@ -12,6 +13,8 @@ export default function Home() {
 			</Head>
 			<div>
 				<SWRFetchTester />
+				<h1>Footer</h1>
+				<Footer />
 			</div>
 		</>
 	);
