@@ -1,21 +1,19 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import Button from "@/components/common/buttons";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import { AiOutlineSend } from "react-icons/ai";
 import IconButton from "@/components/common/buttons/IconButton";
-// import Countdown from "@/components/countdown";
-// import InputField from "@/components/InputField";
 import { FormProvider, useForm } from "react-hook-form";
 import { TextField } from "@/components/form/InputField";
-import { useTranslation } from "react-i18next";
 
 const SubscribeForm = () => {
 	const [selectedUserType, setSelectedUserType] = useState<
 		"vendor" | "customer" | "driver"
 	>("customer");
 
-	const { t } = useTranslation("common");
+	const { t } = useTranslation("comingsoon");
 
 	const form = useForm({
 		defaultValues: {},
@@ -29,12 +27,12 @@ const SubscribeForm = () => {
 		<FormProvider {...form}>
 			<form onSubmit={handleSubmit(handleSubmitForm)}>
 				<p className="pt-8 text-font-light font-normal text-md text-center md:text-left order-4 md:order-none">
-					Choose options that applies to you?
+					{t("chooseOptions")}
 				</p>
 				<div className="w-full flex flex-col md:flex-row justify-center items-center pt-4 gap-5 order-5 md:order-none">
 					<CheckboxButton
 						name="customer"
-						label={t("iamacustomer", { ns: "commingsoon" })}
+						label={t("iamacustomer")}
 						value={selectedUserType}
 						isChecked={selectedUserType === "customer"}
 						className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap"
@@ -66,7 +64,7 @@ const SubscribeForm = () => {
 						data-testid="signin-email"
 						rootClass="col-auto"
 						name="firstName"
-						label={t("firstName")}
+						label={t("firstName", { ns: "common" })}
 						placeholder="John"
 						required
 						ref={register({
@@ -78,7 +76,7 @@ const SubscribeForm = () => {
 						data-testid="signin-email"
 						rootClass="col-auto"
 						name="lastName"
-						label={t("lastName")}
+						label={t("lastName", { ns: "common" })}
 						placeholder="Doe"
 						required
 						ref={register({
@@ -93,7 +91,7 @@ const SubscribeForm = () => {
 						data-testid="signin-email"
 						rootClass="col-auto"
 						name="emailOrPhone"
-						label={t("emailAddress")}
+						label={t("emailAddress", { ns: "common" })}
 						placeholder="example@example.com"
 						required
 						ref={register({
@@ -111,18 +109,16 @@ const SubscribeForm = () => {
 						textColor="text-white"
 						label={t("subscribe")}
 						onClick={() => {}}
-						rootClass="rounded-lg font-bold col-auto mt-8"
+						rootClass="rounded-lg font-bold col-auto mt-8 w-[210px]"
 						iconPosition="right"
 					/>
 				</div>
 
 				<p className="pt-4 sm:w-3/4 text-font-light order-6 md:order-none">
-					Sign up for updates to be the first to know when we launch. No spam,
-					just important information and exclusive offers..
+					{t(
+						"Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.. "
+					)}
 				</p>
-				{/* <div className=" w-full flex justify-center pt-20 order-3 md:order-none">
-			<Countdown />
-		</div> */}
 			</form>
 		</FormProvider>
 	);
@@ -130,17 +126,17 @@ const SubscribeForm = () => {
 
 const LeftView = () => {
 	const [isSubscribeUser, setIsSubscribeUser] = useState<boolean>(false);
-
+	const { t } = useTranslation("comingsoon");
 	return (
 		<div className="max-w-[700px] m-auto w-full h-full flex flex-col justify-start items-start px-[5%] md:px-0  pt-5">
 			<h1 className="text-4xl text-center md:text-left md:text-7xl font-bold leading-[120%] md:leading-[120%] order-1 md:order-none">
-				Good things come to those who you
-				<span className="text-primary-color animate-pulse"> Wait!</span>
+				{t("Good things come to those who")}
+				<span className="text-primary-color animate-pulse"> {t("Wait")}!</span>
 			</h1>
 			<p className="pt-5  font-normal text-xl text-center md:text-left order-2 md:order-none">
-				We&apos;re putting the finishing touches on our website and getting
-				ready to launch. Sign up for updates and be the first to know when we go
-				live.
+				{t(
+					"We're putting the finishing touches on our website and getting ready to launch. Sign up for updates and be the first to know when we go live."
+				)}
 			</p>
 
 			{!isSubscribeUser ? (

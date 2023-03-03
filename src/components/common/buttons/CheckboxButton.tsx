@@ -28,17 +28,19 @@ const CheckboxButton = ({
 			className
 		)}
 	>
-		{label}
-		<input
-			className="ml-5 accent-primary-color "
-			id={name}
-			name={name}
-			value={value}
-			type="checkbox"
-			checked={isChecked}
-			onChange={(e) => handleClick(e.target.name)}
-			{...otherProps}
-		/>
+		<div className="w-2/3 md:w-full flex justify-between px-5">
+			{label}
+			<input
+				className="accent-primary-color"
+				id={name}
+				name={name}
+				value={value}
+				type="checkbox"
+				checked={isChecked}
+				onChange={(e) => handleClick(e.target.name)}
+				{...otherProps}
+			/>
+		</div>
 	</label>
 );
 

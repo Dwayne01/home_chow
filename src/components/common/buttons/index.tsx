@@ -35,7 +35,7 @@ const Button = ({
 		id={id}
 		className={classNames(
 			"rounded-[10px] flex justify-center items-center hover:bg-yellow-500",
-			"w-[166px] text-2xl text-white p-3",
+			"text-2xl text-white p-3",
 			disabled ? "bg-gray-400" : "bg-primary-color",
 			rootClass || ""
 		)}
