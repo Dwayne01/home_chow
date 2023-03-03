@@ -15,7 +15,7 @@ const SubscribeForm = () => {
 		"vendor" | "customer" | "driver"
 	>("customer");
 
-	const { t } = useTranslation("common");
+	const { t } = useTranslation("coming_soon");
 
 	const form = useForm({
 		defaultValues: {},
