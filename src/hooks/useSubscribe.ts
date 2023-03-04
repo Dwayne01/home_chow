@@ -1,14 +1,9 @@
-import { SubscribeParams, SusbscribeResponse } from "@/types/comingsoon";
-import { useApi } from "@/hooks/useApi";
-import { KeyedMutator } from "swr";
+import { SubscribeParams } from "@/types/comingsoon";
+import { useApiMutate } from "@/hooks/useApi";
+import { ApiResponse } from "@/types";
 
-export const useSubscribe = (): {
-	data?: SusbscribeResponse | undefined;
-	error?: Error | undefined;
-	isLoading: boolean;
-	mutate: KeyedMutator<SubscribeParams>;
-} => {
-	const data = useApi<SubscribeParams, SusbscribeResponse>("/subscribe");
+export const useSubscribe = () => {
+	const data = useApiMutate<SubscribeParams, ApiResponse>("post", "/subscribe");
 
 	return data;
 };

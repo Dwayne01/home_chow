@@ -1,33 +1,48 @@
-import useSWR, { KeyedMutator, SWRConfiguration } from "swr";
-import { AxiosRequestConfig } from "axios";
+import { Fetcher, RequestOptions } from "@/types";
 import apiRequestHandler from "@/utils/apiHandler";
+import { useMutation } from "react-query";
+import useSWR from "swr";
 
-export type Fetcher<T> = (
+export const useApiQuery = <T>(
+	method: "get",
 	url: string,
-	config?: AxiosRequestConfig
-) => Promise<T>;
+	options?: RequestOptions
+) => {
+	const { queryKey, queryFn, swrConfig } = options ?? {};
 
-export function useApi<T, R = T>(
-	url: string,
-	config?: SWRConfiguration | null
-): {
-	data?: R;
-	error?: Error;
-	isLoading: boolean;
-	mutate: KeyedMutator<T>;
-} {
-	const fetcher: Fetcher<R> = async (endpoint, options) => {
-		const response = await apiRequestHandler(endpoint, options || {});
+	const fetcher: Fetcher<T> = async (endpoint, config) => {
+		const response = await apiRequestHandler({
+			method,
+			url: endpoint,
+			...config,
+		});
 		return response.data;
 	};
 
-	const { data, error, isValidating, mutate } = useSWR(
-		url,
-		fetcher,
-		config || {}
+	const swr = useSWR<T>(queryKey ?? url, queryFn ?? fetcher, swrConfig);
+
+	return swr;
+};
+
+export const useApiMutate = <TData, TResponse>(
+	method: "post" | "put" | "delete" | "upload",
+	url: string,
+	options?: RequestOptions
+) => {
+	const { mutationConfig } = options ?? {};
+
+	const mutation = useMutation<TResponse, TResponse, TData, unknown>(
+		async (data) => {
+			const response: TResponse = await apiRequestHandler({
+				method,
+				url,
+				data,
+			});
+
+			return response;
+		},
+		mutationConfig
 	);
 
-	const isLoading = !data && !error && isValidating;
-
-	return { data, error, isLoading, mutate: mutate as any as KeyedMutator<T> };
-}
+	return mutation;
+};
