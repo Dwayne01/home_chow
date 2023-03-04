@@ -1,6 +1,21 @@
 {
-  "iamavendor": "je suis un vendeur",
-  "iamadriver": "je suis chauffeur",
-  "iamacustomer": "je suis client",
-  "subscribe": "Prévenez-moi"
+  "iamavendor": "Je suis un vendeur",
+  "iamadriver": "Je suis chauffeur",
+  "iamacustomer": "Je suis client",
+  "subscribe": "Prévenez-moi",
+  "Good things come to those who": "De bonnes choses arrivent à ceux qui",
+  "Wait": "Attendre",
+  "We're putting the finishing touches on our website and getting ready to launch. Sign up for updates and be the first to know when we go live.": "Nous mettons la touche finale à notre site web et nous nous préparons à le lancer. Inscrivez-vous aux mises à jour et soyez les premiers à savoir quand nous serons en ligne.",
+  "Choose options that applies to you?": "Choisissez les options qui vous concernent ?",
+  "Enter your email address": "Entrez votre adresse e-mail",
+  "Notify me": "Prévenez-moi",
+  "Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.. ": " Inscrivez-vous aux mises à jour pour être les premiers à savoir quand nous lançons. Pas de spam, juste des informations importantes et des offres exclusives ..",
+  "chooseOptions": "Choisir les options qui s'appliquent à vous ?",
+  "We're putting the finishing touches on our website and getting ready to launch": {
+    " Sign up for updates and be the first to know when we go live": "",
+    "__i18n_ally_root__": {
+      " Sign up for updates and be the first to know when we go live": ""
+    }
+  },
+  "We": ""
 }

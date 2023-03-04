@@ -12,7 +12,8 @@
   "password": "Password",
   "confirmPassword": "Confirm Password",
   "sameAsCreditCard": "Same as Credit Card",
-   "firstName": "First Name",
-  "lastName": "Last Name"
-  
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "thisFieldIsRequired": "This field is required",
+  "invalidEmail": "Invalid Email"
 }

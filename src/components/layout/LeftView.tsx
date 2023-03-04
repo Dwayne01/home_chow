@@ -5,86 +5,169 @@ import Button from "@/components/common/buttons";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import { AiOutlineSend } from "react-icons/ai";
 import IconButton from "@/components/common/buttons/IconButton";
-import InputField from "@/components/InputField";
-import LanguageSwitcher from "@/components/langugeswitcher";
-// import Countdown from "@/components/countdown";
+import { FormProvider, useForm } from "react-hook-form";
+import { TextField } from "@/components/form/InputField";
+import { SubscribeParams } from "@/types/comingsoon";
 
-const LeftView = () => {
-	const { t } = useTranslation("coming_soon");
+const SubscribeForm = ({
+	handleSubmitForm,
+	isLoading,
+}: {
+	isLoading: boolean;
+	handleSubmitForm: (params: SubscribeParams) => void;
+}) => {
+	const [selectedUserType, setSelectedUserType] = useState<
+		"vendor" | "customer" | "driver"
+	>("customer");
 
-	const [selectedValue, setSelectedValue] = useState<string>("");
+	const { t } = useTranslation("comingsoon");
+
+	const form = useForm({
+		defaultValues: {},
+	});
+
+	const { handleSubmit, register } = form;
+
+	const handleSubscribeNow = (data: SubscribeParams) => {
+		handleSubmitForm(data);
+	};
 
 	return (
-		<div className="relative max-w-[700px] m-auto w-full h-full flex flex-col justify-start items-start px-[5%] md:px-0  pt-16">
-			<div className="hidden md:flex justify-end w-full">
-				<LanguageSwitcher />
-			</div>
+		<FormProvider {...form}>
+			<form onSubmit={handleSubmit(handleSubscribeNow)}>
+				<p className="pt-8 text-font-light font-normal text-md text-center md:text-left order-4 md:order-none">
+					{t("chooseOptions")}
+				</p>
+				<div className="w-full flex flex-col md:flex-row justify-center items-center pt-4 gap-5 order-5 md:order-none">
+					<CheckboxButton
+						name="customer"
+						label={t("iamacustomer")}
+						value={selectedUserType}
+						isChecked={selectedUserType === "customer"}
+						className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap"
+						handleClick={() => {
+							setSelectedUserType("customer");
+						}}
+					/>
+					<CheckboxButton
+						name="vendor"
+						label={t("iamavendor")}
+						value={selectedUserType}
+						isChecked={selectedUserType === "vendor"}
+						className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap"
+						handleClick={() => setSelectedUserType("vendor")}
+					/>
+
+					<CheckboxButton
+						name="driver"
+						label={t("iamadriver")}
+						value={selectedUserType}
+						isChecked={selectedUserType === "driver"}
+						className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap"
+						handleClick={() => setSelectedUserType("driver")}
+					/>
+				</div>
+
+				<div className="grid grid-cols-2 gap-8 grid-rows-1 mt-5">
+					<TextField
+						data-testid="signin-email"
+						rootClass="col-auto"
+						name="firstName"
+						label={t("firstName", { ns: "common" })}
+						placeholder="John"
+						required
+						ref={register({
+							required: true,
+						})}
+						autoComplete="firstName"
+					/>
+					<TextField
+						data-testid="signin-email"
+						rootClass="col-auto"
+						name="lastName"
+						label={t("lastName", { ns: "common" })}
+						placeholder="Doe"
+						required
+						ref={register({
+							required: true,
+						})}
+						autoComplete="lastName"
+					/>
+				</div>
+
+				<div className="grid grid-cols-2 gap-8 grid-rows-1 items-center pt-5 order-5 md:order-none  justify-end">
+					<TextField
+						data-testid="signin-email"
+						rootClass="col-auto"
+						name="email"
+						label={t("emailAddress", { ns: "common" })}
+						placeholder="example@example.com"
+						required
+						ref={register({
+							required: true,
+							pattern: {
+								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+								message: t("invalidEmail", { ns: "common" }),
+							},
+						})}
+						autoComplete="username"
+					/>
+
+					<Button
+						icon={AiOutlineSend}
+						loading={isLoading}
+						textColor="text-white"
+						label={t("subscribe")}
+						disabled={isLoading}
+						type="submit"
+						rootClass="rounded-lg font-bold col-auto mt-8 w-[210px]"
+						iconPosition="right"
+					/>
+				</div>
+
+				<p className="pt-4 text-font-light order-6 md:order-none">
+					{t(
+						"Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.. "
+					)}
+				</p>
+			</form>
+		</FormProvider>
+	);
+};
+
+const LeftView = ({
+	handleSubmit,
+	isLoading,
+}: {
+	isLoading: boolean;
+	handleSubmit: (params: SubscribeParams) => void;
+}) => {
+	const [isSubscribeUser, setIsSubscribeUser] = useState<boolean>(false);
+	const { t } = useTranslation("comingsoon");
+	return (
+		<div className="max-w-[700px] m-auto w-full h-full flex flex-col justify-start items-start px-[5%] md:px-0  pt-5">
 			<h1 className="text-4xl text-center md:text-left md:text-7xl font-bold leading-[120%] md:leading-[120%] order-1 md:order-none">
 				{t("Good things come to those who")}
 				<span className="text-primary-color animate-pulse"> {t("Wait")}!</span>
 			</h1>
-			<p className="pt-8 text-font-light font-normal text-xl text-center md:text-left order-2 md:order-none">
+			<p className="pt-5  font-normal text-xl text-center md:text-left order-2 md:order-none">
 				{t(
 					"We're putting the finishing touches on our website and getting ready to launch. Sign up for updates and be the first to know when we go live."
 				)}
 			</p>
-			<p className="pt-8 text-font-light font-normal text-xl text-center md:text-left order-4 md:order-none">
-				{t("Choose options that applies to you?")}
-			</p>
-			<div className="w-full flex flex-col md:flex-row justify-center items-center pt-7 gap-5 order-5 md:order-none">
-				<CheckboxButton
-					name="customer"
-					label={t("I'm a customer")}
-					value={selectedValue}
-					isChecked={selectedValue === "customer"}
-					className="w-full sm:w-1/2 flex justify-center rounded-lg md:rounded-[50px] whitespace-nowrap "
-					handleClick={(data) => {
-						setSelectedValue(data);
-					}}
-				/>
-				<CheckboxButton
-					name="vendor"
-					label={t("I'm a Vendor")}
-					value={selectedValue}
-					isChecked={selectedValue === "vendor"}
-					className="w-full sm:w-1/2 flex justify-center  rounded-lg md:rounded-[50px] whitespace-nowrap"
-					handleClick={() => setSelectedValue("vendor")}
-				/>
-				<CheckboxButton
-					name="driver"
-					label={t("I'm a Driver")}
-					value={selectedValue}
-					isChecked={selectedValue === "driver"}
-					className="w-full sm:w-1/2 flex justify-center  rounded-lg md:rounded-[50px] whitespace-nowrap"
-					handleClick={() => setSelectedValue("driver")}
-				/>
-			</div>
-			<div className="w-full  flex flex-col sm:flex-row items-center pt-12 gap-4 sm:w-4/5 md:w-3/4 order-5 md:order-none">
-				<div className="flex-1 w-full">
-					<InputField
-						placeholder={t("Enter your email address") || ""}
-						className="h-14 rounded-lg placeholder:p-2"
-						width=""
-					/>
-				</div>
+
+			{!isSubscribeUser ? (
 				<Button
-					RightIconComponent={AiOutlineSend}
 					textColor="text-white"
-					label={t("Notify me")}
-					onClick={() => {}}
-					rootClass="rounded-lg whitespace-nowrap w-full px-3 sm:w-[166px] font-bold"
+					label="Notify me when you launch"
+					onClick={() => setIsSubscribeUser(!isSubscribeUser)}
+					rootClass="rounded-lg whitespace-nowrap p-5 w-auto my-10"
 					iconPosition="right"
 				/>
-			</div>
-			<p className="pt-4 sm:w-3/4 text-font-light order-6 md:order-none">
-				{t(
-					"Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.. "
-				)}
-			</p>
-			{/* <div className=" w-full flex justify-center pt-20 order-3 md:order-none">
-				<Countdown />
-			</div> */}
-			<div className="w-full flex justify-center gap-6 flex-1 items-end pb-10 pt-20 md:pt-0 order-7 md:order-none ">
+			) : (
+				<SubscribeForm isLoading={isLoading} handleSubmitForm={handleSubmit} />
+			)}
+			<div className="w-full flex justify-center gap-6 flex-1 items-end mb-5 order-7 md:order-none">
 				<IconButton
 					className="bg-gray-modern"
 					icon={FaFacebookF}

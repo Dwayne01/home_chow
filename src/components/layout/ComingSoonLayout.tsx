@@ -1,18 +1,13 @@
 import React, { ReactElement } from "react";
+import { ComingSoonLayoutProps } from "@/types/comingsoon";
 import classNames from "classnames";
 import ComingSoonHeader from "../header/ComingSoonHeader";
 
-type ComingSoonLayoutProps = {
-	className?: string;
-	LeftComponent?: React.FC;
-	RightComponent?: React.FC;
-};
-
-const ComingSoonLayout: React.FC<ComingSoonLayoutProps> = ({
+const ComingSoonLayout = ({
 	className,
 	LeftComponent,
 	RightComponent,
-}): ReactElement => (
+}: ComingSoonLayoutProps): ReactElement => (
 	<div className="w-full h-screen flex flex-col">
 		<ComingSoonHeader />
 		<div
@@ -24,10 +19,10 @@ const ComingSoonLayout: React.FC<ComingSoonLayoutProps> = ({
 			)}
 		>
 			<div className="flex flex-1 md:min-w-[800px]">
-				{LeftComponent && <LeftComponent />}
+				{LeftComponent && LeftComponent}
 			</div>
 			<div className="hidden flex-1 md:flex">
-				{RightComponent && <RightComponent />}
+				{RightComponent && RightComponent}
 			</div>
 		</div>
 	</div>
