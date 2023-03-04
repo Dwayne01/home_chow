@@ -159,7 +159,7 @@ const LeftView = ({
 			{!isSubscribeUser ? (
 				<Button
 					textColor="text-white"
-					label="Notify me when you launch"
+					label={t("Notify me when you launch")}
 					onClick={() => setIsSubscribeUser(!isSubscribeUser)}
 					rootClass="rounded-lg whitespace-nowrap p-5 w-auto my-10"
 					iconPosition="right"
