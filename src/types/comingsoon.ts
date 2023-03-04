@@ -7,10 +7,6 @@ export interface SubscribeParams {
 	userType: string;
 }
 
-export interface SusbscribeResponse {
-	message: string;
-}
-
 export interface ComingSoonLayoutProps {
 	className?: string;
 	LeftComponent?: ReactNode;

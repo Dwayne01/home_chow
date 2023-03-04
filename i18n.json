@@ -3,6 +3,6 @@
 	"defaultLocale": "en",
 	"pages": {
 		"*": ["common"],
-		"/comingsoon": ["comingsoon", "common"]
+		"/comingsoon": ["comingsoon", "common", "constants"]
 	}
 }

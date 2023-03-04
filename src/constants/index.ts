@@ -38,3 +38,9 @@ export const weekday = [
 	"Friday",
 	"Saturday",
 ];
+
+// eslint-disable-next-line no-shadow
+export enum ResponseStatus {
+	SUCCESS = "Success",
+	ERROR = "Error",
+}

@@ -7,10 +7,7 @@ const client = axios.create({
 	baseURL: config.baseUrl,
 });
 
-const apiRequestHandler = async (
-	url: string,
-	options: AxiosRequestConfig<any>
-) => {
+const apiRequestHandler = async (options: AxiosRequestConfig) => {
 	const token = getSessionCookie();
 
 	client.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -24,7 +21,13 @@ const apiRequestHandler = async (
 		return { message: error.message, status: 500 };
 	};
 
-	return axios(options).then(onSuccess).catch(onError);
+	const response = axios({
+		...options,
+		url: `${config.baseUrl}${options.url}`,
+	})
+		.then(onSuccess)
+		.catch(onError);
+	return response;
 };
 
 export default apiRequestHandler;

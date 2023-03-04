@@ -8,6 +8,7 @@ import IconButton from "@/components/common/buttons/IconButton";
 import { FormProvider, useForm } from "react-hook-form";
 import { TextField } from "@/components/form/InputField";
 import { SubscribeParams } from "@/types/comingsoon";
+import classNames from "classnames";
 
 const SubscribeForm = ({
 	handleSubmitForm,
@@ -29,7 +30,7 @@ const SubscribeForm = ({
 	const { handleSubmit, register } = form;
 
 	const handleSubscribeNow = (data: SubscribeParams) => {
-		handleSubmitForm(data);
+		handleSubmitForm({ ...data, userType: selectedUserType });
 	};
 
 	return (
@@ -140,10 +141,30 @@ const LeftView = ({
 	isLoading,
 }: {
 	isLoading: boolean;
-	handleSubmit: (params: SubscribeParams) => void;
+	handleSubmit: (params: SubscribeParams) => Promise<string | null>;
 }) => {
 	const [isSubscribeUser, setIsSubscribeUser] = useState<boolean>(false);
+	const [message, setMessage] = useState<string>("");
 	const { t } = useTranslation("comingsoon");
+
+	const handleSubscribeNow = (data: SubscribeParams) => {
+		handleSubmit(data).then((msg) => {
+			if (msg) {
+				handleCallBack(msg);
+			}
+		});
+	};
+
+	const handleCallBack = (msg: string) => {
+		setMessage(msg);
+		handleToggleSubsribe();
+	};
+
+	const handleToggleSubsribe = () => {
+		setIsSubscribeUser(!isSubscribeUser);
+	};
+	const messageColor = message ? "text-green-500" : "text-red-500";
+
 	return (
 		<div className="max-w-[700px] m-auto w-full h-full flex flex-col justify-start items-start px-[5%] md:px-0  pt-5">
 			<h1 className="text-4xl text-center md:text-left md:text-7xl font-bold leading-[120%] md:leading-[120%] order-1 md:order-none">
@@ -157,15 +178,31 @@ const LeftView = ({
 			</p>
 
 			{!isSubscribeUser ? (
-				<Button
-					textColor="text-white"
-					label={t("Notify me when you launch")}
-					onClick={() => setIsSubscribeUser(!isSubscribeUser)}
-					rootClass="rounded-lg whitespace-nowrap p-5 w-auto my-10"
-					iconPosition="right"
-				/>
+				<div>
+					{message ? (
+						<p
+							className={classNames(
+								"mt-10 text-lg font-semibold",
+								messageColor
+							)}
+						>
+							{t(message, { ns: "constants" })}
+						</p>
+					) : (
+						<Button
+							textColor="text-white"
+							label="Notify me when you launch"
+							onClick={() => setIsSubscribeUser(!isSubscribeUser)}
+							rootClass="rounded-lg whitespace-nowrap p-5 w-auto my-10"
+							iconPosition="right"
+						/>
+					)}
+				</div>
 			) : (
-				<SubscribeForm isLoading={isLoading} handleSubmitForm={handleSubmit} />
+				<SubscribeForm
+					isLoading={isLoading}
+					handleSubmitForm={handleSubscribeNow}
+				/>
 			)}
 			<div className="w-full flex justify-center gap-6 flex-1 items-end mb-5 order-7 md:order-none">
 				<IconButton
