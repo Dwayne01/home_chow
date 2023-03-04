@@ -36,10 +36,10 @@ const SubscribeForm = ({
 	return (
 		<FormProvider {...form}>
 			<form onSubmit={handleSubmit(handleSubscribeNow)}>
-				<p className="pt-8 text-font-light font-normal text-md text-center md:text-left order-4 md:order-none">
+				<p className="pt-8 text-font-light font-normal text-md text-center md:text-left">
 					{t("chooseOptions")}
 				</p>
-				<div className="w-full flex flex-col md:flex-row justify-center items-center pt-4 gap-5 order-5 md:order-none">
+				<div className="w-full flex flex-col md:flex-row justify-center items-center pt-4 gap-5">
 					<CheckboxButton
 						name="customer"
 						label={t("iamacustomer")}
@@ -96,7 +96,7 @@ const SubscribeForm = ({
 					/>
 				</div>
 
-				<div className="grid grid-cols-2 gap-8 grid-rows-1 items-center pt-5 order-5 md:order-none  justify-end">
+				<div className="grid grid-cols-2 gap-8 grid-rows-1 items-center pt-5  justify-end">
 					<TextField
 						data-testid="signin-email"
 						rootClass="col-auto"
@@ -121,12 +121,12 @@ const SubscribeForm = ({
 						label={t("subscribe")}
 						disabled={isLoading}
 						type="submit"
-						rootClass="rounded-lg font-bold col-auto mt-8 w-[210px]"
+						rootClass="rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px]"
 						iconPosition="right"
 					/>
 				</div>
 
-				<p className="pt-4 text-font-light order-6 md:order-none">
+				<p className="pt-4 text-font-light">
 					{t(
 						"Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.. "
 					)}
@@ -167,11 +167,11 @@ const LeftView = ({
 
 	return (
 		<div className="max-w-[700px] m-auto w-full h-full flex flex-col justify-start items-start px-[5%] md:px-0  pt-5">
-			<h1 className="text-4xl text-center md:text-left md:text-7xl font-bold leading-[120%] md:leading-[120%] order-1 md:order-none">
+			<h1 className="text-4xl text-center md:text-left md:text-7xl font-bold leading-[120%] md:leading-[120%]">
 				{t("Good things come to those who")}
 				<span className="text-primary-color animate-pulse"> {t("Wait")}!</span>
 			</h1>
-			<p className="pt-5  font-normal text-xl text-center md:text-left order-2 md:order-none">
+			<p className="pt-5  font-normal text-xl text-center md:text-left">
 				{t(
 					"We're putting the finishing touches on our website and getting ready to launch. Sign up for updates and be the first to know when we go live."
 				)}
@@ -204,7 +204,7 @@ const LeftView = ({
 					handleSubmitForm={handleSubscribeNow}
 				/>
 			)}
-			<div className="w-full flex justify-center gap-6 flex-1 items-end mb-5 order-7 md:order-none">
+			<div className="w-full flex justify-center gap-6 flex-1 items-end mb-5">
 				<IconButton
 					className="bg-gray-modern"
 					icon={FaFacebookF}
