@@ -4,7 +4,7 @@ export interface SubscribeParams {
 	email: string;
 	firstName: string;
 	lastName: string;
-	userType: string;
+	userType: "driver" | "customer" | "vendor";
 }
 
 export interface ComingSoonLayoutProps {
