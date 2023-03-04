@@ -7,8 +7,15 @@ import { AiOutlineSend } from "react-icons/ai";
 import IconButton from "@/components/common/buttons/IconButton";
 import { FormProvider, useForm } from "react-hook-form";
 import { TextField } from "@/components/form/InputField";
+import { SubscribeParams } from "@/types/comingsoon";
 
-const SubscribeForm = () => {
+const SubscribeForm = ({
+	handleSubmitForm,
+	isLoading,
+}: {
+	isLoading: boolean;
+	handleSubmitForm: (params: SubscribeParams) => void;
+}) => {
 	const [selectedUserType, setSelectedUserType] = useState<
 		"vendor" | "customer" | "driver"
 	>("customer");
@@ -21,11 +28,13 @@ const SubscribeForm = () => {
 
 	const { handleSubmit, register } = form;
 
-	const handleSubmitForm = () => {};
+	const handleSubscribeNow = (data: SubscribeParams) => {
+		handleSubmitForm(data);
+	};
 
 	return (
 		<FormProvider {...form}>
-			<form onSubmit={handleSubmit(handleSubmitForm)}>
+			<form onSubmit={handleSubmit(handleSubscribeNow)}>
 				<p className="pt-8 text-font-light font-normal text-md text-center md:text-left order-4 md:order-none">
 					{t("chooseOptions")}
 				</p>
@@ -90,7 +99,7 @@ const SubscribeForm = () => {
 					<TextField
 						data-testid="signin-email"
 						rootClass="col-auto"
-						name="emailOrPhone"
+						name="email"
 						label={t("emailAddress", { ns: "common" })}
 						placeholder="example@example.com"
 						required
@@ -98,7 +107,7 @@ const SubscribeForm = () => {
 							required: true,
 							pattern: {
 								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-								message: t("common:invalidEmail"),
+								message: t("invalidEmail", { ns: "common" }),
 							},
 						})}
 						autoComplete="username"
@@ -106,15 +115,17 @@ const SubscribeForm = () => {
 
 					<Button
 						icon={AiOutlineSend}
+						loading={isLoading}
 						textColor="text-white"
 						label={t("subscribe")}
-						onClick={() => {}}
+						disabled={isLoading}
+						type="submit"
 						rootClass="rounded-lg font-bold col-auto mt-8 w-[210px]"
 						iconPosition="right"
 					/>
 				</div>
 
-				<p className="pt-4 sm:w-3/4 text-font-light order-6 md:order-none">
+				<p className="pt-4 text-font-light order-6 md:order-none">
 					{t(
 						"Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.. "
 					)}
@@ -124,7 +135,13 @@ const SubscribeForm = () => {
 	);
 };
 
-const LeftView = () => {
+const LeftView = ({
+	handleSubmit,
+	isLoading,
+}: {
+	isLoading: boolean;
+	handleSubmit: (params: SubscribeParams) => void;
+}) => {
 	const [isSubscribeUser, setIsSubscribeUser] = useState<boolean>(false);
 	const { t } = useTranslation("comingsoon");
 	return (
@@ -148,7 +165,7 @@ const LeftView = () => {
 					iconPosition="right"
 				/>
 			) : (
-				<SubscribeForm />
+				<SubscribeForm isLoading={isLoading} handleSubmitForm={handleSubmit} />
 			)}
 			<div className="w-full flex justify-center gap-6 flex-1 items-end mb-5 order-7 md:order-none">
 				<IconButton

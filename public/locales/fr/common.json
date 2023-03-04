@@ -12,5 +12,9 @@
   "confirmPassword": "Confirmez le mot de passe",
   "sameAsCreditCard": "Identique à la carte de crédit",
   "lastName": "Nom de famille",
-  "firstName": "Prénom"
+  "firstName": "Prénom",
+  "invalidEmail": "Email invalide",
+  "thisFieldIsRequired": "Ce champ est obligatoire",
+  "streetAddress2": "Adresse municipale 2",
+  "hello world": "Bonjour le monde"
 }
