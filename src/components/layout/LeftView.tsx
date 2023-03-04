@@ -114,8 +114,8 @@ const SubscribeForm = ({
 					/>
 
 					<Button
-						icon={AiOutlineSend}
-						loading={isLoading}
+						LeftIconComponent={AiOutlineSend}
+						loading={isLoading || false}
 						textColor="text-white"
 						label={t("subscribe")}
 						disabled={isLoading}

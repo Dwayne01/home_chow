@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import Logo from "public/assets/images/logo/HomeChow_Logo.png";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import Button from "../common/buttons";
 import InputField from "../InputField";
 import IconButton from "../common/buttons/IconButton";
@@ -48,7 +48,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 				</div>
 				<p className="mt-1 max-w-sm">
 					{t(
-						"Mixer events is an all in one platform that provides services to party lovers, get hosts to create events and vendor to merchandize products quickly."
+						"Mixer events is an all in one platform that provides services to party lovers, get hosts to create events and vendor to merchandize products quickly"
 					)}
 				</p>
 			</div>
