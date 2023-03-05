@@ -2,7 +2,9 @@
 	"locales": ["en", "fr"],
 	"defaultLocale": "en",
 	"pages": {
-		"*": ["common"],
-		"/comingsoon": ["comingsoon", "common", "constants"]
+		"*": ["common","footer"],
+		"/comingsoon": ["comingsoon", "common", "constants"],
+		"/demo":["common","footer"]
+
 	}
 }
