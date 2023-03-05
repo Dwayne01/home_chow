@@ -16,6 +16,7 @@ import {
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import CodeInput from "@/components/form/CodeInput";
+import Footer from "@/components/footer/Footer";
 import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
@@ -161,6 +162,8 @@ const ComponentPage = () => {
 					</div>
 				</form>
 			</FormProvider>
+			<h1>Footer</h1>
+			<Footer />
 		</div>
 	);
 };
@@ -170,7 +173,7 @@ export default ComponentPage;
 export async function getStaticProps({ locale }: { locale: string }) {
 	return {
 		props: {
-			...(await serverSideTranslations(locale ?? "en", ["common"])),
+			...(await serverSideTranslations(locale ?? "en", ["common", "footer"])),
 		},
 	};
 }

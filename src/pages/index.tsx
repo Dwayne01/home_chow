@@ -1,6 +1,5 @@
 import SWRFetchTester from "@/components/SWRFetchTester";
 import Head from "next/head";
-import Footer from "@/components/footer/Footer";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -22,8 +21,6 @@ export default function Home() {
 			</Head>
 			<div>
 				<SWRFetchTester />
-				<h1>Footer</h1>
-				<Footer />
 			</div>
 		</>
 	);

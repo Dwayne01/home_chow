@@ -3,7 +3,8 @@
 	"defaultLocale": "en",
 	"pages": {
 		"*": ["common","footer"],
-		"/comingsoon": ["comingsoon", "common", "constants"]
+		"/comingsoon": ["comingsoon", "common", "constants"],
+		"/demo":["common","footer"]
 
 	}
 }
