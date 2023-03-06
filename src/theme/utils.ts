@@ -39,4 +39,5 @@ export const mapTheme = (variables: ITheme): IMappedTheme => ({
 	"--color-secondary": variables["secondary-color"] || "",
 	"--color-footer": variables["footer-color"] || "",
 	"--color-header-border": variables["header-border-color"] || "",
+	"--color-onboarding-color": variables["onboarding-color"] || "",
 });
