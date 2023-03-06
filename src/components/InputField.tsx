@@ -2,18 +2,26 @@ import classNames from "classnames";
 import React from "react";
 
 const InputField = ({
+	id,
 	width,
 	className,
 	placeholder,
 	label,
 	handleChange,
 	labelClassName,
+	name,
+	type,
+	required,
 	...props
 }: {
+	id?: string;
 	width?: string;
 	className?: string;
 	placeholder?: string;
+	type?: string;
 	label?: string;
+	name?: string;
+	required?: boolean;
 	handleChange?: (e: string) => void | undefined;
 	labelClassName?: string;
 }) => (
@@ -27,8 +35,9 @@ const InputField = ({
 			</label>
 		)}
 		<input
-			type="text"
-			name="email"
+			id={id}
+			type={type || "text"}
+			name={name || "email"}
 			className={classNames(
 				"block",
 				"p-2",
@@ -53,6 +62,7 @@ const InputField = ({
 			placeholder={placeholder}
 			aria-describedby={placeholder}
 			onChange={(e) => handleChange && handleChange(e.target.value)}
+			required={required}
 			{...props}
 		/>
 	</div>
