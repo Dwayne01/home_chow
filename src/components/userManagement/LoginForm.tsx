@@ -110,7 +110,7 @@ const LoginForm = () => {
 					<div className="mt-8">
 						<p className="text-center">
 							{t("Don't have an account?")}
-							<Link href="/register" className="text-primary-color">
+							<Link href="/signup" className="text-primary-color">
 								{t("Sign Up")}
 							</Link>
 						</p>

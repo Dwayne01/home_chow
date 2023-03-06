@@ -113,7 +113,7 @@ const SignUpForm = () => {
 					<div className="mt-8">
 						<p className="text-center">
 							{t("Already have an account?")}
-							<Link href="/register" className="text-primary-color">
+							<Link href="/login" className="text-primary-color">
 								{t("Sign In")}
 							</Link>
 						</p>
