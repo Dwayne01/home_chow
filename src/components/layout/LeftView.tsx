@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "next-i18next";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
 import Button from "@/components/common/buttons";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import { AiOutlineSend } from "react-icons/ai";
@@ -209,19 +210,25 @@ const LeftView = ({
 					className="bg-gray-modern"
 					icon={FaFacebookF}
 					color="text-primary-color"
-					href=""
+					href="https://www.facebook.com"
 				/>
 				<IconButton
 					className="bg-gray-modern"
 					icon={FaTwitter}
 					color="text-primary-color"
-					href=""
+					href="https://www.twitter.com"
+				/>
+				<IconButton
+					className="bg-gray-modern"
+					icon={RiInstagramFill}
+					color="text-primary-color"
+					href="https://www.instagram.com/homechow.ca/?igshid=YmMyMTA2M2Y%3D"
 				/>
 				<IconButton
 					className="bg-gray-modern"
 					icon={FaLinkedinIn}
 					color="text-primary-color"
-					href=""
+					href="https://ca.linkedin.com/company/homechow-ca"
 				/>
 			</div>
 		</div>
