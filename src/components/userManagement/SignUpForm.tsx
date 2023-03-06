@@ -1,7 +1,6 @@
 import React from "react";
 import InputField from "@/components/InputField";
 import Image from "next/image";
-import { Checkbox } from "@/components/form/InputField";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
@@ -9,12 +8,12 @@ import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa";
 import { useTranslation } from "next-i18next";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
-const LoginForm = () => {
+const SignUpForm = () => {
 	const { t } = useTranslation("authentication");
 
 	const [email, setEmail] = React.useState("");
 	const [password, setPassword] = React.useState("");
-	const [rememberMe, setRememberMe] = React.useState(false);
+	const [name, setName] = React.useState("");
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
@@ -28,14 +27,22 @@ const LoginForm = () => {
 						<Image src={Logo} className="w-48 md:w-60" alt="Logo" />
 					</div>
 					<div className="flex flex-col mt-12">
-						<h2 className="font-semibold text-3xl ">{t("Log in")}</h2>
+						<h2 className="font-semibold text-3xl ">{t("Sign Up")}</h2>
 						<p className="mt-3">
-							{t("Welcome back! Please enter your details.")}
+							{t("To sign up, fill in your personal details below")}
 						</p>
 					</div>
 				</div>
 				<form className="max-w-sm mt-8" onSubmit={handleSubmit}>
 					<div className="flex flex-col gap-5">
+						<InputField
+							label={t("Name") || ""}
+							placeholder={t("Enter your name") || ""}
+							name="email"
+							className="h-12"
+							handleChange={(text) => setName(text)}
+							required
+						/>
 						<InputField
 							label={t("Email") || ""}
 							placeholder={t("Enter your email") || ""}
@@ -44,22 +51,18 @@ const LoginForm = () => {
 							handleChange={(text) => setEmail(text)}
 							required
 						/>
-						<InputField
-							label={t("Password") || ""}
-							placeholder={t("Enter your password") || ""}
-							type="password"
-							name="password"
-							className="h-12"
-							handleChange={(text) => setPassword(text)}
-							required
-						/>
-					</div>
-					<div className="flex justify-between items-center mt-6">
-						<Checkbox
-							label={t("Remember me")}
-							onChange={() => setRememberMe(!rememberMe)}
-						/>
-						<Link href="/forgot-password"> {t("Forgot Password?")}</Link>
+						<div className="flex flex-col gap-2">
+							<InputField
+								label={t("Password") || ""}
+								placeholder={t("Enter your password") || ""}
+								type="password"
+								name="password"
+								className="h-12"
+								handleChange={(text) => setPassword(text)}
+								required
+							/>
+							<p>{t("Password must be at least 8 characters long")}</p>
+						</div>
 					</div>
 					<div className=" mt-6">
 						<Button
@@ -68,12 +71,12 @@ const LoginForm = () => {
 							type="submit"
 							rootClass={classNames(
 								"rounded-lg whitespace-nowrap w-full px-3  font-bold text-sm ",
-								email === "" || password === ""
+								email === "" || password === "" || name === ""
 									? "bg-primary-color opacity-50"
 									: "bg-primary-color"
 							)}
 							iconPosition="right"
-							disabled={email === "" || password === ""}
+							disabled={email === "" || password === "" || name === ""}
 						/>
 					</div>
 					<div className="flex items-center gap-2 max-w-[80%] m-auto mt-8">
@@ -109,9 +112,9 @@ const LoginForm = () => {
 					</div>
 					<div className="mt-8">
 						<p className="text-center">
-							{t("Don't have an account?")}
+							{t("Already have an account?")}
 							<Link href="/register" className="text-primary-color">
-								{t("Sign Up")}
+								{t("Sign In")}
 							</Link>
 						</p>
 					</div>
@@ -121,4 +124,4 @@ const LoginForm = () => {
 	);
 };
 
-export default LoginForm;
+export default SignUpForm;
