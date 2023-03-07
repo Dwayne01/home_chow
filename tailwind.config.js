@@ -9,6 +9,7 @@ module.exports = {
 				"primary-color": "var(--color-primary)",
 				"primary-color-deactivated": "var(--color-primary-deactivated)",
 				"primary-color-light": "var(--color-primary-light)",
+				"onboarding-color": " var(--color-onboarding-color)",
 				"secondary-color": "var(--color-secondary)",
 				"font-light": "#718096",
 				"border-color": "#D0D5DD",
