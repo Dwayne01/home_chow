@@ -11,5 +11,9 @@
   "emailAddress": "Email Address",
   "password": "Password",
   "confirmPassword": "Confirm Password",
-  "sameAsCreditCard": "Same as Credit Card"
+  "sameAsCreditCard": "Same as Credit Card",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "thisFieldIsRequired": "This field is required",
+  "invalidEmail": "Invalid Email"
 }

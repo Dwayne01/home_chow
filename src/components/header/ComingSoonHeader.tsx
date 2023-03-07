@@ -5,10 +5,10 @@ import React, { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { useTranslation } from "next-i18next";
 import { RxHamburgerMenu } from "react-icons/rx";
-import Logo from "../../assets/images/logo/HomeChow_Logo.png";
+import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import LanguageSwitcher from "../langugeswitcher";
 
-const HeaderWithNav = ({ logoUrl }: { logoUrl?: string }) => {
+const ComingSoonHeader = ({ logoUrl }: { logoUrl?: string }) => {
 	const { t } = useTranslation(["common"]);
 	const handleToggle = () => setShowMenu(!showMenu);
 
@@ -23,7 +23,7 @@ const HeaderWithNav = ({ logoUrl }: { logoUrl?: string }) => {
 
 	return (
 		<nav className="min-h-[60px] h-[81px] bg-white flex items-center z-12">
-			<div className="flex w-[90%] m-auto items-center justify-between flex-wrap z-auto py-25 gap-3">
+			<div className="flex w-[95%] m-auto items-center justify-between flex-wrap z-auto py-25 gap-3">
 				<div className="flex flex-row gap">
 					<Link href="/" className="flex items-center ">
 						<Image src={logoUrl || Logo} className="w-48 md:w-60" alt="Logo" />
@@ -65,4 +65,4 @@ const HeaderWithNav = ({ logoUrl }: { logoUrl?: string }) => {
 	);
 };
 
-export default HeaderWithNav;
+export default ComingSoonHeader;

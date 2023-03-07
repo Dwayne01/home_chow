@@ -3,7 +3,13 @@ import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import ComingSoonHeader from "@/components/header/ComingSoonHeader";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import {
+	FaFacebookF,
+	FaFacebook,
+	FaTwitter,
+	FaLinkedinIn,
+} from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import IconButton from "@/components/common/buttons/IconButton";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import MailingAddress from "@/components/form/MailingAddress";
@@ -16,6 +22,8 @@ import {
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import CodeInput from "@/components/form/CodeInput";
+import Footer from "@/components/footer/Footer";
+import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
@@ -40,7 +48,7 @@ const ComponentPage = () => {
 				<IconButton icon={FaTwitter} color="text-primary-color" href="" />
 				<IconButton icon={FaLinkedinIn} color="text-primary-color" href="" />
 			</div>
-			<div className="flex justify-center my-10 ">
+			<div className="flex flex-col items-center gap-5">
 				<Button
 					icon={AiOutlineSend}
 					textColor="text-white"
@@ -48,7 +56,37 @@ const ComponentPage = () => {
 					onClick={() => {}}
 					iconPosition="right"
 				/>
+				{/* Social Auth buttons */}
+				<WideIconButton label="Sign in with Google" icon={FcGoogle} />
+				<WideIconButton
+					label="Sign in with Facebook"
+					icon={FaFacebook}
+					iconColor="#1877F2"
+				/>
+				<WideIconButton
+					label="Sign in with Twitter"
+					icon={FaTwitter}
+					iconColor="#1DA1F2"
+				/>
+				{/* Sign-in button */}
+				<WideIconButton
+					label="Sign in"
+					textColor="text-white"
+					bgColor="bg-primary-color"
+					disabled
+				/>
+				<WideIconButton
+					label="Sign in"
+					textColor="text-white"
+					bgColor="bg-primary-color"
+				/>
+				<WideIconButton
+					label="Get Started"
+					textColor="text-white"
+					bgColor="bg-primary-color"
+				/>
 			</div>
+
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
 				<CheckboxButton
 					name="customer"
@@ -161,6 +199,8 @@ const ComponentPage = () => {
 					</div>
 				</form>
 			</FormProvider>
+			<h1>Footer</h1>
+			<Footer />
 		</div>
 	);
 };
@@ -170,7 +210,7 @@ export default ComponentPage;
 export async function getStaticProps({ locale }: { locale: string }) {
 	return {
 		props: {
-			...(await serverSideTranslations(locale ?? "en", ["common"])),
+			...(await serverSideTranslations(locale ?? "en", ["common", "footer"])),
 		},
 	};
 }
