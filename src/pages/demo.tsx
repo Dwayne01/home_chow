@@ -2,7 +2,6 @@ import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
-// import ComingSoonHeader from "@/components/header/ComingSoonHeader";
 import MainHeader from "@/components/header/MainHeader";
 
 import {
@@ -25,6 +24,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import CodeInput from "@/components/form/CodeInput";
 import Footer from "@/components/footer/Footer";
+import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Button from "../components/common/buttons";
 
@@ -36,13 +36,30 @@ const ComponentPage = () => {
 		defaultValues: {},
 	});
 
+	const images = [
+		<img src="https://via.placeholder.com/150" alt="img" />,
+		<img src="https://via.placeholder.com/150" alt="img" />,
+		<img src="https://via.placeholder.com/150" alt="img" />,
+		<img src="https://via.placeholder.com/150" alt="img" />,
+	];
+
+	const description = (
+		<div className="w-2/3 flex flex-col justify-center items-center">
+			<p className="text-xl font-bold text-center text-primary-color mt-10">
+				{t("easy_ordering")}
+			</p>
+			<p className="text-gray-500 text-lg text-center my-5 ">
+				{t("sign_in_to_explore")}
+			</p>
+		</div>
+	);
+
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = () => {};
 
 	return (
 		<div>
-			{/* <ComingSoonHeader /> */}
 			<MainHeader />
 
 			<Countdown />
@@ -89,7 +106,6 @@ const ComponentPage = () => {
 					bgColor="bg-primary-color"
 				/>
 			</div>
-
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
 				<CheckboxButton
 					name="customer"
@@ -114,6 +130,9 @@ const ComponentPage = () => {
 					isChecked={selectedValue === "driver"}
 					handleClick={() => setSelectedValue("driver")}
 				/>
+			</div>
+			<div className="h-96">
+				<Slider description={description} slides={images} />
 			</div>
 
 			<FormProvider {...form}>

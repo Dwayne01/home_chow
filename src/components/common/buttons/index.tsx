@@ -55,6 +55,7 @@ const Button = ({
 		{iconPosition === "right" && icon && (
 			<>{React.createElement(icon, { color: textColor })}</>
 		)}
+
 		{label}
 	</button>
 );
