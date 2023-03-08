@@ -3,6 +3,8 @@ import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import ComingSoonHeader from "@/components/header/ComingSoonHeader";
+// import MainHeader from "@/components/header/MainHeader";
+
 import {
 	FaFacebookF,
 	FaFacebook,
@@ -41,6 +43,7 @@ const ComponentPage = () => {
 	return (
 		<div>
 			<ComingSoonHeader />
+			{/* <MainHeader /> */}
 
 			<Countdown />
 			<div className="flex justify-center gap-5">

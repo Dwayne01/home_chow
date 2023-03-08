@@ -1,7 +1,8 @@
 import React, { ReactElement } from "react";
 import { ComingSoonLayoutProps } from "@/types/comingsoon";
 import classNames from "classnames";
-import ComingSoonHeader from "../header/ComingSoonHeader";
+// import ComingSoonHeader from "../header/ComingSoonHeader";
+import MainHeader from "../header/MainHeader";
 
 const ComingSoonLayout = ({
 	className,
@@ -9,7 +10,8 @@ const ComingSoonLayout = ({
 	RightComponent,
 }: ComingSoonLayoutProps): ReactElement => (
 	<div className="w-full h-screen flex flex-col">
-		<ComingSoonHeader />
+		{/* <ComingSoonHeader /> */}
+		<MainHeader />
 		<div
 			className={classNames(
 				"w-full ",
