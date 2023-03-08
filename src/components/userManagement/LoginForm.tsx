@@ -84,16 +84,22 @@ const LoginForm = () => {
 						<hr className="flex-1 border" />
 					</div>
 					<div className="flex flex-col w-full gap-3 mt-8 text-black">
-						<WideIconButton label="Sign in with Google" icon={FcGoogle} />
+						<WideIconButton
+							label="Sign in with Google"
+							icon={FcGoogle}
+							rootClass=" justify-start"
+						/>
 						<WideIconButton
 							label="Sign in with Facebook"
 							icon={FaFacebook}
 							iconColor="#1877F2"
+							rootClass=" justify-start"
 						/>
 						<WideIconButton
 							label="Sign in with Twitter"
 							icon={FaTwitter}
 							iconColor="#1DA1F2"
+							rootClass=" justify-start"
 						/>
 					</div>
 					<div className="mt-8">
