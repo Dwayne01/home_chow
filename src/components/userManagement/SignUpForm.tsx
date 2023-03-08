@@ -111,9 +111,9 @@ const SignUpForm = () => {
 						/>
 					</div>
 					<div className="mt-8">
-						<p className="text-center">
-							{t("Already have an account?")}
-							<Link href="/login" className="text-primary-color">
+						<p className="flex gap-1 justify-center">
+							<span>{t("Already have an account?")}</span>
+							<Link href="/login" className="text-primary-color font-semibold">
 								{t("Sign In")}
 							</Link>
 						</p>

@@ -108,9 +108,9 @@ const LoginForm = () => {
 						/>
 					</div>
 					<div className="mt-8">
-						<p className="text-center">
-							{t("Don't have an account?")}
-							<Link href="/signup" className="text-primary-color">
+						<p className="flex gap-1 justify-center">
+							<span>{t("Don't have an account?")}</span>
+							<Link href="/signup" className="text-primary-color font-semibold">
 								{t("Sign Up")}
 							</Link>
 						</p>
