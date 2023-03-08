@@ -37,8 +37,11 @@ const Button = ({
 		id={id}
 		className={classNames(
 			"rounded-[10px] flex justify-center items-center ",
-			"text-2xl p-2",
-			`hover:bg-yellow-500`,
+			"text-2xl ",
+			"text-lg mx-1",
+			textColor || "text-primary-color",
+			`hover:bg-yellow-500 hover:text-white`,
+
 			disabled ? "bg-gray-400" : bgColor ? `${bgColor}` : "bg-primary-color",
 			rootClass || ""
 		)}
@@ -48,20 +51,11 @@ const Button = ({
 		{iconPosition === "left" && icon && (
 			<>{React.createElement(icon, { color: textColor })}</>
 		)}
-		{!loading && (
-			<span
-				className={classNames(
-					"text-lg mx-2",
-					"hover:text-white",
-					textColor || "text-primary-color"
-				)}
-			>
-				{label}
-			</span>
-		)}
+
 		{iconPosition === "right" && icon && (
 			<>{React.createElement(icon, { color: textColor })}</>
 		)}
+		{label}
 	</button>
 );
 

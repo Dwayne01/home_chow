@@ -21,14 +21,15 @@ const ComingSoonHeader = ({ logoUrl }: { logoUrl?: string }) => {
 			href: "/login",
 			textColor: "text-primary-color ",
 			rootClass:
-				"whitespace-nowrap w-auto border-[1px] border-primary-color hover:text-white ",
+				"whitespace-nowrap w-auto border-[1px] border-primary-color hover:text-white py-2 px-4 ",
 			bgColor: "bg-white ",
 		},
 		{
 			label: t("Sign Up"),
 			href: "/register",
 			textColor: "text-white",
-			rootClass: "whitespace-nowrap w-auto border-[1px] border-primary-color ",
+			rootClass:
+				"whitespace-nowrap w-auto border-[1px] border-primary-color py-2 px-4   ",
 			bgColor: "bg-primary-color",
 		},
 	];
@@ -49,9 +50,8 @@ const ComingSoonHeader = ({ logoUrl }: { logoUrl?: string }) => {
 				</div>
 				<ul className="hidden sm:flex">
 					{defaultUserOptions?.map((option) => (
-						<li className="px-3 py-2">
+						<li className="px-1 py-2" key={option.label}>
 							<Link href={option.href}>
-								{" "}
 								<Button
 									textColor={option.textColor}
 									label={option.label}
