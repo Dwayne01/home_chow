@@ -37,7 +37,7 @@ const Button = ({
 			"rounded-[10px]",
 			"flex items-center justify-center",
 			"hover:bg-yellow-500",
-			"text-2xl text-white p-3",
+			"text-xl md:text-2xl text-white p-3",
 			disabled ? "bg-gray-400" : "bg-primary-color",
 			rootClass || ""
 		)}
@@ -50,7 +50,7 @@ const Button = ({
 		{!loading && (
 			<span
 				className={classNames(
-					"text-lg mx-2",
+					"text-[11pt] md:text-lg mx-2",
 					textColor ? `text-${textColor}` : "text-primary-color"
 				)}
 			>
