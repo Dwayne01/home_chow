@@ -5,8 +5,10 @@ import { Checkbox } from "@/components/form/InputField";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
-import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa";
+import { FaFacebook, FaTwitter } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
+import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
 const LoginForm = () => {
@@ -82,29 +84,16 @@ const LoginForm = () => {
 						<hr className="flex-1 border" />
 					</div>
 					<div className="flex flex-col w-full gap-3 mt-8 text-black">
-						<Button
-							icon={FaGoogle}
-							textColor="black"
-							label={t("Sign In with Google")}
-							onClick={() => {}}
-							rootClass="rounded-lg border whitespace-nowrap w-full pl-10  font-bold text-sm text-black bg-white justify-start"
-							iconPosition="left"
+						<WideIconButton label="Sign in with Google" icon={FcGoogle} />
+						<WideIconButton
+							label="Sign in with Facebook"
+							icon={FaFacebook}
+							iconColor="#1877F2"
 						/>
-						<Button
-							icon={FaFacebookF}
-							label={t("Sign In with Facebook")}
-							onClick={() => {}}
-							textColor="black"
-							rootClass="rounded-lg border whitespace-nowrap w-full pl-10  font-bold text-sm bg-white justify-start"
-							iconPosition="left"
-						/>
-						<Button
+						<WideIconButton
+							label="Sign in with Twitter"
 							icon={FaTwitter}
-							textColor="black"
-							label={t("Sign In with Twitter")}
-							onClick={() => {}}
-							rootClass="rounded-lg border whitespace-nowrap w-full pl-10  font-bold text-sm bg-white justify-start"
-							iconPosition="left"
+							iconColor="#1DA1F2"
 						/>
 					</div>
 					<div className="mt-8">
