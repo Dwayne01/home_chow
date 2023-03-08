@@ -48,8 +48,8 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 				</div>
 				<ul className="hidden sm:flex">
 					{defaultUserOptions?.map((option) => (
-						<li className="px-1 py-2" key={option.label}>
-							<Link href={option.href}>
+						<li key={option.label} className="px-1 py-2">
+							<Link href={option.href} id={option.label}>
 								<Button
 									textColor={option.textColor}
 									label={option.label}
