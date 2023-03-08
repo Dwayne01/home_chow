@@ -3,7 +3,7 @@ import Cover from "../../../public/assets/images/plate_of_food.png";
 
 const RightView = () => (
 	<div
-		className="overflow-hidden w-full bg-primary-color"
+		className="overflow-hidden w-full mb-[-1rem] bg-primary-color"
 		style={{
 			backgroundImage: `url(${Cover.src})`,
 			backgroundSize: "cover",
