@@ -34,7 +34,7 @@ const InputField = ({
 			{label && (
 				<label
 					htmlFor={placeholder}
-					className={classNames("text-grey-7 font-semibold", labelClassName)}
+					className={classNames("text-grey-7 font-[500]", labelClassName)}
 				>
 					{label} {required && <span className="text-red-500">*</span>}
 				</label>
