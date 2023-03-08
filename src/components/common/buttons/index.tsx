@@ -16,6 +16,7 @@ const Button = ({
 	disabled,
 	id,
 	loading,
+	bgColor,
 }: {
 	icon?: IconType;
 	textColor?: string;
@@ -27,6 +28,7 @@ const Button = ({
 	disabled?: boolean;
 	loading?: boolean;
 	id?: string;
+	bgColor?: string;
 }) => (
 	<button
 		type={type}
@@ -34,9 +36,10 @@ const Button = ({
 		onClick={onClick}
 		id={id}
 		className={classNames(
-			"rounded-[10px] flex justify-center items-center hover:bg-yellow-500",
-			"text-2xl text-white p-3",
-			disabled ? "bg-gray-400" : "bg-primary-color",
+			"rounded-[10px] flex justify-center items-center ",
+			"text-2xl p-2",
+			`hover:bg-yellow-500`,
+			disabled ? "bg-gray-400" : bgColor ? `${bgColor}` : "bg-primary-color",
 			rootClass || ""
 		)}
 	>
@@ -49,6 +52,7 @@ const Button = ({
 			<span
 				className={classNames(
 					"text-lg mx-2",
+					"hover:text-white",
 					textColor || "text-primary-color"
 				)}
 			>
