@@ -105,14 +105,14 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 							textColor="text-white"
 							label={t("Get Started")}
 							onClick={() => {}}
-							rootClass="rounded-lg whitespace-nowrap w-full px-3 sm:w-[166px] font-bold text-sm"
+							rootClass="rounded-lg whitespace-nowrap w-full p-3 sm:w-[166px] font-bold text-sm"
 							iconPosition="right"
 						/>
 					</div>
 				</div>
 				<div className="mt-14 md:mt-0">
 					<p className="mb-7 font-semibold">{t("Follow us on social media")}</p>
-					<div className="w-full flex justify-start gap-6 flex-1 items-end md:pt-0 order-7 md:order-none ">
+					<div className="w-full flex md:justify-start justify-center gap-6 flex-1 md:items-end md:pt-0 order-7 md:order-none items-center">
 						<IconButton
 							className="bg-gray-modern"
 							icon={FaFacebookF}
@@ -133,7 +133,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 						/>
 					</div>
 				</div>
-				<p className="mt-20 md:mt-0 text-center text-[#333333]">
+				<p className="mt-5 md:mt-0 text-center text-[#333333]">
 					© 2022 MixerEvents. {t("All rights reserved")}
 				</p>
 			</div>
