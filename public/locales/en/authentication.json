@@ -19,5 +19,7 @@
   "Already have an account?": "Already have an account?",
   "Name": "Name",
   "Email": "Email",
-  "Password": "Password"
+  "Password": "Password",
+  "enterFirstName": "Enter your first name",
+  "enterLastName": "Enter last name"
 }

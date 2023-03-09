@@ -1,98 +1,132 @@
 import React from "react";
-import InputField from "@/components/InputField";
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
-import { FaFacebook, FaTwitter } from "react-icons/fa";
+// import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
+import { RegisterPayload } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
+import { PasswordField, TextField } from "../form/InputField";
 
 const SignUpForm = () => {
 	const { t } = useTranslation("authentication");
+	const form = useForm({
+		defaultValues: {
+			email: "",
+			password: "",
+			rememberMe: false,
+		},
+	});
 
-	const [email, setEmail] = React.useState("");
-	const [password, setPassword] = React.useState("");
-	const [name, setName] = React.useState("");
+	const { handleSubmit, register } = form;
 
-	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-	}
+	const handleSubmitForm = (params: RegisterPayload) => {
+		// eslint-disable-next-line no-console
+		console.log(params);
+	};
 
 	return (
-		<div className="flex-1 my-16 flex flex-col">
+		<div className="flex-1 my-8 flex flex-col">
 			<div className="mx-auto w-[360px]">
 				<div className="max-w-sm">
 					<div className="logo ">
 						<Image src={Logo} className="w-48 md:w-60" alt="Logo" />
 					</div>
-					<div className="flex flex-col mt-12">
+					<div className="flex flex-col mt-10">
 						<h2 className="font-semibold text-3xl ">{t("Sign Up")}</h2>
-						<p className="mt-3">
+						<p className="my-3">
 							{t("To sign up, fill in your personal details below")}
 						</p>
 					</div>
 				</div>
-				<form className="max-w-sm mt-8" onSubmit={handleSubmit}>
-					<div className="flex flex-col gap-5">
-						<InputField
-							label={t("Name") || ""}
-							placeholder={t("Enter your name") || ""}
-							name="email"
-							className="h-12"
-							handleChange={(text) => setName(text)}
-							required
-						/>
-						<InputField
-							label={t("Email") || ""}
-							placeholder={t("Enter your email") || ""}
-							name="email"
-							className="h-12"
-							handleChange={(text) => setEmail(text)}
-							required
-						/>
-						<div className="flex flex-col gap-2">
-							<InputField
-								label={t("Password") || ""}
-								placeholder={t("Enter your password") || ""}
-								type="password"
-								name="password"
-								className="h-12"
-								handleChange={(text) => setPassword(text)}
+				<FormProvider {...form}>
+					<form onSubmit={handleSubmit(handleSubmitForm)}>
+						<div className="grid grid-cols-2 gap-5">
+							<TextField
+								data-testid="email"
+								rootClass="mb-1 col-start-1"
+								label={t("firstName", { ns: "common" })}
+								placeholder={t("enterFirstName")}
+								name="first_name"
 								required
+								ref={register({
+									required: true,
+								})}
+								autoComplete="first_name"
 							/>
-							<p>{t("Password must be at least 8 characters long")}</p>
+
+							<TextField
+								data-testid="email"
+								rootClass="mb-1"
+								label={t("lastName", { ns: "common" })}
+								placeholder={t("enterLastName")}
+								name="last_name"
+								required
+								ref={register({
+									required: true,
+								})}
+								autoComplete="last_name"
+							/>
+
+							<TextField
+								data-testid="email"
+								rootClass="mb-1 col-start-1 col-end-3"
+								name="email"
+								label={t("Email")}
+								placeholder="example@example.com"
+								required
+								ref={register({
+									required: true,
+									pattern: {
+										value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+										message: t("common:invalidEmail"),
+									},
+								})}
+								autoComplete="email"
+							/>
+							<div className="flex flex-col gap-2 col-start-1 col-end-3">
+								<PasswordField
+									data-testid="password"
+									name="password"
+									label={t("Password")}
+									ref={register({ required: true })}
+									required
+									placeholder="∗∗∗∗∗∗∗∗"
+									autoComplete="current-password"
+								/>
+								<p>{t("Password must be at least 8 characters long")}</p>
+							</div>
 						</div>
-					</div>
-					<div className=" mt-6">
-						<Button
-							textColor="text-white"
-							label={t("Sign In")}
-							type="submit"
-							rootClass={classNames(
-								"rounded-lg whitespace-nowrap w-full px-3  font-bold text-sm ",
-								email === "" || password === "" || name === ""
-									? "bg-primary-color opacity-50"
-									: "bg-primary-color"
-							)}
-							iconPosition="right"
-							disabled={email === "" || password === "" || name === ""}
-						/>
-					</div>
-					<div className="flex items-center gap-2 max-w-[80%] m-auto mt-8">
-						<hr className="flex-1 border" />
-						<span className="">{t("Or")}</span>
-						<hr className="flex-1 border" />
-					</div>
-					<div className="flex flex-col w-full gap-3 mt-8 text-black ">
-						<WideIconButton
-							label="Sign in with Google"
-							icon={FcGoogle}
-							rootClass=" justify-start"
-						/>
-						<WideIconButton
+						<div className=" mt-6">
+							<Button
+								textColor="text-white"
+								label={t("Sign In")}
+								type="submit"
+								rootClass={classNames(
+									"rounded-lg whitespace-nowrap w-full px-3  font-bold text-sm "
+								)}
+								iconPosition="right"
+							/>
+						</div>
+					</form>
+				</FormProvider>
+
+				<div className="flex items-center gap-2 max-w-[80%] m-auto mt-8">
+					<hr className="flex-1 border" />
+					<span className="">{t("Or")}</span>
+					<hr className="flex-1 border" />
+				</div>
+				<div className="flex flex-col w-full gap-3 mt-8 text-black ">
+					<WideIconButton
+						label="Sign in with Google"
+						icon={FcGoogle}
+						rootClass=" justify-start"
+					/>
+					{/* <WideIconButton
 							label="Sign in with Facebook"
 							icon={FaFacebook}
 							iconColor="#1877F2"
@@ -103,17 +137,16 @@ const SignUpForm = () => {
 							icon={FaTwitter}
 							iconColor="#1DA1F2"
 							rootClass=" justify-start"
-						/>
-					</div>
-					<div className="mt-8">
-						<p className="flex gap-1 justify-center">
-							<span>{t("Already have an account?")}</span>
-							<Link href="/login" className="text-primary-color font-semibold">
-								{t("Sign In")}
-							</Link>
-						</p>
-					</div>
-				</form>
+						/> */}
+				</div>
+				<div className="mt-8">
+					<p className="flex gap-1 justify-center">
+						<span>{t("Already have an account?")}</span>
+						<Link href="/login" className="text-primary-color font-semibold">
+							{t("Sign In")}
+						</Link>
+					</p>
+				</div>
 			</div>
 		</div>
 	);

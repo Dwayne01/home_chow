@@ -3,10 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import Logo from "public/assets/images/logo/HomeChow_Logo.png";
+import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import Button from "../common/buttons";
-import InputField from "../InputField";
 import IconButton from "../common/buttons/IconButton";
+import { TextField } from "../form/InputField";
 
 const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 	const { t } = useTranslation("footer");
@@ -38,6 +39,17 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 		State: "NY",
 		Zip: "10001",
 		Phone: "123-456-7890",
+	};
+
+	const form = useForm({
+		defaultValues: {},
+	});
+
+	const { handleSubmit, register } = form;
+
+	const handleSubmitForm = (params: any) => {
+		// eslint-disable-next-line no-console
+		console.log(params);
 	};
 
 	return (
@@ -95,20 +107,33 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 				<div className="">
 					<h3 className="font-bold text-2xl">{t("Get Updates")}</h3>
 					<p className="mt-2">{t("We are growing fast. Get daily update")}</p>
-					<div className="mt-7 flex flex-col gap-4 md:flex-row md:w-full">
-						<InputField
-							placeholder={t("Enter your email address") || ""}
-							className="h-14 rounded-lg"
-							width="md:w-[340px]"
-						/>
-						<Button
-							textColor="text-white"
-							label={t("Get Started")}
-							onClick={() => {}}
-							rootClass="rounded-lg whitespace-nowrap w-full p-3 sm:w-[166px] font-bold text-sm"
-							iconPosition="right"
-						/>
-					</div>
+					<FormProvider {...form}>
+						<form onSubmit={handleSubmit(handleSubmitForm)}>
+							<div className="mt-7 flex flex-col gap-4 md:flex-row md:w-full">
+								<TextField
+									data-testid="email"
+									rootClass="md:w-[340px]"
+									name="email"
+									placeholder="example@example.com"
+									ref={register({
+										required: true,
+										pattern: {
+											value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+											message: t("common:invalidEmail"),
+										},
+									})}
+									autoComplete="username"
+								/>
+
+								<Button
+									textColor="text-white"
+									label={t("Get Started")}
+									rootClass="rounded-lg whitespace-nowrap w-full p-3 sm:w-[166px] font-bold text-sm"
+									iconPosition="right"
+								/>
+							</div>
+						</form>
+					</FormProvider>
 				</div>
 				<div className="mt-14 md:mt-0">
 					<p className="mb-7 font-semibold">{t("Follow us on social media")}</p>

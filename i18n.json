@@ -4,6 +4,7 @@
 	"pages": {
 		"*": ["common", "footer", "constants"],
 		"/comingsoon": ["comingsoon", "common"],
-		"/login": ["authentication"]
+		"/login": ["authentication"],
+		"/signup": ["authentication", "common"]
 	}
 }
