@@ -7,18 +7,17 @@ import { FiCircle } from "react-icons/fi";
 import NumericFormat from "react-number-format";
 import classNames from "classnames";
 import ReactDatePicker from "react-datepicker";
-import { AiOutlineInfoCircle } from "react-icons/ai";
+import { AiOutlineInfoCircle, AiOutlineEyeInvisible } from "react-icons/ai";
 import ReactTooltip from "react-tooltip";
 import { useTranslation } from "next-i18next";
 import "react-datepicker/dist/react-datepicker.css";
+import { MdOutlineVisibility } from "react-icons/md";
 import {
 	formatDateTime,
 	dateToDateTime,
 	numberToCurrency,
 	currencyToNumber,
 } from "../../utils";
-import EyeOpen from "../../../public/assets/svg/EyeOpen";
-import EyeClosed from "../../../public/assets/svg/EyeClosed";
 import FlagCARound from "../../../public/assets/svg/FlagCARound";
 import config from "../../../config";
 
@@ -109,7 +108,7 @@ const Label = ({
 		)}
 	>
 		{label}
-		{required && <span className="text-arbutus">{" *"}</span>}
+		{required && <span className="text-red-500">{" *"}</span>}
 		{infoText && <InfoTip text={infoText} />}
 	</label>
 );
@@ -193,13 +192,15 @@ const TextFieldComponent = (props: any, ref: any) => {
 
 	return (
 		<div className={`flex flex-col ${rootClass}`}>
-			<Label
-				infoText={infoText}
-				label={label}
-				name={inputProps.name}
-				required={required}
-				bold
-			/>
+			{label && (
+				<Label
+					infoText={infoText}
+					label={label}
+					name={inputProps.name}
+					required={required}
+					bold
+				/>
+			)}
 			<TextInput
 				{...inputProps}
 				hasError={!!error}
@@ -297,7 +298,11 @@ const PasswordFieldComponent = (props: any, ref: any) => {
 					onClick={toggleShow}
 					className="cursor-pointer absolute inset-y-0 right-0 pb-1 pr-3 flex items-center text-sm"
 				>
-					{show ? <EyeClosed /> : <EyeOpen />}
+					{show ? (
+						<MdOutlineVisibility className="text-3xl rounded-full p-1 bg-slate-200" />
+					) : (
+						<AiOutlineEyeInvisible className="text-3xl rounded-full p-1 bg-slate-200" />
+					)}
 				</div>
 			</div>
 			{error && <ErrorLabel error={error} />}
@@ -482,23 +487,29 @@ const SelectComponent = (
 };
 
 const CheckboxComponent = (
-	props: { [x: string]: any; label: any; name: any; rootClass: any },
+	props: {
+		[x: string]: any;
+		label: string;
+		name: string;
+		rootClass: string;
+		bold: boolean;
+	},
 	ref: React.LegacyRef<HTMLInputElement> | undefined
 ) => {
-	const { label, name, rootClass, inputClass, ...inputProps } = props;
+	const { label, name, rootClass, inputClass, bold, ...inputProps } = props;
 
 	return (
 		<div className={classNames("flex items-center", rootClass)}>
 			<input
 				id={name}
-				className={`text-primary-color focus:border-primary-color focus:ring-0 focus:outline-none focus:shadow-input align-top ${inputClass}`}
+				className={`accent-primary-color focus:primary-color focus:ring-0 focus:outline-none focus:shadow-input align-top ${inputClass}`}
 				type="checkbox"
 				name={name}
 				ref={ref}
 				{...inputProps}
 			/>
 
-			<Label bold className="ml-5 mb-0" label={label} name={name} />
+			<Label bold={bold} className="ml-5 mb-0" label={label} name={name} />
 		</div>
 	);
 };

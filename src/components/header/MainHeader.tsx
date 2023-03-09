@@ -5,7 +5,6 @@ import { IoMdClose } from "react-icons/io";
 import { useTranslation } from "next-i18next";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
-import Button from "../common/buttons/index";
 
 const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 	const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -16,19 +15,15 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 	const headerButtons = [
 		{
 			label: t("Login"),
-			href: "/login",
-			textColor: "text-primary-color ",
 			rootClass:
-				"whitespace-nowrap w-auto border-[1px] border-primary-color hover:text-white py-2 px-4 w-[100px]",
-			bgColor: "bg-white ",
+				"rounded-md bg-white text-primary-color whitespace-nowrap w-auto border-[1px] border-primary-color py-2 px-4 w-[100px]",
+			href: "/login",
 		},
 		{
 			label: t("Sign Up"),
 			href: "/register",
-			textColor: "text-white",
 			rootClass:
-				"whitespace-nowrap w-auto border-[1px] border-primary-color py-2 px-4 w-[100px]",
-			bgColor: "bg-primary-color",
+				"rounded-md text-white bg-primary-color whitespace-nowrap w-auto border-[1px] border-primary-color py-2 px-4 w-[100px]",
 		},
 	];
 
@@ -47,16 +42,14 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 					</div>
 				</div>
 				<ul className="hidden sm:flex">
-					{headerButtons.map((option) => (
-						<li key={option.label} className="px-1 py-2">
-							<Link href={option.href} id={option.label}>
-								<Button
-									textColor={option.textColor}
-									label={option.label}
-									// onClick={() => }
-									rootClass={option.rootClass}
-									bgColor={option.bgColor}
-								/>
+					{headerButtons.map((option, ind) => (
+						<li key={ind} className="px-1 py-2">
+							<Link
+								href={option.href}
+								className={option.rootClass}
+								id={option.label}
+							>
+								{option.label}
 							</Link>
 						</li>
 					))}
