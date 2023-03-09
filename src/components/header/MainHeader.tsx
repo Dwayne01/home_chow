@@ -13,7 +13,7 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 
 	const { t } = useTranslation(["common"]);
 
-	const defaultUserOptions = [
+	const headerButtons = [
 		{
 			label: t("Login"),
 			href: "/login",
@@ -47,7 +47,7 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 					</div>
 				</div>
 				<ul className="hidden sm:flex">
-					{defaultUserOptions?.map((option) => (
+					{headerButtons.map((option) => (
 						<li key={option.label} className="px-1 py-2">
 							<Link href={option.href} id={option.label}>
 								<Button
@@ -83,7 +83,7 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 					}
 				>
 					<ul>
-						{defaultUserOptions?.map((option) => (
+						{headerButtons.map((option) => (
 							<li className="p-4 text-4xl">
 								<Link href={option.href}>{option.label}</Link>
 							</li>
