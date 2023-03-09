@@ -1,3 +1,5 @@
+import Footer from "@/components/footer/Footer";
+import MainHeader from "@/components/header/MainHeader";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -9,5 +11,10 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 export default function Home() {
-	return <div />;
+	return (
+		<div>
+			<MainHeader />
+			<Footer />
+		</div>
+	);
 }
