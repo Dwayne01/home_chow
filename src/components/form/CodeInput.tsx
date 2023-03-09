@@ -119,9 +119,9 @@ const CodeInput = ({
 						inputMode="numeric"
 						key={index}
 						data-testid={`code-input-${index + 1}`}
-						className={`${isEmpty ? "border-b" : "border-b-2"} ${
-							isEmpty ? "border-gray-300" : "border-wf-base-600"
-						} w-10 text-center text-4xl focus:outline-none`}
+						className={`${isEmpty ? "border" : "border"} ${
+							isEmpty ? "border-gray-300" : "border-[#c0c0c0]"
+						} text-center text-4xl w-[64px] h-[64px] rounded-2xl focus:outline-primary-color`}
 						ref={(ele) => (digitsEle.current[index] = ele)}
 						value={code[index] || ""}
 						onKeyUp={(e) => handleOnKeyUp(e, index)}
@@ -131,6 +131,7 @@ const CodeInput = ({
 						}}
 						onPaste={handlePasteValue}
 						data-private
+						style={{ caretColor: "#EAAA08" }}
 					/>
 				);
 			})}
