@@ -22,10 +22,10 @@ const AuthenicationLayout = ({
 					className
 				)}
 			>
-				<div className={classNames("flex flex-1", width)}>
+				<div className={classNames("hidden md:flex flex-1", width)}>
 					{LeftComponent && LeftComponent}
 				</div>
-				<div className="hidden flex-1 md:w-full md:flex">
+				<div className=" flex-1 w-full flex">
 					{RightComponent && RightComponent}
 				</div>
 			</div>

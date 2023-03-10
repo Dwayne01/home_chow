@@ -1,4 +1,25 @@
 {
   "easy_ordering": "Easily order you favorite meals from the comfort of your home",
-  "sign_in_to_explore": "Sign in to explore changes we’ve made."
+  "sign_in_to_explore": "Sign in to explore changes we’ve made.",
+  "Log in": "Log in",
+  "Enter your email": "Enter your email",
+  "Enter your password": "Enter your password",
+  "Remember me": "Remember me",
+  "Sign In": "Sign In",
+  "Or": "Or",
+  "Sign In with Google": "Sign In with Google",
+  "Sign In with Facebook": "Sign In with Facebook",
+  "Sign In with Twitter": "Sign In with Twitter",
+  "Sign Up": "Sign Up",
+  "Don't have an account?": "Don't have an account?",
+  "Forgot Password?": "Forgot Password?",
+  "Enter your name": "Enter your name",
+  "To sign up, fill in your personal details below": "To sign up, fill in your personal details below",
+  "Password must be at least 8 characters long": "Password must be at least 8 characters long",
+  "Already have an account?": "Already have an account?",
+  "Name": "Name",
+  "Email": "Email",
+  "Password": "Password",
+  "enterFirstName": "Enter your first name",
+  "enterLastName": "Enter last name"
 }

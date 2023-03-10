@@ -4,21 +4,26 @@ Homechow is a technology-driven startup that connects busy customers with small 
 
 ## Requirements
 
-- [Bun](https://bun.sh/)
 - [Node](https://nodejs.org/en/)
 - [NextJs](https://nextjs.org/)
 
 ## Libraries
+
 - [Storybook](https://storybook.js.org/)
 - [Tailwindcss](https://tailwindcss.com/)
 - [Cypress](https://docs.cypress.io/)
 - [Firebase](https://firebase.google.com/docs/auth)
 - [SWR](https://swr.vercel.app/)
+- [ReactIcons](https://react-icons.github.io/react-icons/)
 
 ## install packages
 
-`bun install`
+`yarn install`
 
 # Start Project
 
-`bun run dev`
+`yarn dev`
+
+## Demo
+
+`/demo` page is the best way to go and see how our components are used. Headers, inputs, form etc. Every resumable component is advised to be mounted on the `/demo` page

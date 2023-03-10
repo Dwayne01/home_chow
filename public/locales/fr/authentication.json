@@ -1,4 +1,25 @@
 {
   "easy_ordering": "Commandez facilement vos repas préférés dans le confort de votre maison",
-  "sign_in_to_explore": "Connectez-vous pour découvrir les modifications que nous avons apportées."
+  "sign_in_to_explore": "Connectez-vous pour découvrir les modifications que nous avons apportées.",
+  "Log in": "Connectez-vous",
+  "Enter your email": "Entrez votre courriel",
+  "Enter your password": "Entrez votre mot de passe",
+  "Remember me": "Rappelle-toi de moi",
+  "Sign In": "S'inscrire",
+  "Or": "Ou",
+  "Sign In with Google": "Se connecter avec Google",
+  "Sign In with Facebook": "Se connecter avec Facebook",
+  "Sign In with Twitter": "Se connecter avec Twitter",
+  "Sign Up": "S'inscrire",
+  "Enter your name": "Entrez votre nom",
+  "To sign up, fill in your personal details below": "Pour vous inscrire, remplissez vos coordonnées personnelles ci-dessous",
+  "Don't have an account?": "Vous n'avez pas de compte?",
+  "Forgot Password?": "Mot de passe oublié?",
+  "Password must be at least 8 characters long": "Doit comporter au moins 8 caractères.",
+  "Name": "Nom",
+  "Email": "E-mail",
+  "Password": "Mot de passe",
+  "Already have an account?": "Vous avez déjà un compte?",
+  "enterFirstName": "Entrez votre prénom",
+  "enterLastName": "Entrer le nom de famille"
 }
