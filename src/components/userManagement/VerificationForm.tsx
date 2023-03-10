@@ -4,8 +4,8 @@ import { useTranslation } from "next-i18next";
 import CodeInput from "../form/CodeInput";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
-import Email from "../../../public/assets/images/icon/icon_email.png";
-import Warning from "../../../public/assets/images/icon/icon_warning.png";
+import Email from "../../../public/assets/icons/icon_email.png";
+import Warning from "../../../public/assets/icons/icon_warning.png";
 
 const VerificationForm = () => {
 	const { t } = useTranslation("codeVerification");
@@ -56,7 +56,7 @@ const VerificationForm = () => {
 					/>
 				</div>
 				<div className="mt-8 mb-4 flex justify-center">
-					<p>{t("Didnt you get the code")}?</p>
+					<p>{t("Didn't get the code")}?</p>
 				</div>
 				<div className="mb-4 flex flex-row items-center gap-3 justify-center">
 					<Image
