@@ -110,10 +110,9 @@ const CodeInput = ({
 	};
 
 	return (
-		<div className="grid grid-rows-1 grid-flow-col gap-4">
+		<div className="grid grid-rows-1 grid-flow-col gap-2 md:gap-4">
 			{Array.from(Array(totalDigit).keys()).map((index) => {
 				const isEmpty = code[index] === " ";
-
 				return (
 					<input
 						inputMode="numeric"
@@ -121,7 +120,7 @@ const CodeInput = ({
 						data-testid={`code-input-${index + 1}`}
 						className={`${isEmpty ? "border" : "border"} ${
 							isEmpty ? "border-gray-300" : "border-[#c0c0c0]"
-						} text-center text-4xl w-[64px] h-[64px] rounded-2xl focus:outline-primary-color`}
+						} text-center text-4xl w-[52px] h-[52px] md:w-[64px] md:h-[64px] rounded-2xl focus:outline-primary-color`}
 						ref={(ele) => (digitsEle.current[index] = ele)}
 						value={code[index] || ""}
 						onKeyUp={(e) => handleOnKeyUp(e, index)}

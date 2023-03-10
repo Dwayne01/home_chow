@@ -22,7 +22,7 @@ const VerificationForm = () => {
 
 	return (
 		<div className="flex-1 my-16 flex flex-col">
-			<div className="mx-auto w-auto">
+			<div className="mx-auto w-[360px] md:w-auto">
 				<div className="logo flex justify-center">
 					<Image src={Logo} className="w-48 md:w-60" alt="Logo" />
 				</div>
@@ -31,7 +31,7 @@ const VerificationForm = () => {
 				</div>
 				<div className="flex flex-col text-center mt-10">
 					<h2 className="font-semibold text-3xl">{t("Check your mail")}</h2>
-					<div className="flex gap-1 mt-3">
+					<div className="flex flex-col md:flex-row gap-1 mt-3">
 						<p className="text-font-light">
 							{t("Please enter the 6 digit code sent to")}{" "}
 						</p>
@@ -47,7 +47,7 @@ const VerificationForm = () => {
 						onSubmit={() => {}}
 					/>
 				</div>
-				<div className="my-5 flex justify-center">
+				<div className="my-4 flex justify-center">
 					<WideIconButton
 						label={t("Confirm code")}
 						textColor="text-white"
@@ -55,10 +55,10 @@ const VerificationForm = () => {
 						onClick={handleCodeSubmit}
 					/>
 				</div>
-				<div className="mt-6 mb-4 flex justify-center">
+				<div className="mt-8 mb-4 flex justify-center">
 					<p>{t("Didnt you get the code")}?</p>
 				</div>
-				<div className="mb-5 flex flex-row items-center gap-3 justify-center">
+				<div className="mb-4 flex flex-row items-center gap-3 justify-center">
 					<Image
 						src={Warning}
 						width={40}
