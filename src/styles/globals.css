@@ -9,23 +9,37 @@
     font-family: 'Montserrat', sans-serif;
     color: #041549
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Jost', sans-serif;
   }
+
   h1 {
     font-size: 32px;
-		font-weight: bold;
+    font-weight: bold;
   }
+
   h2 {
-		font-size: 24px;
-		font-weight: bold;
-	}
-	h3 {
-		font-size: 18px;
-		font-weight: bold;
-	}
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
   p {
     font-size: 16px;
-		font-weight: 400;
+    font-weight: 400;
   }
+}
+
+.hoverButton:hover {
+  color: white
 }
