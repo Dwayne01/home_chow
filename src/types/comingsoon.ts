@@ -11,4 +11,5 @@ export interface ComingSoonLayoutProps {
 	className?: string;
 	LeftComponent?: ReactNode;
 	RightComponent?: ReactNode;
+	width?: string;
 }

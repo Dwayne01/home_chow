@@ -2,9 +2,8 @@
 	"locales": ["en", "fr"],
 	"defaultLocale": "en",
 	"pages": {
-		"*": ["common","footer"],
-		"/comingsoon": ["comingsoon", "common", "constants"],
-		"/demo":["common","footer"]
-
+		"*": ["common", "footer", "constants"],
+		"/comingsoon": ["comingsoon", "common"],
+		"/login": ["authentication"]
 	}
 }
