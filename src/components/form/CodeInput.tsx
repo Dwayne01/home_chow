@@ -120,7 +120,7 @@ const CodeInput = ({
 						data-testid={`code-input-${index + 1}`}
 						className={`${isEmpty ? "border" : "border"} ${
 							isEmpty ? "border-gray-300" : "border-[#c0c0c0]"
-						} text-center text-4xl w-[52px] h-[52px] md:w-[64px] md:h-[64px] rounded-2xl focus:outline-primary-color`}
+						} text-center text-4xl w-[52px] h-[52px] lg:w-[64px] lg:h-[64px] rounded-2xl focus:outline-primary-color`}
 						ref={(ele) => (digitsEle.current[index] = ele)}
 						value={code[index] || ""}
 						onKeyUp={(e) => handleOnKeyUp(e, index)}

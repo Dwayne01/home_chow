@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import CodeInput from "../form/CodeInput";
@@ -9,7 +9,7 @@ import Warning from "../../../public/assets/icons/icon_warning.png";
 
 const VerificationForm = () => {
 	const { t } = useTranslation("codeVerification");
-	const [code, setCode] = React.useState("");
+	const [code, setCode] = useState<string>("");
 
 	const userEmail = "Draxier04123@gmail.com";
 	const remainTime = "02:34";
@@ -31,7 +31,7 @@ const VerificationForm = () => {
 				</div>
 				<div className="flex flex-col text-center mt-10">
 					<h2 className="font-semibold text-3xl">{t("Check your mail")}</h2>
-					<div className="flex flex-col md:flex-row gap-1 mt-3">
+					<div className="flex flex-col lg:flex-row gap-1 mt-3">
 						<p className="text-font-light">
 							{t("Please enter the 6 digit code sent to")}{" "}
 						</p>
@@ -56,7 +56,7 @@ const VerificationForm = () => {
 					/>
 				</div>
 				<div className="mt-8 mb-4 flex justify-center">
-					<p>{t("Didn't get the code")}?</p>
+					<p>{t("Didnt get the code")}?</p>
 				</div>
 				<div className="mb-4 flex flex-row items-center gap-3 justify-center">
 					<Image
