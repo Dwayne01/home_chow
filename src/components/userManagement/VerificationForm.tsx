@@ -15,7 +15,6 @@ const VerificationForm = () => {
 	const remainTime = "02:34";
 
 	const handleCodeSubmit = () => {
-		// Need logic for verifying the user's code
 		// eslint-disable-next-line no-console
 		console.log(code);
 	};
