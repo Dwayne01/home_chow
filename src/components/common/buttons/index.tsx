@@ -43,7 +43,7 @@ const Button = ({
 			"hover:bg-yellow-500 hover:text-white",
 
 			disabled ? "bg-gray-400" : bgColor ? `${bgColor}` : "bg-primary-color",
-			rootClass || ""
+			rootClass && rootClass
 		)}
 	>
 		{loading && <Loader size="40px" />}
@@ -51,7 +51,7 @@ const Button = ({
 		{iconPosition === "left" && icon && (
 			<>{React.createElement(icon, { color: textColor })}</>
 		)}
-		{!loading && (
+		{!loading && label && (
 			<span
 				className={classNames(
 					"text-[11pt] md:text-lg mx-2",
