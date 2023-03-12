@@ -15,6 +15,7 @@ const Onboarding = () => {
 			</p>
 			<p className="text-gray-500 text-lg text-center my-5 ">
 				{t("sign_in_to_explore")}
+				{t("good morning")}
 			</p>
 		</div>
 	);
