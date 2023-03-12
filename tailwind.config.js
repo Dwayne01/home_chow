@@ -32,6 +32,15 @@ module.exports = {
 			xl: "1280px",
 			"2xl": "1536px",
 		},
+		borderRadius: {
+			sm: "0.125rem",
+			default: "0.25rem",
+			md: "0.375rem",
+			lg: "0.5rem",
+			full: "9999px",
+			large: "35%",
+			xlarge: "60%",
+		},
 	},
 	plugins: [],
 };
