@@ -42,7 +42,7 @@ const DashboardPage = () => {
 	return (
 		<DashboardLayout
 			HeaderComponent={<DashboardHeader />}
-			LeftMenuComponent={<SideNavigation {...{ navigation, setNavigation }} />}
+			LeftMenuComponent={<SideNavigation {...{ navigation }} />}
 			MainComponent={<VendorDashboard />}
 		/>
 	);

@@ -13,8 +13,8 @@ export interface AccountButtonProps {
 	onClick?: () => void;
 }
 
-export interface BalanceLableProps {
-	balance: number;
+export interface LableProps {
+	balance?: number;
 	visible?: boolean;
 	label?: string;
 	onClick?: () => void;
@@ -40,4 +40,18 @@ export interface CircularProgressBarProps {
 export interface SideNavigationProps {
 	logoUrl?: string;
 	navigation: { label: string; href: string; icon: any; current: boolean }[];
+}
+
+export interface StatisticsListProps {
+	statistics: {
+		Icon: ReactNode;
+		count: number;
+		label: string;
+	}[];
+}
+
+export interface StatisticsCardProps {
+	Icon: ReactNode;
+	count: number;
+	label: string;
 }
