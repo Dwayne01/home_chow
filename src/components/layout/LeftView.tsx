@@ -36,7 +36,10 @@ const SubscribeForm = ({
 
 	return (
 		<FormProvider {...form}>
-			<form onSubmit={handleSubmit(handleSubscribeNow)}>
+			<form
+				className="subscribe-form"
+				onSubmit={handleSubmit(handleSubscribeNow)}
+			>
 				<p className="pt-8 text-font-light font-normal text-md text-center md:text-left">
 					{t("chooseOptions")}
 				</p>
@@ -74,6 +77,7 @@ const SubscribeForm = ({
 					<TextField
 						data-testid="signin-email"
 						rootClass="col-auto"
+						id="firstName"
 						name="firstName"
 						label={t("firstName", { ns: "common" })}
 						placeholder="John"
@@ -86,6 +90,7 @@ const SubscribeForm = ({
 					<TextField
 						data-testid="signin-email"
 						rootClass="col-auto"
+						id="lastName"
 						name="lastName"
 						label={t("lastName", { ns: "common" })}
 						placeholder="Doe"
@@ -101,6 +106,7 @@ const SubscribeForm = ({
 					<TextField
 						data-testid="signin-email"
 						rootClass="col-auto"
+						id="email"
 						name="email"
 						label={t("emailAddress", { ns: "common" })}
 						placeholder="example@example.com"
@@ -124,6 +130,7 @@ const SubscribeForm = ({
 						type="submit"
 						rootClass="rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px]"
 						iconPosition="right"
+						id="notifyMe-btn"
 					/>
 				</div>
 
@@ -183,7 +190,7 @@ const LeftView = ({
 					{message ? (
 						<p
 							className={classNames(
-								"mt-10 text-lg font-semibold",
+								"success-message mt-10 text-lg font-semibold",
 								messageColor
 							)}
 						>
@@ -194,7 +201,7 @@ const LeftView = ({
 							textColor="text-white"
 							label="Notify me when you launch"
 							onClick={() => setIsSubscribeUser(!isSubscribeUser)}
-							rootClass="rounded-lg whitespace-nowrap p-5 w-auto my-10 text-center"
+							rootClass="subscribe-btn rounded-lg whitespace-nowrap p-5 w-auto my-10 text-center"
 							iconPosition="right"
 						/>
 					)}
