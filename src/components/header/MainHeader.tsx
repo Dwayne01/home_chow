@@ -21,7 +21,7 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 		},
 		{
 			label: t("Sign Up"),
-			href: "/register",
+			href: "/signup",
 			rootClass:
 				"rounded-md text-white bg-primary-color whitespace-nowrap w-auto border-[1px] border-primary-color py-2 px-4 w-[100px]",
 		},
