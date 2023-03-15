@@ -119,7 +119,7 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 								<BsThreeDots className="m-0 h-5 w-5" />
 							</button>
 						</div>
-						<div className="flex flex-col gap-2 md:grid grid-cols-2 gap-11 mt-6">
+						<div className="flex flex-col gap-2 md:grid grid-cols-2 md:gap-11 mt-6">
 							{bestSellingItems.map((item) => (
 								<FoodItem
 									key={item.id}
