@@ -11,18 +11,20 @@ import { TextField } from "../form/InputField";
 
 const Footer = ({
 	logoUrl,
-	backgroundColor,
+	footerColor = "white",
 }: {
 	logoUrl?: string;
-	backgroundColor?: string;
+	footerColor: "white" | "black";
 }) => {
 	const { t } = useTranslation("footer");
 
+	let backgroundColor;
 	let textColor;
 	let subTextColor;
 	let textFieldBackground;
 
-	if (backgroundColor === "bg-black") {
+	if (footerColor === "black") {
+		backgroundColor = "bg-black";
 		textColor = "text-white";
 		subTextColor = "text-grey-light";
 		textFieldBackground = "black";
@@ -177,9 +179,7 @@ const Footer = ({
 						/>
 					</div>
 				</div>
-				<p
-					className={`mt-5 md:mt-0 text-center text-[#333333] ${subTextColor}`}
-				>
+				<p className={`mt-5 md:mt-0 text-center ${subTextColor}`}>
 					© 2022 MixerEvents. {t("All rights reserved")}
 				</p>
 			</div>
