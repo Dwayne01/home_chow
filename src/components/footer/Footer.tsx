@@ -11,10 +11,10 @@ import { TextField } from "../form/InputField";
 
 const Footer = ({
 	logoUrl,
-	footerColor = "white",
+	footerColor = "light",
 }: {
 	logoUrl?: string;
-	footerColor: "white" | "black";
+	footerColor: "light" | "dark";
 }) => {
 	const { t } = useTranslation("footer");
 
@@ -23,7 +23,7 @@ const Footer = ({
 	let subTextColor;
 	let textFieldBackground;
 
-	if (footerColor === "black") {
+	if (footerColor === "dark") {
 		backgroundColor = "bg-black";
 		textColor = "text-white";
 		subTextColor = "text-grey-light";
