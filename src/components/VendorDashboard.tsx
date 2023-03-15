@@ -10,7 +10,7 @@ import Carbon from "../../public/assets/svg/Carbon";
 import Activity from "../../public/assets/svg/Activity";
 import Button from "./common/buttons";
 import FoodItem from "./FoodItem";
-import { getRandomHexCode } from "../utils";
+import { getRandomColor } from "../utils";
 
 const statistics = [
 	{
@@ -76,7 +76,7 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 	const chartData = statistics.map((stat) => ({
 		label: stat.label,
 		count: stat.count,
-		color: getRandomHexCode(),
+		color: getRandomColor(),
 	}));
 
 	return (
@@ -101,13 +101,14 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 				<Button
 					icon={BiPlus}
 					textColor="primary-color hover:text-white"
-					label="Add Product"
 					onClick={() => {}}
-					rootClass="rounded-lg bg-primary-color-50 hover:text-white text-primary-color whitespace-nowrap p-5 w-auto text-center"
+					rootClass="md:text-xs rounded-[8px] px-[11.5px] bg-primary-color-50  text-primary-color whitespace-nowrap w-auto text-center hover:text-white  font-semibold"
 					iconPosition="right"
-				/>
+				>
+					Add Product
+				</Button>
 			</div>
-			<div>
+			<div className="mt-4">
 				<div className="flex gap-[26px]">
 					<div className="max-w-[614px] bg-white pl-7 pb-4 pr-5">
 						<div className="flex justify-between items-center mt-11">

@@ -16,17 +16,19 @@ const Button = ({
 	disabled,
 	id,
 	loading,
+	children,
 	bgColor,
 }: {
 	icon?: IconType;
 	textColor?: string;
 	type?: "button" | "submit" | "reset";
-	label: string;
+	label?: string;
 	onClick?: () => void;
 	iconPosition?: IconPosition;
 	rootClass?: string;
 	disabled?: boolean;
 	loading?: boolean;
+	children?: React.ReactNode;
 	id?: string;
 	bgColor?: string;
 }) => (
@@ -36,18 +38,17 @@ const Button = ({
 		onClick={onClick}
 		id={id}
 		className={classNames(
-			"text-xl md:text-2xl text-white p-3",
+			"text-xl md:text-2xl p-3",
 			disabled ? "bg-gray-400" : "bg-primary-color",
 			"rounded-[10px] flex justify-center items-center ",
 			textColor || "text-primary-color",
-			"hover:bg-yellow-500 hover:text-white",
+			"hover:bg-yellow-500",
 
 			disabled ? "bg-gray-400" : bgColor ? `${bgColor}` : "bg-primary-color",
 			rootClass && rootClass
 		)}
 	>
 		{loading && <Loader size="40px" />}
-
 		{iconPosition === "left" && icon && (
 			<>
 				{React.createElement(icon, {
@@ -56,7 +57,9 @@ const Button = ({
 				})}
 			</>
 		)}
-		{!loading && label && (
+		{!loading && children ? (
+			children
+		) : (
 			<span
 				className={classNames(
 					"text-[11pt] md:text-lg mx-2",
