@@ -49,7 +49,12 @@ const Button = ({
 		{loading && <Loader size="40px" />}
 
 		{iconPosition === "left" && icon && (
-			<>{React.createElement(icon, { color: textColor })}</>
+			<>
+				{React.createElement(icon, {
+					color: textColor,
+					className: `text-${textColor}`,
+				})}
+			</>
 		)}
 		{!loading && label && (
 			<span
