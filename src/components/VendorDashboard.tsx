@@ -80,7 +80,7 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 	}));
 
 	return (
-		<div className="max-w-5xl flex flex-col mx-[86px] xl:m-auto justify-center pt-[42px]">
+		<div className="max-w-5xl flex flex-col md:mx-[86px] xl:m-auto justify-center pt-[42px]">
 			<div>
 				<h4 className="text-center font-semibold text-xl">
 					{t(greeting)}, {vendorName} {daylightSticker}
@@ -89,7 +89,7 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 					{t("Take a look at your store today")}
 				</p>
 			</div>
-			<div className="mt-8">
+			<div className="mt-8 px-7 md:px-0">
 				<h4 className="text-base text-gray-40 leading-6 uppercase">
 					{t("Statistics")}
 				</h4>
@@ -97,20 +97,20 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 					<StatisticsList {...{ statistics }} />
 				</div>
 			</div>
-			<div className="flex justify-end items-center mt-11">
+			<div className="flex justify-end items-center mt-11 px-7 md:px-0">
 				<Button
 					icon={BiPlus}
 					textColor="primary-color hover:text-white"
 					onClick={() => {}}
-					rootClass="md:text-xs rounded-[8px] px-[11.5px] bg-primary-color-50  text-primary-color whitespace-nowrap w-auto text-center hover:text-white  font-semibold"
+					rootClass="text-xs md:text-sm rounded-[8px] px-[11.5px] bg-primary-color-50  text-primary-color whitespace-nowrap w-auto text-center hover:text-white  font-semibold"
 					iconPosition="right"
 				>
 					Add Product
 				</Button>
 			</div>
 			<div className="mt-4">
-				<div className="flex gap-[26px]">
-					<div className="max-w-[614px] bg-white pl-7 pb-4 pr-5">
+				<div className="flex flex-wrap gap-[26px]">
+					<div className=" w-full lg:max-w-[614px] bg-white pl-7 pb-4 pr-5">
 						<div className="flex justify-between items-center mt-11">
 							<h4 className="text-base text-gray-40 leading-6  ">
 								{t("Best Selling")}
@@ -119,7 +119,7 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 								<BsThreeDots className="m-0 h-5 w-5" />
 							</button>
 						</div>
-						<div className="grid grid-cols-2 gap-11 mt-6">
+						<div className="flex flex-col gap-2 md:grid grid-cols-2 gap-11 mt-6">
 							{bestSellingItems.map((item) => (
 								<FoodItem
 									key={item.id}
