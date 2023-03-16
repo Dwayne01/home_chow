@@ -53,7 +53,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 	};
 
 	return (
-		<div className="footer mx-10 my-20 flex flex-wrap justify-between md:mx-24 md:gap-y-14">
+		<div className="footer w-[95%] mx-auto my-20 flex flex-wrap justify-between md:mx-auto md:gap-y-14">
 			<div className="w-full md:w-auto">
 				<div className="logo ">
 					<Image src={logoUrl || Logo} className="w-48 md:w-60" alt="Logo" />
