@@ -26,7 +26,7 @@ export default function Home() {
 	return (
 		<div>
 			<MainHeader />
-			<Footer />
+			<Footer footerColor="light" />
 		</div>
 	);
 }

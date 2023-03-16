@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { useRouter } from "next/router";
 import ComingSoonHeader from "../header/ComingSoonHeader";
 
-const AuthenicationLayout = ({
+const AuthenticationLayout = ({
 	className,
 	LeftComponent,
 	RightComponent,
@@ -32,4 +32,4 @@ const AuthenicationLayout = ({
 		</div>
 	);
 };
-export default AuthenicationLayout;
+export default AuthenticationLayout;

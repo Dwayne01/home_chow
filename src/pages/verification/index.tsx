@@ -1,17 +1,17 @@
 import AuthenticationLayout from "@/components/layout/AuthenticationLayout";
 import Onboarding from "@/components/onboarding";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import SignUpForm from "@/components/userManagement/SignUpForm";
+import VerificationForm from "@/components/userManagement/VerificationForm";
 
-const SignUpPage = () => (
+const VerificationPage = () => (
 	<AuthenticationLayout
 		LeftComponent={<Onboarding />}
-		RightComponent={<SignUpForm />}
+		RightComponent={<VerificationForm />}
 		width="md:min-w-1/2"
 	/>
 );
 
-export default SignUpPage;
+export default VerificationPage;
 
 export async function getStaticProps({ locale }: { locale: string }) {
 	return {
@@ -19,6 +19,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 			...(await serverSideTranslations(locale ?? "en", [
 				"common",
 				"authentication",
+				"codeVerification",
 			])),
 		},
 	};

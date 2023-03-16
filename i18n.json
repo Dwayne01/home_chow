@@ -5,6 +5,8 @@
 		"*": ["common", "footer", "constants"],
 		"/comingsoon": ["comingsoon", "common"],
 		"/login": ["authentication"],
-		"/signup": ["authentication", "common"]
+		"/signup": ["authentication", "common"],
+		"/dashboard": ["dashboard", "common"],
+		"/settings": ["dashboard", "common"]
 	}
 }

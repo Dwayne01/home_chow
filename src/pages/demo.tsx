@@ -222,7 +222,7 @@ const ComponentPage = () => {
 				</form>
 			</FormProvider>
 			<h1>Footer</h1>
-			<Footer />
+			<Footer footerColor="dark" />
 		</div>
 	);
 };

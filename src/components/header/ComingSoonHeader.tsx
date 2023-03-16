@@ -42,15 +42,13 @@ const ComingSoonHeader = ({ logoUrl }: { logoUrl?: string }) => {
 						))}
 				</div>
 				<div className="flex items-center md:order-2">
-					<div className="px-3">
-						<LanguageSwitcher />
-					</div>
+					<LanguageSwitcher />
 					<button
 						onClick={handleToggle}
 						data-testid="hamburger-menu"
 						className={classNames(
 							showMenu ? "rotate-180" : "-rotate-180",
-							"sm:ml-6 md:hidden duration-100 ease-in-out"
+							"ml-6 md:hidden duration-100 ease-in-out"
 						)}
 					>
 						{!showMenu ? (
