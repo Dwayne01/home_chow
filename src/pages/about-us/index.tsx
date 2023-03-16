@@ -47,7 +47,7 @@ const AboutUs = () => {
 						/>
 					</div>
 				</div>
-				<Footer />
+				<Footer footerColor="dark" />
 			</div>
 		</div>
 	);
