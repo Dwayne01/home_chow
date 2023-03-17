@@ -34,9 +34,9 @@ const Button = ({
 			onClick={onClick}
 			id={id}
 			className={classNames(
-				disabled ? "bg-gray-400" : "bg-primary-color",
-				"text-xl p-3 rounded-[10px] flex justify-center items-center bg-primary-color hover:bg-primary-color-light hover:text-primary-color hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
-				rootClass || ""
+				rootClass || "",
+				"text-xl p-3 rounded-[10px] flex justify-center items-center hover:bg-primary-color-light hover:text-primary-color hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
+				disabled ? "bg-gray-400" : "bg-primary-color"
 			)}
 		>
 			{loading && <Loader size="40px" />}

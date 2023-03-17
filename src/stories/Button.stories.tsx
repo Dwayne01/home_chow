@@ -5,7 +5,6 @@ export default {
 	component: Button,
 	args: {
 		disabled: false,
-		loading: false,
 		rootClass:
 			"rounded-lg font-bold col-auto w-auto md:w-[210px] text-white gap-4",
 	},
@@ -14,6 +13,7 @@ export default {
 export const Default = {
 	args: {
 		label: "Notify me",
+		loading: false,
 	},
 };
 
@@ -22,6 +22,7 @@ export const Outlined = {
 		rootClass:
 			"rounded-lg bg-white text-primary-color  font-bold  border border-primary-color md:w-[210px]",
 		label: "Notify me",
+		loading: false,
 	},
 };
 
@@ -30,6 +31,7 @@ export const ButtonWithIconLeft = {
 		icon: AiOutlineSend,
 		iconPosition: "left",
 		label: "Notify me",
+		loading: false,
 	},
 };
 
@@ -38,6 +40,7 @@ export const ButtonWithIconRight = {
 		icon: AiOutlineSend,
 		iconPosition: "right",
 		label: "Notify me",
+		loading: false,
 	},
 };
 
