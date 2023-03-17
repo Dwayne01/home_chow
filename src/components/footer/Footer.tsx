@@ -148,7 +148,7 @@ const Footer = ({
 
 								<Button
 									label={t("Get Started")}
-									rootClass="rounded-lg whitespace-nowrap w-full p-3 sm:w-[166px] font-bold text-sm"
+									rootClass="rounded-lg whitespace-nowrap w-full p-3 sm:w-[166px] font-bold text-sm text-white"
 									iconPosition="right"
 								/>
 							</div>

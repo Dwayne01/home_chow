@@ -71,7 +71,7 @@ const ComponentPage = () => {
 			<div className="flex flex-col items-center gap-5">
 				<Button
 					icon={AiOutlineSend}
-					textColor="text-white"
+					rootClass="text-white gap-2"
 					label="Notify me"
 					onClick={() => {}}
 					iconPosition="right"
