@@ -72,7 +72,7 @@ const Footer = ({
 
 	return (
 		<div
-			className={`footer mx-10 my-20 flex flex-wrap justify-between md:mx-24 md:gap-y-14 ${backgroundColor} ${textColor}`}
+			className={`footer px-10 py-10 mt-5 flex flex-wrap justify-between md:px-10 md:gap-y-14 ${backgroundColor} ${textColor}`}
 		>
 			<div className="w-full md:w-auto">
 				<div className="logo ">
@@ -180,7 +180,7 @@ const Footer = ({
 					</div>
 				</div>
 				<p className={`mt-5 md:mt-0 text-center ${subTextColor}`}>
-					© 2022 MixerEvents. {t("All rights reserved")}
+					© 2022 HomeChow.ca. {t("All rights reserved")}
 				</p>
 			</div>
 		</div>
