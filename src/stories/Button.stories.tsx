@@ -1,73 +1,50 @@
-// import React from "react";
 import Button from "@/components/common/buttons";
 import { AiOutlineSend } from "react-icons/ai";
 
-// storiesOf("Button", module)
-// 	.add("Primary Button", () => (
-// 		<Button
-// 			label="Click me!"
-// 			onClick={action("clicked")}
-// 			bgColor="bg-primary-color"
-// 		/>
-// 	))
-// 	.add("Disabled Button", () => <Button label="I'm disabled" />)
-// 	.add("Button with Icon", () => (
-// 		<Button
-// 			label="Add Item"
-// 			icon={IoIosAdd}
-// 			iconPosition="left"
-// 			textColor="text-gray-800"
-// 			onClick={action("icon clicked")}
-// 		/>
-// 	))
-// 	.add("Button with Loading", () => (
-// 		<Button
-// 			label="Loading"
-// 			bgColor="bg-primary-color"
-// 			textColor="text-gray-800"
-// 		/>
-// 	));
-
 export default {
 	component: Button,
-	icon: AiOutlineSend,
 	args: {
-		deactivated: true,
+		disabled: false,
 		loading: false,
-		label: "Notify me",
-		iconPosition: "right",
 		rootClass:
-			"rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px] bg-red-500 hover:bg-red-500/25",
+			"rounded-lg font-bold col-auto w-auto md:w-[210px] text-white gap-4",
 	},
 };
 
 export const Default = {
 	args: {
-		deactivated: true,
-		loading: false,
 		label: "Notify me",
-		iconPosition: "right",
-		rootClass:
-			"rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px] bg-red-500 hover:bg-red-600",
 	},
 };
 
-// export const Default = () => (
-// 	<Button
-// 		icon={AiOutlineSend}
-// 		label="Notify me"
-// 		type="submit"
-// 		rootClass="rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px]"
-// 		iconPosition="right"
-// 	/>
-// );
+export const Outlined = {
+	args: {
+		rootClass:
+			"rounded-lg bg-white text-primary-color  font-bold  border border-primary-color md:w-[210px]",
+		label: "Notify me",
+	},
+};
 
-// export const Outlined = () => (
-// 	<Button
-// 		icon={AiOutlineSend}
-// 		label="Notify me"
-// 		type="submit"
-// 		rootClass="rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px] bg-red-500 hover:bg-red-600"
-// 		iconPosition="right"
-// 	/>
-// );
+export const ButtonWithIconLeft = {
+	args: {
+		icon: AiOutlineSend,
+		iconPosition: "left",
+		label: "Notify me",
+	},
+};
+
+export const ButtonWithIconRight = {
+	args: {
+		icon: AiOutlineSend,
+		iconPosition: "right",
+		label: "Notify me",
+	},
+};
+
+export const IconButton = {
+	args: {
+		icon: AiOutlineSend,
+		iconPosition: "left",
+		rootClass: "rounded-lg font-bold col-auto w-auto text-white",
+	},
+};

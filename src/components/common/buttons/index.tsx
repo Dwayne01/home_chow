@@ -35,14 +35,14 @@ const Button = ({
 			id={id}
 			className={classNames(
 				disabled ? "bg-gray-400" : "bg-primary-color",
-				"text-xl p-3 rounded-[10px] flex justify-center items-center bg-primary-color hover:bg-primary-color-light hover:text-primary-color text-white hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
+				"text-xl p-3 rounded-[10px] flex justify-center items-center bg-primary-color hover:bg-primary-color-light hover:text-primary-color hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
 				rootClass || ""
 			)}
 		>
 			{loading && <Loader size="40px" />}
-			{iconPosition === "left" && Icon && <Icon className="mr-3" />}
+			{iconPosition === "left" && Icon && <Icon />}
 			{!loading && <span>{label}</span>}
-			{iconPosition === "right" && Icon && <Icon className="ml-3" />}
+			{iconPosition === "right" && Icon && <Icon />}
 		</button>
 	);
 };
