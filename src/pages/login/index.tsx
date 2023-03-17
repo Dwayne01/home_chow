@@ -1,10 +1,10 @@
-import AuthenicationLayout from "@/components/layout/AuthenicationLayout";
+import AuthenticationLayout from "@/components/layout/AuthenticationLayout";
 import Onboarding from "@/components/onboarding";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import LoginForm from "@/components/userManagement/LoginForm";
 
 const LoginPage = () => (
-	<AuthenicationLayout
+	<AuthenticationLayout
 		LeftComponent={<Onboarding />}
 		RightComponent={<LoginForm />}
 		width="md:min-w-1/2"

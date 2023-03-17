@@ -9,8 +9,26 @@ import Button from "../common/buttons";
 import IconButton from "../common/buttons/IconButton";
 import { TextField } from "../form/InputField";
 
-const Footer = ({ logoUrl }: { logoUrl?: string }) => {
+const Footer = ({
+	logoUrl,
+	footerColor = "light",
+}: {
+	logoUrl?: string;
+	footerColor: "light" | "dark";
+}) => {
 	const { t } = useTranslation("footer");
+
+	let backgroundColor;
+	let textColor;
+	let subTextColor;
+	let textFieldBackground;
+
+	if (footerColor === "dark") {
+		backgroundColor = "bg-black";
+		textColor = "text-white";
+		subTextColor = "text-grey-light";
+		textFieldBackground = "black";
+	}
 
 	const aboutMenu = [
 		{ label: "Mixer Events", href: "/mixerEvents" },
@@ -53,7 +71,9 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 	};
 
 	return (
-		<div className="footer mx-10 my-20 flex flex-wrap justify-between md:mx-24 md:gap-y-14">
+		<div
+			className={`footer mx-10 my-20 flex flex-wrap justify-between md:mx-24 md:gap-y-14 ${backgroundColor} ${textColor}`}
+		>
 			<div className="w-full md:w-auto">
 				<div className="logo ">
 					<Image src={logoUrl || Logo} className="w-48 md:w-60" alt="Logo" />
@@ -68,7 +88,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 				<div className="flex justify-between items-start mt-14 md:mt-0 md:gap-x-7">
 					<div className="about ">
 						<h4 className="font-bold text-base mb-4">{t("About Us")}</h4>
-						<ul className="flex flex-col gap-4">
+						<ul className={`flex flex-col gap-4 ${subTextColor}`}>
 							{aboutMenu.map((item) => (
 								<li key={item.href}>
 									<Link href={item.href}>{t(item.label)}</Link>
@@ -78,7 +98,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 					</div>
 					<div className="support ">
 						<h4 className="font-bold text-base mb-4">{t("Support")}</h4>
-						<ul className="flex flex-col gap-4">
+						<ul className={`flex flex-col gap-4  ${subTextColor}`}>
 							{supportMenu.map((item) => (
 								<li key={item.href}>
 									<Link href={item.href}>{t(item.label)}</Link>
@@ -91,7 +111,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 					<h4 className="font-bold text-base mb-4">{t("Contact Us")}</h4>
 
 					<p>{t("Address")}</p>
-					<div className="flex flex-wrap gap-1 gap-x-3">
+					<div className={`flex flex-wrap gap-1 gap-x-3 ${subTextColor}`}>
 						<span>{contactInfo.Street}</span>
 						<span>{contactInfo.City}</span>
 						<span>{contactInfo.State}</span>
@@ -99,7 +119,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 					</div>
 					<div className="mt-6  flex flex-col gap-2">
 						<h4 className="font-bold text-base"> {t("Phone Number")}</h4>
-						<span>{contactInfo.Phone}</span>
+						<span className={subTextColor}>{contactInfo.Phone}</span>
 					</div>
 				</div>
 			</div>
@@ -123,6 +143,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 										},
 									})}
 									autoComplete="username"
+									style={{ backgroundColor: textFieldBackground }}
 								/>
 
 								<Button
@@ -157,7 +178,7 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 						/>
 					</div>
 				</div>
-				<p className="mt-5 md:mt-0 text-center text-[#333333]">
+				<p className={`mt-5 md:mt-0 text-center ${subTextColor}`}>
 					© 2022 MixerEvents. {t("All rights reserved")}
 				</p>
 			</div>

@@ -76,8 +76,8 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 					}
 				>
 					<ul>
-						{headerButtons.map((option) => (
-							<li className="p-4 text-4xl">
+						{headerButtons.map((option, idx) => (
+							<li className="p-4 text-4xl" key={idx}>
 								<Link href={option.href}>{option.label}</Link>
 							</li>
 						))}
