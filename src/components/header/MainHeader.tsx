@@ -16,7 +16,7 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 		{
 			label: t("Login"),
 			rootClass:
-				"rounded-md bg-white text-primary-color whitespace-nowrap w-auto border-[1px] border-primary-color py-2 px-4 w-[100px]",
+				"rounded-md bg-primary-color-light text-primary-color whitespace-nowrap w-auto border-[1px] border-primary-color py-2 px-4 w-[100px]",
 			href: "/login",
 		},
 		{

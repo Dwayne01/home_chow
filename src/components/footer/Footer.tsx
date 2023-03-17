@@ -126,7 +126,6 @@ const Footer = ({ logoUrl }: { logoUrl?: string }) => {
 								/>
 
 								<Button
-									textColor="text-white"
 									label={t("Get Started")}
 									rootClass="rounded-lg whitespace-nowrap w-full p-3 sm:w-[166px] font-bold text-sm"
 									iconPosition="right"

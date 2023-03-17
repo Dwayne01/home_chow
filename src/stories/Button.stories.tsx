@@ -1,47 +1,73 @@
-import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Button from "../components/common/buttons/index";
+// import React from "react";
+import Button from "@/components/common/buttons";
+import { AiOutlineSend } from "react-icons/ai";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+// storiesOf("Button", module)
+// 	.add("Primary Button", () => (
+// 		<Button
+// 			label="Click me!"
+// 			onClick={action("clicked")}
+// 			bgColor="bg-primary-color"
+// 		/>
+// 	))
+// 	.add("Disabled Button", () => <Button label="I'm disabled" />)
+// 	.add("Button with Icon", () => (
+// 		<Button
+// 			label="Add Item"
+// 			icon={IoIosAdd}
+// 			iconPosition="left"
+// 			textColor="text-gray-800"
+// 			onClick={action("icon clicked")}
+// 		/>
+// 	))
+// 	.add("Button with Loading", () => (
+// 		<Button
+// 			label="Loading"
+// 			bgColor="bg-primary-color"
+// 			textColor="text-gray-800"
+// 		/>
+// 	));
+
 export default {
-	title: "Primary",
 	component: Button,
-	// More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-	// argTypes: {
-	// 	backgroundColor: { control: "color" },
-	// },
-} as ComponentMeta<typeof Button>;
-
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-	textColor: "red",
-	label: "Click ME",
-	iconPosition: "right",
-	rootClass: "p-[20px]",
-	type: "button",
-	disabled: true,
-	id: "56",
-	loading: false,
-	bgColor: "red",
+	icon: AiOutlineSend,
+	args: {
+		deactivated: true,
+		loading: false,
+		label: "Notify me",
+		iconPosition: "right",
+		rootClass:
+			"rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px] bg-red-500 hover:bg-red-500/25",
+	},
 };
 
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-// 	label: "Button",
-// };
+export const Default = {
+	args: {
+		deactivated: true,
+		loading: false,
+		label: "Notify me",
+		iconPosition: "right",
+		rootClass:
+			"rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px] bg-red-500 hover:bg-red-600",
+	},
+};
 
-// export const Large = Template.bind({});
-// Large.args = {
-// 	size: "large",
-// 	label: "Button",
-// };
+// export const Default = () => (
+// 	<Button
+// 		icon={AiOutlineSend}
+// 		label="Notify me"
+// 		type="submit"
+// 		rootClass="rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px]"
+// 		iconPosition="right"
+// 	/>
+// );
 
-// export const Small = Template.bind({});
-// Small.args = {
-// 	size: "small",
-// 	label: "Button",
-// };
+// export const Outlined = () => (
+// 	<Button
+// 		icon={AiOutlineSend}
+// 		label="Notify me"
+// 		type="submit"
+// 		rootClass="rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px] bg-red-500 hover:bg-red-600"
+// 		iconPosition="right"
+// 	/>
+// );
