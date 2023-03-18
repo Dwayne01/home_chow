@@ -12,7 +12,7 @@ const AboutUs = () => {
 
 	return (
 		<div className="min-w-min">
-			<div className="mx-4">
+			<div className="mt-2">
 				<ComingSoonHeader />
 				<div className="md:flex md:flex-row md:flex-1 justify-between gap-16 m-auto mt-14 w-[95%]">
 					<div className="basis-1/2">

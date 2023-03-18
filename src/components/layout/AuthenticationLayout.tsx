@@ -13,19 +13,21 @@ const AuthenticationLayout = ({
 	const route = useRouter();
 	return (
 		<div className="w-full h-screen flex flex-col">
-			{route.pathname === "/comingsoon" && <ComingSoonHeader />}
+			<div className="mt-2 mb-5">
+				{route.pathname === "/comingsoon" && <ComingSoonHeader />}
+			</div>
 			<div
 				className={classNames(
-					"w-full ",
+					"w-full",
 					"h-full",
 					"flex flex-col md:flex-row",
 					className
 				)}
 			>
-				<div className={classNames("hidden md:flex flex-1", width)}>
+				<div className={classNames("flex-1 w-full", width)}>
 					{LeftComponent && LeftComponent}
 				</div>
-				<div className=" flex-1 w-full flex">
+				<div className="hidden flex-1 w-full md:flex">
 					{RightComponent && RightComponent}
 				</div>
 			</div>

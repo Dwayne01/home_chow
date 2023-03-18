@@ -5,7 +5,7 @@ import { useSubscribe } from "@/hooks/useSubscribe";
 import { SubscribeParams } from "@/types/comingsoon";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
-import AuthenicationLayout from "../../components/layout/AuthenticationLayout";
+import AuthenticationLayout from "../../components/layout/AuthenticationLayout";
 
 interface ComingSoonPageProps {
 	LeftComponent?: React.FC;
@@ -26,7 +26,7 @@ const ComingSoonPage: React.FC<ComingSoonPageProps> = () => {
 	};
 
 	return (
-		<AuthenicationLayout
+		<AuthenticationLayout
 			LeftComponent={
 				<LeftView isLoading={isLoading} handleSubmit={handleSubmit} />
 			}
