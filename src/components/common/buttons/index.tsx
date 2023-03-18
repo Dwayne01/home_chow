@@ -7,7 +7,6 @@ type IconPosition = "left" | "right";
 
 const Button = ({
 	icon,
-	textColor,
 	label,
 	onClick,
 	iconPosition,
@@ -16,10 +15,8 @@ const Button = ({
 	disabled,
 	id,
 	loading,
-	bgColor,
 }: {
 	icon?: IconType;
-	textColor?: string;
 	type?: "button" | "submit" | "reset";
 	label: string;
 	onClick?: () => void;
@@ -28,43 +25,26 @@ const Button = ({
 	disabled?: boolean;
 	loading?: boolean;
 	id?: string;
-	bgColor?: string;
-}) => (
-	<button
-		type={type}
-		disabled={disabled}
-		onClick={onClick}
-		id={id}
-		className={classNames(
-			"text-xl md:text-2xl text-white p-3",
-			disabled ? "bg-gray-400" : "bg-primary-color",
-			"rounded-[10px] flex justify-center items-center ",
-			textColor || "text-primary-color",
-			"hover:bg-yellow-500 hover:text-white",
-
-			disabled ? "bg-gray-400" : bgColor ? `${bgColor}` : "bg-primary-color",
-			rootClass && rootClass
-		)}
-	>
-		{loading && <Loader size="40px" />}
-
-		{iconPosition === "left" && icon && (
-			<>{React.createElement(icon, { color: textColor })}</>
-		)}
-		{!loading && label && (
-			<span
-				className={classNames(
-					"text-[11pt] md:text-lg mx-2",
-					textColor ? `text-${textColor}` : "text-primary-color"
-				)}
-			>
-				{label}
-			</span>
-		)}
-		{iconPosition === "right" && icon && (
-			<>{React.createElement(icon, { color: textColor })}</>
-		)}
-	</button>
-);
+}) => {
+	const Icon = icon;
+	return (
+		<button
+			type={type}
+			disabled={disabled}
+			onClick={onClick}
+			id={id}
+			className={classNames(
+				rootClass || "",
+				"text-xl p-3 rounded-[10px] flex justify-center items-center hover:bg-primary-color-light hover:text-primary-color hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
+				disabled ? "bg-gray-400" : "bg-primary-color"
+			)}
+		>
+			{loading && <Loader size="40px" />}
+			{iconPosition === "left" && Icon && <Icon />}
+			{!loading && <span>{label}</span>}
+			{iconPosition === "right" && Icon && <Icon />}
+		</button>
+	);
+};
 
 export default Button;
