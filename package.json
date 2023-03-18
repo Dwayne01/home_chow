@@ -16,7 +16,8 @@
 		"cypress:run": "cypress run",
 		"cypress:ci": "start-server-and-test 'yarn dev' 3003 'yarn cypress:run'",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"cypress:ct": "cypress open-ct"
 	},
 	"dependencies": {
 		"@next/font": "13.1.6",
@@ -90,7 +91,7 @@
 		"@storybook/testing-library": "^0.0.13",
 		"@typescript-eslint/eslint-plugin": "^5.50.0",
 		"@typescript-eslint/parser": "^5.50.0",
-		"cypress": "^12.5.1",
+		"cypress": "^12.8.1",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-import": "^2.27.5",
@@ -100,6 +101,7 @@
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-storybook": "^0.6.11",
 		"husky": "^8.0.3",
-		"prettier": "^2.8.3"
+		"prettier": "^2.8.3",
+		"webpack-cli": "^5.0.1"
 	}
 }
