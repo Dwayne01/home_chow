@@ -118,7 +118,6 @@ const SubscribeForm = ({
 					<Button
 						icon={AiOutlineSend}
 						loading={isLoading}
-						textColor="text-white"
 						label={t("subscribe")}
 						disabled={isLoading}
 						type="submit"
@@ -170,7 +169,7 @@ const LeftView = ({
 		<div className="max-w-[700px] m-auto w-full h-full flex flex-col justify-start items-start px-[5%] md:px-0  pt-5">
 			<h1 className="text-4xl text-center md:text-left md:text-7xl font-bold leading-[120%] md:leading-[120%]">
 				{t("Good things come to those who")}
-				<span className="text-primary-color animate-pulse"> {t("Wait")}!</span>
+				<span className="text-primary-color"> {t("Wait")}!</span>
 			</h1>
 			<p className="pt-5  font-normal text-xl text-center md:text-left">
 				{t(
@@ -191,7 +190,6 @@ const LeftView = ({
 						</p>
 					) : (
 						<Button
-							textColor="text-white"
 							label="Notify me when you launch"
 							onClick={() => setIsSubscribeUser(!isSubscribeUser)}
 							rootClass="rounded-lg whitespace-nowrap p-5 w-auto my-10 text-center"
