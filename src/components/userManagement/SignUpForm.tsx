@@ -103,7 +103,7 @@ const SignUpForm = () => {
 						</div>
 						<div className=" mt-6">
 							<Button
-								label={t("Sign In")}
+								label={t("Sign In") || ""}
 								type="submit"
 								rootClass={classNames(
 									"rounded-lg whitespace-nowrap w-full px-3  font-bold text-sm text-white"
