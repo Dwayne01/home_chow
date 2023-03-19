@@ -12,7 +12,7 @@ const IconButton = ({
 }: {
 	icon: IconType;
 	href: string;
-	color: string;
+	color?: string;
 	bgColor?: string;
 	className?: string;
 }) => (

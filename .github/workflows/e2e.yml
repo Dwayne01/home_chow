@@ -3,27 +3,49 @@ name: Cypress Tests
 on: [push]
 
 jobs:
-  cypress-run:
+  e2e:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          build: yarn build
-          start: yarn start
+      - name: Install Dependencies
+        run: yarn install
+      - name: Build App
+        run: yarn build
+      - name: Start App
+        run: yarn start &
+      - name: Wait for App to Start
+        run: |
+          n=0
+          until [ $n -ge 15 ]
+          do
+            curl -I http://localhost:3003 && break
+            n=$((n+1))
+            sleep 1
+          done
+      - name: Run E2E Tests
+        run: yarn cypress:run
+
+  component:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: yarn install
+      - name: Run Component Tests
+        run: yarn run cypress:comp
+
+  artifact:
+    needs: [e2e]
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
       - uses: actions/upload-artifact@v2
-        if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-
-      # Test run video was always captured, so this action uses "always()" condition
       - uses: actions/upload-artifact@v2
-        if: always()
         with:
           name: cypress-videos
           path: cypress/videos
