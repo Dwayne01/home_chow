@@ -19,7 +19,7 @@ const Button = ({
 }: {
 	icon?: IconType;
 	type?: "button" | "submit" | "reset";
-	label?: string;
+	label?: string | "";
 	onClick?: () => void;
 	iconPosition?: IconPosition;
 	rootClass?: string;
