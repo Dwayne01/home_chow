@@ -124,7 +124,7 @@ const SubscribeForm = ({
 					<Button
 						icon={AiOutlineSend}
 						loading={isLoading}
-						label={t("subscribe")}
+						label={t("subscribe") || ""}
 						disabled={isLoading}
 						type="submit"
 						rootClass="rounded-lg font-bold text-white gap-4 col-auto mt-8 w-auto md:w-[210px]"
