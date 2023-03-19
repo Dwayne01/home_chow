@@ -1,16 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import Chart, { ChartConfiguration, ChartType } from "chart.js/auto";
+import Chart, { ChartConfiguration } from "chart.js/auto";
 import { useTranslation } from "next-i18next";
-
-interface ChartsProps {
-	type?: ChartType;
-	chartData: {
-		label: string;
-		count: number;
-		color: string;
-	}[];
-	size?: number;
-}
+import { ChartsProps } from "../types/dashboard";
 
 const Charts: React.FC<ChartsProps> = ({
 	type = "doughnut",
@@ -24,8 +15,8 @@ const Charts: React.FC<ChartsProps> = ({
 
 	useEffect(() => {
 		if (canvasRef.current) {
-			const count = chartData.map((item) => item.count);
-			const color = chartData.map((item) => item.color);
+			const count = chartData.map((item: { count: any }) => item.count);
+			const color = chartData.map((item: { color: any }) => item.color);
 			const config: ChartConfiguration = {
 				type,
 				data: {
@@ -54,22 +45,27 @@ const Charts: React.FC<ChartsProps> = ({
 				<canvas id="myChart" ref={canvasRef} width={size} height={size} />
 			</div>
 			<div className="flex justify-center items-center gap-x-9 flex-wrap mt-8">
-				{chartData.map((item, index) => (
-					<div key={index} className="flex  justify-between items-center gap-2">
-						<span>
-							<svg
-								width="12"
-								height="12"
-								viewBox="0 0 12 12"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<circle cx="6" cy="6" r="6" fill={item.color} />
-							</svg>
-						</span>
-						<span>{t(item.label)}</span>
-					</div>
-				))}
+				{chartData.map(
+					(item: { color: string | undefined; label: any }, index) => (
+						<div
+							key={index}
+							className="flex  justify-between items-center gap-2"
+						>
+							<span>
+								<svg
+									width="12"
+									height="12"
+									viewBox="0 0 12 12"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<circle cx="6" cy="6" r="6" fill={item.color} />
+								</svg>
+							</span>
+							<span>{t(item.label)}</span>
+						</div>
+					)
+				)}
 			</div>
 		</div>
 	);

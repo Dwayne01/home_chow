@@ -1,5 +1,5 @@
 import React from "react";
-import StatisticsList from "@/components/common/Statistics/StatisticsList";
+import StatisticsList from "@/components/Statistics/StatisticsList";
 import { useTranslation } from "next-i18next";
 import { BiPlus } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
@@ -10,28 +10,31 @@ import Carbon from "../../public/assets/svg/Carbon";
 import Activity from "../../public/assets/svg/Activity";
 import Button from "./common/buttons";
 import FoodItem from "./FoodItem";
-import { getRandomColor } from "../utils";
 
 const statistics = [
 	{
 		Icon: <People />,
 		label: "Total Visitors",
 		count: 4230,
+		color: "#DE7548",
 	},
 	{
 		Icon: <Activity />,
 		count: 1000,
 		label: "Total Orders",
+		color: "#E06767",
 	},
 	{
 		Icon: <Bag />,
 		count: 900,
 		label: "Sale",
+		color: "#39A1EA",
 	},
 	{
 		Icon: <Carbon />,
 		count: 2342,
 		label: "Cancelled",
+		color: "#19A589",
 	},
 ];
 
@@ -76,7 +79,7 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 	const chartData = statistics.map((stat) => ({
 		label: stat.label,
 		count: stat.count,
-		color: getRandomColor(),
+		color: stat.color,
 	}));
 
 	return (

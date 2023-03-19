@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { ChartType } from "chart.js/auto";
 
 export interface DashboardLayoutProps {
 	HeaderComponent: ReactNode;
@@ -54,4 +55,14 @@ export interface StatisticsCardProps {
 	Icon: ReactNode;
 	count: number;
 	label: string;
+}
+
+export interface ChartsProps {
+	type?: ChartType;
+	chartData: {
+		label: string;
+		count: number;
+		color: string;
+	}[];
+	size?: number;
 }
