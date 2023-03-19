@@ -15,9 +15,10 @@
 		"cypress:open": "cypress open",
 		"cypress:run": "cypress run",
 		"cypress:ci": "start-server-and-test 'yarn dev' 3003 'yarn cypress:run'",
+		"cypress:ct": "cypress open-ct",
+		"cypress:comp": "cypress run --config video=false --component",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook",
-		"cypress:ct": "cypress open-ct"
+		"build-storybook": "build-storybook"
 	},
 	"dependencies": {
 		"@next/font": "13.1.6",
