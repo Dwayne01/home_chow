@@ -15,6 +15,7 @@ const Button = ({
 	disabled,
 	id,
 	loading,
+	...others
 }: {
 	icon?: IconType;
 	type?: "button" | "submit" | "reset";
@@ -27,6 +28,7 @@ const Button = ({
 	id?: string;
 }) => {
 	const Icon = icon;
+
 	return (
 		<button
 			type={type}
@@ -38,6 +40,7 @@ const Button = ({
 				"text-xl p-3 rounded-[10px] flex justify-center items-center hover:bg-primary-color-light hover:text-primary-color hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
 				disabled ? "bg-gray-400" : "bg-primary-color"
 			)}
+			{...others}
 		>
 			{loading && <Loader data-testid="loading-indicator" size="40px" />}
 			{iconPosition === "left" && Icon && !loading && (

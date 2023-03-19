@@ -1,5 +1,5 @@
-import LeftView from "@/components/layout/LeftView";
-import RightView from "@/components/layout/RightView";
+import LeftView from "@/components/comingsoon/LeftView";
+import RightView from "@/components/comingsoon/RightView";
 import { ResponseStatus } from "@/constants";
 import { useSubscribe } from "@/hooks/useSubscribe";
 import { SubscribeParams } from "@/types/comingsoon";

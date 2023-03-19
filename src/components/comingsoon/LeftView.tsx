@@ -36,7 +36,10 @@ const SubscribeForm = ({
 
 	return (
 		<FormProvider {...form}>
-			<form onSubmit={handleSubmit(handleSubscribeNow)}>
+			<form
+				className="subscribe-form"
+				onSubmit={handleSubmit(handleSubscribeNow)}
+			>
 				<p className="pt-8 text-font-light font-normal text-md text-center md:text-left">
 					{t("chooseOptions")}
 				</p>
@@ -74,6 +77,7 @@ const SubscribeForm = ({
 					<TextField
 						data-testid="signin-email"
 						rootClass="col-auto"
+						id="firstName"
 						name="firstName"
 						label={t("firstName", { ns: "common" })}
 						placeholder="John"
@@ -86,6 +90,7 @@ const SubscribeForm = ({
 					<TextField
 						data-testid="signin-email"
 						rootClass="col-auto"
+						id="lastName"
 						name="lastName"
 						label={t("lastName", { ns: "common" })}
 						placeholder="Doe"
@@ -101,6 +106,7 @@ const SubscribeForm = ({
 					<TextField
 						data-testid="signin-email"
 						rootClass="col-auto"
+						id="email"
 						name="email"
 						label={t("emailAddress", { ns: "common" })}
 						placeholder="example@example.com"
@@ -121,8 +127,9 @@ const SubscribeForm = ({
 						label={t("subscribe")}
 						disabled={isLoading}
 						type="submit"
-						rootClass="rounded-lg font-bold col-auto mt-8 w-auto md:w-[210px]"
+						rootClass="rounded-lg font-bold text-white gap-4 col-auto mt-8 w-auto md:w-[210px]"
 						iconPosition="right"
+						id="notifyMe-btn"
 					/>
 				</div>
 
@@ -171,7 +178,10 @@ const LeftView = ({
 				{t("Good things come to those who")}
 				<span className="text-primary-color"> {t("Wait")}!</span>
 			</h1>
-			<p className="pt-5  font-normal text-xl text-center md:text-left">
+			<p
+				className="pt-5  font-normal text-xl text-center md:text-left"
+				data-testid="coming-soon-msg"
+			>
 				{t(
 					"We're putting the finishing touches on our website and getting ready to launch. Sign up for updates and be the first to know when we go live."
 				)}
@@ -182,7 +192,7 @@ const LeftView = ({
 					{message ? (
 						<p
 							className={classNames(
-								"mt-10 text-lg font-semibold",
+								"success-message mt-10 text-lg font-semibold",
 								messageColor
 							)}
 						>
@@ -190,9 +200,10 @@ const LeftView = ({
 						</p>
 					) : (
 						<Button
+							id="notifyMe-btn"
 							label="Notify me when you launch"
 							onClick={() => setIsSubscribeUser(!isSubscribeUser)}
-							rootClass="rounded-lg whitespace-nowrap p-5 w-auto my-10 text-center"
+							rootClass="subscribe-btn rounded-lg whitespace-nowrap w-auto my-10 font-bold font-base text-white  gap-4"
 							iconPosition="right"
 						/>
 					)}
