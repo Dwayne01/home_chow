@@ -108,7 +108,7 @@ const Label = ({
 		)}
 	>
 		{label}
-		{required && <span className="text-red-500">{" *"}</span>}
+		{required && <span className="text-red">{" *"}</span>}
 		{infoText && <InfoTip text={infoText} />}
 	</label>
 );
@@ -160,7 +160,7 @@ const ErrorLabel = (props: any) => {
 	const { t } = useTranslation();
 
 	return (
-		<small className={`${className} text-red-500`} {...otherProps}>
+		<small className={`${className} text-red`} {...otherProps}>
 			{error &&
 				(error.type === "required" && !error.message
 					? t("thisFieldIsRequired")

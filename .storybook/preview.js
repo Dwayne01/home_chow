@@ -1,10 +1,5 @@
 import "../src/styles/globals.css";
-import * as nextImage from "next/image";
-
-Object.defineProperty(nextImage, "default", {
-	configurable: true,
-	value: (props) => <img {...props} />,
-});
+import { applyTheme } from "@/theme/utils";
 
 export const parameters = {
 	actions: { argTypesRegex: "^on[A-Z].*" },
@@ -15,3 +10,5 @@ export const parameters = {
 		},
 	},
 };
+
+applyTheme();

@@ -1,0 +1,6 @@
+{
+	"message": "An email has been sent to your email address. Please check your inbox and click on the link to reset your password.",
+	"status": "Success",
+	"status_code": 200,
+	"body": null
+}

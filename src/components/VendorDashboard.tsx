@@ -1,6 +1,7 @@
 import React from "react";
 import StatisticsList from "@/components/Statistics/StatisticsList";
 import { useTranslation } from "next-i18next";
+import classNames from "classnames";
 import { BiPlus } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
 import Charts from "./Charts";
@@ -103,13 +104,13 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 			<div className="flex justify-end items-center mt-11 px-7 md:px-0">
 				<Button
 					icon={BiPlus}
-					textColor="primary-color hover:text-white"
-					onClick={() => {}}
-					rootClass="text-xs md:text-sm rounded-[8px] px-[11.5px] bg-primary-color-50  text-primary-color whitespace-nowrap w-auto text-center hover:text-white  font-semibold"
+					label={t("Add Products") || ""}
+					type="submit"
+					rootClass={classNames(
+						"rounded-lg whitespace-nowrap px-3 font-medium text-sm w-fit h-[40px] bg-primary-color-50 text-primary-color hover:bg-primary-dark"
+					)}
 					iconPosition="right"
-				>
-					Add Product
-				</Button>
+				/>
 			</div>
 			<div className="mt-4">
 				<div className="flex flex-wrap gap-[26px]">
