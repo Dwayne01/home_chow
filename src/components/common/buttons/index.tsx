@@ -39,10 +39,14 @@ const Button = ({
 				disabled ? "bg-gray-400" : "bg-primary-color"
 			)}
 		>
-			{loading && <Loader size="40px" />}
-			{iconPosition === "left" && Icon && <Icon />}
+			{loading && <Loader data-testid="loading-indicator" size="40px" />}
+			{iconPosition === "left" && Icon && !loading && (
+				<Icon data-testid={`btn-icon-${iconPosition}`} />
+			)}
 			{!loading && <span>{label}</span>}
-			{iconPosition === "right" && Icon && <Icon />}
+			{iconPosition === "right" && Icon && !loading && (
+				<Icon data-testid={`btn-icon-${iconPosition}`} />
+			)}
 		</button>
 	);
 };
