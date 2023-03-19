@@ -36,4 +36,13 @@
 //   }
 // }
 
+import { mount } from "cypress/react18";
+import { ReactNode } from "react";
+
+Cypress.Commands.add("mount", (component, options) =>
+	// Wrap any parent components needed
+	// ie: return mount(<MyProvider>{component}</MyProvider>, options)
+	mount(component as ReactNode, options)
+);
+
 export {};
