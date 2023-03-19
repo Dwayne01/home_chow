@@ -49,7 +49,7 @@ jobs:
           n=0
           until [ $n -ge 15 ]
           do
-            curl -I http://localhost:3000 && break
+            curl -I http://localhost:3003 && break
             n=$((n+1))
             sleep 1
           done
