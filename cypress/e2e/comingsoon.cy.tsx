@@ -9,15 +9,41 @@ export {};
 */
 
 describe("comingsoon page", () => {
-	it("Should render subscribe form and show success message", () => {
-		// Visit the coming soon page
-		cy.visit("http://localhost:3003/comingsoon");
+	beforeEach(() => {
+		cy.visit("/comingsoon");
+	});
 
-		// Click on the "Notify me when you launch" button
-		cy.get(".subscribe-btn").click();
+	it("Should render the coming soon page", () => {
+		cy.get("#notifyMe-btn").should("be.visible");
+		cy.get("#notifyMe-btn").contains(/Notify me when you launch/i);
+		cy.get("[data-testid='coming-soon-msg']").contains(
+			/We're putting the finishing touches on our website and getting ready to launch. Sign up for updates and be the first to know when we go live./i
+		);
+	});
 
-		// SubscribeForm component should be rendered
-		cy.get(".subscribe-form").should("be.visible");
+	it("Should show subscribe form when notify me botton is clocked", () => {
+		cy.get("#notifyMe-btn").click();
+
+		cy.get(".subscribe-form").contains(/Choose options that applies to you?/i);
+		cy.get(".subscribe-form").contains(/First Name/i);
+		cy.get(".subscribe-form").contains(/Last Name/i);
+		cy.get(".subscribe-form").contains(/Email Address/i);
+	});
+
+	it("Should show subscribe required error when forn is not properly field", () => {
+		cy.get("#notifyMe-btn").click();
+
+		cy.get("#notifyMe-btn").click();
+
+		cy.get(".subscribe-form").contains(/This field is required/i);
+	});
+
+	it("Should show subscribe required error when forn is not properly field", () => {
+		cy.get("#notifyMe-btn").click();
+
+		cy.intercept("POST", "https://homechow.herokuapp.com/subscribe", {
+			fixture: "comingsoon.json",
+		}).as("subscribe");
 
 		// Choose option "I am a customer"
 		cy.get('[type="checkbox"]').check("customer");
@@ -29,7 +55,9 @@ describe("comingsoon page", () => {
 
 		cy.get("#notifyMe-btn").click();
 
-		// Success message should be displayed
-		cy.get(".success-message").should("be.visible");
+		cy.wait("@subscribe").then(() => {
+			// Success message should be displayed
+			cy.get(".success-message").should("be.visible");
+		});
 	});
 });
