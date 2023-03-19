@@ -1,6 +1,9 @@
 import { FaFacebookF } from "react-icons/fa";
+import { applyTheme } from "@/theme/utils";
 import IconButton from "./IconButton";
+import "../../../styles/globals.css";
 
+applyTheme();
 describe("<IconButton />", () => {
 	it("renders with the correct props", () => {
 		const icon = FaFacebookF;
@@ -13,6 +16,7 @@ describe("<IconButton />", () => {
 		);
 
 		cy.get("a").should("have.attr", "href", href);
-		cy.get("a").should("have.class", color).should("have.class", bgColor);
+		cy.get("a").should("have.class", bgColor);
+		cy.get("svg").should("have.attr", "color", color);
 	});
 });
