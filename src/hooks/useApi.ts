@@ -16,7 +16,8 @@ export const useApiQuery = <T>(
 			url: endpoint,
 			...config,
 		});
-		return response.data;
+
+		return response;
 	};
 
 	const swr = useSWR<T>(queryKey ?? url, queryFn ?? fetcher, swrConfig);
