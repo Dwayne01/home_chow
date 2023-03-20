@@ -1,5 +1,5 @@
-import Button from "@/components/common/buttons";
 import { AiOutlineSend } from "react-icons/ai";
+import Button from "../components/common/buttons/index";
 
 export default {
 	component: Button,

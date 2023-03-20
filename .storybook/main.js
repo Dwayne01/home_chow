@@ -1,9 +1,10 @@
 module.exports = {
 	stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
 	addons: [
-		"@storybook/addon-links",
+		"@storybook/addon-docs",
 		"@storybook/addon-essentials",
 		"@storybook/addon-interactions",
+		"storybook-addon-next",
 		{
 			name: "@storybook/addon-postcss",
 			options: {
@@ -12,7 +13,6 @@ module.exports = {
 				},
 			},
 		},
-		"storybook-addon-next",
 	],
 	framework: "@storybook/react",
 	core: {
