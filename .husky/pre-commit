@@ -4,6 +4,6 @@
 
 yarn run prettier:fix
 yarn run lint:fix
-yarn cypress:ci
+yarn cypress:comp
 git add -A
 
