@@ -22,6 +22,7 @@
 	"dependencies": {
 		"@next/font": "13.1.6",
 		"@react-google-maps/api": "^2.12.2",
+		"@storybook/addon-docs": "^6.5.16",
 		"@tailwindcss/forms": "^0.5.3",
 		"@tailwindcss/typography": "^0.5.9",
 		"@types/js-cookie": "^3.0.3",
@@ -41,8 +42,9 @@
 		"js-cookie": "^3.0.1",
 		"next": "13.1.6",
 		"next-i18next": "^13.1.5",
-		"postcss": "latest",
+		"postcss": "^8.4.21",
 		"postcss-import": "^15.1.0",
+		"postcss-loader": "^7.1.0",
 		"react": "18.2.0",
 		"react-datepicker": "^4.8.0",
 		"react-dom": "18.2.0",
@@ -57,6 +59,7 @@
 		"sharp": "^0.31.3",
 		"start-server-and-test": "^1.15.3",
 		"storybook": "^6.5.16",
+		"storybook-addon-next": "^1.7.3",
 		"swr": "^2.0.3",
 		"tailwindcss": "^3.2.4",
 		"typescript": "4.9.4"
