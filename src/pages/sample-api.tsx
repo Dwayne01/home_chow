@@ -23,6 +23,7 @@ const ComponentPage = () => {
 			<MainHeader />
 			<ul className="p-5">
 				{data &&
+					data.results &&
 					data.results.map((pokemon) => (
 						<ol key={pokemon.name}>{pokemon.name}</ol>
 					))}
