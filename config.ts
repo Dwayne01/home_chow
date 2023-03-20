@@ -3,7 +3,7 @@ const staging = {
 	baseUrl: "https://homechow.herokuapp.com",
 	localBaseURL: "https://homechow.herokuapp.com",
 	localApi: true,
-	mockApi: false,
+	mockApi: true,
 	googleClientId: "1234567890",
 };
 
