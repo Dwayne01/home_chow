@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { formatNumber } from "@/utils";
 import { LableProps } from "../../types/dashboard";
 
 const Lable = ({
@@ -16,7 +17,7 @@ const Lable = ({
 		<div className={`flex items-center gap-2 justify-between ${className}`}>
 			{label && <div className="text-sm font-semibold">{label}</div>}
 			<div className="text-sm font-semibold">
-				${visible ? balance : maskedBalance}
+				${visible ? formatNumber(balance) : maskedBalance}
 			</div>
 			<button
 				onClick={onClick}

@@ -46,6 +46,9 @@ export const formateLargeNumber = (number: number) => {
 	return `${Math.floor(number / 1000000000)}B`;
 };
 
+export const formatNumber = (number: number) =>
+	number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+
 export const getTodayDate = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const { t } = useTranslation();
@@ -58,7 +61,7 @@ export const getTodayDate = () => {
 
 export const numberToCurrency = (number: number | string) => {
 	const str = String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	return number > -1 ? `$${str}` : `- $${str.substr(1)}`;
+	return number > -1 ? `$${str}` : ` $${str.substr(1)}`;
 };
 
 export const testCanadianPostalCode = (postalCode: string) => {
@@ -149,3 +152,11 @@ export const convertImgFileToBase64 = (imgData: string) => {
 	const base64Data = Buffer.from(imgData, "binary").toString("base64");
 	return base64Data;
 };
+
+export function getRandomColor(): string {
+	const red = Math.floor(Math.random() * 256);
+	const green = Math.floor(Math.random() * 256);
+	const blue = Math.floor(Math.random() * 256);
+	const color = `rgb(${red}, ${green}, ${blue})`;
+	return color;
+}
