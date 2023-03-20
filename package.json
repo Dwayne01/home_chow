@@ -13,7 +13,7 @@
 		"coverage": "yarn test --coverage --watchAll --collectCoverageFrom=\"src/**/*.{ts,tsx,js,jsx}\"",
 		"prepare": "husky install",
 		"cypress:open": "cypress open",
-		"cypress:run": "cypress run",
+		"cypress:run": "cypress run --config video=false",
 		"cypress:ci": "start-server-and-test 'yarn dev' 3003 'yarn cypress:run'",
 		"cypress:comp": "cypress run --config video=false --component",
 		"storybook": "start-storybook -p 6006",
