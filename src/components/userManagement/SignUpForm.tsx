@@ -4,6 +4,7 @@ import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
 // import { FaFacebook, FaTwitter } from "react-icons/fa";
+import { useRegister } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -11,6 +12,7 @@ import { RegisterPayload } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import { PasswordField, TextField } from "../form/InputField";
+// import { is } from "cypress/types/bluebird";
 
 const SignUpForm = () => {
 	const { t } = useTranslation("authentication");
@@ -24,9 +26,14 @@ const SignUpForm = () => {
 
 	const { handleSubmit, register } = form;
 
-	const handleSubmitForm = (params: RegisterPayload) => {
+	const { mutateAsync, isLoading } = useRegister();
+
+	const handleSubmitForm = async (params: RegisterPayload) => {
+		if (isLoading) return <div>Loading ....</div>;
+		const res = await mutateAsync(params);
 		// eslint-disable-next-line no-console
-		console.log(params);
+		console.log(res);
+		return res;
 	};
 
 	return (
