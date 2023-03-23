@@ -1,22 +1,40 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import CodeInput from "../form/CodeInput";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import Email from "../../../public/assets/icons/icon_email.png";
 import Warning from "../../../public/assets/icons/icon_warning.png";
+import VerificationModal from "../modal/VerificationModal";
 
 const VerificationForm = () => {
 	const { t } = useTranslation("codeVerification");
 	const [code, setCode] = useState<string>("");
 
+	const [mockCode, setMockCode] = useState<any>(t("Check your mail"));
+	const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+	const router = useRouter();
+
 	const userEmail = "Draxier04123@gmail.com";
 	const remainTime = "02:34";
 
 	const handleCodeSubmit = () => {
-		// eslint-disable-next-line no-console
-		console.log(code);
+		if (code === mockCode) {
+			setModalOpen(true);
+		}
+	};
+
+	const handleMockCode = () => {
+		const randomCode = Math.floor(Math.random() * 900000) + 100000;
+		setMockCode(randomCode.toString());
+	};
+
+	const handleCloseModal = () => {
+		setModalOpen(false);
+		router.push("/verification");
 	};
 
 	return (
@@ -29,7 +47,9 @@ const VerificationForm = () => {
 					<Image src={Email} className="icon-email" alt="Icon_Email" />
 				</div>
 				<div className="flex flex-col text-center mt-10">
-					<h2 className="font-semibold text-3xl">{t("Check your mail")}</h2>
+					<button onClick={handleMockCode}>
+						<h2 className="font-semibold text-3xl">{mockCode}</h2>
+					</button>
 					<div className="flex flex-col lg:flex-row gap-1 mt-3">
 						<p className="text-font-light">
 							{t("Please enter the 6 digit code sent to")}{" "}
@@ -68,6 +88,11 @@ const VerificationForm = () => {
 						{t("Resend code in")} {remainTime}
 					</div>
 				</div>
+				{modalOpen && (
+					<VerificationModal onClose={handleCloseModal} isOpen>
+						{t("Your code has been confirmed successfully")}
+					</VerificationModal>
+				)}
 			</div>
 		</div>
 	);
