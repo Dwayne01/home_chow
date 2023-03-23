@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
+import { ResponseStatus } from "@/constants";
 // import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { useRegister } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
@@ -31,9 +32,12 @@ const SignUpForm = () => {
 	const handleSubmitForm = async (params: RegisterPayload) => {
 		if (isLoading) return <div>Loading ....</div>;
 		const res = await mutateAsync(params);
-		// eslint-disable-next-line no-console
-		console.log(res);
-		return res;
+
+		if (res.status === ResponseStatus.SUCCESS) {
+			return res.message;
+		}
+
+		return null;
 	};
 
 	return (
