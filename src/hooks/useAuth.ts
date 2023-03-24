@@ -18,9 +18,6 @@ export const useLogin = () => {
 };
 
 export const useRegister = () => {
-	const res = useApiMutate<RegisterPayload, ApiResponse<null>>(
-		"post",
-		"/signup "
-	);
+	const res = useApiMutate<RegisterPayload, ApiResponse>("post", "/signup ");
 	return res;
 };
