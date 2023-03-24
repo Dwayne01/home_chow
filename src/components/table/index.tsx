@@ -12,7 +12,7 @@ interface TableProps {
 	columns: any[];
 }
 
-export const Table: FC<TableProps> = ({ tableTitle, data, columns }) => {
+const Table: FC<TableProps> = ({ tableTitle, data, columns }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	const tableInstance = useTable(
