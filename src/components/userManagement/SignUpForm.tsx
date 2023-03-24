@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
-import { ResponseStatus } from "@/constants";
 // import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { useRegister } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
@@ -28,17 +27,10 @@ const SignUpForm = () => {
 
 	const { handleSubmit, register } = form;
 
-	const { mutateAsync, isLoading } = useRegister();
+	const { mutateAsync } = useRegister();
 
 	const handleSubmitForm = async (params: RegisterPayload) => {
-		if (isLoading) return <div>Loading ....</div>;
-		const res = await mutateAsync(params);
-		if (res.status === ResponseStatus.SUCCESS) {
-			return res.message;
-			// redirect('/verification')
-		}
-
-		return null;
+		await mutateAsync(params);
 	};
 
 	return (
