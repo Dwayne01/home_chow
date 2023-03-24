@@ -31,6 +31,7 @@ const ComingSoonPage: React.FC<ComingSoonPageProps> = () => {
 				<LeftView isLoading={isLoading} handleSubmit={handleSubmit} />
 			}
 			RightComponent={<RightView />}
+			rightComponentClassName="hidden md:flex"
 		/>
 	);
 };

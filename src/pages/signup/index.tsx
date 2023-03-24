@@ -8,6 +8,7 @@ const SignUpPage = () => (
 		LeftComponent={<Onboarding />}
 		RightComponent={<SignUpForm />}
 		width="md:min-w-1/2"
+		leftComponentClassName="hidden md:flex"
 	/>
 );
 
