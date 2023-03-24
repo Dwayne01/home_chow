@@ -170,7 +170,10 @@ const VendorDashboard = ({ vendorName = "Django" }) => {
 							{bestSellingItems.map((item) => (
 								<FoodItem
 									key={item.id}
-									{...{ item, className: "w-[250px] bg-white p-1 rounded-lg" }}
+									{...{
+										item,
+										className: "w-[250px] bg-white p-1 rounded-lg border",
+									}}
 								/>
 							))}
 						</div>
