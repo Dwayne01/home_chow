@@ -11,11 +11,11 @@ import Button from "@/components/common/buttons";
 import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
-import { LoginPayload } from "@/types/auth";
+import { GoogleOAuthFunctions, LoginPayload } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
-const LoginForm = () => {
+const LoginForm = ({ handleGoogleSignIn }: GoogleOAuthFunctions) => {
 	const { t } = useTranslation("authentication");
 
 	const form = useForm({
@@ -107,6 +107,7 @@ const LoginForm = () => {
 						label="Sign in with Google"
 						icon={FcGoogle}
 						rootClass=" justify-start"
+						onClick={handleGoogleSignIn}
 					/>
 					{/* <WideIconButton
 						label="Sign in with Facebook"

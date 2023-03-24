@@ -39,6 +39,7 @@
 		"eslint-config-next": "13.1.6",
 		"eslint-plugin-cypress": "^2.12.1",
 		"eslint-plugin-testing-library": "^5.10.0",
+		"firebase": "^9.18.0",
 		"html-webpack-plugin": "^5.5.0",
 		"i18next": "^22.4.10",
 		"js-cookie": "^3.0.1",
