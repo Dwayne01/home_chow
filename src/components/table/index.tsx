@@ -7,7 +7,7 @@ import Previous from "../../../public/assets/icons/Previous.png";
 import Next from "../../../public/assets/icons/Next.png";
 
 interface TableProps {
-	tableTitle: string;
+	tableTitle?: string;
 	data: any[];
 	columns: any[];
 }
@@ -49,9 +49,9 @@ const Table: FC<TableProps> = ({ tableTitle, data, columns }) => {
 
 	return (
 		<div className="px-10">
-			<p className="pb-12 pt-8">{tableTitle}</p>
-			<table {...getTableProps()} className="min-w-full">
-				<thead className="border-b-2 border-gray-50/[1]">
+			{tableTitle && <h4 className="pb-12 pt-8">{tableTitle}</h4>}
+			<table {...getTableProps()} className="min-w-full border ">
+				<thead className="border-b-2 border-gray-50/[1] ">
 					{headerGroups.map((headerGroup) => (
 						<tr {...headerGroup.getHeaderGroupProps()}>
 							{headerGroup.headers.map((column) => (
