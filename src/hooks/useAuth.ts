@@ -12,7 +12,7 @@ export interface AuthApiResult {
 }
 
 export const useLogin = () => {
-	const res = useApiMutate<LoginPayload, AuthApiResult>("post", "/auth/login");
+	const res = useApiMutate<LoginPayload, AuthApiResult>("post", "/login");
 
 	return res;
 };
