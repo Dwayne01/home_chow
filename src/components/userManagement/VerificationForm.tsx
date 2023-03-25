@@ -2,12 +2,15 @@ import { useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import classNames from "classnames";
 import CodeInput from "../form/CodeInput";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import Email from "../../../public/assets/icons/icon_email.png";
 import Warning from "../../../public/assets/icons/icon_warning.png";
 import VerificationModal from "../modal/VerificationModal";
+import Button from "../common/buttons";
+import CodeTimer from "../timer/CodeTimer";
 
 const VerificationForm = () => {
 	const { t } = useTranslation("codeVerification");
@@ -15,11 +18,11 @@ const VerificationForm = () => {
 
 	const [mockCode, setMockCode] = useState<any>(t("Check your mail"));
 	const [modalOpen, setModalOpen] = useState<boolean>(false);
+	const [showTimer, setShowTimer] = useState<boolean>(false);
 
 	const router = useRouter();
 
 	const userEmail = "Draxier04123@gmail.com";
-	const remainTime = "02:34";
 
 	const handleCodeSubmit = () => {
 		if (code === mockCode) {
@@ -35,6 +38,10 @@ const VerificationForm = () => {
 	const handleCloseModal = () => {
 		setModalOpen(false);
 		router.push("/verification");
+	};
+
+	const handleShowTimer = () => {
+		setShowTimer(true);
 	};
 
 	return (
@@ -78,15 +85,29 @@ const VerificationForm = () => {
 					<p>{t("Didnt get the code")}?</p>
 				</div>
 				<div className="mb-4 flex flex-row items-center gap-3 justify-center">
-					<Image
-						src={Warning}
-						width={40}
-						className="icon-warning"
-						alt="Icon_Warning"
-					/>
-					<div className="text-font-light">
-						{t("Resend code in")} {remainTime}
-					</div>
+					{!showTimer ? (
+						<Button
+							type="button"
+							label={t("Resend Code") || ""}
+							rootClass={classNames(
+								"text-black text-gray-50 bg-white border-[1px] border-border-color rounded-[48px] text-[10pt] px-[12px] py-[4px]"
+							)}
+							onClick={handleShowTimer}
+						/>
+					) : (
+						<>
+							<Image
+								src={Warning}
+								width={40}
+								className="icon-warning"
+								alt="Icon_Warning"
+							/>
+							<div className="text-font-light flex gap-1">
+								{t("Resend code in")}
+								<CodeTimer duration={300} />
+							</div>
+						</>
+					)}
 				</div>
 				{modalOpen && (
 					<VerificationModal onClose={handleCloseModal} isOpen>
