@@ -41,10 +41,10 @@ const WideIconButton = ({
 		onClick={onClick}
 		id={id}
 		className={classNames(
-			"px-[10px] py-[16px] gap-[12px] flex justify-center items-center text-base leading-6 border",
+			"px-[10px] py-[16px] gap-[12px] flex justify-center items-center leading-6 border font-medium",
 			width || "w-[360px]",
 			height || "h-[44px]",
-			fontSize || "font-medium",
+			fontSize || "text-base",
 			textColor || "text-grey-dark",
 			bgColor || "bg-white",
 			borderColor || "border-border-color",

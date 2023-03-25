@@ -109,7 +109,7 @@ const VerificationForm = () => {
 							label={t("Resend Code") || ""}
 							width="w-[125px]"
 							height="h-[24px]"
-							fontSize="text-[13px]"
+							fontSize="text-[10pt]"
 							borderRound="rounded-[48px]"
 							rootClass={classNames(
 								"text-black text-gray-50 bg-white border-[1px] border-border-color"
