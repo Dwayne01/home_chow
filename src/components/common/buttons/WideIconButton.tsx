@@ -9,10 +9,14 @@ const WideIconButton = ({
 	textColor,
 	bgColor,
 	borderColor,
+	borderRound,
 	onClick,
 	rootClass,
 	disabled,
 	id,
+	width,
+	height,
+	fontSize,
 	type = "button",
 }: {
 	label: string;
@@ -21,10 +25,14 @@ const WideIconButton = ({
 	textColor?: string;
 	bgColor?: string;
 	borderColor?: string;
+	borderRound?: string;
 	onClick?: () => void;
 	rootClass?: string;
 	disabled?: boolean;
 	id?: string;
+	width?: string;
+	height?: string;
+	fontSize?: string;
 	type?: "button" | "submit";
 }) => (
 	<button
@@ -33,10 +41,14 @@ const WideIconButton = ({
 		onClick={onClick}
 		id={id}
 		className={classNames(
-			"w-[360px] h-[44px] px-[10px] py-[16px] gap-[12px] flex justify-center items-center text-base leading-6 border rounded-[8px] font-medium",
+			"px-[10px] py-[16px] gap-[12px] flex justify-center items-center text-base leading-6 border",
+			width || "w-[360px]",
+			height || "h-[44px]",
+			fontSize || "font-medium",
 			textColor || "text-grey-dark",
 			bgColor || "bg-white",
 			borderColor || "border-border-color",
+			borderRound || "rounded-[8px]",
 			rootClass || "",
 			icon
 				? "drop-shadow-[0_1px_2px_rgba(16,24,40,0.05)]"

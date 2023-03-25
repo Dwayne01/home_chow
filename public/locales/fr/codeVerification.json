@@ -4,5 +4,7 @@
   "Resend code in": "Renvoyer le code dans",
   "Confirm code": "Confirmer le code",
   "Didnt get the code": "N'as-tu pas reçu le code",
-  "Your code has been confirmed successfully": "Votre code a été confirmé avec succès"
+  "Your code has been confirmed successfully": "Votre code a été confirmé avec succès",
+  "Loading": "Chargement",
+  "Your code confirmation has failed": "La confirmation de votre code a échoué"
 }
