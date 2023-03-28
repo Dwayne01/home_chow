@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
+
+const CardList = ({ items }: { items: string[] }) => (
+	<ul className="mt-2">
+		{items.map((item, index) => (
+			<li key={index} className="p-2 border-b last:border-0">
+				{item}
+			</li>
+		))}
+	</ul>
+);
 
 const AccordionItem = ({
 	title,
 	content,
+	cardList,
 }: {
 	title: string;
 	content: string;
+	cardList: string[];
 }) => {
 	const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
@@ -29,7 +41,12 @@ const AccordionItem = ({
 					<MdKeyboardArrowDown size={25} />
 				</div>
 			</button>
-			{isExpanded && <div className="px-4 pb-2">{content}</div>}
+			{isExpanded && (
+				<div className="px-4 pb-2">
+					{content}
+					{cardList && <CardList items={cardList} />}
+				</div>
+			)}
 		</div>
 	);
 };
@@ -40,11 +57,17 @@ const Accordion = ({
 	items: {
 		title: string;
 		content: string;
+		cardList: string[];
 	}[];
 }) => (
 	<div className="w-1/2 border rounded-md overflow-hidden">
 		{items.map((item, index) => (
-			<AccordionItem key={index} title={item.title} content={item.content} />
+			<AccordionItem
+				key={index}
+				title={item.title}
+				content={item.content}
+				cardList={item.cardList}
+			/>
 		))}
 	</div>
 );

@@ -60,6 +60,7 @@ const ComponentPage = () => {
 			title: "Whit Stew",
 			content:
 				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
+			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
 		},
 	];
 
@@ -144,7 +145,8 @@ const ComponentPage = () => {
 			</div>
 
 			{/* Accordion */}
-			<div className="flex justify-center gap-5">
+			<div className="flex flex-col justify-center items-center gap-5 my-5">
+				<h1>Accordion</h1>
 				<Accordion items={items} />
 			</div>
 
