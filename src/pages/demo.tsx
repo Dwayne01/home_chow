@@ -27,6 +27,7 @@ import Footer from "@/components/footer/Footer";
 import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Button from "../components/common/buttons";
+import Accordion from "../components/accordion";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -54,6 +55,14 @@ const ComponentPage = () => {
 		</div>
 	);
 
+	const items = [
+		{
+			title: "Whit Stew",
+			content:
+				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
+		},
+	];
+
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = () => {};
@@ -61,7 +70,6 @@ const ComponentPage = () => {
 	return (
 		<div>
 			<MainHeader />
-
 			<Countdown />
 			<div className="flex justify-center gap-5">
 				<IconButton icon={FaFacebookF} color="text-primary-color" href="" />
@@ -131,10 +139,16 @@ const ComponentPage = () => {
 					handleClick={() => setSelectedValue("driver")}
 				/>
 			</div>
-			<div className="h-96">
+			<div className="h-96 mt-10">
 				<Slider description={description} slides={images} />
 			</div>
 
+			{/* Accordion */}
+			<div className="flex justify-center gap-5">
+				<Accordion items={items} />
+			</div>
+
+			{/* Form */}
 			<FormProvider {...form}>
 				<form onSubmit={handleSubmit(handleSubmitForm)}>
 					<div className="p-10">
@@ -221,6 +235,7 @@ const ComponentPage = () => {
 					</div>
 				</form>
 			</FormProvider>
+
 			<h1>Footer</h1>
 			<Footer footerColor="dark" />
 		</div>
