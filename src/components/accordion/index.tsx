@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import WideIconButton from "../common/buttons/WideIconButton";
 
 const CardList = ({ items }: { items: string[] }) => (
-	<ul className="mt-2">
+	<ul className="flex flex-col gap-2 my-5">
 		{items.map((item, index) => (
-			<li key={index} className="p-2 border-b last:border-0">
+			<li
+				key={index}
+				className="px-8 py-4 border border-gray-300 rounded-lg shadow-md"
+			>
 				{item}
 			</li>
 		))}
@@ -42,9 +46,18 @@ const AccordionItem = ({
 				</div>
 			</button>
 			{isExpanded && (
-				<div className="px-4 pb-2">
-					{content}
-					{cardList && <CardList items={cardList} />}
+				<div>
+					<div className="px-4 pb-2 overflow-y-auto max-h-64">
+						{content}
+						{cardList && <CardList items={cardList} />}
+					</div>
+					<div className="flex justify-center my-5">
+						<WideIconButton
+							label="Add to cart"
+							bgColor="bg-primary-color"
+							textColor="text-white"
+						/>
+					</div>
 				</div>
 			)}
 		</div>

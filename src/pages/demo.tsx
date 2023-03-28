@@ -55,6 +55,7 @@ const ComponentPage = () => {
 		</div>
 	);
 
+	// Text items for testing accordion component
 	const items = [
 		{
 			title: "Whit Stew",
