@@ -141,7 +141,7 @@ const TextAreaInputComponent = (props: any, ref: any) => {
 		<textarea
 			id={inputProps.name}
 			data-testid={inputProps.name}
-			className={`border-sand border-2 placeholder:text-stone block px-3 py-2 rounded w-full bg-white ${
+			className={`border-sand border-2 placeholder:text-stone block px-3 py-2 rounded w-full ${
 				hasError ? "border-arbutus" : "border-sand"
 			} text-gray-900 ${
 				hasError ? "focus:border-arbutus" : "focus:border-primary-color"

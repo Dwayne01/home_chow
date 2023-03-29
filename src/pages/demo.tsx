@@ -28,6 +28,7 @@ import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Button from "../components/common/buttons";
 import Accordion from "../components/accordion";
+import foodImage from "../../public/assets/images/food.jpg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -62,6 +63,7 @@ const ComponentPage = () => {
 			content:
 				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
 			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
+			image: foodImage,
 		},
 	];
 
