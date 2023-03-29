@@ -14,7 +14,7 @@ import { PasswordField, TextField } from "../form/InputField";
 const SignUpForm = ({
 	handleSignup,
 }: {
-	handleSignup: (params: any) => Promise<boolean>;
+	handleSignup: (params: RegisterPayload) => Promise<boolean>;
 }) => {
 	const { t } = useTranslation("authentication");
 	const form = useForm({
