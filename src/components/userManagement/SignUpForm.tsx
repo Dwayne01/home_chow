@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
-// import { FaFacebook, FaTwitter } from "react-icons/fa";
-import { useRegister } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -13,9 +11,11 @@ import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import { PasswordField, TextField } from "../form/InputField";
 
-// import { is } from "cypress/types/bluebird";
-
-const SignUpForm = () => {
+const SignUpForm = ({
+	handleSignup,
+}: {
+	handleSignup: (params: any) => Promise<boolean>;
+}) => {
 	const { t } = useTranslation("authentication");
 	const form = useForm({
 		defaultValues: {
@@ -27,10 +27,8 @@ const SignUpForm = () => {
 
 	const { handleSubmit, register } = form;
 
-	const { mutateAsync } = useRegister();
-
 	const handleSubmitForm = async (params: RegisterPayload) => {
-		await mutateAsync(params);
+		await handleSignup(params);
 	};
 
 	return (
