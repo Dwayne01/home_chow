@@ -8,6 +8,7 @@ const LoginPage = () => (
 		LeftComponent={<Onboarding />}
 		RightComponent={<LoginForm />}
 		width="md:min-w-1/2"
+		leftComponentClassName="hidden md:flex"
 	/>
 );
 
