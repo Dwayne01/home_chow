@@ -8,14 +8,18 @@ const AuthenticationLayout = ({
 	className,
 	LeftComponent,
 	RightComponent,
+	rightComponentClassName,
+	leftComponentClassName,
 	width = "md:min-w-[800px]",
 }: ComingSoonLayoutProps): ReactElement => {
 	const route = useRouter();
 	return (
 		<div className="w-full h-screen flex flex-col">
-			<div className="mt-2 mb-5">
-				{route.pathname === "/comingsoon" && <ComingSoonHeader />}
-			</div>
+			{route.pathname === "/coming-soon" && (
+				<div className="mt-2 mb-5">
+					<ComingSoonHeader />
+				</div>
+			)}
 			<div
 				className={classNames(
 					"w-full",
@@ -24,10 +28,12 @@ const AuthenticationLayout = ({
 					className
 				)}
 			>
-				<div className={classNames("flex-1 w-full", width)}>
+				<div
+					className={classNames("flex-1 w-full", width, leftComponentClassName)}
+				>
 					{LeftComponent && LeftComponent}
 				</div>
-				<div className="hidden flex-1 w-full md:flex">
+				<div className={classNames(" flex-1 w-full ", rightComponentClassName)}>
 					{RightComponent && RightComponent}
 				</div>
 			</div>

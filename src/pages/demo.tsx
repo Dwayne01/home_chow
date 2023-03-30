@@ -148,7 +148,7 @@ const ComponentPage = () => {
 			</div>
 
 			{/* Accordion */}
-			<div className="flex flex-col justify-center items-center gap-5 my-5">
+			<div className="flex flex-col justify-center items-center gap-5 mx-10 my-5">
 				<h1>Accordion</h1>
 				<Accordion items={items} />
 			</div>

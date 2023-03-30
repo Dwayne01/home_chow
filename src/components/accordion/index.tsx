@@ -11,7 +11,7 @@ const CardList = ({ items }: { items: string[] }) => (
 		{items.map((item, index) => (
 			<li
 				key={index}
-				className="px-8 py-4 border border-gray-border opacity-60 rounded-lg shadow-md"
+				className="px-8 py-6 border border-gray-border opacity-60 rounded-lg shadow-md"
 			>
 				{item}
 			</li>
@@ -70,7 +70,7 @@ const AccordionItem = ({
 			</button>
 			{isExpanded && (
 				<div className="my-4">
-					<div className="px-4 pb-2 mx-2 overflow-y-auto max-h-64">
+					<div className="px-4 pb-2 mx-2 overflow-y-auto max-h-96">
 						<div className="mb-4">{content}</div>
 						<div>{cardList && <CardList items={cardList} />}</div>
 						<div>
@@ -113,7 +113,7 @@ const Accordion = ({
 		image: any;
 	}[];
 }) => (
-	<div className="w-1/2 border rounded-md overflow-hidden">
+	<div className="w-full border rounded-md overflow-hidden">
 		{items.map((item, index) => (
 			<AccordionItem
 				key={index}

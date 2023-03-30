@@ -20,7 +20,7 @@ const Onboarding = () => {
 		</div>
 	);
 	return (
-		<div className="flex flex-col bg-onboarding-color w-full">
+		<div className="flex-1 flex  flex-col bg-onboarding-color w-full">
 			<div className="w-32 p-5">
 				<LanguageSwitcher />
 			</div>
