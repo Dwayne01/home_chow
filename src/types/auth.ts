@@ -10,3 +10,8 @@ export interface RegisterPayload {
 	email: string;
 	password: string;
 }
+
+export interface GoogleOAuthFunctions {
+	handleGoogleSignUp?: () => void;
+	handleGoogleSignIn?: () => void;
+}
