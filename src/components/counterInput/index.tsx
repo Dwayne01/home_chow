@@ -21,7 +21,11 @@ const CounterInput = ({
 }) => {
 	const [value, setValue] = useState<number>(startValue);
 
-	const handleDecrement = () => setValue(value - 1);
+	const handleDecrement = () => {
+		if (value >= 2) {
+			setValue(value - 1);
+		}
+	};
 	const handleIncrement = () => setValue(value + 1);
 
 	return (
