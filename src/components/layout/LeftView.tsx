@@ -30,7 +30,12 @@ const SubscribeForm = ({
 	const { handleSubmit, register } = form;
 
 	const handleSubscribeNow = (data: SubscribeParams) => {
-		handleSubmitForm({ ...data, userType: selectedUserType });
+		const { firstName, lastName, email } = data;
+		handleSubmitForm({
+			userType: selectedUserType,
+			name: `${firstName} ${lastName}`,
+			email,
+		});
 	};
 
 	return (

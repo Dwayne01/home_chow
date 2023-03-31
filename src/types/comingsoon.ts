@@ -4,6 +4,7 @@ export interface SubscribeParams {
 	email: string;
 	firstName: string;
 	lastName: string;
+	name?: string;
 	userType: "driver" | "customer" | "vendor";
 }
 
