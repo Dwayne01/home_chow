@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classNames from "classnames";
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
 
 const CounterInput = ({
 	startValue,
+	price,
+	setUpdatedTotalPrice,
 	width,
 	labelColor,
 	leftButtonColor,
@@ -12,6 +14,8 @@ const CounterInput = ({
 	rightButtonIconColor,
 }: {
 	startValue: number;
+	price: number;
+	setUpdatedTotalPrice: (updatedTotalPrice: number) => void;
 	width?: string;
 	labelColor?: string;
 	leftButtonColor?: string;
@@ -26,7 +30,14 @@ const CounterInput = ({
 			setValue(value - 1);
 		}
 	};
-	const handleIncrement = () => setValue(value + 1);
+	const handleIncrement = () => {
+		setValue(value + 1);
+	};
+
+	useEffect(() => {
+		const totalPrice = price * value;
+		setUpdatedTotalPrice(totalPrice);
+	}, [value, price, setUpdatedTotalPrice]);
 
 	return (
 		<div

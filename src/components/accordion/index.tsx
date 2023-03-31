@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
 import Image from "next/image";
 import { MdKeyboardArrowDown } from "react-icons/md";
@@ -23,7 +24,7 @@ const CardList = ({ items }: { items: string[] }) => {
 						value={item}
 						isChecked={selectedUserChoice === item}
 						handleClick={() => setSelectedUserChoice(item)}
-						className="flex justify-between items-center px-8 py-6 border border-gray-border opacity-60 rounded-lg shadow-md"
+						className="flex justify-between items-center px-8 py-6 border border-gray-border rounded-lg shadow-md"
 					/>
 				</li>
 			))}
@@ -33,16 +34,21 @@ const CardList = ({ items }: { items: string[] }) => {
 
 const AccordionItem = ({
 	title,
+	price,
 	content,
 	cardList,
 	image,
 }: {
 	title: string;
+	price: number;
 	content: string;
 	cardList: string[];
 	image: HTMLImageElement;
 }) => {
 	const [isExpanded, setIsExpanded] = useState<boolean>(false);
+	const [updatedTotalPrice, setUpdatedTotalPrice] = useState<number>();
+
+	const { t } = useTranslation("common");
 
 	const form = useForm({
 		defaultValues: {},
@@ -70,7 +76,10 @@ const AccordionItem = ({
 						alt="image"
 						style={{ borderRadius: "10px" }}
 					/>
-					<div className="font-bold">{title}</div>
+					<div className="flex flex-col gap-1 text-left">
+						<div className="font-bold">{title}</div>
+						<div className="text-primary-color">${price}</div>
+					</div>
 				</div>
 				<div
 					className={`w-4 h-4 m-4 transition-transform transform ${
@@ -92,19 +101,23 @@ const AccordionItem = ({
 										ref={register()}
 										className="px-4 py-4 rounded-[8px] h-[200px] bg-gray-textArea"
 										name="instructionToRestaurant"
-										placeholder="Add special instructions to restaurants..."
+										placeholder={t("Add special instructions to restaurants")}
 										autoComplete="username"
 									/>
 								</form>
 							</FormProvider>
 						</div>
 						<div className="flex justify-center mt-10">
-							<CounterInput startValue={1} />
+							<CounterInput
+								startValue={1}
+								price={price}
+								setUpdatedTotalPrice={setUpdatedTotalPrice}
+							/>
 						</div>
 					</div>
 					<div className="flex justify-center my-10">
 						<WideIconButton
-							label="Add to cart"
+							label={`Add to cart - $${updatedTotalPrice}`}
 							bgColor="bg-primary-color"
 							textColor="text-white"
 						/>
@@ -120,6 +133,7 @@ const Accordion = ({
 }: {
 	items: {
 		title: string;
+		price: number;
 		content: string;
 		cardList: string[];
 		image: any;
@@ -130,6 +144,7 @@ const Accordion = ({
 			<AccordionItem
 				key={index}
 				title={item.title}
+				price={item.price}
 				content={item.content}
 				cardList={item.cardList}
 				image={item.image}

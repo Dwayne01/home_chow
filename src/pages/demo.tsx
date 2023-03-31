@@ -59,7 +59,8 @@ const ComponentPage = () => {
 	// Text items for testing accordion component
 	const items = [
 		{
-			title: "Whit Stew",
+			title: "White Stew",
+			price: 10,
 			content:
 				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
 			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
