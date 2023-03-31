@@ -4,10 +4,20 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import LoginForm from "@/components/userManagement/LoginForm";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../../firebase";
+import { useLogin } from "@/hooks/useAuth";
 
 const LoginPage = () => {
-	// Google Authentication
-	const handleGoogleSignIn = () => {
+	const { mutateAsync, isLoading } = useLogin();`
+
+	const handleLogin = async (params: any) => {
+		const res = await mutateAsync(params);
+
+		if (res.status === "Success") return true;
+
+		return false;
+	};
+  
+  const handleGoogleSignIn = () => {
 		const provider = new GoogleAuthProvider();
 		signInWithPopup(auth, provider)
 			.then((result) => {
@@ -24,12 +34,14 @@ const LoginPage = () => {
 	return (
 		<AuthenticationLayout
 			LeftComponent={<Onboarding />}
-			RightComponent={<LoginForm handleGoogleSignIn={handleGoogleSignIn} />}
+			RightComponent={
+				<LoginForm   handleGoogleSignIn={handleGoogleSignIn} isLoading={isLoading} handleLogin={handleLogin} />
+			}
 			width="md:min-w-1/2"
+			leftComponentClassName="hidden md:flex"
 		/>
 	);
 };
-
 export default LoginPage;
 
 export async function getStaticProps({ locale }: { locale: string }) {

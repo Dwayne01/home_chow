@@ -15,7 +15,15 @@ import { GoogleOAuthFunctions, LoginPayload } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
-const LoginForm = ({ handleGoogleSignIn }: GoogleOAuthFunctions) => {
+const LoginForm = ({
+	handleLogin,
+	isLoading,
+  handleGoogleSignIn,
+}: {
+  handleGoogleSignIn: GoogleOAuthFunctions
+	isLoading: boolean;
+	handleLogin: (params: LoginPayload) => Promise<boolean>;
+}) => {
 	const { t } = useTranslation("authentication");
 
 	const form = useForm({
@@ -28,9 +36,8 @@ const LoginForm = ({ handleGoogleSignIn }: GoogleOAuthFunctions) => {
 
 	const { handleSubmit, register } = form;
 
-	const handleSubmitForm = (params: LoginPayload) => {
-		// eslint-disable-next-line no-console
-		console.log(params);
+	const handleSubmitForm = async (params: LoginPayload) => {
+		await handleLogin(params);
 	};
 
 	return (
@@ -89,8 +96,9 @@ const LoginForm = ({ handleGoogleSignIn }: GoogleOAuthFunctions) => {
 							<Button
 								label={t("Sign In") || ""}
 								type="submit"
+								loading={isLoading}
 								rootClass={classNames(
-									"rounded-lg whitespace-nowrap w-full px-3  font-bold text-sm text-white"
+									"rounded-lg whitespace-nowrap w-full px-3 font-bold text-sm text-white"
 								)}
 								iconPosition="right"
 							/>
