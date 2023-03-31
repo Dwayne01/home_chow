@@ -1,27 +1,72 @@
 import { useState } from "react";
+import classNames from "classnames";
 import { HiOutlineMinus, HiOutlinePlus } from "react-icons/hi";
 
-const CounterInput = ({ startValue }: { startValue: number }) => {
+const CounterInput = ({
+	startValue,
+	width,
+	labelColor,
+	leftButtonColor,
+	rightButtonColor,
+	leftButtonIconColor,
+	rightButtonIconColor,
+}: {
+	startValue: number;
+	width?: string;
+	labelColor?: string;
+	leftButtonColor?: string;
+	rightButtonColor?: string;
+	leftButtonIconColor?: string;
+	rightButtonIconColor?: string;
+}) => {
 	const [value, setValue] = useState<number>(startValue);
 
 	const handleDecrement = () => setValue(value - 1);
 	const handleIncrement = () => setValue(value + 1);
 
 	return (
-		<div className="flex items-center space-x-2">
-			<button
-				className="p-2 text-gray-500 hover:text-gray-600"
-				onClick={handleDecrement}
+		<div
+			className={classNames(
+				"flex justify-center items-center space-x-2 p-2 gap-7 relative h-14 rounded-full",
+				width || "w-[260px]",
+				labelColor || "bg-gray-textArea"
+			)}
+		>
+			<div
+				className={classNames(
+					"flex justify-center items-center w-14 h-14 rounded-full left-0 absolute",
+					leftButtonColor || "bg-yellow-button"
+				)}
 			>
-				<HiOutlineMinus />
-			</button>
-			<div className="w-12 text-center">{value}</div>
-			<button
-				className="p-2 text-gray-500 hover:text-gray-600"
-				onClick={handleIncrement}
+				<button
+					onClick={handleDecrement}
+					className={classNames(
+						"p-2 text-2xl",
+						leftButtonIconColor || "text-primary-color"
+					)}
+				>
+					<HiOutlineMinus />
+				</button>
+			</div>
+
+			<div className="text-center">{value}</div>
+
+			<div
+				className={classNames(
+					"flex justify-center items-center w-14 h-14 rounded-full right-0 absolute",
+					rightButtonColor || "bg-primary-color"
+				)}
 			>
-				<HiOutlinePlus />
-			</button>
+				<button
+					onClick={handleIncrement}
+					className={classNames(
+						"p-2 text-2xl",
+						rightButtonIconColor || "text-white"
+					)}
+				>
+					<HiOutlinePlus />
+				</button>
+			</div>
 		</div>
 	);
 };

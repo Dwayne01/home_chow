@@ -73,7 +73,7 @@ const AccordionItem = ({
 					<div className="px-4 pb-2 mx-2 overflow-y-auto max-h-96">
 						<div className="mb-4">{content}</div>
 						<div>{cardList && <CardList items={cardList} />}</div>
-						<div>
+						<div className="mb-10">
 							<FormProvider {...form}>
 								<form onSubmit={handleSubmit(handleSubmitForm)}>
 									<TextAreaField
@@ -86,11 +86,11 @@ const AccordionItem = ({
 								</form>
 							</FormProvider>
 						</div>
-						<div className="flex justify-center my-8">
+						<div className="flex justify-center mt-10">
 							<CounterInput startValue={0} />
 						</div>
 					</div>
-					<div className="flex justify-center my-5">
+					<div className="flex justify-center my-10">
 						<WideIconButton
 							label="Add to cart"
 							bgColor="bg-primary-color"
