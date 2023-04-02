@@ -111,7 +111,7 @@ const SignUpForm = () => {
 						<div className=" mt-6">
 							<Button
 								onClick={() => {
-									router.push("/login");
+									router.push("/verification");
 								}}
 								label={t("Sign In") || ""}
 								type="submit"

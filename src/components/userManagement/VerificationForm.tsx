@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import CodeInput from "../form/CodeInput";
 import WideIconButton from "../common/buttons/WideIconButton";
@@ -8,6 +9,8 @@ import Email from "../../../public/assets/icons/icon_email.png";
 import Warning from "../../../public/assets/icons/icon_warning.png";
 
 const VerificationForm = () => {
+	const router = useRouter();
+
 	const { t } = useTranslation("codeVerification");
 	const [code, setCode] = useState<string>("");
 
@@ -15,8 +18,7 @@ const VerificationForm = () => {
 	const remainTime = "02:34";
 
 	const handleCodeSubmit = () => {
-		// eslint-disable-next-line no-console
-		console.log(code);
+		router.push("/login");
 	};
 
 	return (
