@@ -6,6 +6,7 @@ import {
 	TextField,
 } from "@/components/form/InputField";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
 import { useLogin } from "@/hooks/useAuth";
@@ -26,6 +27,8 @@ const LoginForm = () => {
 			rememberMe: false,
 		},
 	});
+
+	const router = useRouter();
 
 	const { handleSubmit, register } = form;
 
@@ -89,6 +92,7 @@ const LoginForm = () => {
 						</div>
 						<div className=" mt-6">
 							<Button
+								onClick={() => router.push("/dashboard")}
 								label={t("Sign In") || ""}
 								type="submit"
 								rootClass={classNames(

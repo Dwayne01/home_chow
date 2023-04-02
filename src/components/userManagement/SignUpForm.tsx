@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
+import { useRouter } from "next/router";
 // import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { useRegister } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
@@ -24,6 +25,8 @@ const SignUpForm = () => {
 			rememberMe: false,
 		},
 	});
+
+	const router = useRouter();
 
 	const { handleSubmit, register } = form;
 
@@ -107,6 +110,9 @@ const SignUpForm = () => {
 						</div>
 						<div className=" mt-6">
 							<Button
+								onClick={() => {
+									router.push("/login");
+								}}
 								label={t("Sign In") || ""}
 								type="submit"
 								rootClass={classNames(
