@@ -34,6 +34,7 @@ const SignUpForm = () => {
 
 	const handleSubmitForm = async (params: RegisterPayload) => {
 		await mutateAsync(params);
+		router.push("/verification");
 	};
 
 	return (
@@ -110,9 +111,6 @@ const SignUpForm = () => {
 						</div>
 						<div className=" mt-6">
 							<Button
-								onClick={() => {
-									router.push("/verification");
-								}}
 								label={t("Sign In") || ""}
 								type="submit"
 								rootClass={classNames(

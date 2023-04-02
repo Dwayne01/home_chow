@@ -36,6 +36,7 @@ const LoginForm = () => {
 
 	const handleSubmitForm = async (params: LoginPayload) => {
 		await mutateAsync(params);
+		router.push("/dashboard");
 	};
 
 	return (
@@ -92,7 +93,6 @@ const LoginForm = () => {
 						</div>
 						<div className=" mt-6">
 							<Button
-								onClick={() => router.push("/dashboard")}
 								label={t("Sign In") || ""}
 								type="submit"
 								rootClass={classNames(
