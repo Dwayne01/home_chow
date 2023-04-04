@@ -13,11 +13,19 @@ import { useLogin } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
-import { LoginPayload } from "@/types/auth";
+import { GoogleOAuthFunctions, LoginPayload } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
-const LoginForm = () => {
+const LoginForm = ({
+	handleLogin,
+	isLoading,
+  handleGoogleSignIn,
+}: {
+  handleGoogleSignIn: GoogleOAuthFunctions
+	isLoading: boolean;
+	handleLogin: (params: LoginPayload) => Promise<boolean>;
+}) => {
 	const { t } = useTranslation("authentication");
 
 	const form = useForm({
@@ -37,6 +45,7 @@ const LoginForm = () => {
 	const handleSubmitForm = async (params: LoginPayload) => {
 		await mutateAsync(params);
 		router.push("/dashboard");
+
 	};
 
 	return (
@@ -95,6 +104,7 @@ const LoginForm = () => {
 							<Button
 								label={t("Sign In") || ""}
 								type="submit"
+								loading={isLoading}
 								rootClass={classNames(
 									"rounded-lg whitespace-nowrap w-full px-3 font-bold text-sm text-white"
 								)}
@@ -113,6 +123,7 @@ const LoginForm = () => {
 						label="Sign in with Google"
 						icon={FcGoogle}
 						rootClass=" justify-start"
+						onClick={handleGoogleSignIn}
 					/>
 					{/* <WideIconButton
 						label="Sign in with Facebook"
