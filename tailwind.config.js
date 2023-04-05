@@ -13,6 +13,7 @@ module.exports = {
 				"secondary-color": "var(--color-secondary)",
 				"primary-color-50": "#FEFBE8",
 				red: "#EF4444",
+				success: "#12B76A",
 				"font-light": "#718096",
 				"border-color": "#D0D5DD",
 				"border-neutral": "#E6E8F0",
@@ -49,5 +50,5 @@ module.exports = {
 			xlarge: "60%",
 		},
 	},
-	plugins: [],
+	plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 };

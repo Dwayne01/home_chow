@@ -61,7 +61,7 @@ export const getTodayDate = () => {
 
 export const numberToCurrency = (number: number | string) => {
 	const str = String(number).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	return number > -1 ? `$${str}` : ` $${str.substr(1)}`;
+	return number ? `$${str}` : ` $${str.substr(1)}`;
 };
 
 export const testCanadianPostalCode = (postalCode: string) => {
@@ -160,3 +160,8 @@ export function getRandomColor(): string {
 	const color = `rgb(${red}, ${green}, ${blue})`;
 	return color;
 }
+
+export const getLastFourDigits = (cardNumber: string) => {
+	const lastFourDigits = cardNumber.slice(-4);
+	return lastFourDigits;
+};
