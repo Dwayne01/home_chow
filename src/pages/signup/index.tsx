@@ -5,7 +5,7 @@ import SignUpForm from "@/components/userManagement/SignUpForm";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useRegister } from "@/hooks/useAuth";
 import { RegisterPayload } from "@/types/auth";
-import { auth } from "firebase";
+import { auth } from "../../../firebase";
 
 const SignUpPage = () => {
 	// Google Authentication
