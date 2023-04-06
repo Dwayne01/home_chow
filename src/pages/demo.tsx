@@ -26,6 +26,7 @@ import CodeInput from "@/components/form/CodeInput";
 import Footer from "@/components/footer/Footer";
 import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
+import Image from "next/image";
 import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
@@ -37,10 +38,10 @@ const ComponentPage = () => {
 	});
 
 	const images = [
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
+		<Image src="https://via.placeholder.com/150" alt="Image" />,
+		<Image src="https://via.placeholder.com/150" alt="Image" />,
+		<Image src="https://via.placeholder.com/150" alt="Image" />,
+		<Image src="https://via.placeholder.com/150" alt="Image" />,
 	];
 
 	const description = (

@@ -22,7 +22,7 @@ const PaymentStep = ({
 	}
 
 	return (
-		<div className="flex flex-1 flex-col  items-center">
+		<div className="flex flex-1 flex-col  items-center ">
 			<div className="w-full">
 				<button
 					className="bg-white rounded-full p-2 flex justify-center items-center"
