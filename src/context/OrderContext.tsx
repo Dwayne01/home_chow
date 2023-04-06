@@ -82,7 +82,8 @@ export const OrderProvider = ({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 
 		// later when apis are ready, we can use this to update the order
-	}, [calculateTotal, items]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [items]);
 
 	const value = useMemo(
 		() => ({
