@@ -3,9 +3,10 @@ import Onboarding from "@/components/onboarding";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import SignUpForm from "@/components/userManagement/SignUpForm";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../../firebase";
 import { useRegister } from "@/hooks/useAuth";
 import { RegisterPayload } from "@/types/auth";
+import { auth } from "../../../firebase";
+
 const SignUpPage = () => {
 	// Google Authentication
 	const handleGoogleSignUp = () => {
@@ -20,6 +21,7 @@ const SignUpPage = () => {
 				// eslint-disable-next-line no-console
 				console.log(error.message);
 			});
+	};
 
 	const { mutateAsync } = useRegister();
 
@@ -34,7 +36,12 @@ const SignUpPage = () => {
 	return (
 		<AuthenticationLayout
 			LeftComponent={<Onboarding />}
-			RightComponent={<SignUpForm handleSignup={handleSignup} handleGoogleSignUp={handleGoogleSignUp} />}
+			RightComponent={
+				<SignUpForm
+					handleSignup={handleSignup}
+					handleGoogleSignUp={handleGoogleSignUp}
+				/>
+			}
 			width="md:min-w-1/2"
 			leftComponentClassName="hidden md:flex"
 		/>

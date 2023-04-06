@@ -6,19 +6,18 @@ import Button from "@/components/common/buttons";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
-import { GoogleOAuthFunctions, RegisterPayload } from "@/types/auth";
+import { RegisterPayload } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import { PasswordField, TextField } from "../form/InputField";
 
 const SignUpForm = ({
 	handleSignup,
-  handleGoogleSignUp
+	handleGoogleSignUp,
 }: {
-  handleGoogleSignUp: GoogleOAuthFunctions
+	handleGoogleSignUp: () => void;
 	handleSignup: (params: RegisterPayload) => Promise<boolean>;
 }) => {
-
 	const { t } = useTranslation("authentication");
 	const form = useForm({
 		defaultValues: {
