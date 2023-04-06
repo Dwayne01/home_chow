@@ -10,7 +10,8 @@ const GetOrderInfo = ({
 }: {
 	setIsOrderInfoFilled: (value: boolean) => void;
 }) => {
-	const { customerAddress, payment } = useOrderContext();
+	const { customerAddress, payment, setCustomerAddress, setPayment } =
+		useOrderContext();
 
 	const orderForm = useForm({
 		defaultValues: {
@@ -33,7 +34,23 @@ const GetOrderInfo = ({
 		handleSubmit((data) => {
 			setIsOrderInfoFilled(true);
 			// eslint-disable-next-line no-console
-			console.log(data);
+
+			const { address, city, state, zip } = data;
+			setCustomerAddress({
+				address,
+				city,
+				state,
+				zip,
+			});
+
+			const { cardNumber, cardName, expiryDate, cvv } = data;
+			setPayment({
+				certificateAuthority: cardName,
+				cardNumber,
+				cardName,
+				expiryDate,
+				cvv,
+			});
 		})();
 	}
 

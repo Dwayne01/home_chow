@@ -82,7 +82,7 @@ export const OrderProvider = ({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 
 		// later when apis are ready, we can use this to update the order
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [items]);
 
 	const value = useMemo(
