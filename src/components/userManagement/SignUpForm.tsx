@@ -13,7 +13,9 @@ import { PasswordField, TextField } from "../form/InputField";
 
 const SignUpForm = ({
 	handleSignup,
+	handleGoogleSignUp,
 }: {
+	handleGoogleSignUp: () => void;
 	handleSignup: (params: RegisterPayload) => Promise<boolean>;
 }) => {
 	const { t } = useTranslation("authentication");
@@ -126,6 +128,7 @@ const SignUpForm = ({
 						label="Sign in with Google"
 						icon={FcGoogle}
 						rootClass=" justify-start"
+						onClick={handleGoogleSignUp}
 					/>
 					{/* <WideIconButton
 							label="Sign in with Facebook"

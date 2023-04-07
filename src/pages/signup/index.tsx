@@ -1,40 +1,62 @@
-import AuthenticationLayout from "@/components/layout/AuthenticationLayout";
-import Onboarding from "@/components/onboarding";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import SignUpForm from "@/components/userManagement/SignUpForm";
-import { useRegister } from "@/hooks/useAuth";
-import { RegisterPayload } from "@/types/auth";
+// import AuthenticationLayout from "@/components/layout/AuthenticationLayout";
+// import Onboarding from "@/components/onboarding";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import SignUpForm from "@/components/userManagement/SignUpForm";
+// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+// import { useRegister } from "@/hooks/useAuth";
+// import { RegisterPayload } from "@/types/auth";
+// import { auth } from "../../../firebase";
 
-const SignUpPage = () => {
-	const { mutateAsync } = useRegister();
+// const SignUpPage = () => {
+// 	// Google Authentication
+// 	const handleGoogleSignUp = () => {
+// 		const provider = new GoogleAuthProvider();
+// 		signInWithPopup(auth, provider)
+// 			.then((result) => {
+// 				const credential = GoogleAuthProvider.credentialFromResult(result);
+// 				// eslint-disable-next-line no-console
+// 				console.log(credential);
+// 			})
+// 			.catch((error) => {
+// 				// eslint-disable-next-line no-console
+// 				console.log(error.message);
+// 			});
+// 	};
 
-	const handleSignup = async (params: RegisterPayload) => {
-		const res = await mutateAsync(params);
+// 	const { mutateAsync } = useRegister();
 
-		if (res.status === "Success") return true;
+// 	const handleSignup = async (params: RegisterPayload) => {
+// 		const res = await mutateAsync(params);
 
-		return false;
-	};
+// 		if (res.status === "Success") return true;
 
-	return (
-		<AuthenticationLayout
-			LeftComponent={<Onboarding />}
-			RightComponent={<SignUpForm handleSignup={handleSignup} />}
-			width="md:min-w-1/2"
-			leftComponentClassName="hidden md:flex"
-		/>
-	);
-};
+// 		return false;
+// 	};
 
-export default SignUpPage;
+// 	return (
+// 		<AuthenticationLayout
+// 			LeftComponent={<Onboarding />}
+// 			RightComponent={
+// 				<SignUpForm
+// 					handleSignup={handleSignup}
+// 					handleGoogleSignUp={handleGoogleSignUp}
+// 				/>
+// 			}
+// 			width="md:min-w-1/2"
+// 			leftComponentClassName="hidden md:flex"
+// 		/>
+// 	);
+// };
 
-export async function getStaticProps({ locale }: { locale: string }) {
-	return {
-		props: {
-			...(await serverSideTranslations(locale ?? "en", [
-				"common",
-				"authentication",
-			])),
-		},
-	};
-}
+// export default SignUpPage;
+
+// export async function getStaticProps({ locale }: { locale: string }) {
+// 	return {
+// 		props: {
+// 			...(await serverSideTranslations(locale ?? "en", [
+// 				"common",
+// 				"authentication",
+// 			])),
+// 		},
+// 	};
+// }

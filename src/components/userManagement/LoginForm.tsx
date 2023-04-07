@@ -18,7 +18,9 @@ import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 const LoginForm = ({
 	handleLogin,
 	isLoading,
+	handleGoogleSignIn,
 }: {
+	handleGoogleSignIn: () => void;
 	isLoading: boolean;
 	handleLogin: (params: LoginPayload) => Promise<boolean>;
 }) => {
@@ -113,6 +115,7 @@ const LoginForm = ({
 						label="Sign in with Google"
 						icon={FcGoogle}
 						rootClass=" justify-start"
+						onClick={handleGoogleSignIn}
 					/>
 					{/* <WideIconButton
 						label="Sign in with Facebook"
