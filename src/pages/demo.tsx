@@ -30,6 +30,7 @@ import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Table from "@/components/table";
 import Accordion from "@/components/accordion";
+import Tabs, { TabProps } from "@/components/tab";
 import Button from "../components/common/buttons";
 import SearchBar from "../components/searchBar";
 import foodImage from "../../public/assets/images/food.jpg";
@@ -120,10 +121,27 @@ const ComponentPage = () => {
 		},
 	];
 
+	const tabs: TabProps[] = [
+		{
+			label: "Tab 1 Title",
+			children: <div>Content for tab 1</div>,
+			onClick: () => {},
+		},
+		{
+			label: "Tab 2 Title",
+			children: <div>Content for tab 2</div>,
+			onClick: () => {},
+		},
+		{
+			label: "Tab 3 Title",
+			children: <div>Content for tab 3</div>,
+			onClick: () => {},
+		},
+	];
+
 	return (
 		<div>
 			<MainHeader />
-
 			<Countdown />
 			<div className="flex justify-center gap-5">
 				<IconButton icon={FaFacebookF} color="text-primary-color" href="" />
@@ -301,6 +319,7 @@ const ComponentPage = () => {
 			<Table tableTitle="Table Title" data={tableData} columns={tableColumns} />
 			<h1>Footer</h1>
 			<Footer footerColor="dark" />
+			<Tabs tabs={tabs} />
 		</div>
 	);
 };
