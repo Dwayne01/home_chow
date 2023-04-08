@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
@@ -26,7 +28,6 @@ import CodeInput from "@/components/form/CodeInput";
 import Footer from "@/components/footer/Footer";
 import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
-import Image from "next/image";
 import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
@@ -38,10 +39,10 @@ const ComponentPage = () => {
 	});
 
 	const images = [
-		<Image src="https://via.placeholder.com/150" alt="Image" />,
-		<Image src="https://via.placeholder.com/150" alt="Image" />,
-		<Image src="https://via.placeholder.com/150" alt="Image" />,
-		<Image src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
 	];
 
 	const description = (
