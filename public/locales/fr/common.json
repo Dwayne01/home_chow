@@ -16,5 +16,7 @@
   "invalidEmail": "Email invalide",
   "thisFieldIsRequired": "Ce champ est obligatoire",
   "streetAddress2": "Adresse municipale 2",
-  "hello world": "Bonjour le monde"
+  "hello world": "Bonjour le monde",
+  "Where": "Où",
+  "Search location": "Rechercher un lieu..."
 }

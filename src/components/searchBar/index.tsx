@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import { useTranslation } from "next-i18next";
 import { BiSearch } from "react-icons/bi";
 
 const SearchBar = ({
 	placeholder,
+	itemList,
 	onSearch,
 	width,
 	iconBgColor,
 	rootClass,
 }: {
 	placeholder: string;
+	itemList: Array<string>;
 	onSearch: (query: string) => void;
 	width?: string;
 	iconBgColor?: string;
@@ -20,12 +23,14 @@ const SearchBar = ({
 	const [addresses, setAddresses] = useState<string[]>([]);
 	const [selectedAddress, setSelectedAddress] = useState<string>("");
 
+	const { t } = useTranslation("common");
+
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newQuery = e.target.value;
 		setQuery(newQuery);
 
 		setAddresses(
-			["New York", "Los Angeles", "Chicago"].filter((address) =>
+			itemList.filter((address) =>
 				address.toLowerCase().startsWith(newQuery.toLowerCase())
 			)
 		);
@@ -33,6 +38,7 @@ const SearchBar = ({
 
 	const handleClickEvent = (address: React.SetStateAction<string>) => {
 		setSelectedAddress(address);
+		setIsModalOpen(false);
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -50,9 +56,9 @@ const SearchBar = ({
 					rootClass || ""
 				)}
 			>
-				<div className="w-11/12">
+				<div className="w-11/12 ml-2">
 					<div>
-						<h6>Where</h6>
+						<h6>{t("Where")}</h6>
 					</div>
 					<input
 						type="text"
@@ -63,10 +69,14 @@ const SearchBar = ({
 					/>
 				</div>
 
+				{/* {divider} */}
+				<div className="mt-2 mr-4 max-h-9 w-0.5 self-stretch bg-grey-light" />
+				<div className="mt-2 mr-2 max-h-9 w-0.5 self-stretch bg-grey-light" />
+
 				<button
 					type="submit"
 					className={classNames(
-						"ml-3 p-2 rounded-full w-[48px] h-[48px]",
+						"ml-2 p-2 rounded-full w-[48px] h-[48px]",
 						iconBgColor || "bg-primary-color"
 					)}
 				>
@@ -83,7 +93,7 @@ const SearchBar = ({
 				>
 					<input
 						type="text"
-						placeholder="Search location..."
+						placeholder={t("Search location")}
 						className="border rounded-lg px-3 py-2 w-full mt-5 mb-2 focus:outline-primary-color"
 						onChange={handleInputChange}
 					/>
@@ -93,7 +103,7 @@ const SearchBar = ({
 								{addresses.map((address) => (
 									<button
 										key={address}
-										className="w-full px-3 py-2 text-left hover:bg-list-color"
+										className="w-full px-3 py-2 mb-1 text-left hover:bg-list-color"
 										onClick={() => handleClickEvent(address)}
 									>
 										{address}
