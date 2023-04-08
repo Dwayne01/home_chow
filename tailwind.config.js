@@ -23,6 +23,7 @@ module.exports = {
 				"progress-bar": "#3B82F6",
 				"label-color": "#f2f2f2",
 				"gray-40": "#515772",
+				"gray-50": "#697586",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
