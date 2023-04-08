@@ -1,22 +1,62 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
+import classNames from "classnames";
+import { useVerifyCode } from "@/hooks/useVerifyCode";
 import CodeInput from "../form/CodeInput";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import Email from "../../../public/assets/icons/icon_email.png";
 import Warning from "../../../public/assets/icons/icon_warning.png";
+import VerificationModal from "../modal/VerificationModal";
+import CodeTimer from "../timer/CodeTimer";
 
 const VerificationForm = () => {
 	const { t } = useTranslation("codeVerification");
 	const [code, setCode] = useState<string>("");
 
+	const [mockCode, setMockCode] = useState<any>(t("Check your mail"));
+	const [successModalOpen, setSuccessModalOpen] = useState<boolean>(false);
+	const [failModalOpen, setFailModalOpen] = useState<boolean>(false);
+	const [showTimer, setShowTimer] = useState<boolean>(false);
+
+	const router = useRouter();
+
 	const userEmail = "Draxier04123@gmail.com";
-	const remainTime = "02:34";
+
+	const { data, isLoading } = useVerifyCode();
 
 	const handleCodeSubmit = () => {
-		// eslint-disable-next-line no-console
-		console.log(code);
+		if (code === mockCode) {
+			setSuccessModalOpen(true);
+		} else {
+			setFailModalOpen(true);
+		}
+	};
+
+	const getRandomIndex = (arr: any) => {
+		const randomIndex = Math.floor(Math.random() * arr.length);
+		return arr[randomIndex];
+	};
+
+	const handleMockCode = () => {
+		const requestedCode = getRandomIndex(data.results);
+		setMockCode(requestedCode.code);
+	};
+
+	const handleCloseModal = () => {
+		if (successModalOpen) {
+			setSuccessModalOpen(false);
+			router.push("/verification");
+		} else if (failModalOpen) {
+			setFailModalOpen(false);
+			router.push("/verification");
+		}
+	};
+
+	const handleShowTimer = () => {
+		setShowTimer(true);
 	};
 
 	return (
@@ -29,7 +69,13 @@ const VerificationForm = () => {
 					<Image src={Email} className="icon-email" alt="Icon_Email" />
 				</div>
 				<div className="flex flex-col text-center mt-10">
-					<h2 className="font-semibold text-3xl">{t("Check your mail")}</h2>
+					<button onClick={handleMockCode}>
+						{isLoading ? (
+							<div>{t("Loading")}...</div>
+						) : (
+							<h2 className="font-semibold text-3xl">{mockCode}</h2>
+						)}
+					</button>
 					<div className="flex flex-col lg:flex-row gap-1 mt-3">
 						<p className="text-font-light">
 							{t("Please enter the 6 digit code sent to")}{" "}
@@ -40,8 +86,8 @@ const VerificationForm = () => {
 				<div className="my-10 flex justify-center">
 					<CodeInput
 						code={code}
-						onUpdate={(data) => {
-							setCode(data.trim());
+						onUpdate={(codeData) => {
+							setCode(codeData.trim());
 						}}
 						onSubmit={() => {}}
 					/>
@@ -58,16 +104,45 @@ const VerificationForm = () => {
 					<p>{t("Didnt get the code")}?</p>
 				</div>
 				<div className="mb-4 flex flex-row items-center gap-3 justify-center">
-					<Image
-						src={Warning}
-						width={40}
-						className="icon-warning"
-						alt="Icon_Warning"
-					/>
-					<div className="text-font-light">
-						{t("Resend code in")} {remainTime}
-					</div>
+					{!showTimer ? (
+						<WideIconButton
+							label={t("Resend Code") || ""}
+							width="w-[125px]"
+							height="h-[24px]"
+							fontSize="text-[10pt]"
+							borderRound="rounded-[48px]"
+							rootClass={classNames(
+								"text-black text-gray-50 bg-white border-[1px] border-border-color"
+							)}
+							onClick={handleShowTimer}
+						/>
+					) : (
+						<>
+							<Image
+								src={Warning}
+								width={40}
+								className="icon-warning"
+								alt="Icon_Warning"
+							/>
+							<div className="text-font-light flex gap-1">
+								{t("Resend code in")}
+								<CodeTimer duration={300} />
+							</div>
+						</>
+					)}
 				</div>
+
+				{/* Modal for message */}
+				{successModalOpen && (
+					<VerificationModal onClose={handleCloseModal} isOpen>
+						{t("Your code has been confirmed successfully")}
+					</VerificationModal>
+				)}
+				{failModalOpen && (
+					<VerificationModal onClose={handleCloseModal} isOpen>
+						{t("Your code confirmation has failed")}
+					</VerificationModal>
+				)}
 			</div>
 		</div>
 	);
