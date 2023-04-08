@@ -29,6 +29,7 @@ import Footer from "@/components/footer/Footer";
 import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Table from "@/components/table";
+import RestaurantCardList from "@/components/card/RestaurantCardList";
 import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
@@ -101,6 +102,135 @@ const ComponentPage = () => {
 		{ Header: "Color", accessor: "color" },
 		{ Header: "Weight", accessor: "weight" },
 		{ Header: "Height", accessor: "height" },
+	];
+
+	const restaurants = [
+		{
+			imageUrl: "",
+			name: "Kris Hamburger",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Stella Vegas",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Carisha pancakes",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Boli Salads",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Maya’s Cake",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Stella veges",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Suika Japanese",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Jollibeee",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Sushi Mura",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Breka",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Burger Queen",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Indian Sula",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Subwayy",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Pizza Hut",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
 	];
 
 	return (
@@ -268,6 +398,14 @@ const ComponentPage = () => {
 			</FormProvider>
 			<h1>Table Component</h1>
 			<Table tableTitle="Table Title" data={tableData} columns={tableColumns} />
+			<div className="flex flex-col gap-4 m-10">
+				<h1>Card Component</h1>
+				<RestaurantCardList
+					title="Restaurants Near you"
+					restaurants={restaurants}
+					itemsPerPage={2}
+				/>
+			</div>
 			<h1>Footer</h1>
 			<Footer footerColor="dark" />
 		</div>
