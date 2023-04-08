@@ -2,12 +2,12 @@ import Image from "next/image";
 import CartEmpty from "../../../public/assets/svg/CartEmpty.svg";
 import Cross from "../../../public/assets/svg/Cross.svg";
 
-type CartItem = {
+export interface CartItem {
 	id: number;
 	name: string;
 	price: number;
 	quantity: number;
-};
+}
 
 type Props = {
 	items: CartItem[];
