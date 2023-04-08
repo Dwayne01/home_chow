@@ -17,9 +17,22 @@ const SearchBar = ({
 }) => {
 	const [query, setQuery] = useState<string>("");
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [addresses, setAddresses] = useState<string[]>([]);
+	const [selectedAddress, setSelectedAddress] = useState<string>("");
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setQuery(e.target.value);
+		const newQuery = e.target.value;
+		setQuery(newQuery);
+
+		setAddresses(
+			["New York", "Los Angeles", "Chicago"].filter((address) =>
+				address.toLowerCase().startsWith(newQuery.toLowerCase())
+			)
+		);
+	};
+
+	const handleClickEvent = (address: React.SetStateAction<string>) => {
+		setSelectedAddress(address);
 	};
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,8 +57,7 @@ const SearchBar = ({
 					<input
 						type="text"
 						placeholder={placeholder}
-						value={query}
-						onChange={handleInputChange}
+						value={selectedAddress}
 						onFocus={() => setIsModalOpen(true)}
 						className="w-full text-gray-700 bg-transparent border-none focus:outline-none mt-1"
 					/>
@@ -72,8 +84,24 @@ const SearchBar = ({
 					<input
 						type="text"
 						placeholder="Search location..."
-						className="border rounded-lg px-3 py-2 w-full my-5 ring-green-500"
+						className="border rounded-lg px-3 py-2 w-full mt-5 mb-2 focus:outline-primary-color"
+						onChange={handleInputChange}
 					/>
+					<div>
+						{query && addresses.length > 0 && (
+							<div className="max-h-48 overflow-y-auto rounded-lg">
+								{addresses.map((address) => (
+									<button
+										key={address}
+										className="w-full px-3 py-2 text-left hover:bg-list-color"
+										onClick={() => handleClickEvent(address)}
+									>
+										{address}
+									</button>
+								))}
+							</div>
+						)}
+					</div>
 				</div>
 			)}
 		</div>
