@@ -28,6 +28,7 @@ import CodeInput from "@/components/form/CodeInput";
 import Footer from "@/components/footer/Footer";
 import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
+import Table from "@/components/table";
 import Button from "../components/common/buttons";
 
 const ComponentPage = () => {
@@ -59,6 +60,48 @@ const ComponentPage = () => {
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = () => {};
+
+	const tableData = [
+		{ name: "John", age: 25, color: "red", weight: "90kg", height: "178cm" },
+		{ name: "Jane", age: 30, color: "blue", weight: "80kg", height: "180cm" },
+		{ name: "Robert", age: 11, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Bob", age: 15, color: "yellow", weight: "50kg", height: "178cm" },
+		{ name: "Paul", age: 45, color: "gray", weight: "80kg", height: "178cm" },
+		{ name: "Emma", age: 34, color: "white", weight: "76kg", height: "178cm" },
+		{ name: "Mary", age: 25, color: "green", weight: "120kg", height: "195cm" },
+		{ name: "Anna", age: 31, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Frank", age: 67, color: "blue", weight: "65kg", height: "158cm" },
+		{
+			name: "Charles",
+			age: 45,
+			color: "black",
+			weight: "80kg",
+			height: "178cm",
+		},
+		{ name: "Bob", age: 18, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Thomas", age: 19, color: "red", weight: "58kg", height: "158cm" },
+		{ name: "William", age: 20, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Clara", age: 47, color: "red", weight: "99kg", height: "178cm" },
+		{ name: "Alice", age: 50, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Emily", age: 22, color: "red", weight: "86kg", height: "178cm" },
+		{ name: "Leo", age: 39, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Lisa", age: 41, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Thomas", age: 19, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "William", age: 20, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Clara", age: 47, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Alice", age: 50, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Emily", age: 22, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Leo", age: 39, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Lisa", age: 41, color: "red", weight: "80kg", height: "178cm" },
+	];
+
+	const tableColumns = [
+		{ Header: "Name", accessor: "name" },
+		{ Header: "Age", accessor: "age" },
+		{ Header: "Color", accessor: "color" },
+		{ Header: "Weight", accessor: "weight" },
+		{ Header: "Height", accessor: "height" },
+	];
 
 	return (
 		<div>
@@ -223,6 +266,8 @@ const ComponentPage = () => {
 					</div>
 				</form>
 			</FormProvider>
+			<h1>Table Component</h1>
+			<Table tableTitle="Table Title" data={tableData} columns={tableColumns} />
 			<h1>Footer</h1>
 			<Footer footerColor="dark" />
 		</div>
