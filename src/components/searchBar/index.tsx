@@ -93,7 +93,8 @@ const SearchBar = ({
 				>
 					<input
 						type="text"
-						placeholder={t("Search location")}
+						// i18 makes error here
+						placeholder="Search location"
 						className="border rounded-lg px-3 py-2 w-full mt-5 mb-2 focus:outline-primary-color"
 						onChange={handleInputChange}
 					/>
