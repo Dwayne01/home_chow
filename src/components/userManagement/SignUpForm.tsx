@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
-// import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -12,7 +11,13 @@ import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import { PasswordField, TextField } from "../form/InputField";
 
-const SignUpForm = () => {
+const SignUpForm = ({
+	handleSignup,
+	handleGoogleSignUp,
+}: {
+	handleGoogleSignUp: () => void;
+	handleSignup: (params: RegisterPayload) => Promise<boolean>;
+}) => {
 	const { t } = useTranslation("authentication");
 	const form = useForm({
 		defaultValues: {
@@ -24,9 +29,8 @@ const SignUpForm = () => {
 
 	const { handleSubmit, register } = form;
 
-	const handleSubmitForm = (params: RegisterPayload) => {
-		// eslint-disable-next-line no-console
-		console.log(params);
+	const handleSubmitForm = async (params: RegisterPayload) => {
+		await handleSignup(params);
 	};
 
 	return (
@@ -124,6 +128,7 @@ const SignUpForm = () => {
 						label="Sign in with Google"
 						icon={FcGoogle}
 						rootClass=" justify-start"
+						onClick={handleGoogleSignUp}
 					/>
 					{/* <WideIconButton
 							label="Sign in with Facebook"

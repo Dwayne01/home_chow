@@ -29,7 +29,7 @@ const FoodItem = ({
 			height={96}
 			src={item.image || image}
 			alt="image"
-			className="rounded-2xl"
+			className="rounded-2xl rounded-md"
 		/>
 		<div>
 			<span>{item.title}</span>
