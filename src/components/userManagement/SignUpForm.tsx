@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
+import { useRouter } from "next/router";
+import { useRegister } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -27,10 +29,13 @@ const SignUpForm = ({
 		},
 	});
 
+	const router = useRouter();
+
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = async (params: RegisterPayload) => {
-		await handleSignup(params);
+		await mutateAsync(params);
+		router.push("/verification");
 	};
 
 	return (

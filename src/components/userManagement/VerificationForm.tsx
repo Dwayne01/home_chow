@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import classNames from "classnames";
@@ -13,6 +14,8 @@ import VerificationModal from "../modal/VerificationModal";
 import CodeTimer from "../timer/CodeTimer";
 
 const VerificationForm = () => {
+	const router = useRouter();
+
 	const { t } = useTranslation("codeVerification");
 	const [code, setCode] = useState<string>("");
 
@@ -28,6 +31,8 @@ const VerificationForm = () => {
 	const { data, isLoading } = useVerifyCode();
 
 	const handleCodeSubmit = () => {
+		router.push("/login");
+
 		if (code === mockCode) {
 			setSuccessModalOpen(true);
 		} else {
