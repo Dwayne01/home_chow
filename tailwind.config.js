@@ -26,6 +26,7 @@ module.exports = {
 				"gray-textArea": "#F7F8FF",
 				"gray-border": "#F5F8FC",
 				"yellow-button": "#FEFDF0",
+				"gray-50": "#697586",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
