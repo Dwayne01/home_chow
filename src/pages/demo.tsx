@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
@@ -38,10 +40,10 @@ const ComponentPage = () => {
 	});
 
 	const images = [
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
 	];
 
 	const description = (
