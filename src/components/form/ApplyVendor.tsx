@@ -1,8 +1,5 @@
 import React from "react";
-import {
-	TextField,
-	// Select,
-} from "@/components/form/InputField";
+import { TextField, Select, DatePicker } from "@/components/form/InputField";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
 import { useTranslation } from "next-i18next";
@@ -74,7 +71,11 @@ const ApplyVendor = ({
 							})}
 						/>
 
-						<TextField
+						<Select
+							options={[
+								{ value: "Limited Liability", name: "Limited Liability" },
+								{ value: "Sole Proprietorship", name: "Sole Proprietorship" },
+							]}
 							data-testid="status"
 							rootClass="mb-2 w-[48%]"
 							name="status"
@@ -183,37 +184,41 @@ const ApplyVendor = ({
 						/>
 					</div>
 					<div className="flex w-[100%] flex-wrap justify-between">
-						<TextField
+						<DatePicker
 							data-testid="startDate"
 							rootClass="mb-2 w-[48%]"
 							name="startDate"
 							label={t("Start Date")}
 							placeholder="Start Date"
 							ref={register({})}
+							required={false}
 						/>
-						<TextField
+						<DatePicker
 							data-testid="endDate"
 							rootClass="mb-2 w-[48%]"
 							name="endDate"
 							label={t("End Date")}
 							placeholder="End Date"
 							ref={register({})}
+							required={false}
 						/>
-						<TextField
+						<DatePicker
 							data-testid="startTime"
 							rootClass="mb-2 w-[48%]"
 							name="startTime"
 							label={t("Start Time")}
 							placeholder="Start Time"
 							ref={register({})}
+							required={false}
 						/>
-						<TextField
+						<DatePicker
 							data-testid="endTime "
 							rootClass="mb-2 w-[48%]"
 							name="endTime"
 							label={t("End Time")}
 							placeholder="End Time"
 							ref={register({})}
+							required={false}
 						/>
 					</div>
 
