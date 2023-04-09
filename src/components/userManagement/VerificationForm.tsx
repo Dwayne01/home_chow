@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import classNames from "classnames";
@@ -24,8 +23,6 @@ const VerificationForm = () => {
 	const [failModalOpen, setFailModalOpen] = useState<boolean>(false);
 	const [showTimer, setShowTimer] = useState<boolean>(false);
 
-	const router = useRouter();
-
 	const userEmail = "Draxier04123@gmail.com";
 
 	const { data, isLoading } = useVerifyCode();
@@ -46,7 +43,7 @@ const VerificationForm = () => {
 	};
 
 	const handleMockCode = () => {
-		const requestedCode = getRandomIndex(data.results);
+		const requestedCode = data && getRandomIndex(data.results);
 		setMockCode(requestedCode.code);
 	};
 

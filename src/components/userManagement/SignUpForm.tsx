@@ -4,7 +4,6 @@ import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
 import { useRouter } from "next/router";
-import { useRegister } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -34,7 +33,7 @@ const SignUpForm = ({
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = async (params: RegisterPayload) => {
-		await mutateAsync(params);
+		await handleSignup(params);
 		router.push("/verification");
 	};
 
