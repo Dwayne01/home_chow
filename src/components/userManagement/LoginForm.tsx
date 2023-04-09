@@ -18,9 +18,9 @@ import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 const LoginForm = ({
 	handleLogin,
 	isLoading,
-  handleGoogleSignIn,
+	handleGoogleSignIn,
 }: {
-  handleGoogleSignIn: GoogleOAuthFunctions
+	handleGoogleSignIn: GoogleOAuthFunctions;
 	isLoading: boolean;
 	handleLogin: (params: LoginPayload) => Promise<boolean>;
 }) => {
