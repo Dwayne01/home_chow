@@ -2,22 +2,23 @@ import MainHeader from "@/components/header/MainHeader";
 import Footer from "@/components/footer/Footer";
 import Image from "next/image";
 import ApplyVendor from "@/components/form/ApplyVendor";
+import { useApplyVendor } from "@/hooks/useApplyVendor";
 
 function ApplyAsVendor() {
-	const handleVendor = (params: any) => {
-		// await mutateAsync(params);
-		// eslint-disable-next-line no-console
-		console.log(params);
+	const { mutateAsync, isLoading } = useApplyVendor();
+
+	const handleVendor = async (params: any) => {
+		await mutateAsync(params);
 	};
 
 	return (
 		<div>
 			<MainHeader />
 			<div className="flex justify-around mt-[100px]">
-				<div className="w-[30%] flex items-center justify-center">
-					<h1>
+				<div className="w-[55%] flex items-center justify-center">
+					<h1 className="text-[70px]">
 						Start your own business! Set your own{" "}
-						<span className="text-primary">rules</span>
+						<span className="text-primary text-primary-color">rules</span>
 					</h1>
 				</div>
 				<div>
@@ -33,7 +34,7 @@ function ApplyAsVendor() {
 			<div className="p-[100px] w-[55%] mb-[200px]">
 				<h2 className="py-5">Apply as Vendor</h2>
 				<p className="py-5">Please fill in your personal details</p>
-				<ApplyVendor handleVendor={handleVendor} />
+				<ApplyVendor handleVendor={handleVendor} isLoading={isLoading} />
 			</div>
 
 			<Footer footerColor="light" />

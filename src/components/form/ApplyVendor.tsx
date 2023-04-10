@@ -5,6 +5,7 @@ import Button from "@/components/common/buttons";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
 import { APPLYVENDORPayload } from "@/types/auth";
+import DaysSection from "@/components/DaysSection";
 
 const ApplyVendor = ({
 	handleVendor,
@@ -183,6 +184,7 @@ const ApplyVendor = ({
 							ref={register({})}
 						/>
 					</div>
+					<DaysSection />
 					<div className="flex w-[100%] flex-wrap justify-between">
 						<DatePicker
 							data-testid="startDate"
