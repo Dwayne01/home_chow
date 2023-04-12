@@ -1,45 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500;600;700;800&family=Montserrat:wght@200;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: 'Montserrat', sans-serif;
-    color: #041549
-  }
+	html {
+		font-family: "Montserrat", sans-serif;
+		color: #041549;
+	}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Jost', sans-serif;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: "Jost", sans-serif;
+	}
 
-  h1 {
-    font-size: 32px;
-    font-weight: bold;
-  }
+	h1 {
+		font-size: 32px;
+		font-weight: bold;
+	}
 
-  h2 {
-    font-size: 24px;
-    font-weight: bold;
-  }
+	h2 {
+		font-size: 24px;
+		font-weight: bold;
+	}
 
-  h3 {
-    font-size: 18px;
-    font-weight: bold;
-  }
+	h3 {
+		font-size: 18px;
+		font-weight: bold;
+	}
 
-  p {
-    font-size: 16px;
-    font-weight: 400;
-  }
+	p {
+		font-size: 16px;
+		font-weight: 400;
+	}
 }
 
 .hoverButton:hover {
-  color: white
+	color: white;
+}
+
+/* Scrollbar styles */
+
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(----color-primary) var(--secondary);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+	scrollbar-color: var(----color-primary) var(--secondary);
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--primary);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--secondary);
+	border-radius: 8px;
 }

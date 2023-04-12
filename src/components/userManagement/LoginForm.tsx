@@ -6,6 +6,7 @@ import {
 	TextField,
 } from "@/components/form/InputField";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
 import { FcGoogle } from "react-icons/fc";
@@ -34,10 +35,13 @@ const LoginForm = ({
 		},
 	});
 
+	const router = useRouter();
+
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = async (params: LoginPayload) => {
 		await handleLogin(params);
+		router.push("/dashboard");
 	};
 
 	return (
