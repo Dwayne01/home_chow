@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { BiSearch } from "react-icons/bi";
+// import { AddressField } from "../form/InputField";
 
 const SearchBar = ({
 	placeholder,
@@ -25,6 +27,14 @@ const SearchBar = ({
 
 	const { t } = useTranslation("common");
 
+	const form = useForm({
+		defaultValues: {
+			address: "",
+		},
+	});
+
+	const { handleSubmit } = form;
+
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newQuery = e.target.value;
 		setQuery(newQuery);
@@ -41,48 +51,49 @@ const SearchBar = ({
 		setIsModalOpen(false);
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		onSearch(query);
+	const handleSubmitForm = (data: { address: string }) => {
+		onSearch(data.address);
 	};
 
 	return (
 		<div>
-			<form
-				onSubmit={handleSubmit}
-				className={classNames(
-					"flex justify-center items-center border rounded-full shadow-sm px-6 py-3",
-					width || "w-[329px] md:w-[567px]",
-					rootClass || ""
-				)}
-			>
-				<div className="w-11/12 ml-2">
-					<div>
-						<h6>{t("Where")}</h6>
-					</div>
-					<input
-						type="text"
-						placeholder={placeholder}
-						value={selectedAddress}
-						onFocus={() => setIsModalOpen(true)}
-						className="w-full text-gray-700 bg-transparent border-none focus:outline-none mt-1"
-					/>
-				</div>
-
-				{/* {divider} */}
-				<div className="mt-2 mr-4 max-h-9 w-0.5 self-stretch bg-grey-light" />
-				<div className="mt-2 mr-2 max-h-9 w-0.5 self-stretch bg-grey-light" />
-
-				<button
-					type="submit"
+			<FormProvider {...form}>
+				<form
+					onSubmit={handleSubmit(handleSubmitForm)}
 					className={classNames(
-						"ml-2 p-2 rounded-full w-[48px] h-[48px]",
-						iconBgColor || "bg-primary-color"
+						"flex justify-center items-center border rounded-full shadow-sm px-6 py-3",
+						width || "w-[329px] md:w-[567px]",
+						rootClass || ""
 					)}
 				>
-					<BiSearch className="w-[24px] h-[24px] text-white m-auto" />
-				</button>
-			</form>
+					<div className="w-11/12 ml-2">
+						<div>
+							<h6>{t("Where")}</h6>
+						</div>
+						<input
+							type="text"
+							placeholder={placeholder}
+							value={selectedAddress}
+							onFocus={() => setIsModalOpen(true)}
+							className="w-full text-gray-700 bg-transparent border-none focus:outline-none mt-1"
+						/>
+					</div>
+
+					{/* {divider} */}
+					<div className="mt-2 mr-4 max-h-9 w-0.5 self-stretch bg-grey-light" />
+					<div className="mt-2 mr-2 max-h-9 w-0.5 self-stretch bg-grey-light" />
+
+					<button
+						type="submit"
+						className={classNames(
+							"ml-2 p-2 rounded-full w-[48px] h-[48px]",
+							iconBgColor || "bg-primary-color"
+						)}
+					>
+						<BiSearch className="w-[24px] h-[24px] text-white m-auto" />
+					</button>
+				</form>
+			</FormProvider>
 			{isModalOpen && (
 				<div
 					className={classNames(
@@ -93,7 +104,6 @@ const SearchBar = ({
 				>
 					<input
 						type="text"
-						// i18 makes error here
 						placeholder="Search location"
 						className="border rounded-lg px-3 py-2 w-full mt-5 mb-2 focus:outline-primary-color"
 						onChange={handleInputChange}
