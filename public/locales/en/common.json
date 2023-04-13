@@ -15,5 +15,6 @@
   "firstName": "First Name",
   "lastName": "Last Name",
   "thisFieldIsRequired": "This field is required",
-  "invalidEmail": "Invalid Email"
+  "invalidEmail": "Invalid Email",
+  "Home": "Home"
 }
