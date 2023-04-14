@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { BiSearch } from "react-icons/bi";
-// import { AddressField } from "../form/InputField";
+import { AddressField } from "../form/InputField";
 
 const SearchBar = ({
 	placeholder,
@@ -33,8 +33,9 @@ const SearchBar = ({
 		},
 	});
 
-	const { handleSubmit } = form;
+	const { handleSubmit, register } = form;
 
+	// eslint-disable-next-line
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const newQuery = e.target.value;
 		setQuery(newQuery);
@@ -92,6 +93,21 @@ const SearchBar = ({
 					>
 						<BiSearch className="w-[24px] h-[24px] text-white m-auto" />
 					</button>
+					<AddressField
+						data-testid="address"
+						className="mb-2"
+						label="Address"
+						name="address"
+						required
+						getLocationData={() => {
+							// setValue("address", data.formatted_address);
+							// setLngLat({
+							// 	locationLattitude: data.geometry.location.lat().toString(),
+							// 	locationLongitude: data.geometry.location.lng().toString(),
+							// });
+						}}
+						ref={register({ required: true })}
+					/>
 				</form>
 			</FormProvider>
 			{isModalOpen && (
@@ -102,12 +118,12 @@ const SearchBar = ({
 						rootClass || ""
 					)}
 				>
-					<input
+					{/* <input
 						type="text"
 						placeholder="Search location"
 						className="border rounded-lg px-3 py-2 w-full mt-5 mb-2 focus:outline-primary-color"
 						onChange={handleInputChange}
-					/>
+					/> */}
 					<div>
 						{query && addresses.length > 0 && (
 							<div className="max-h-48 overflow-y-auto rounded-lg">
