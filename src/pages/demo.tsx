@@ -106,23 +106,6 @@ const ComponentPage = () => {
 
 	const handleSearch = () => {};
 
-	const cityNameList = [
-		"Vancouver",
-		"Burnaby",
-		"Richmond",
-		"Surrey",
-		"Coquitlam",
-		"Delta",
-		"New Westminster",
-		"North Vancouver",
-		"West Vancouver",
-		"Langley",
-		"Pitt Meadows",
-		"Port Moody",
-		"Maple Ridge",
-		"White Rock",
-	];
-
 	return (
 		<div>
 			<MainHeader />
@@ -174,11 +157,7 @@ const ComponentPage = () => {
 
 			{/* Search Bar */}
 			<div className="flex flex-col items-center gap-5 my-40">
-				<SearchBar
-					placeholder="Anywhere"
-					itemList={cityNameList}
-					onSearch={handleSearch}
-				/>
+				<SearchBar placeholder="Anywhere" onSearch={handleSearch} />
 			</div>
 
 			{/* Checkbox Button Group */}
