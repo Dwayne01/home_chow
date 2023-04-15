@@ -56,7 +56,7 @@ const CounterInput = ({
 				<button
 					onClick={handleDecrement}
 					className={classNames(
-						"p-2 text-2xl",
+						"counter-minus p-2 text-2xl",
 						leftButtonIconColor || "text-primary-color"
 					)}
 				>
@@ -75,7 +75,7 @@ const CounterInput = ({
 				<button
 					onClick={handleIncrement}
 					className={classNames(
-						"p-2 text-2xl",
+						"counter-plus p-2 text-2xl",
 						rightButtonIconColor || "text-white"
 					)}
 				>

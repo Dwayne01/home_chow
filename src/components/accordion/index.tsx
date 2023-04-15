@@ -15,7 +15,7 @@ const CardList = ({ items }: { items: string[] }) => {
 	console.log(selectedUserChoice);
 
 	return (
-		<ul className="flex flex-col gap-4 my-5">
+		<ul className="accordion-cardList flex flex-col gap-4 my-5">
 			{items.map((item, index) => (
 				<li key={index}>
 					<CheckboxButton
@@ -24,7 +24,7 @@ const CardList = ({ items }: { items: string[] }) => {
 						value={item}
 						isChecked={selectedUserChoice === item}
 						handleClick={() => setSelectedUserChoice(item)}
-						className="flex justify-between items-center px-8 py-6 border border-gray-border rounded-lg shadow-md"
+						className="checkButton flex justify-between items-center px-8 py-6 border border-gray-border rounded-lg shadow-md"
 					/>
 				</li>
 			))}
@@ -65,7 +65,7 @@ const AccordionItem = ({
 	return (
 		<div className="border-b border-gray-modern">
 			<button
-				className="w-full flex justify-between items-center py-2 px-4 focus:outline-none"
+				className="accordion-arrow w-full flex justify-between items-center py-2 px-4 focus:outline-none"
 				onClick={handleClick}
 			>
 				<div className="flex items-center gap-4 m-2">
@@ -74,11 +74,12 @@ const AccordionItem = ({
 						height={74}
 						src={image}
 						alt="image"
+						className="accordion-image"
 						style={{ borderRadius: "10px" }}
 					/>
 					<div className="flex flex-col gap-1 text-left">
-						<div className="font-bold">{title}</div>
-						<div className="text-primary-color">${price}</div>
+						<div className="accordion-title font-bold">{title}</div>
+						<div className="accordion-price text-primary-color">${price}</div>
 					</div>
 				</div>
 				<div
@@ -92,14 +93,14 @@ const AccordionItem = ({
 			{isExpanded && (
 				<div className="my-4">
 					<div className="px-4 pb-2 mx-2 overflow-y-auto max-h-96">
-						<div className="mb-8">{content}</div>
+						<div className="accordion-content mb-8">{content}</div>
 						<div>{cardList && <CardList items={cardList} />}</div>
 						<div className="mb-10">
 							<FormProvider {...form}>
 								<form onSubmit={handleSubmit(handleSubmitForm)}>
 									<TextAreaField
 										ref={register()}
-										className="px-4 py-4 rounded-[8px] h-[200px] bg-gray-textArea"
+										className="accordion-textArea px-4 py-4 rounded-[8px] h-[200px] bg-gray-textArea"
 										name="instructionToRestaurant"
 										placeholder={t("Add special instructions to restaurants")}
 										autoComplete="username"
@@ -115,7 +116,7 @@ const AccordionItem = ({
 							/>
 						</div>
 					</div>
-					<div className="flex justify-center my-10">
+					<div className="accordion-submit flex justify-center my-10">
 						<WideIconButton
 							label={`${t("Add to cart")} - $${updatedTotalPrice}`}
 							bgColor="bg-primary-color"
