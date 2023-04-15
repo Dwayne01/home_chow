@@ -15,5 +15,7 @@
   "firstName": "First Name",
   "lastName": "Last Name",
   "thisFieldIsRequired": "This field is required",
-  "invalidEmail": "Invalid Email"
+  "invalidEmail": "Invalid Email",
+  "Add special instructions to restaurants": "Add special instructions to restaurants",
+  "Add to cart": "Add to cart"
 }
