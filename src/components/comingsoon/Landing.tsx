@@ -30,7 +30,7 @@ const Landing: FC<LandingProps> = () => {
 				</p>
 				<div className="flex justify-center">
 					<Button
-						label="Count me in"
+						label={t("Count me in") || ""}
 						rootClass="bg-[#27AE60] hover:border-[#27AE60] hover:text-[#27AE60] w-[120] h-[40px]  text-white"
 						onClick={() => {
 							// eslint-disable-next-line no-alert
