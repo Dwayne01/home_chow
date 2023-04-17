@@ -16,7 +16,7 @@ module.exports = {
 				red: "#EF4444",
 				success: "#12B76A",
 				"font-light": "#718096",
-				"grey-light": "#929292",
+				"grey-light-100": "#929292",
 				"border-color": "#D0D5DD",
 				"border-neutral": "#E6E8F0",
 				"gray-modern": "#FCFCFD",

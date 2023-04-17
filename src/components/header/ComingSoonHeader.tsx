@@ -34,15 +34,17 @@ const ComingSoonHeader = ({ logoUrl }: { logoUrl?: string }) => {
 					</Link>
 				</div>
 				<div className="flex md:gap-10">
-					<div className="flex justify-between items-center">
+					<div className="flex justify-between items-center gap-10 ">
 						{defaultUserOptions &&
 							defaultUserOptions.map((option) => (
 								<Link
 									key={option.href}
 									href={option.href}
-									className="p-5 hidden md:block"
+									className="hidden md:block"
 								>
-									<h3 className="mt-3 text-xl">{option.label}</h3>
+									<h3 className="mt-3 text-xl font-medium hover:border-b-4 border-b-primary-color">
+										{option.label}
+									</h3>
 								</Link>
 							))}
 					</div>
