@@ -106,7 +106,6 @@ const ComponentPage = () => {
 		{ Header: "Height", accessor: "height" },
 	];
 
-
 	const handleSearch = () => {};
 
 	// Text items for testing accordion component

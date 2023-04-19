@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { RegisterPayload } from "@/types/auth";
+import { FaFacebook, FaTwitter } from "react-icons/fa";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import { PasswordField, TextField } from "../form/InputField";
@@ -134,18 +135,18 @@ const SignUpForm = ({
 						rootClass=" justify-start"
 						onClick={handleGoogleSignUp}
 					/>
-					{/* <WideIconButton
-							label="Sign in with Facebook"
-							icon={FaFacebook}
-							iconColor="#1877F2"
-							rootClass=" justify-start"
-						/>
-						<WideIconButton
-							label="Sign in with Twitter"
-							icon={FaTwitter}
-							iconColor="#1DA1F2"
-							rootClass=" justify-start"
-						/> */}
+					<WideIconButton
+						label="Sign in with Facebook"
+						icon={FaFacebook}
+						iconColor="#1877F2"
+						rootClass=" justify-start"
+					/>
+					<WideIconButton
+						label="Sign in with Twitter"
+						icon={FaTwitter}
+						iconColor="#1DA1F2"
+						rootClass=" justify-start"
+					/>
 				</div>
 				<div className="mt-8">
 					<p className="flex gap-1 justify-center">

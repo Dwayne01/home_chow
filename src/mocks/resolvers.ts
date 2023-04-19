@@ -4,6 +4,8 @@ import { sampleResponseMock } from "public/mock/sample";
 import { verifyCodeMock } from "public/mock/verifyCode";
 import { AuthApiResult } from "@/hooks/useAuth";
 import { sampleAuthResponseMock } from "public/mock/sampleAuth";
+import { ApplyVendorApiResult } from "@/hooks/useApplyVendor";
+import { sampleApplyVendorResponseMock } from "../../public/mock/sampleApplyVendorResponseMock";
 
 export const sampleMock = (
 	req: any,
@@ -51,3 +53,12 @@ export const authRegisterMock = (
 		json: (arg0: AuthApiResult) => any;
 	}
 ) => res(ctx.status(200), ctx.json(sampleAuthResponseMock));
+
+export const applyVendorMock = (
+	req: any,
+	res: (arg0: any, arg1: any) => any,
+	ctx: {
+		status: (arg0: number) => any;
+		json: (arg0: ApplyVendorApiResult) => any;
+	}
+) => res(ctx.status(200), ctx.json(sampleApplyVendorResponseMock));
