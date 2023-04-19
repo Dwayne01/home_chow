@@ -26,6 +26,9 @@ module.exports = {
 				"list-color": "#FFF8EB",
 				"gray-40": "#515772",
 				"gray-50": "#697586",
+				"gray-textArea": "#F7F8FF",
+				"gray-border": "#F5F8FC",
+				"yellow-button": "#FEFDF0",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({

@@ -18,5 +18,7 @@
   "streetAddress2": "Adresse municipale 2",
   "hello world": "Bonjour le monde",
   "Where": "Où",
-  "Search location": "Rechercher un lieu..."
+  "Search location": "Rechercher un lieu...",
+  "Add special instructions to restaurants": "Ajouter des instructions spéciales aux restaurants",
+  "Add to cart": "Ajouter au panier"
 }

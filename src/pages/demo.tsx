@@ -29,8 +29,10 @@ import Footer from "@/components/footer/Footer";
 import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Table from "@/components/table";
+import Accordion from "@/components/accordion";
 import Button from "../components/common/buttons";
 import SearchBar from "../components/searchBar";
+import foodImage from "../../public/assets/images/food.jpg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -104,7 +106,20 @@ const ComponentPage = () => {
 		{ Header: "Height", accessor: "height" },
 	];
 
+
 	const handleSearch = () => {};
+
+	// Text items for testing accordion component
+	const items = [
+		{
+			title: "White Stew",
+			price: 10.99,
+			content:
+				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
+			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
+			image: foodImage,
+		},
+	];
 
 	return (
 		<div>
@@ -190,6 +205,13 @@ const ComponentPage = () => {
 				<Slider description={description} slides={images} />
 			</div>
 
+			{/* Accordion */}
+			<div className="flex flex-col justify-center items-center gap-5 mx-10 px-20 my-5">
+				<h1>Accordion</h1>
+				<Accordion items={items} />
+			</div>
+
+			{/* Form */}
 			<FormProvider {...form}>
 				<form onSubmit={handleSubmit(handleSubmitForm)}>
 					<div className="p-10">

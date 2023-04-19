@@ -5,6 +5,7 @@ import GetOrderInfo from "@/components/checkout/GetOrderInfo";
 import PaymentStep from "@/components/checkout/PaymentStep";
 import { OrderProvider } from "@/context/OrderContext";
 import Image from "next/image";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import map from "../../public/assets/images/Maps.png";
 
 const Checkout = () => {
@@ -43,3 +44,11 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+export async function getStaticProps({ locale }: { locale: string }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale ?? "en", ["checkout"])),
+		},
+	};
+}
