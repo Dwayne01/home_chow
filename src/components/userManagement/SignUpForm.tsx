@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { RegisterPayload } from "@/types/auth";
+import PasswordStrengthBar from "react-password-strength-bar";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import { PasswordField, TextField } from "../form/InputField";
@@ -19,6 +20,7 @@ const SignUpForm = ({
 	handleGoogleSignUp: () => void;
 	handleSignup: (params: RegisterPayload) => Promise<boolean>;
 }) => {
+	const [password, setPassword] = React.useState<string>("");
 	const { t } = useTranslation("authentication");
 	const form = useForm({
 		defaultValues: {
@@ -105,7 +107,11 @@ const SignUpForm = ({
 									required
 									placeholder="∗∗∗∗∗∗∗∗"
 									autoComplete="current-password"
+									onChange={(e: {
+										target: { value: React.SetStateAction<string> };
+									}) => setPassword(e.target.value)}
 								/>
+								{password ? <PasswordStrengthBar password={password} /> : null}
 								<p>{t("Password must be at least 8 characters long")}</p>
 							</div>
 						</div>

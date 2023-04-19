@@ -59,6 +59,7 @@
 		"react-map-gl": "^7.0.21",
 		"react-map-gl-geocoder": "^2.2.0",
 		"react-number-format": "^4.9.3",
+		"react-password-strength-bar": "^0.4.1",
 		"react-payment-inputs": "^1.1.9",
 		"react-query": "^3.39.3",
 		"react-router-dom": "^6.9.0",
