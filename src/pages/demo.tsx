@@ -31,6 +31,7 @@ import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Table from "@/components/table";
 import Accordion from "@/components/accordion";
 import Button from "../components/common/buttons";
+import SearchBar from "../components/searchBar";
 import foodImage from "../../public/assets/images/food.jpg";
 
 const ComponentPage = () => {
@@ -105,6 +106,9 @@ const ComponentPage = () => {
 		{ Header: "Height", accessor: "height" },
 	];
 
+
+	const handleSearch = () => {};
+
 	// Text items for testing accordion component
 	const items = [
 		{
@@ -165,6 +169,13 @@ const ComponentPage = () => {
 					bgColor="bg-primary-color"
 				/>
 			</div>
+
+			{/* Search Bar */}
+			<div className="flex flex-col items-center gap-5 my-40">
+				<SearchBar placeholder="Anywhere" onSearch={handleSearch} />
+			</div>
+
+			{/* Checkbox Button Group */}
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
 				<CheckboxButton
 					name="customer"
