@@ -11,6 +11,8 @@ const LoginPage = () => {
 
 	const handleLogin = async (params: any) => {
 		await mutateAsync(params);
+
+		return true;
 	};
 
 	const handleGoogleSignIn = () => {
