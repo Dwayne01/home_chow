@@ -1,0 +1,18 @@
+{
+    "Your_Delivery": "Votre livraison",
+    "Add_Payment_Method": "Ajouter un nouveau mode de paiement",
+    "Payment_Method": "Mode de paiement",
+    "Tax_Fee": "Taxe fiscale",
+    "Delivery_Fee": "Frais de livraison",
+    "Sub_Total": "Sous-total",
+    "Address": "Adresse",
+    "Delivery_Information": "Informations sur la livraison",
+    "City": "Ville",
+    "State": "État",
+    "Zip": "Zip",
+    "Card_Number": "Numéro de carte",
+    "Card_Name": "Nom sur la carte",
+    "Expiry_Date": "Date d'expiration",
+    "CVV": "CVV",
+    "Next": "Suivant"
+}

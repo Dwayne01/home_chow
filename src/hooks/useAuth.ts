@@ -14,16 +14,12 @@ export interface AuthApiResult {
 export const useLogin = () => {
 	const res = useApiMutate<LoginPayload, ApiResponse<AuthApiResult>>(
 		"post",
-		"/auth/login"
+		"/login"
 	);
-
 	return res;
 };
 
 export const useRegister = () => {
-	const res = useApiMutate<RegisterPayload, ApiResponse>(
-		"post",
-		"/auth/signup "
-	);
+	const res = useApiMutate<RegisterPayload, ApiResponse>("post", "/signup ");
 	return res;
 };

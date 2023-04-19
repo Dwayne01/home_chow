@@ -6,12 +6,13 @@ import {
 	TextField,
 } from "@/components/form/InputField";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
 import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
-import { GoogleOAuthFunctions, LoginPayload } from "@/types/auth";
+import { LoginPayload } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
@@ -20,7 +21,7 @@ const LoginForm = ({
 	isLoading,
 	handleGoogleSignIn,
 }: {
-	handleGoogleSignIn: GoogleOAuthFunctions;
+	handleGoogleSignIn: () => void;
 	isLoading: boolean;
 	handleLogin: (params: LoginPayload) => Promise<boolean>;
 }) => {
@@ -34,10 +35,13 @@ const LoginForm = ({
 		},
 	});
 
+	const router = useRouter();
+
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = async (params: LoginPayload) => {
 		await handleLogin(params);
+		router.push("/dashboard");
 	};
 
 	return (

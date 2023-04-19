@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
+import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
-import { GoogleOAuthFunctions, RegisterPayload } from "@/types/auth";
+import { RegisterPayload } from "@/types/auth";
 import { FaFacebook, FaTwitter } from "react-icons/fa";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
@@ -16,7 +17,7 @@ const SignUpForm = ({
 	handleSignup,
 	handleGoogleSignUp,
 }: {
-	handleGoogleSignUp: GoogleOAuthFunctions;
+	handleGoogleSignUp: () => void;
 	handleSignup: (params: RegisterPayload) => Promise<boolean>;
 }) => {
 	const { t } = useTranslation("authentication");
@@ -28,10 +29,13 @@ const SignUpForm = ({
 		},
 	});
 
+	const router = useRouter();
+
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = async (params: RegisterPayload) => {
 		await handleSignup(params);
+		router.push("/verification");
 	};
 
 	return (

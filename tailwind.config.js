@@ -13,6 +13,7 @@ module.exports = {
 				"secondary-color": "var(--color-secondary)",
 				"primary-color-50": "#FEFBE8",
 				red: "#EF4444",
+				success: "#12B76A",
 				"font-light": "#718096",
 				"border-color": "#D0D5DD",
 				"border-neutral": "#E6E8F0",
@@ -22,7 +23,12 @@ module.exports = {
 				"grey-lighter": "#B8BFCC",
 				"progress-bar": "#3B82F6",
 				"label-color": "#f2f2f2",
+				"list-color": "#FFF8EB",
 				"gray-40": "#515772",
+				"gray-50": "#697586",
+				"gray-textArea": "#F7F8FF",
+				"gray-border": "#F5F8FC",
+				"yellow-button": "#FEFDF0",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
@@ -49,5 +55,5 @@ module.exports = {
 			xlarge: "60%",
 		},
 	},
-	plugins: [],
+	plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
 };

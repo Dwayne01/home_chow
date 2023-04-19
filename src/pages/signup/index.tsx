@@ -22,34 +22,34 @@ const SignUpPage = () => {
 				// eslint-disable-next-line no-console
 				console.log(error.message);
 			});
-
-		// eslint-disable-next-line react-hooks/rules-of-hooks
-		const { mutateAsync } = useRegister();
-
-		const handleSignup = async (params: RegisterPayload) => {
-			const res = await mutateAsync(params);
-
-			if (res.status === "Success") return true;
-
-			return false;
-		};
-
-		return (
-			<div>
-				<AuthenticationLayout
-					LeftComponent={<Onboarding />}
-					RightComponent={
-						<SignUpForm
-							handleSignup={handleSignup}
-							handleGoogleSignUp={handleGoogleSignUp}
-						/>
-					}
-					width="md:min-w-1/2"
-					leftComponentClassName="hidden md:flex"
-				/>
-			</div>
-		);
 	};
+
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const { mutateAsync } = useRegister();
+
+	const handleSignup = async (params: RegisterPayload) => {
+		const res = await mutateAsync(params);
+
+		if (res.status === "Success") return true;
+
+		return false;
+	};
+
+	return (
+		<div>
+			<AuthenticationLayout
+				LeftComponent={<Onboarding />}
+				RightComponent={
+					<SignUpForm
+						handleSignup={handleSignup}
+						handleGoogleSignUp={handleGoogleSignUp}
+					/>
+				}
+				width="md:min-w-1/2"
+				leftComponentClassName="hidden md:flex"
+			/>
+		</div>
+	);
 };
 
 export default SignUpPage;

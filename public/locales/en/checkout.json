@@ -1,0 +1,18 @@
+{
+    "Your_Delivery": "Your Delivery",
+    "Add_Payment_Method": "Add new payment method",
+    "Payment_Method": "Payment Method",
+    "Tax_Fee": "Tax Fee",
+    "Delivery_Fee": "Delivery Fee",
+    "Sub_Total": "Sub Total",
+    "Address": "Address",
+    "Delivery_Information": "Delivery Information",
+    "City": "City",
+    "State": "State",
+    "Zip": "Zip",
+    "Card_Number": "Card Number",
+    "Card_Name": "Card Name",
+    "Expiry_Date": "Expiry Date",
+    "CVV": "CVV",
+    "Next": "Next"
+}

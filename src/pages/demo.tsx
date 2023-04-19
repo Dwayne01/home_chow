@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
@@ -27,7 +29,10 @@ import Footer from "@/components/footer/Footer";
 import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Table from "@/components/table";
+import Accordion from "@/components/accordion";
 import Button from "../components/common/buttons";
+import SearchBar from "../components/searchBar";
+import foodImage from "../../public/assets/images/food.jpg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -38,10 +43,10 @@ const ComponentPage = () => {
 	});
 
 	const images = [
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
-		<img src="https://via.placeholder.com/150" alt="img" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
 	];
 
 	const description = (
@@ -101,6 +106,20 @@ const ComponentPage = () => {
 		{ Header: "Height", accessor: "height" },
 	];
 
+	const handleSearch = () => {};
+
+	// Text items for testing accordion component
+	const items = [
+		{
+			title: "White Stew",
+			price: 10.99,
+			content:
+				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
+			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
+			image: foodImage,
+		},
+	];
+
 	return (
 		<div>
 			<MainHeader />
@@ -149,6 +168,13 @@ const ComponentPage = () => {
 					bgColor="bg-primary-color"
 				/>
 			</div>
+
+			{/* Search Bar */}
+			<div className="flex flex-col items-center gap-5 my-40">
+				<SearchBar placeholder="Anywhere" onSearch={handleSearch} />
+			</div>
+
+			{/* Checkbox Button Group */}
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
 				<CheckboxButton
 					name="customer"
@@ -178,6 +204,13 @@ const ComponentPage = () => {
 				<Slider description={description} slides={images} />
 			</div>
 
+			{/* Accordion */}
+			<div className="flex flex-col justify-center items-center gap-5 mx-10 px-20 my-5">
+				<h1>Accordion</h1>
+				<Accordion items={items} />
+			</div>
+
+			{/* Form */}
 			<FormProvider {...form}>
 				<form onSubmit={handleSubmit(handleSubmitForm)}>
 					<div className="p-10">
