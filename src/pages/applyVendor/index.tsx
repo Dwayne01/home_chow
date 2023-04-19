@@ -9,6 +9,8 @@ function ApplyAsVendor() {
 
 	const handleVendor = async (params: any) => {
 		await mutateAsync(params);
+
+		return true;
 	};
 
 	return (
