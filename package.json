@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev -p 3003",
 		"build": "next build",
-		"start": "next start -p 3003",
+		"start": "next start",
 		"lint": "next lint",
 		"lint:fix": "eslint . --ext ts --ext tsx --ext js --fix",
 		"prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
