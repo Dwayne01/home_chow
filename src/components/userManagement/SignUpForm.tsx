@@ -98,7 +98,7 @@ const SignUpForm = ({
 								})}
 								autoComplete="email"
 							/>
-							<div className="flex flex-col gap-2 col-start-1 col-end-3">
+							<div className="flex flex-col gap-2 col-start-1 col-end-3 relative">
 								<PasswordField
 									data-testid="password"
 									name="password"
@@ -111,11 +111,14 @@ const SignUpForm = ({
 										target: { value: React.SetStateAction<string> };
 									}) => setPassword(e.target.value)}
 								/>
-								{password ? <PasswordStrengthBar password={password} /> : null}
-								<p>{t("Password must be at least 8 characters long")}</p>
+								{password ? (
+									<div className="absolute mt-[60px] w-full">
+										<PasswordStrengthBar password={password} />
+									</div>
+								) : null}
 							</div>
 						</div>
-						<div className=" mt-6">
+						<div className=" mt-10">
 							<Button
 								label={t("Sign In") || ""}
 								type="submit"
