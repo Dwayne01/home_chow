@@ -1,1 +1,1 @@
-web: yarn start -- -p $PORT
+web: yarn start:heroku -- -p $PORT 
