@@ -1,5 +1,8 @@
+import { applyTheme } from "@/theme/utils";
 import CheckboxButton from "./CheckboxButton";
+import "../../../styles/globals.css";
 
+applyTheme();
 describe("<CheckboxButton />", () => {
 	it("renders with the correct props", () => {
 		const label = "I am a Vendor";
