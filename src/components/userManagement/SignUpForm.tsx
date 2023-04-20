@@ -8,10 +8,10 @@ import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { RegisterPayload } from "@/types/auth";
-import PasswordStrengthBar from "react-password-strength-bar";
+import PasswordStrengthComponent from "@/components/PasswordStrengthComponent";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
-import { PasswordField, TextField } from "../form/InputField";
+import { TextField } from "../form/InputField";
 
 const SignUpForm = ({
 	handleSignup,
@@ -20,7 +20,6 @@ const SignUpForm = ({
 	handleGoogleSignUp: () => void;
 	handleSignup: (params: RegisterPayload) => Promise<boolean>;
 }) => {
-	const [password, setPassword] = React.useState<string>("");
 	const { t } = useTranslation("authentication");
 	const form = useForm({
 		defaultValues: {
@@ -98,25 +97,7 @@ const SignUpForm = ({
 								})}
 								autoComplete="email"
 							/>
-							<div className="flex flex-col gap-2 col-start-1 col-end-3 relative">
-								<PasswordField
-									data-testid="password"
-									name="password"
-									label={t("Password")}
-									ref={register({ required: true })}
-									required
-									placeholder="∗∗∗∗∗∗∗∗"
-									autoComplete="current-password"
-									onChange={(e: {
-										target: { value: React.SetStateAction<string> };
-									}) => setPassword(e.target.value)}
-								/>
-								{password ? (
-									<div className="absolute mt-[60px] w-full">
-										<PasswordStrengthBar password={password} />
-									</div>
-								) : null}
-							</div>
+							<PasswordStrengthComponent register={register} />
 						</div>
 						<div className=" mt-10">
 							<Button
