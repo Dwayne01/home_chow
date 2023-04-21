@@ -22,9 +22,21 @@ describe("sign up page", () => {
 	it("Should show sign up required error when forn is not properly field", () => {
 		cy.get("#signUp-btn").click();
 		cy.get(".sign-up-form").contains(/This field is required/i);
+		cy.get(".sign-up-form").contains(/First Name/i);
+		cy.get(".sign-up-form").contains(/Last Name/i);
+		cy.get(".sign-up-form").contains(/Email Address/i);
+		cy.get(".sign-up-form").contains(/Password/i);
 	});
 
-	it("Should show sign up required error when forn is not properly field", () => {
+	it("Should SignUp the form", () => {
+		cy.get("#signUp-btn").click();
+
+		cy.get("#signUp-btn").click();
+
+		cy.get(".sign-up-form").contains(/This field is required/i);
+	});
+
+	it("Should show sign up required error when form is not properly field", () => {
 		cy.intercept("POST", "https://homechow.herokuapp.com/signup", {
 			fixture: "signup.json",
 		}).as("signup");

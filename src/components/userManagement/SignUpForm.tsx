@@ -55,10 +55,14 @@ const SignUpForm = ({
 					</div>
 				</div>
 				<FormProvider {...form}>
-					<form onSubmit={handleSubmit(handleSubmitForm)} id="sign-up-form">
+					<form
+						onSubmit={handleSubmit(handleSubmitForm)}
+						className="sign-up-form"
+					>
 						<div className="grid grid-cols-2 gap-5">
 							<TextField
-								data-testid="email"
+								data-testid="firstname"
+								id="firstname"
 								rootClass="mb-1 col-start-1"
 								label={t("firstName", { ns: "common" })}
 								placeholder={t("enterFirstName")}
@@ -71,7 +75,8 @@ const SignUpForm = ({
 							/>
 
 							<TextField
-								data-testid="email"
+								data-testid="lastname"
+								id="lastname"
 								rootClass="mb-1"
 								label={t("lastName", { ns: "common" })}
 								placeholder={t("enterLastName")}
@@ -85,6 +90,7 @@ const SignUpForm = ({
 
 							<TextField
 								data-testid="email"
+								id="email"
 								rootClass="mb-1 col-start-1 col-end-3"
 								name="email"
 								label={t("Email")}
@@ -102,6 +108,7 @@ const SignUpForm = ({
 							<div className="flex flex-col gap-2 col-start-1 col-end-3 relative">
 								<PasswordField
 									data-testid="password"
+									id="password"
 									name="password"
 									label={t("Password")}
 									ref={register({ required: true })}
@@ -121,6 +128,7 @@ const SignUpForm = ({
 						</div>
 						<div className=" mt-10">
 							<Button
+								data-testid="signUp-btn"
 								id="signUp-btn"
 								label={t("Sign In") || ""}
 								type="submit"
