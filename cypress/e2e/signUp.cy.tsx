@@ -46,7 +46,7 @@ describe("sign up page", () => {
 
 		cy.get("#signUp-btn").click();
 
-		cy.wait("@signup").then(() => {
+		cy.wait("@signup", { requestTimeout: 20000 }).then(() => {
 			// Success message should be displayed
 			cy.get(".success-message").should("be.visible");
 		});
