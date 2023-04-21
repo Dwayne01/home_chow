@@ -75,8 +75,8 @@ const SignUpForm = ({
 							/>
 
 							<TextField
-								data-testid="lastname"
-								id="lastname"
+								data-testid="lastName"
+								id="lastName"
 								rootClass="mb-1"
 								label={t("lastName", { ns: "common" })}
 								placeholder={t("enterLastName")}
