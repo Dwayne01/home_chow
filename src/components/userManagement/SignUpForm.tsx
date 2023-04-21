@@ -130,7 +130,7 @@ const SignUpForm = ({
 							<Button
 								data-testid="signUp-btn"
 								id="signUp-btn"
-								label={t("Sign In") || ""}
+								label={t("Sign Up") || ""}
 								type="submit"
 								rootClass={classNames(
 									"rounded-lg whitespace-nowrap w-full px-3  font-bold text-sm text-white"
