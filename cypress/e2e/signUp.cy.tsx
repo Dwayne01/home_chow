@@ -34,6 +34,8 @@ describe("sign up page", () => {
 	});
 
 	it("Should show sign up required error when form is not properly field", () => {
+		cy.get("#signUp-btn").click();
+
 		cy.intercept("POST", "https://homechow.herokuapp.com/signup", {
 			fixture: "signup.json",
 		}).as("signup");
