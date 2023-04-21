@@ -121,6 +121,7 @@ const SignUpForm = ({
 						</div>
 						<div className=" mt-10">
 							<Button
+								id="signUp-btn"
 								label={t("Sign In") || ""}
 								type="submit"
 								rootClass={classNames(
