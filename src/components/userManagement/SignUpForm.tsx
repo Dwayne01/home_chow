@@ -61,8 +61,8 @@ const SignUpForm = ({
 					>
 						<div className="grid grid-cols-2 gap-5">
 							<TextField
-								data-testid="firstname"
-								id="firstname"
+								data-testid="firstName"
+								id="firstName"
 								rootClass="mb-1 col-start-1"
 								label={t("firstName", { ns: "common" })}
 								placeholder={t("enterFirstName")}
