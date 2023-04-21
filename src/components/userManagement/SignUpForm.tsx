@@ -55,7 +55,7 @@ const SignUpForm = ({
 					</div>
 				</div>
 				<FormProvider {...form}>
-					<form onSubmit={handleSubmit(handleSubmitForm)}>
+					<form onSubmit={handleSubmit(handleSubmitForm)} id="sign-up-form">
 						<div className="grid grid-cols-2 gap-5">
 							<TextField
 								data-testid="email"
