@@ -1,7 +1,7 @@
 import { ReactNode, FC } from "react";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
-import HamBurger from "../../../public/assets/images/comingsoon/HamBurger.svg";
+import HamBurger from "../../../public/assets/images/comingsoon/Hamburger.svg";
 import Button from "../common/buttons";
 
 interface SuccessProps {
@@ -28,10 +28,7 @@ const Success: FC<SuccessProps> = () => {
 				<Button
 					label={t("Done") || ""}
 					rootClass="bg-[#27AE60] hover:border-[#27AE60] hover:text-[#27AE60] w-[120] h-[40px]  text-white"
-					onClick={() => {
-						// eslint-disable-next-line no-alert
-						alert(t("Done"));
-					}}
+					onClick={() => {}}
 				/>
 			</div>
 		</div>
