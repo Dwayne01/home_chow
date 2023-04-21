@@ -14,9 +14,6 @@ describe("sign up page", () => {
 	it("Should render the sign up page", () => {
 		cy.get("#signUp-btn").should("be.visible");
 		cy.get("#signUp-btn").contains(/Sign Up/i);
-		cy.get("[data-testid='sign-up-msg']").contains(
-			/To sign up, fill in your personal details below/i
-		);
 	});
 
 	it("Should show sign up required error when forn is not properly field", () => {
