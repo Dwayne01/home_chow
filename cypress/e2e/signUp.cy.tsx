@@ -24,7 +24,7 @@ describe("sign up page", () => {
 		cy.get(".sign-up-form").contains(/This field is required/i);
 		cy.get(".sign-up-form").contains(/First Name/i);
 		cy.get(".sign-up-form").contains(/Last Name/i);
-		cy.get(".sign-up-form").contains(/Email Address/i);
+		cy.get(".sign-up-form").contains(/Email/i);
 		cy.get(".sign-up-form").contains(/Password/i);
 	});
 
