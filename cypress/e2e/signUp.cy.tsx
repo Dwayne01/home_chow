@@ -25,7 +25,7 @@ describe("sign up page", () => {
 		cy.get(".sign-up-form").contains(/Password/i);
 	});
 
-	it("Should SignUp the form", () => {
+	it("Should show subscribe required error when forn is not properly field", () => {
 		cy.get("#signUp-btn").click();
 
 		cy.get("#signUp-btn").click();
