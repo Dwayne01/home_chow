@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
@@ -9,6 +9,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { RegisterPayload } from "@/types/auth";
 import { FaFacebook, FaTwitter } from "react-icons/fa";
+import PasswordStrengthBar from "react-password-strength-bar";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import { PasswordField, TextField } from "../form/InputField";
@@ -20,6 +21,7 @@ const SignUpForm = ({
 	handleGoogleSignUp: () => void;
 	handleSignup: (params: RegisterPayload) => Promise<boolean>;
 }) => {
+	const [password, setPassword] = useState("");
 	const { t } = useTranslation("authentication");
 	const form = useForm({
 		defaultValues: {
@@ -97,7 +99,7 @@ const SignUpForm = ({
 								})}
 								autoComplete="email"
 							/>
-							<div className="flex flex-col gap-2 col-start-1 col-end-3">
+							<div className="flex flex-col gap-2 col-start-1 col-end-3 relative">
 								<PasswordField
 									data-testid="password"
 									name="password"
@@ -106,11 +108,18 @@ const SignUpForm = ({
 									required
 									placeholder="∗∗∗∗∗∗∗∗"
 									autoComplete="current-password"
+									onChange={(e: {
+										target: { value: React.SetStateAction<string> };
+									}) => setPassword(e.target.value)}
 								/>
-								<p>{t("Password must be at least 8 characters long")}</p>
+								<div className="absolute mt-[60px] w-full">
+									{password.length > 0 && (
+										<PasswordStrengthBar password={password} />
+									)}
+								</div>
 							</div>
 						</div>
-						<div className=" mt-6">
+						<div className=" mt-10">
 							<Button
 								label={t("Sign In") || ""}
 								type="submit"
