@@ -22,16 +22,14 @@ const Button = ({
 	children = "N/A",
 	disabled = false,
 }: ButtonProps) => {
-
-    // define all the siezes of the button
+	// define all the siezes of the button
 	const sizeMap = new Map([
 		["sm", "px-2 py-2 text-sm"],
 		["md", "px-4 py-2 text-base"],
 		["lg", "px-6 py-3 text-lg"],
 	]);
 
-    // once designers have defined all the sizes, we can use the sizeMap to render the button
-
+	// once designers have defined all the color combinations, we can add them here
 
 	if (sizeMap.has(size)) {
 		return (
