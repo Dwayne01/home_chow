@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useTranslation } from "next-i18next";
-import Button from "../common/buttons";
+import Button from "../common/buttons/Button";
 
 interface OnboardProps {
 	CountBtnClick: () => void;
@@ -20,10 +20,11 @@ const Onboard: FC<OnboardProps> = ({ CountBtnClick }) => {
 			</p>
 			<div className="flex justify-center">
 				<Button
-					label={t("Count me in") || ""}
-					rootClass="bg-[#27AE60] hover:border-[#27AE60] hover:text-[#27AE60] w-[120] h-[40px]  text-white"
+					className="bg-green-dark border border-green-dark text-white hover:bg-white hover:text-green-dark"
 					onClick={CountBtnClick}
-				/>
+				>
+					{t("CountMeIn")}
+				</Button>
 			</div>
 		</div>
 	);

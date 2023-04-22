@@ -2,7 +2,7 @@ import { ReactNode, FC } from "react";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import HamBurger from "../../../public/assets/images/comingsoon/Hamburger.svg";
-import Button from "../common/buttons";
+import Button from "../common/buttons/Button";
 
 interface SuccessProps {
 	LandingImage?: ReactNode;
@@ -26,10 +26,11 @@ const Success: FC<SuccessProps> = () => {
 			</div>
 			<div className="flex justify-center">
 				<Button
-					label={t("Done") || ""}
-					rootClass="bg-[#27AE60] hover:border-[#27AE60] hover:text-[#27AE60] w-[120] h-[40px]  text-white"
+					className="bg-green-dark border border-green-dark text-white hover:bg-white hover:text-green-dark"
 					onClick={() => {}}
-				/>
+				>
+					{t("Done") || ""}
+				</Button>
 			</div>
 		</div>
 	);
