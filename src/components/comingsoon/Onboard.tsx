@@ -19,10 +19,7 @@ const Onboard: FC<OnboardProps> = ({ CountBtnClick }) => {
 				{t("hugaryAlready")}
 			</p>
 			<div className="flex justify-center">
-				<Button
-					className="bg-green-dark border border-green-dark text-white hover:bg-white hover:text-green-dark"
-					onClick={CountBtnClick}
-				>
+				<Button type="secondary" onClick={CountBtnClick}>
 					{t("CountMeIn")}
 				</Button>
 			</div>

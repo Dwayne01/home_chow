@@ -24,6 +24,7 @@ import { useTranslation } from "next-i18next";
 import CodeInput from "@/components/form/CodeInput";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Button from "../components/common/buttons";
+import ButtonV2 from "../components/common/buttons/Button";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -198,6 +199,53 @@ const ComponentPage = () => {
 					</div>
 				</form>
 			</FormProvider>
+			<div className=" my-10 mx-5">
+				<h3>New button made by Jaskaran Demo</h3>
+				<div className="flex gap-4 items-center">
+					<ButtonV2
+						type="primary"
+						size="lg"
+						onClick={() => {
+							// eslint-disable-next-line no-console
+							console.log("Hello World");
+						}}
+					>
+						PrimaryLG
+					</ButtonV2>
+
+					<ButtonV2
+						size="md"
+						type="secondary"
+						onClick={() => {
+							// eslint-disable-next-line no-console
+							console.log("Hello World");
+						}}
+					>
+						SecondaryMD
+					</ButtonV2>
+
+					<ButtonV2
+						size="md"
+						type="primary-outline"
+						onClick={() => {
+							// eslint-disable-next-line no-console
+							console.log("Hello World");
+						}}
+					>
+						PrimaryOutlineMD
+					</ButtonV2>
+					<ButtonV2
+						size="sm"
+						type="secondary-outline"
+						onClick={() => {
+							// eslint-disable-next-line no-console
+							console.log("Hello World");
+						}}
+					>
+						SecondaryOutlineSM
+					</ButtonV2>
+				</div>
+			</div>
 		</div>
 	);
 };
