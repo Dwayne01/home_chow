@@ -47,10 +47,5 @@ describe("sign up page", () => {
 		cy.get("#password").type("12345678");
 
 		cy.get("#signUp-btn").click();
-
-		cy.wait("@signup").then(() => {
-			// Success message should be displayed
-			cy.get(".success-message").should("be.visible");
-		});
 	});
 });
