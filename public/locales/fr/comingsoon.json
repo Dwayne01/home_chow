@@ -11,11 +11,19 @@
   "Notify me": "Prévenez-moi",
   "Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.. ": " Inscrivez-vous aux mises à jour pour être les premiers à savoir quand nous lançons. Pas de spam, juste des informations importantes et des offres exclusives ..",
   "chooseOptions": "Choisir les options qui s'appliquent à vous ?",
+  "hugaryAlready": "Vous avez déjà faim ? Nous vous ferons savoir lorsque le repas est prêt.",
   "We're putting the finishing touches on our website and getting ready to launch": {
     " Sign up for updates and be the first to know when we go live": "",
     "__i18n_ally_root__": {
       " Sign up for updates and be the first to know when we go live": ""
     }
   },
-  "We": ""
+  "We": "",
+  "good morning": "",
+  "Home": "Accueil",
+  "Count me in": "comptez sur moi",
+  "Great_All_Set": "Super, tout est prêt !",
+  "Now_Stay_Tuned": "Restez à l'écoute, nous vous informerons de toutes les mises à jour.",
+  "Done": "Terminé",
+  "CountMeIn": "comptez sur moi"
 }

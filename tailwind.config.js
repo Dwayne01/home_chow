@@ -15,6 +15,7 @@ module.exports = {
 				"gray-modern": "#FCFCFD",
 				"grey-light": "#DDDDDD",
 				"grey-dark": "#344054",
+				"green-dark": "#27AE60",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
