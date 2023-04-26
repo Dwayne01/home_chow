@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 	}, []);
 
 	useEffect(() => {
-		if (pathname !== "/demo") {
+		if (pathname !== "/demo" && pathname !== "/aboutus") {
 			replace("/comingsoon");
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
