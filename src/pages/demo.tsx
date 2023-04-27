@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import ComingSoonHeader from "@/components/header/ComingSoonHeader";
@@ -23,7 +22,6 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import CodeInput from "@/components/form/CodeInput";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
-import Button from "../components/common/buttons";
 import ButtonV2 from "../components/common/buttons/Button";
 
 const ComponentPage = () => {
@@ -49,13 +47,6 @@ const ComponentPage = () => {
 				<IconButton icon={FaLinkedinIn} color="text-primary-color" href="" />
 			</div>
 			<div className="flex flex-col items-center gap-5">
-				<Button
-					icon={AiOutlineSend}
-					textColor="text-white"
-					label="Notify me"
-					onClick={() => {}}
-					iconPosition="right"
-				/>
 				{/* Social Auth buttons */}
 				<WideIconButton label="Sign in with Google" icon={FcGoogle} />
 				<WideIconButton
