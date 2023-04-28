@@ -128,12 +128,12 @@ const ComponentPage = () => {
 			onClick: () => {},
 		},
 		{
-			label: "Tab 2 Title",
+			label: "Tab 2 Title Longer",
 			children: <div>Content for tab 2</div>,
 			onClick: () => {},
 		},
 		{
-			label: "Tab 3 Title",
+			label: "Tab 3 Title Even Longer!!!!!!!! ",
 			children: <div>Content for tab 3</div>,
 			onClick: () => {},
 		},

@@ -33,7 +33,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 
 	return (
 		<div>
-			<div className="flex justify-between mb-8">
+			<div className="flex justify-start gap-16 mb-8">
 				{tabs.map((tab, index) => (
 					<div
 						key={tab.label}
@@ -47,16 +47,18 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 						tabIndex={0}
 						className={`${
 							activeTab === index ? "text-primary-color inline-block" : ""
-						} flex-grow cursor-pointer`}
+						} cursor-pointer`}
 					>
-						<div className="flex justify-center flex-col">
+						<div className="inline-block">
 							<div>{tab.label}</div>
 							{activeTab === index && (
 								<div
 									style={{
-										flex: "1",
-										maxWidth: "20%",
+										display: "flex",
+										maxWidth: "80%",
 										marginTop: "8px",
+										marginLeft: "20%",
+										marginRight: "20%",
 										borderBottom: "3px solid #EAAA08",
 										borderRadius: "4px",
 									}}
