@@ -16,5 +16,11 @@
   "invalidEmail": "Email invalide",
   "thisFieldIsRequired": "Ce champ est obligatoire",
   "streetAddress2": "Adresse municipale 2",
-  "hello world": "Bonjour le monde"
+  "hello world": "Bonjour le monde",
+  "vendor": "Vendeur",
+  "customer": "Client",
+  "driver": "Conducteur",
+  "question": "Qu'est-ce qui vous décrit le mieux ?",
+  "signUpInfo": "Inscrivez-vous pour recevoir des mises à jour et être le premier à être informé de notre lancement. Pas de spam, juste des informations importantes et des offres exclusives.",
+  "onboardBtn": "Me prévenir"
 }

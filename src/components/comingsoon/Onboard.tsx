@@ -3,10 +3,10 @@ import { useTranslation } from "next-i18next";
 import Button from "../common/buttons/Button";
 
 interface OnboardProps {
-	CountBtnClick: () => void;
+	handleNavigation: (id: number) => void;
 }
 
-const Onboard: FC<OnboardProps> = ({ CountBtnClick }) => {
+const Onboard: FC<OnboardProps> = ({ handleNavigation }) => {
 	const { t } = useTranslation(["comingsoon"]);
 
 	return (
@@ -19,7 +19,7 @@ const Onboard: FC<OnboardProps> = ({ CountBtnClick }) => {
 				{t("hugaryAlready")}
 			</p>
 			<div className="flex justify-center">
-				<Button type="secondary" onClick={CountBtnClick}>
+				<Button type="secondary" onClick={() => handleNavigation(2)}>
 					{t("CountMeIn")}
 				</Button>
 			</div>

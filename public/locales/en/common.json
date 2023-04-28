@@ -15,5 +15,11 @@
   "firstName": "First Name",
   "lastName": "Last Name",
   "thisFieldIsRequired": "This field is required",
-  "invalidEmail": "Invalid Email"
+  "invalidEmail": "Invalid Email",
+  "vendor": "Vendor",
+  "customer": "Customer",
+  "driver": "Driver",
+  "question":"What describes you best?",
+  "signUpInfo": "Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.",
+  "onboardBtn": "Notify Me"
 }

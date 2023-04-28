@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { TextField } from "@/components/form/InputField";
 import Button from "../common/buttons/Button";
+
+type LandingProps = {
+	handleNavigation: (id: number) => void;
+};
 
 type FormValues = {
 	firstName: string;
@@ -12,7 +16,7 @@ type FormValues = {
 
 type UserType = "customer" | "vendor" | "driver";
 
-const LandingForm = () => {
+const LandingForm: FC<LandingProps> = ({ handleNavigation }) => {
 	const { t } = useTranslation("comingsoon, common");
 	const [selected, setSelected] = useState<UserType>("customer");
 
@@ -38,6 +42,7 @@ const LandingForm = () => {
 
 		// eslint-disable-next-line no-console
 		console.log(submitRequest);
+		handleNavigation(3);
 	};
 
 	return (
@@ -46,28 +51,30 @@ const LandingForm = () => {
 				className="px-10 md:max-w-[500px] m-auto flex flex-col gap-4"
 				onSubmit={handleSubmit(handleNotifyMe)}
 			>
-				<h4 className="text-center text-xl font-normal">{t("Who are you?")}</h4>
+				<h4 className="text-center text-xl font-normal">
+					{t("question", { ns: "common" })}
+				</h4>
 				<div className="flex justify-between items-center gap-[10px] md:max-w-fit md:m-auto">
 					<Button
 						type={selected === "customer" ? "primary" : "primary-outline"}
 						onClick={() => setSelected("customer")}
 						className="flex-1 rounded-[40px] md:w-[120px] justify-center"
 					>
-						{t("Customer")}
+						{t("customer", { ns: "common" })}
 					</Button>
 					<Button
 						type={selected === "vendor" ? "primary" : "primary-outline"}
 						onClick={() => setSelected("vendor")}
 						className="flex-1 rounded-[40px] md:w-[120px] justify-center"
 					>
-						{t("Vendor")}
+						{t("vendor", { ns: "common" })}
 					</Button>
 					<Button
 						type={selected === "driver" ? "primary" : "primary-outline"}
 						onClick={() => setSelected("driver")}
 						className="flex-1 rounded-[40px] md:w-[120px] justify-center"
 					>
-						{t("Driver")}
+						{t("driver", { ns: "common" })}
 					</Button>
 				</div>
 				<div className="flex items-center justify-between gap-7">
@@ -120,13 +127,10 @@ const LandingForm = () => {
 						autoComplete="email"
 					/>
 				</div>
-				<p className="text-base">
-					Sign up for updates to be the first to know when we launch. No spam,
-					just important information and exclusive offers.
-				</p>
+				<p className="text-base">{t("signUpInfo", { ns: "common" })}</p>
 				<div className="flex justify-center">
 					<Button type="secondary" buttonType="submit">
-						Notify Me
+						{t("onboardBtn", { ns: "common" })}
 					</Button>
 				</div>
 			</form>
