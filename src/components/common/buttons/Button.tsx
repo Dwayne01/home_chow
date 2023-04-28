@@ -11,7 +11,7 @@ type ButtonProps = {
 	size?: string;
 	LeftIconComponent?: any;
 	RightIconComponent?: any;
-	onClick: () => void;
+	onClick?: () => void;
 	children?: any;
 	disabled?: boolean;
 	buttonType?: "button" | "submit" | "reset" | undefined;
