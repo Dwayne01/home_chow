@@ -17,7 +17,7 @@ const Success: FC<SuccessProps> = ({ handleNavigation, LandingImage }) => {
 			<div className="flex flex-col">
 				<Image
 					src={LandingImage || HamBurger}
-					className="w-[50%] m-auto"
+					className="m-auto"
 					alt="Burger"
 				/>
 			</div>

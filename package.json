@@ -30,7 +30,6 @@
 		"@types/react-dom": "18.0.10",
 		"@types/react-payment-inputs": "^1.1.0",
 		"autoprefixer": "^10.4.13",
-		"chart.js": "^4.2.1",
 		"classnames": "^2.3.2",
 		"eslint": "8.33.0",
 		"eslint-config-next": "13.1.6",

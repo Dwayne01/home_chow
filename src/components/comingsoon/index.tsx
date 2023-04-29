@@ -1,13 +1,9 @@
-import { ReactNode, FC, useState } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
 import LandingImage from "../../../public/assets/images/comingsoon/landing-mobile.svg";
 import Onboard from "./Onboard";
 import Success from "./Success";
 import LandingForm from "./LandingForm";
-
-interface LandingProps {
-	LandingImage?: ReactNode;
-}
 
 type Tabs = {
 	id: number;
@@ -23,7 +19,7 @@ type LandingNavigationItem = {
 	current: boolean;
 };
 
-const Landing: FC<LandingProps> = () => {
+const ComingSoon = () => {
 	const landingNaigation: LandingNavigationItem[] = [
 		{
 			id: 1,
@@ -46,8 +42,16 @@ const Landing: FC<LandingProps> = () => {
 	];
 
 	const [tabs, setTabs] = useState<Tabs>(landingNaigation);
+	const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
 	const handleNavigation = (id: number) => {
+		if (id === 3) {
+			setShowSuccess(true);
+		}
+
+		if (id < 3) {
+			setShowSuccess(false);
+		}
 		const newTabs = tabs.map((tab: any) => {
 			if (tab.id === id) {
 				return {
@@ -65,13 +69,15 @@ const Landing: FC<LandingProps> = () => {
 
 	return (
 		<div className="mt-20 flex flex-col justify-center gap-9 md:flex-row-reverse md:items-center md:mx-10 lg:mx-40 min-h-[500px]">
-			<aside className="flex-1">
-				<Image
-					src={LandingImage}
-					className="w-[80%] m-auto"
-					alt="Coming Soon"
-				/>
-			</aside>
+			{!showSuccess && (
+				<aside className="flex-1">
+					<Image
+						src={LandingImage}
+						className="w-[80%] m-auto"
+						alt="Coming Soon"
+					/>
+				</aside>
+			)}
 			<div className="flex-1">
 				{tabs.map(
 					(tab: any) =>
@@ -86,4 +92,4 @@ const Landing: FC<LandingProps> = () => {
 	);
 };
 
-export default Landing;
+export default ComingSoon;

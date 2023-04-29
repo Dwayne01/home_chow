@@ -1,23 +1,13 @@
-import { ReactNode, FC } from "react";
+import { ReactElement } from "react";
+import Footer from "../footer/Footer";
+import ComingSoonHeader from "../header/ComingSoonHeader";
 
-interface ComingSoonLayoutProps {
-	Header: ReactNode;
-	Footer?: ReactNode;
-	Landing: ReactNode;
-}
-
-const ComingSoonLayout: FC<ComingSoonLayoutProps> = ({
-	Header,
-	Footer,
-	Landing,
-}) => (
-	<>
-		<div className="md:h-[90vh]">
-			<header className="md:mx-10 lg:mx-40">{Header}</header>
-			<main>{Landing}</main>
-		</div>
-		<footer className="md:mx-10 lg:mx-40">{Footer}</footer>
-	</>
+const ComingSoonLayout = ({ children }: { children: ReactElement }) => (
+	<div className="h-[90vh]">
+		<ComingSoonHeader />
+		<main>{children}</main>
+		<Footer />
+	</div>
 );
 
 export default ComingSoonLayout;

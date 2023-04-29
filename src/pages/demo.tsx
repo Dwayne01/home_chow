@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import ComingSoonHeader from "@/components/header/ComingSoonHeader";
@@ -21,6 +20,7 @@ import {
 } from "@/components/form/InputField";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
+import { AiOutlineSend } from "react-icons/ai";
 import CodeInput from "@/components/form/CodeInput";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import ButtonV2 from "../components/common/buttons/Button";
