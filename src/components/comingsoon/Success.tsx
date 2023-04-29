@@ -6,15 +6,20 @@ import Button from "../common/buttons/Button";
 
 interface SuccessProps {
 	LandingImage?: ReactNode;
+	handleNavigation: (id: number) => void;
 }
 
-const Success: FC<SuccessProps> = () => {
+const Success: FC<SuccessProps> = ({ handleNavigation, LandingImage }) => {
 	const { t } = useTranslation(["comingsoon"]);
 
 	return (
 		<div className="flex flex-col px-[60px] flex-1 md:px-0 gap-5">
 			<div className="flex flex-col">
-				<Image src={HamBurger} className="w-[50%] m-auto" alt="Burger" />
+				<Image
+					src={LandingImage || HamBurger}
+					className="w-[50%] m-auto"
+					alt="Burger"
+				/>
 			</div>
 			<div className="flex flex-col gap-5">
 				<h1 className="text-center md:text-6xl md:max-w-[580px] m-auto">
@@ -27,7 +32,9 @@ const Success: FC<SuccessProps> = () => {
 			<div className="flex justify-center">
 				<Button
 					className="bg-green-dark border border-green-dark text-white hover:bg-white hover:text-green-dark"
-					onClick={() => {}}
+					onClick={() => {
+						handleNavigation(1);
+					}}
 				>
 					{t("Done") || ""}
 				</Button>

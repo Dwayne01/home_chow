@@ -12,7 +12,7 @@ const ComingSoonLayout: FC<ComingSoonLayoutProps> = ({
 	Landing,
 }) => (
 	<>
-		<div className="h-[90vh]">
+		<div className="md:h-[90vh]">
 			<header className="md:mx-10 lg:mx-40">{Header}</header>
 			<main>{Landing}</main>
 		</div>

@@ -54,28 +54,56 @@ const LandingForm: FC<LandingProps> = ({ handleNavigation }) => {
 				<h4 className="text-center text-xl font-normal">
 					{t("question", { ns: "common" })}
 				</h4>
-				<div className="flex justify-between items-center gap-[10px] md:max-w-fit md:m-auto">
-					<Button
-						type={selected === "customer" ? "primary" : "primary-outline"}
-						onClick={() => setSelected("customer")}
-						className="flex-1 rounded-[40px] md:w-[120px] justify-center"
-					>
-						{t("customer", { ns: "common" })}
-					</Button>
-					<Button
-						type={selected === "vendor" ? "primary" : "primary-outline"}
-						onClick={() => setSelected("vendor")}
-						className="flex-1 rounded-[40px] md:w-[120px] justify-center"
-					>
-						{t("vendor", { ns: "common" })}
-					</Button>
-					<Button
-						type={selected === "driver" ? "primary" : "primary-outline"}
-						onClick={() => setSelected("driver")}
-						className="flex-1 rounded-[40px] md:w-[120px] justify-center"
-					>
-						{t("driver", { ns: "common" })}
-					</Button>
+				<div className="">
+					<div className="flex justify-between gap-[5px] md:hidden">
+						<Button
+							size="sm"
+							type={selected === "customer" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("customer")}
+							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
+						>
+							{t("customer", { ns: "common" })}
+						</Button>
+						<Button
+							size="sm"
+							type={selected === "vendor" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("vendor")}
+							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
+						>
+							{t("vendor", { ns: "common" })}
+						</Button>
+						<Button
+							size="sm"
+							type={selected === "driver" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("driver")}
+							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
+						>
+							{t("driver", { ns: "common" })}
+						</Button>
+					</div>
+					<div className="hidden md:flex justify-between items-center gap-[10px] md:max-w-fit md:m-auto">
+						<Button
+							type={selected === "customer" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("customer")}
+							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
+						>
+							{t("customer", { ns: "common" })}
+						</Button>
+						<Button
+							type={selected === "vendor" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("vendor")}
+							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
+						>
+							{t("vendor", { ns: "common" })}
+						</Button>
+						<Button
+							type={selected === "driver" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("driver")}
+							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
+						>
+							{t("driver", { ns: "common" })}
+						</Button>
+					</div>
 				</div>
 				<div className="flex items-center justify-between gap-7">
 					<TextField
