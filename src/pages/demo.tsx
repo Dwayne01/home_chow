@@ -20,6 +20,7 @@ import {
 } from "@/components/form/InputField";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
+import { AiOutlineSend } from "react-icons/ai";
 import CodeInput from "@/components/form/CodeInput";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import ButtonV2 from "../components/common/buttons/Button";
@@ -200,6 +201,7 @@ const ComponentPage = () => {
 							// eslint-disable-next-line no-console
 							console.log("Hello World");
 						}}
+						LeftIconComponent={AiOutlineSend}
 					>
 						PrimaryLG
 					</ButtonV2>

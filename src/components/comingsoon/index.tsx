@@ -1,37 +1,93 @@
-import { ReactNode, FC, useState } from "react";
+import { FC, useState } from "react";
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
 import LandingImage from "../../../public/assets/images/comingsoon/landing-mobile.svg";
-import Success from "./Success";
 import Onboard from "./Onboard";
+import Success from "./Success";
+import LandingForm from "./LandingForm";
 
-interface LandingProps {
-	LandingImage?: ReactNode;
-}
+type Tabs = {
+	id: number;
+	title: string;
+	Component: FC;
+	current: boolean;
+}[];
 
-const ComingSoon: FC<LandingProps> = () => {
-	const { t } = useTranslation(["comingsoon"]);
+type LandingNavigationItem = {
+	id: number;
+	title: string;
+	Component: FC<any>;
+	current: boolean;
+};
 
-	const [registerSuccess, setRegisterSuccess] = useState(false);
-	const CountBtnClick = () => {
-		setRegisterSuccess(true);
-		// SV: should have used translation here
-		// eslint-disable-next-line no-alert
-		alert(t("Count me in"));
+const ComingSoon = () => {
+	const landingNaigation: LandingNavigationItem[] = [
+		{
+			id: 1,
+			title: "onBoard",
+			Component: Onboard,
+			current: true,
+		},
+		{
+			id: 2,
+			title: "form",
+			Component: LandingForm,
+			current: false,
+		},
+		{
+			id: 3,
+			title: "success",
+			Component: Success,
+			current: false,
+		},
+	];
+
+	const [tabs, setTabs] = useState<Tabs>(landingNaigation);
+	const [showSuccess, setShowSuccess] = useState<boolean>(false);
+
+	const handleNavigation = (id: number) => {
+		if (id === 3) {
+			setShowSuccess(true);
+		}
+
+		if (id < 3) {
+			setShowSuccess(false);
+		}
+		const newTabs = tabs.map((tab: any) => {
+			if (tab.id === id) {
+				return {
+					...tab,
+					current: true,
+				};
+			}
+			return {
+				...tab,
+				current: false,
+			};
+		});
+		setTabs(newTabs);
 	};
-	return (
-		<div>
-			{registerSuccess ? (
-				<Success />
-			) : (
-				<div className="mt-20 flex flex-col justify-center gap-9 md:flex-row-reverse md:items-center md:mx-10 lg:mx-40">
-					<aside className="flex-1">
-						<Image src={LandingImage} className="m-auto" alt="Coming Soon" />
-					</aside>
 
-					<Onboard CountBtnClick={CountBtnClick} />
-				</div>
+	return (
+		<div className="mt-20 flex flex-col justify-center gap-9 md:flex-row-reverse md:items-center md:mx-10 lg:mx-40 min-h-[500px]">
+			{!showSuccess && (
+				<aside className="flex-1">
+					<Image
+						src={LandingImage}
+						className="w-[80%] m-auto"
+						alt="Coming Soon"
+					/>
+				</aside>
 			)}
+			<div className="flex-1">
+				{tabs.map(
+					(tab: any) =>
+						tab.current && (
+							<div key={tab.id}>
+								<tab.Component handleNavigation={handleNavigation} />
+							</div>
+						)
+				)}
+			</div>
 		</div>
 	);
 };
