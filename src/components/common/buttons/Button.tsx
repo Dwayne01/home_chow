@@ -11,7 +11,7 @@ type ButtonProps = {
 	size?: string;
 	LeftIconComponent?: any;
 	RightIconComponent?: any;
-	onClick: () => void;
+	onClick?: () => void;
 	children?: any;
 	disabled?: boolean;
 	buttonType?: "button" | "submit" | "reset" | undefined;
@@ -60,16 +60,16 @@ const Button = ({
 		],
 		[
 			"primary-outline",
-			"text-primary-color bg-white hover:bg-primary-color hover:text-white border-primary-color focus:ring-primary-color focus:ring-offset-primary-color",
+			"text-primary-color bg-white hover:bg-primary-color hover:text-white border-2 border-primary-color focus:ring-primary-color focus:ring-offset-primary-color",
 		],
 		[
 			"secondary-outline",
-			"text-green-dark bg-white hover:bg-green-dark hover:text-white border-green-dark focus:ring-green-dark focus:ring-offset-green-dark",
+			"text-green-dark bg-white hover:bg-green-dark hover:text-white border-green-dark border-2 focus:ring-green-dark focus:ring-offset-green-dark",
 		],
 		// leave this a todo for now when we have the tertiary color
 		[
 			"tertiary-outline",
-			"text-tertiary-color bg-white hover:bg-tertiary-color hover:text-white border-tertiary-color focus:ring-tertiary-color focus:ring-offset-tertiary-color",
+			"text-tertiary-color bg-white hover:bg-tertiary-color hover:text-white border-tertiary-color border-2 focus:ring-tertiary-color focus:ring-offset-tertiary-color",
 		],
 	]);
 
