@@ -11,9 +11,11 @@ const Onboard: FC<OnboardProps> = ({ CountBtnClick }) => {
 
 	return (
 		<div className="flex flex-col px-[60px] flex-1 md:px-0 gap-5">
-			<h1 className="text-center md:text-6xl md:max-w-[580px] m-auto">
+			<h1 className="text-center md:text-[3.5rem] md:max-w-[580px] m-auto md:leading-[4.5rem]">
 				{t("Good things come to those who")}
-				<span className="text-primary-color animate-pulse">{t("Wait")}!</span>
+				<span className="text-primary-color animate-pulse ml-2">
+					{t("Wait")}!
+				</span>
 			</h1>
 			<p className="font-normal text-grey-light-100 text-center">
 				{t("hugaryAlready")}

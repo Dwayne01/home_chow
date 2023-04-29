@@ -1,18 +1,12 @@
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
 import ComingSoonLayout from "@/components/layout/ComingSoonLayout";
-import Header from "@/components/header/ComingSoonHeader";
-import Footer from "@/components/footer/Footer";
-import Landing from "@/components/comingsoon/Landing";
+import ComingSoon from "@/components/comingsoon";
 
 const ComingSoonPage = () => (
-	<div>
-		<ComingSoonLayout
-			Header={<Header />}
-			Footer={<Footer footerColor="light" />}
-			Landing={<Landing />}
-		/>
-	</div>
+	<ComingSoonLayout>
+		<ComingSoon />
+	</ComingSoonLayout>
 );
 
 export default ComingSoonPage;

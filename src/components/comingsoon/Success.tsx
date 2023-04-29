@@ -12,9 +12,9 @@ const Success: FC<SuccessProps> = () => {
 	const { t } = useTranslation(["comingsoon"]);
 
 	return (
-		<div className="flex flex-col px-[60px] flex-1 md:px-0 gap-5">
+		<div className="flex flex-col px-[60px] flex-1 md:px-0 gap-5 mt-20">
 			<div className="flex flex-col">
-				<Image src={HamBurger} className="w-[50%] m-auto" alt="Burger" />
+				<Image src={HamBurger} className="m-auto" alt="Burger" />
 			</div>
 			<div className="flex flex-col gap-5">
 				<h1 className="text-center md:text-6xl md:max-w-[580px] m-auto">

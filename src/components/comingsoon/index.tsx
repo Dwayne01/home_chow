@@ -9,7 +9,7 @@ interface LandingProps {
 	LandingImage?: ReactNode;
 }
 
-const Landing: FC<LandingProps> = () => {
+const ComingSoon: FC<LandingProps> = () => {
 	const { t } = useTranslation(["comingsoon"]);
 
 	const [registerSuccess, setRegisterSuccess] = useState(false);
@@ -20,21 +20,20 @@ const Landing: FC<LandingProps> = () => {
 		alert(t("Count me in"));
 	};
 	return (
-		<div className="mt-20 flex flex-col justify-center gap-9 md:flex-row-reverse md:items-center md:mx-10 lg:mx-40">
-			<aside className="flex-1">
-				<Image
-					src={LandingImage}
-					className="w-[80%] m-auto"
-					alt="Coming Soon"
-				/>
-			</aside>
+		<div>
 			{registerSuccess ? (
 				<Success />
 			) : (
-				<Onboard CountBtnClick={CountBtnClick} />
+				<div className="mt-20 flex flex-col justify-center gap-9 md:flex-row-reverse md:items-center md:mx-10 lg:mx-40">
+					<aside className="flex-1">
+						<Image src={LandingImage} className="m-auto" alt="Coming Soon" />
+					</aside>
+
+					<Onboard CountBtnClick={CountBtnClick} />
+				</div>
 			)}
 		</div>
 	);
 };
 
-export default Landing;
+export default ComingSoon;
