@@ -18,7 +18,6 @@ module.exports = {
 				"green-dark": "#27AE60",
 				"grey-lighter": "#F5F5F5",
 				"gray-paragraph": "#6B6B6B",
-				"red-accent": "#FA101D",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
