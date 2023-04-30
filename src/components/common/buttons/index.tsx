@@ -7,7 +7,6 @@ type IconPosition = "left" | "right";
 
 const Button = ({
 	icon,
-	textColor,
 	label,
 	onClick,
 	iconPosition,
@@ -16,49 +15,44 @@ const Button = ({
 	disabled,
 	id,
 	loading,
+	...others
 }: {
 	icon?: IconType;
-	textColor?: string;
 	type?: "button" | "submit" | "reset";
-	label: string;
+	label?: string;
 	onClick?: () => void;
 	iconPosition?: IconPosition;
 	rootClass?: string;
 	disabled?: boolean;
 	loading?: boolean;
+	children?: React.ReactNode;
 	id?: string;
-}) => (
-	<button
-		type={type}
-		disabled={disabled}
-		onClick={onClick}
-		id={id}
-		className={classNames(
-			"rounded-[10px] flex justify-center items-center hover:bg-yellow-500",
-			"text-2xl text-white p-3",
-			disabled ? "bg-gray-400" : "bg-primary-color",
-			rootClass || ""
-		)}
-	>
-		{loading && <Loader size="40px" />}
+}) => {
+	const Icon = icon;
 
-		{iconPosition === "left" && icon && (
-			<>{React.createElement(icon, { color: textColor })}</>
-		)}
-		{!loading && (
-			<span
-				className={classNames(
-					"text-lg mx-2",
-					textColor || "text-primary-color"
-				)}
-			>
-				{label}
-			</span>
-		)}
-		{iconPosition === "right" && icon && (
-			<>{React.createElement(icon, { color: textColor })}</>
-		)}
-	</button>
-);
+	return (
+		<button
+			type={type}
+			disabled={disabled}
+			onClick={onClick}
+			id={id}
+			className={classNames(
+				rootClass || "",
+				"text-xl p-3 rounded-[10px] flex justify-center items-center hover:bg-primary-color-light hover:text-primary-color hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
+				disabled ? "bg-gray-400" : "bg-primary-color"
+			)}
+			{...others}
+		>
+			{loading && <Loader data-testid="loading-indicator" size="40px" />}
+			{iconPosition === "left" && Icon && !loading && (
+				<Icon data-testid={`btn-icon-${iconPosition}`} />
+			)}
+			{!loading && <span>{label}</span>}
+			{iconPosition === "right" && Icon && !loading && (
+				<Icon data-testid={`btn-icon-${iconPosition}`} />
+			)}
+		</button>
+	);
+};
 
 export default Button;

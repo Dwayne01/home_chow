@@ -1,30 +1,12 @@
-import React, { ReactElement } from "react";
-import { ComingSoonLayoutProps } from "@/types/comingsoon";
-import classNames from "classnames";
+import { ReactElement } from "react";
+import Footer from "../footer/Footer";
 import ComingSoonHeader from "../header/ComingSoonHeader";
 
-const ComingSoonLayout = ({
-	className,
-	LeftComponent,
-	RightComponent,
-}: ComingSoonLayoutProps): ReactElement => (
-	<div className="w-full h-screen flex flex-col">
+const ComingSoonLayout = ({ children }: { children: ReactElement }) => (
+	<div className="h-[90vh]">
 		<ComingSoonHeader />
-		<div
-			className={classNames(
-				"w-full ",
-				"h-full",
-				"flex flex-col md:flex-row",
-				className
-			)}
-		>
-			<div className="flex flex-1 md:min-w-[800px]">
-				{LeftComponent && LeftComponent}
-			</div>
-			<div className="hidden flex-1 md:flex">
-				{RightComponent && RightComponent}
-			</div>
-		</div>
+		<main>{children}</main>
+		<Footer />
 	</div>
 );
 

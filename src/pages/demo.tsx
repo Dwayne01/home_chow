@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
 import ComingSoonHeader from "@/components/header/ComingSoonHeader";
@@ -21,9 +20,10 @@ import {
 } from "@/components/form/InputField";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
+import { AiOutlineSend } from "react-icons/ai";
 import CodeInput from "@/components/form/CodeInput";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
-import Button from "../components/common/buttons";
+import ButtonV2 from "../components/common/buttons/Button";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -48,13 +48,6 @@ const ComponentPage = () => {
 				<IconButton icon={FaLinkedinIn} color="text-primary-color" href="" />
 			</div>
 			<div className="flex flex-col items-center gap-5">
-				<Button
-					icon={AiOutlineSend}
-					textColor="text-white"
-					label="Notify me"
-					onClick={() => {}}
-					iconPosition="right"
-				/>
 				{/* Social Auth buttons */}
 				<WideIconButton label="Sign in with Google" icon={FcGoogle} />
 				<WideIconButton
@@ -198,6 +191,54 @@ const ComponentPage = () => {
 					</div>
 				</form>
 			</FormProvider>
+			<div className=" my-10 mx-5">
+				<h3>New button made by Jaskaran Demo</h3>
+				<div className="flex gap-4 items-center">
+					<ButtonV2
+						type="primary"
+						size="lg"
+						onClick={() => {
+							// eslint-disable-next-line no-console
+							console.log("Hello World");
+						}}
+						LeftIconComponent={AiOutlineSend}
+					>
+						PrimaryLG
+					</ButtonV2>
+
+					<ButtonV2
+						size="md"
+						type="secondary"
+						onClick={() => {
+							// eslint-disable-next-line no-console
+							console.log("Hello World");
+						}}
+					>
+						SecondaryMD
+					</ButtonV2>
+
+					<ButtonV2
+						size="md"
+						type="primary-outline"
+						onClick={() => {
+							// eslint-disable-next-line no-console
+							console.log("Hello World");
+						}}
+					>
+						PrimaryOutlineMD
+					</ButtonV2>
+					<ButtonV2
+						size="sm"
+						type="secondary-outline"
+						onClick={() => {
+							// eslint-disable-next-line no-console
+							console.log("Hello World");
+						}}
+					>
+						SecondaryOutlineSM
+					</ButtonV2>
+				</div>
+			</div>
 		</div>
 	);
 };
