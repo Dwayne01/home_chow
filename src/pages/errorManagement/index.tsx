@@ -8,13 +8,14 @@ function errorManagement() {
 	return (
 		<>
 			<ComingSoonHeader />
-			<div className="flex justify-around mt-[200px] mb-[200px]">
-				<div>
+			<div className="flex justify-center items-center mt-[100px] mb-[100px]">
+				<div className="px-[100px]">
 					<Image
 						src="/assets/images/Layer2.png"
 						width={150}
 						height={150}
 						alt=""
+						className="mx-auto"
 					/>
 					<div className="text-center">
 						<h1 className="text-[#ED2024]">Uh oh.</h1>
@@ -23,17 +24,18 @@ function errorManagement() {
 							<br />
 							please try again
 						</p>
+
 						<Button
 							type="button"
 							label="Try Again"
-							rootClass="bg-[#ED2024] text-white mt-5 px-5 py-2 rounded-[10px] hover:bg-[#ED2024] hover:text-white hover:border hover:border-[#ED2024] hover:outline-[#ED2024] focus:outline-none  focus:ring-4 focus:ring-[#ED2024]"
+							rootClass="bg-[#ED2024] text-white w-[200px] h-[50px] rounded-[5px] mt-[20px]"
 						/>
 					</div>
 				</div>
-				<div>
+				<div className="px-[100px]">
 					<svg
-						width="541"
-						height="400"
+						width="500"
+						height="550"
 						viewBox="0 0 541 400"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
