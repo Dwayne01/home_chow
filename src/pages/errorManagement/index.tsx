@@ -2,13 +2,13 @@ import React from "react";
 import ComingSoonHeader from "@/components/header/ComingSoonHeader";
 import Footer from "@/components/footer/Footer";
 import Image from "next/image";
-import Button from "@/components/common/buttons";
+// import Button from "@/components/common/buttons";
 
 function errorManagement() {
 	return (
 		<>
 			<ComingSoonHeader />
-			<div className="flex justify-center items-center mt-[100px] mb-[100px]">
+			<div className="flex flex-col-reverse justify-center items-center mt-[50px] mb-[50px] lg:mt-[100px] lg:mb-[50px] lg:flex-row  ">
 				<div className="px-[100px]">
 					<Image
 						src="/assets/images/Layer2.png"
@@ -25,11 +25,20 @@ function errorManagement() {
 							please try again
 						</p>
 
-						<Button
+						<button
+							onClick={() => {
+								window.location.href = "/";
+							}}
+							className="bg-[#ED2024] text-white w-[200px] h-[50px] rounded-[5px] mt-[20px]"
+						>
+							Try Again
+						</button>
+
+						{/* <Button
 							type="button"
 							label="Try Again"
 							rootClass="bg-[#ED2024] text-white w-[200px] h-[50px] rounded-[5px] mt-[20px]"
-						/>
+						/> */}
 					</div>
 				</div>
 				<div className="px-[100px]">
