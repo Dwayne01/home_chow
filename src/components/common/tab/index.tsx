@@ -52,17 +52,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 						<div className="inline-block">
 							<div>{tab.label}</div>
 							{activeTab === index && (
-								<div
-									style={{
-										display: "flex",
-										maxWidth: "80%",
-										marginTop: "8px",
-										marginLeft: "20%",
-										marginRight: "20%",
-										borderBottom: "3px solid #EAAA08",
-										borderRadius: "4px",
-									}}
-								/>
+								<div className="h-1 bg-primary-color rounded-sm mt-2" />
 							)}
 						</div>
 					</div>

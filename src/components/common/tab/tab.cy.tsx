@@ -1,7 +1,7 @@
 import React from "react";
 import { mount } from "@cypress/react";
-import Tabs, { TabProps } from "@/components/tab";
-import "../../styles/globals.css";
+import Tabs, { TabProps } from "@/components/common/tab";
+import "../../../styles/globals.css";
 
 describe("Tab component", () => {
 	const tabs: TabProps[] = [

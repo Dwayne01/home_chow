@@ -1,5 +1,5 @@
 import React from "react";
-import Tabs, { TabProps } from "@/components/tab";
+import Tabs, { TabProps } from "@/components/common/tab";
 
 export default {
 	title: "Components/Tabs",

@@ -30,7 +30,7 @@ import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Table from "@/components/table";
 import Accordion from "@/components/accordion";
-import Tabs, { TabProps } from "@/components/tab";
+import Tabs, { TabProps } from "@/components/common/tab";
 import Button from "../components/common/buttons";
 import SearchBar from "../components/searchBar";
 import foodImage from "../../public/assets/images/food.jpg";
