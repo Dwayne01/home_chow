@@ -4,6 +4,7 @@ import LandingImage from "../../../public/assets/images/comingsoon/landing-mobil
 import Onboard from "./Onboard";
 import Success from "./Success";
 import LandingForm from "./LandingForm";
+import Error from "./Error";
 
 type Tabs = {
 	id: number;
@@ -39,18 +40,25 @@ const ComingSoon = () => {
 			Component: Success,
 			current: false,
 		},
+		{
+			id: 4,
+			title: "error",
+			Component: Error,
+			current: false,
+		},
 	];
 
 	const [tabs, setTabs] = useState<Tabs>(landingNaigation);
-	const [showSuccess, setShowSuccess] = useState<boolean>(false);
+	const [statusInfo, setShowStatusInfo] = useState<boolean>(false);
+	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
 	const handleNavigation = (id: number) => {
-		if (id === 3) {
-			setShowSuccess(true);
+		if (id > 3) {
+			setShowStatusInfo(true);
 		}
 
 		if (id < 3) {
-			setShowSuccess(false);
+			setShowStatusInfo(false);
 		}
 		const newTabs = tabs.map((tab: any) => {
 			if (tab.id === id) {
@@ -69,7 +77,7 @@ const ComingSoon = () => {
 
 	return (
 		<div className="mt-20 flex flex-col justify-center gap-9 md:flex-row-reverse md:items-center md:mx-10 lg:mx-40 min-h-[500px]">
-			{!showSuccess && (
+			{!statusInfo && (
 				<aside className="flex-1">
 					<Image
 						src={LandingImage}
@@ -78,12 +86,16 @@ const ComingSoon = () => {
 					/>
 				</aside>
 			)}
-			<div className="flex-1">
+			<div>
 				{tabs.map(
 					(tab: any) =>
 						tab.current && (
 							<div key={tab.id}>
-								<tab.Component handleNavigation={handleNavigation} />
+								<tab.Component
+									handleNavigation={handleNavigation}
+									setIsSuccess={setIsSuccess}
+									isSuccess={isSuccess}
+								/>
 							</div>
 						)
 				)}
