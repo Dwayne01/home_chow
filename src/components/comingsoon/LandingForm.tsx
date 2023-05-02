@@ -6,6 +6,8 @@ import Button from "../common/buttons/Button";
 
 type LandingProps = {
 	handleNavigation: (id: number) => void;
+	isSuccess: boolean;
+	setIsSuccess: (id: boolean) => void;
 };
 
 type FormValues = {
@@ -16,7 +18,11 @@ type FormValues = {
 
 type UserType = "customer" | "vendor" | "driver";
 
-const LandingForm: FC<LandingProps> = ({ handleNavigation }) => {
+const LandingForm: FC<LandingProps> = ({
+	handleNavigation,
+	isSuccess,
+	setIsSuccess,
+}) => {
 	const { t } = useTranslation("comingsoon, common");
 	const [selected, setSelected] = useState<UserType>("customer");
 
@@ -42,7 +48,8 @@ const LandingForm: FC<LandingProps> = ({ handleNavigation }) => {
 
 		// eslint-disable-next-line no-console
 		console.log(submitRequest);
-		handleNavigation(3);
+		handleNavigation(isSuccess ? 3 : 4);
+		setIsSuccess(false);
 	};
 
 	return (
