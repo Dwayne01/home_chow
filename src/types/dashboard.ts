@@ -66,3 +66,27 @@ export interface ChartsProps {
 	}[];
 	size?: number;
 }
+
+export interface RestaurantsCardProps {
+	imageUrl: string;
+	name: string;
+	address: string;
+	deliveryTime: number | string;
+	deliveryFee: number;
+	rating: number;
+	width?: number | string;
+}
+
+export interface RestaurantsCardListProps {
+	title: string;
+	restaurants: {
+		imageUrl: string;
+		name: string;
+		address: string;
+		deliveryTime: number | string;
+		deliveryFee: number;
+		rating: number;
+		width?: number | string;
+	}[];
+	itemsPerPage: number;
+}
