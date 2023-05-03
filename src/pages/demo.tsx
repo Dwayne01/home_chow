@@ -29,6 +29,7 @@ import Footer from "@/components/footer/Footer";
 import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Table from "@/components/table";
+import Cart, { CartItem } from "@/components/cart";
 import Accordion from "@/components/accordion";
 import Tabs, { TabProps } from "@/components/common/tab";
 import Button from "../components/common/buttons";
@@ -107,6 +108,49 @@ const ComponentPage = () => {
 		{ Header: "Height", accessor: "height" },
 	];
 
+	type Product = {
+		id: number;
+		name: string;
+		price: number;
+	};
+
+	const [products] = useState<Product[]>([
+		{ id: 1, name: "Burger", price: 12.99 },
+		{ id: 2, name: "Fries", price: 3.99 },
+		{ id: 3, name: "Coke", price: 2.99 },
+	]);
+
+	const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+	const handleAddToCart = (product: Product) => {
+		const existingItem = cartItems.find((item) => item.id === product.id);
+		if (existingItem) {
+			setCartItems((prevCartItems) =>
+				prevCartItems.map((item) =>
+					item.id === product.id
+						? { ...item, quantity: item.quantity + 1 }
+						: item
+				)
+			);
+		} else {
+			setCartItems((prevCartItems) => [
+				...prevCartItems,
+				{
+					id: product.id,
+					name: product.name,
+					price: product.price,
+					quantity: 1,
+				},
+			]);
+		}
+	};
+
+	const handleRemoveFromCart = (itemId: number) => {
+		setCartItems((prevCartItems) =>
+			prevCartItems.filter((item) => item.id !== itemId)
+		);
+	};
+
 	const handleSearch = () => {};
 
 	// Text items for testing accordion component
@@ -138,6 +182,7 @@ const ComponentPage = () => {
 			onClick: () => {},
 		},
 	];
+
 
 	return (
 		<div>
@@ -317,6 +362,30 @@ const ComponentPage = () => {
 			</FormProvider>
 			<h1>Table Component</h1>
 			<Table tableTitle="Table Title" data={tableData} columns={tableColumns} />
+			<div className="container  px-10">
+				<h1 className="text-2xl font-bold my-4">Menu</h1>
+				<ul className="mb-10">
+					{products.map((product) => (
+						<li
+							key={product.id}
+							className="flex items-center justify-between py-2 border-b"
+						>
+							<span>{product.name}</span>
+							<button
+								onClick={() => handleAddToCart(product)}
+								className="bg-primary-color text-white px-4 py-2 rounded-md"
+							>
+								Add to cart (${product.price.toFixed(2)})
+							</button>
+						</li>
+					))}
+				</ul>
+				<Cart
+					items={cartItems}
+					onAddToCart={() => handleAddToCart(products[0])}
+					onRemoveFromCart={handleRemoveFromCart}
+				/>
+			</div>
 			<h1>Footer</h1>
 			<Footer footerColor="dark" />
 			<Tabs tabs={tabs} />
