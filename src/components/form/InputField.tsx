@@ -120,7 +120,7 @@ const TextInputComponent = (props: any, ref: any) => {
 		<input
 			id={inputProps.name}
 			data-testid={inputProps.name}
-			className={`border-sand border-2 placeholder:text-stone block rounded w-full bg-white ${
+			className={`border-sand border-2 placeholder:text-stone block rounded w-full bg-white px-4 py-3  ${
 				hasError ? "border-arbutus" : "border-sand"
 			} text-gray-900  ${
 				hasError ? "focus:border-arbutus" : "focus:border-primary-color"
