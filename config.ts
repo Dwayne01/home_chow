@@ -4,7 +4,7 @@ const staging = {
 	localBaseURL: "https://homechow.herokuapp.com",
 	localApi: true,
 	mockApi: true,
-	googleClientId: "1234567890",
+	googleClientId: "AIzaSyDap-mhUpuHbYzDspnaV5R00HHE3Q-QEYg",
 	apiKey: "AIzaSyCMTDI-ksd3uUXb3RnPhtWzJpjrInLRnso",
 	projectId: "test-auth-5638b",
 	messagingSenderId: "822286140849",

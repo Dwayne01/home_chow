@@ -4,6 +4,7 @@ import { TextField } from "@/components/form/InputField";
 import { FormProvider, useForm } from "react-hook-form";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import { useOrderContext } from "@/context/OrderContext";
+import { useTranslation } from "next-i18next";
 
 const GetOrderInfo = ({
 	setIsOrderInfoFilled,
@@ -12,6 +13,8 @@ const GetOrderInfo = ({
 }) => {
 	const { customerAddress, payment, setCustomerAddress, setPayment } =
 		useOrderContext();
+
+	const { t } = useTranslation("checkout");
 
 	const orderForm = useForm({
 		defaultValues: {
@@ -62,7 +65,7 @@ const GetOrderInfo = ({
 				</button>
 			</div>
 			<div className="w-full mt-7">
-				<h2 className="">Delivery Information</h2>
+				<h2 className="">{t("Delivery_Information")}</h2>
 				<hr className=" my-5" />
 				<div className="">
 					<FormProvider {...orderForm}>
@@ -72,8 +75,8 @@ const GetOrderInfo = ({
 								rootClass="mb-2"
 								inputClass="px-[14px] py-[10px] rounded-lg"
 								name="address"
-								label="Address"
-								placeholder="Address"
+								label={t("Address", { ns: "checkout" })}
+								placeholder={t("Address", { ns: "checkout" })}
 								required
 								ref={register({
 									required: true,
@@ -86,8 +89,8 @@ const GetOrderInfo = ({
 									rootClass="mb-2 rounded-lg"
 									inputClass="px-[14px] py-[10px] rounded-lg"
 									name="city"
-									label="City"
-									placeholder="City"
+									label={t("City", { ns: "checkout" })}
+									placeholder={t("City", { ns: "checkout" })}
 									required
 									ref={register({
 										required: true,
@@ -103,8 +106,8 @@ const GetOrderInfo = ({
 									rootClass="mb-2 rounded-lg"
 									inputClass="px-[14px] py-[10px] rounded-lg"
 									name="state"
-									label="State"
-									placeholder="State"
+									label={t("State", { ns: "checkout" })}
+									placeholder={t("State", { ns: "checkout" })}
 									required
 									ref={register({
 										required: true,
@@ -120,8 +123,8 @@ const GetOrderInfo = ({
 									rootClass="mb-2 rounded-lg"
 									inputClass="px-[14px] py-[10px] rounded-lg"
 									name="zip"
-									label="Zip"
-									placeholder="Zip"
+									label={t("Zip", { ns: "checkout" })}
+									placeholder={t("Zip", { ns: "checkout" })}
 									required
 									ref={register({
 										required: true,
@@ -138,7 +141,7 @@ const GetOrderInfo = ({
 				</div>
 			</div>
 			<div className="w-full mt-8">
-				<h2 className="">Payment Method</h2>
+				<h2 className="">{t("Payment_Method")}</h2>
 				<hr className=" my-5" />
 				<div className="">
 					<FormProvider {...orderForm}>
@@ -148,7 +151,7 @@ const GetOrderInfo = ({
 								rootClass="mb-2 rounded-lg"
 								name="cardNumber"
 								inputClass="px-[14px] py-[10px] rounded-lg"
-								label="Card Number"
+								label={t("Card_Number", { ns: "checkout" })}
 								placeholder="0000 0000 0000 0000"
 								required
 								ref={register({
@@ -166,7 +169,7 @@ const GetOrderInfo = ({
 								rootClass="mb-2 rounded-lg"
 								inputClass="px-[14px] py-[10px] rounded-lg"
 								name="cardName"
-								label="Card Name"
+								label={t("Card_Name", { ns: "checkout" })}
 								placeholder="Card Name"
 								required
 								ref={register({
@@ -184,7 +187,7 @@ const GetOrderInfo = ({
 									rootClass="mb-2 rounded-lg"
 									inputClass="px-[14px] py-[10px] rounded-lg"
 									name="expiryDate"
-									label="Expiry Date"
+									label={t("Expiry_Date", { ns: "checkout" })}
 									placeholder="MMYY"
 									required
 									ref={register({
@@ -202,7 +205,7 @@ const GetOrderInfo = ({
 									rootClass="mb-2 rounded-lg"
 									inputClass="px-[14px] py-[10px] rounded-lg"
 									name="cvv"
-									label="CVV"
+									label={t("CVV", { ns: "checkout" })}
 									placeholder="***"
 									required
 									ref={register({
@@ -222,7 +225,7 @@ const GetOrderInfo = ({
 			</div>
 			<div className="w-full flex-1 flex items-end py-24">
 				<WideIconButton
-					label="Next"
+					label={t("Next")}
 					textColor="text-white"
 					bgColor="bg-primary-color"
 					rootClass="w-full font-bold shadow-none"

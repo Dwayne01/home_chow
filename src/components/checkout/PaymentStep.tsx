@@ -5,6 +5,7 @@ import { RiArrowGoBackLine } from "react-icons/ri";
 import { FaClock } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
 import { BiPlus } from "react-icons/bi";
+import { useTranslation } from "next-i18next";
 import { getLastFourDigits, numberToCurrency } from "../../utils";
 import imageCard from "../../../public/assets/images/card.png";
 import WideIconButton from "../common/buttons/WideIconButton";
@@ -16,6 +17,8 @@ const PaymentStep = ({
 }) => {
 	const { order, payment, customerAddress } = useOrderContext();
 	const { items, subtotal, deliveryFee, total, tax } = order;
+
+	const { t } = useTranslation("checkout");
 
 	function handleBack() {
 		setIsOrderInfoFilled(false);
@@ -32,7 +35,7 @@ const PaymentStep = ({
 				</button>
 			</div>
 			<div className="w-full mt-7">
-				<h2 className="">Your Delivery</h2>
+				<h2 className="">{t("Your_Delivery")}</h2>
 				<hr className="my-5" />
 				<section className="flex flex-col gap-5 mt-6">
 					<div className="flex gap-4 items-center">
@@ -63,21 +66,21 @@ const PaymentStep = ({
 				<hr className="my-5" />
 				<section className="w-full">
 					<div className="flex justify-between items-center">
-						<span className="text-">Sub Total</span>
+						<span className="text-">{t("Sub_Total")}</span>
 						<span className="text-success">{numberToCurrency(subtotal)}</span>
 					</div>
 					<div className="flex justify-between items-center">
-						<span className="text-">Delivery Fee</span>
+						<span className="text-">{t("Delivery_Fee")}</span>
 						<span className="text-success">
 							{numberToCurrency(deliveryFee)}
 						</span>
 					</div>
 					<div className="flex justify-between items-center">
-						<span className="text-">Tax Fee</span>
+						<span className="text-">{t("Tax_Fee")}</span>
 						<span className="text-success">{numberToCurrency(tax)}</span>
 					</div>
 				</section>
-				<h2 className="mt-14">Payment Method</h2>
+				<h2 className="mt-14">{t("Payment_Method")}</h2>
 				<hr className="my-5" />
 				<section className="flex flex-col gap-5 mt-6">
 					<div className="flex justify-between items-center bg-white py-6 px-4 rounded-default border border-border-color shadow-md">
@@ -107,7 +110,7 @@ const PaymentStep = ({
 							onClick={() => alert("add new card")}
 						>
 							<BiPlus className="text-primary-color h-5 w-5 border border-primary-color rounded-full" />
-							<span className="text-base">Add new payment method</span>
+							<span className="text-base">{t("Add_Payment_Method")}</span>
 						</button>
 					</div>
 				</section>

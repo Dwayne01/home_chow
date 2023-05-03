@@ -12,7 +12,7 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 
 	const { t } = useTranslation(["common"]);
 
-	const headerButtons = [
+	const headerAuthButtons = [
 		{
 			label: t("Login"),
 			rootClass:
@@ -27,8 +27,27 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 		},
 	];
 
+	const headerButtons = [
+		{
+			label: t("Home"),
+			href: "/",
+		},
+		{
+			label: t("About us"),
+			href: "/about",
+		},
+		{
+			label: t("Services"),
+			href: "/services",
+		},
+		{
+			label: t("Contact Us"),
+			href: "/contact",
+		},
+	];
+
 	return (
-		<div className="sticky w-full z-10 ease-in duration-300">
+		<div className="sticky w-full z-10 ease-in duration-300 border-b-[0.05px] border-gray-300">
 			<div className="max-w-[95%] m-auto flex justify-between items-center p-4 ">
 				<div>
 					<div className="header-logo">
@@ -42,7 +61,20 @@ const MainHeader = ({ logoUrl }: { logoUrl?: string }) => {
 					</div>
 				</div>
 				<ul className="hidden sm:flex">
-					{headerButtons.map((option, ind) => (
+					{headerButtons.map((option, idx) => (
+						<li key={idx} className="px-5 py-2">
+							<Link
+								href={option.href}
+								className="text-gray-500 hover:text-primary-color"
+								id={option.label}
+							>
+								{option.label}{" "}
+							</Link>
+						</li>
+					))}
+				</ul>
+				<ul className="hidden sm:flex">
+					{headerAuthButtons.map((option, ind) => (
 						<li key={ind} className="px-1 py-2">
 							<Link
 								href={option.href}

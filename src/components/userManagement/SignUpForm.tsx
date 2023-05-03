@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
 import { useRouter } from "next/router";
-import { useRegister } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { RegisterPayload } from "@/types/auth";
+import { FaFacebook, FaTwitter } from "react-icons/fa";
+import PasswordStrengthBar from "react-password-strength-bar";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import { PasswordField, TextField } from "../form/InputField";
@@ -20,6 +21,7 @@ const SignUpForm = ({
 	handleGoogleSignUp: () => void;
 	handleSignup: (params: RegisterPayload) => Promise<boolean>;
 }) => {
+	const [password, setPassword] = useState("");
 	const { t } = useTranslation("authentication");
 	const form = useForm({
 		defaultValues: {
@@ -34,7 +36,7 @@ const SignUpForm = ({
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = async (params: RegisterPayload) => {
-		await mutateAsync(params);
+		await handleSignup(params);
 		router.push("/verification");
 	};
 
@@ -53,10 +55,14 @@ const SignUpForm = ({
 					</div>
 				</div>
 				<FormProvider {...form}>
-					<form onSubmit={handleSubmit(handleSubmitForm)}>
+					<form
+						onSubmit={handleSubmit(handleSubmitForm)}
+						className="sign-up-form"
+					>
 						<div className="grid grid-cols-2 gap-5">
 							<TextField
-								data-testid="email"
+								data-testid="firstName"
+								id="firstName"
 								rootClass="mb-1 col-start-1"
 								label={t("firstName", { ns: "common" })}
 								placeholder={t("enterFirstName")}
@@ -69,7 +75,8 @@ const SignUpForm = ({
 							/>
 
 							<TextField
-								data-testid="email"
+								data-testid="lastName"
+								id="lastName"
 								rootClass="mb-1"
 								label={t("lastName", { ns: "common" })}
 								placeholder={t("enterLastName")}
@@ -83,6 +90,7 @@ const SignUpForm = ({
 
 							<TextField
 								data-testid="email"
+								id="email"
 								rootClass="mb-1 col-start-1 col-end-3"
 								name="email"
 								label={t("Email")}
@@ -97,22 +105,32 @@ const SignUpForm = ({
 								})}
 								autoComplete="email"
 							/>
-							<div className="flex flex-col gap-2 col-start-1 col-end-3">
+							<div className="flex flex-col gap-2 col-start-1 col-end-3 relative">
 								<PasswordField
 									data-testid="password"
+									id="password"
 									name="password"
 									label={t("Password")}
 									ref={register({ required: true })}
 									required
 									placeholder="∗∗∗∗∗∗∗∗"
 									autoComplete="current-password"
+									onChange={(e: {
+										target: { value: React.SetStateAction<string> };
+									}) => setPassword(e.target.value)}
 								/>
-								<p>{t("Password must be at least 8 characters long")}</p>
+								<div className="absolute mt-[60px] w-full">
+									{password.length > 0 && (
+										<PasswordStrengthBar password={password} />
+									)}
+								</div>
 							</div>
 						</div>
-						<div className=" mt-6">
+						<div className=" mt-10">
 							<Button
-								label={t("Sign In") || ""}
+								data-testid="signUp-btn"
+								id="signUp-btn"
+								label={t("Sign Up") || ""}
 								type="submit"
 								rootClass={classNames(
 									"rounded-lg whitespace-nowrap w-full px-3  font-bold text-sm text-white"
@@ -135,18 +153,18 @@ const SignUpForm = ({
 						rootClass=" justify-start"
 						onClick={handleGoogleSignUp}
 					/>
-					{/* <WideIconButton
-							label="Sign in with Facebook"
-							icon={FaFacebook}
-							iconColor="#1877F2"
-							rootClass=" justify-start"
-						/>
-						<WideIconButton
-							label="Sign in with Twitter"
-							icon={FaTwitter}
-							iconColor="#1DA1F2"
-							rootClass=" justify-start"
-						/> */}
+					<WideIconButton
+						label="Sign in with Facebook"
+						icon={FaFacebook}
+						iconColor="#1877F2"
+						rootClass=" justify-start"
+					/>
+					<WideIconButton
+						label="Sign in with Twitter"
+						icon={FaTwitter}
+						iconColor="#1DA1F2"
+						rootClass=" justify-start"
+					/>
 				</div>
 				<div className="mt-8">
 					<p className="flex gap-1 justify-center">

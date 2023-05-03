@@ -30,7 +30,12 @@ import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
 import Table from "@/components/table";
 import RestaurantCardList from "@/components/card/RestaurantCardList";
+import Cart, { CartItem } from "@/components/cart";
+import Accordion from "@/components/accordion";
+import Tabs, { TabProps } from "@/components/common/tab";
 import Button from "../components/common/buttons";
+import SearchBar from "../components/searchBar";
+import foodImage from "../../public/assets/images/food.jpg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -233,10 +238,84 @@ const ComponentPage = () => {
 		},
 	];
 
+	type Product = {
+		id: number;
+		name: string;
+		price: number;
+	};
+
+	const [products] = useState<Product[]>([
+		{ id: 1, name: "Burger", price: 12.99 },
+		{ id: 2, name: "Fries", price: 3.99 },
+		{ id: 3, name: "Coke", price: 2.99 },
+	]);
+
+	const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+	const handleAddToCart = (product: Product) => {
+		const existingItem = cartItems.find((item) => item.id === product.id);
+		if (existingItem) {
+			setCartItems((prevCartItems) =>
+				prevCartItems.map((item) =>
+					item.id === product.id
+						? { ...item, quantity: item.quantity + 1 }
+						: item
+				)
+			);
+		} else {
+			setCartItems((prevCartItems) => [
+				...prevCartItems,
+				{
+					id: product.id,
+					name: product.name,
+					price: product.price,
+					quantity: 1,
+				},
+			]);
+		}
+	};
+
+	const handleRemoveFromCart = (itemId: number) => {
+		setCartItems((prevCartItems) =>
+			prevCartItems.filter((item) => item.id !== itemId)
+		);
+	};
+
+	const handleSearch = () => {};
+
+	// Text items for testing accordion component
+	const items = [
+		{
+			title: "White Stew",
+			price: 10.99,
+			content:
+				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
+			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
+			image: foodImage,
+		},
+	];
+
+	const tabs: TabProps[] = [
+		{
+			label: "Tab 1 Title",
+			children: <div>Content for tab 1</div>,
+			onClick: () => {},
+		},
+		{
+			label: "Tab 2 Title Longer",
+			children: <div>Content for tab 2</div>,
+			onClick: () => {},
+		},
+		{
+			label: "Tab 3 Title Even Longer!!!!!!!! ",
+			children: <div>Content for tab 3</div>,
+			onClick: () => {},
+		},
+	];
+
 	return (
 		<div>
 			<MainHeader />
-
 			<Countdown />
 			<div className="flex justify-center gap-5">
 				<IconButton icon={FaFacebookF} color="text-primary-color" href="" />
@@ -281,6 +360,13 @@ const ComponentPage = () => {
 					bgColor="bg-primary-color"
 				/>
 			</div>
+
+			{/* Search Bar */}
+			<div className="flex flex-col items-center gap-5 my-40">
+				<SearchBar placeholder="Anywhere" onSearch={handleSearch} />
+			</div>
+
+			{/* Checkbox Button Group */}
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
 				<CheckboxButton
 					name="customer"
@@ -310,6 +396,13 @@ const ComponentPage = () => {
 				<Slider description={description} slides={images} />
 			</div>
 
+			{/* Accordion */}
+			<div className="flex flex-col justify-center items-center gap-5 mx-10 px-20 my-5">
+				<h1>Accordion</h1>
+				<Accordion items={items} />
+			</div>
+
+			{/* Form */}
 			<FormProvider {...form}>
 				<form onSubmit={handleSubmit(handleSubmitForm)}>
 					<div className="p-10">
@@ -405,9 +498,34 @@ const ComponentPage = () => {
 					restaurants={restaurants}
 					itemsPerPage={2}
 				/>
+				<div className="container  px-10">
+					<h1 className="text-2xl font-bold my-4">Menu</h1>
+					<ul className="mb-10">
+						{products.map((product) => (
+							<li
+								key={product.id}
+								className="flex items-center justify-between py-2 border-b"
+							>
+								<span>{product.name}</span>
+								<button
+									onClick={() => handleAddToCart(product)}
+									className="bg-primary-color text-white px-4 py-2 rounded-md"
+								>
+									Add to cart (${product.price.toFixed(2)})
+								</button>
+							</li>
+						))}
+					</ul>
+					<Cart
+						items={cartItems}
+						onAddToCart={() => handleAddToCart(products[0])}
+						onRemoveFromCart={handleRemoveFromCart}
+					/>
+				</div>
+				<h1>Footer</h1>
+				<Footer footerColor="dark" />
+				<Tabs tabs={tabs} />
 			</div>
-			<h1>Footer</h1>
-			<Footer footerColor="dark" />
 		</div>
 	);
 };
