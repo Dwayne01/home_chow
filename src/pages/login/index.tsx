@@ -10,11 +10,9 @@ const LoginPage = () => {
 	const { mutateAsync, isLoading } = useLogin();
 
 	const handleLogin = async (params: any) => {
-		const res = await mutateAsync(params);
+		await mutateAsync(params);
 
-		if (res.status === "Success") return true;
-
-		return false;
+		return true;
 	};
 
 	const handleGoogleSignIn = () => {

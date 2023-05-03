@@ -9,6 +9,7 @@ import { auth } from "../../../firebase";
 
 const SignUpPage = () => {
 	// Google Authentication
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const handleGoogleSignUp = () => {
 		const provider = new GoogleAuthProvider();
 		signInWithPopup(auth, provider)
@@ -23,6 +24,7 @@ const SignUpPage = () => {
 			});
 	};
 
+	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const { mutateAsync } = useRegister();
 
 	const handleSignup = async (params: RegisterPayload) => {
@@ -34,17 +36,19 @@ const SignUpPage = () => {
 	};
 
 	return (
-		<AuthenticationLayout
-			LeftComponent={<Onboarding />}
-			RightComponent={
-				<SignUpForm
-					handleSignup={handleSignup}
-					handleGoogleSignUp={handleGoogleSignUp}
-				/>
-			}
-			width="md:min-w-1/2"
-			leftComponentClassName="hidden md:flex"
-		/>
+		<div>
+			<AuthenticationLayout
+				LeftComponent={<Onboarding />}
+				RightComponent={
+					<SignUpForm
+						handleSignup={handleSignup}
+						handleGoogleSignUp={handleGoogleSignUp}
+					/>
+				}
+				width="md:min-w-1/2"
+				leftComponentClassName="hidden md:flex"
+			/>
+		</div>
 	);
 };
 

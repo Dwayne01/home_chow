@@ -9,7 +9,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
-import { useLogin } from "@/hooks/useAuth";
 import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
@@ -40,12 +39,9 @@ const LoginForm = ({
 
 	const { handleSubmit, register } = form;
 
-	const { mutateAsync } = useLogin();
-
 	const handleSubmitForm = async (params: LoginPayload) => {
-		await mutateAsync(params);
+		await handleLogin(params);
 		router.push("/dashboard");
-
 	};
 
 	return (

@@ -23,8 +23,12 @@ module.exports = {
 				"grey-lighter": "#B8BFCC",
 				"progress-bar": "#3B82F6",
 				"label-color": "#f2f2f2",
+				"list-color": "#FFF8EB",
 				"gray-40": "#515772",
 				"gray-50": "#697586",
+				"gray-textArea": "#F7F8FF",
+				"gray-border": "#F5F8FC",
+				"yellow-button": "#FEFDF0",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
