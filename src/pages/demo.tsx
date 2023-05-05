@@ -35,6 +35,7 @@ import Accordion from "@/components/accordion";
 import Tabs, { TabProps } from "@/components/common/tab";
 import Button from "../components/common/buttons";
 import SearchBar from "../components/searchBar";
+import SimilarVendorCard from "../components/card/SimilarVendorCard";
 import foodImage from "../../public/assets/images/food.jpg";
 
 const ComponentPage = () => {
@@ -283,9 +284,10 @@ const ComponentPage = () => {
 
 	const handleSearch = () => {};
 
-	// Text items for testing accordion component
+	// Text items for testing accordion & card component
 	const items = [
 		{
+			id: 1,
 			title: "White Stew",
 			price: 10.99,
 			content:
@@ -521,6 +523,11 @@ const ComponentPage = () => {
 						onAddToCart={() => handleAddToCart(products[0])}
 						onRemoveFromCart={handleRemoveFromCart}
 					/>
+				</div>
+
+				{/* Similar vendor's card */}
+				<div className="px-10">
+					<SimilarVendorCard items={items} />
 				</div>
 				<h1>Footer</h1>
 				<Footer footerColor="dark" />
