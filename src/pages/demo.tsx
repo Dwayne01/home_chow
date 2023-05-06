@@ -37,6 +37,7 @@ import Button from "../components/common/buttons";
 import SearchBar from "../components/searchBar";
 import SimilarVendorCard from "../components/card/SimilarVendorCard";
 import foodImage from "../../public/assets/images/food.jpg";
+import foodImage2 from "../../public/assets/svg/foods/souvlaki.svg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -284,7 +285,7 @@ const ComponentPage = () => {
 
 	const handleSearch = () => {};
 
-	// Text items for testing accordion & card component
+	// Text items for testing accordion component
 	const items = [
 		{
 			id: 1,
@@ -294,6 +295,18 @@ const ComponentPage = () => {
 				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
 			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
 			image: foodImage,
+		},
+	];
+
+	// Text items for testing similarVendorCard component
+	const similarVendorItems = [
+		{
+			id: 1,
+			title: "Karisha Hambugers",
+			price: "45.00",
+			discount: "30%",
+			isInStock: true,
+			image: foodImage2,
 		},
 	];
 
@@ -527,7 +540,7 @@ const ComponentPage = () => {
 
 				{/* Similar vendor's card */}
 				<div className="px-10">
-					<SimilarVendorCard items={items} />
+					<SimilarVendorCard items={similarVendorItems} />
 				</div>
 				<h1>Footer</h1>
 				<Footer footerColor="dark" />
