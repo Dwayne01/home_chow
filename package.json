@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev -p 3003",
-		"start:prod": "env-cmd -f .env.production react-scripts start",
+		"start:prod": "env-cmd -f .env.production next dev -p 3003",
 		"build": "next build",
 		"start": "next start -p 3003",
 		"lint": "next lint",
