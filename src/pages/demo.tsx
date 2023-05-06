@@ -38,6 +38,7 @@ import SearchBar from "../components/searchBar";
 import SimilarVendorCard from "../components/card/SimilarVendorCard";
 import foodImage from "../../public/assets/images/food.jpg";
 import foodImage2 from "../../public/assets/svg/foods/souvlaki.svg";
+import foodImage3 from "../../public/assets/svg/foods/blackSalad.svg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -285,7 +286,7 @@ const ComponentPage = () => {
 
 	const handleSearch = () => {};
 
-	// Text items for testing accordion component
+	// Items for testing accordion component
 	const items = [
 		{
 			id: 1,
@@ -298,7 +299,7 @@ const ComponentPage = () => {
 		},
 	];
 
-	// Text items for testing similarVendorCard component
+	// Items for testing similarVendorCard component
 	const similarVendorItems = [
 		{
 			id: 1,
@@ -307,6 +308,14 @@ const ComponentPage = () => {
 			discount: "30%",
 			isInStock: true,
 			image: foodImage2,
+		},
+		{
+			id: 2,
+			title: "The Place Salad",
+			price: "15.00",
+			discount: "50%",
+			isInStock: false,
+			image: foodImage3,
 		},
 	];
 
@@ -539,7 +548,8 @@ const ComponentPage = () => {
 				</div>
 
 				{/* Similar vendor's card */}
-				<div className="px-10">
+				<div className="p-10">
+					<h2>Similar Vendors</h2>
 					<SimilarVendorCard items={similarVendorItems} />
 				</div>
 				<h1>Footer</h1>
