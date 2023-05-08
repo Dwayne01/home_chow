@@ -5,10 +5,10 @@ const staging = {
 	localApi: true,
 	mockApi: true,
 	googleClientId: "AIzaSyDap-mhUpuHbYzDspnaV5R00HHE3Q-QEYg",
-	apiKey: "AIzaSyCMTDI-ksd3uUXb3RnPhtWzJpjrInLRnso",
-	projectId: "test-auth-5638b",
-	messagingSenderId: "822286140849",
-	appId: "1:822286140849:web:cddd94b5dde1d20530a990",
+	apiKey: "AIzaSyCcTz1UjqXPC8_Dbwy4mJAK0LlWfR-YIfU",
+	projectId: "homechow-5fbeb",
+	messagingSenderId: "231713040487",
+	appId: "1:231713040487:web:4a88cdcac959576e718cc2",
 };
 
 // eslint-disable-next-line no-eval
