@@ -33,6 +33,7 @@ import RestaurantCardList from "@/components/card/RestaurantCardList";
 import Cart, { CartItem } from "@/components/cart";
 import Accordion from "@/components/accordion";
 import Tabs, { TabProps } from "@/components/common/tab";
+import YouMightLike, { YouMightLikeCardItem } from "@/components/youMightLike";
 import Button from "../components/common/buttons";
 import SearchBar from "../components/searchBar";
 import foodImage from "../../public/assets/images/food.jpg";
@@ -313,6 +314,31 @@ const ComponentPage = () => {
 		},
 	];
 
+	const vendorYouMightLikeItems: YouMightLikeCardItem[] = [
+		{
+			id: 1,
+			image: "/assets/images/food.jpg",
+			name: "Vendor Name 1",
+			address: "123 Main St, Vancouver, BC V1A 1A1",
+			minTime: 30,
+			maxTime: 60,
+			serviceType: "Delivery",
+			price: 50.0,
+			review: 4.5,
+		},
+		{
+			id: 2,
+			image: "/assets/images/food.jpg",
+			name: "Vendor Name 2",
+			address: "123 Main St, Vancouver, BC V1A 1A1",
+			minTime: 60,
+			maxTime: 90,
+			serviceType: "Pick up",
+			price: 75.28,
+			review: 4.0,
+		},
+	];
+
 	return (
 		<div>
 			<MainHeader />
@@ -525,6 +551,7 @@ const ComponentPage = () => {
 				<h1>Footer</h1>
 				<Footer footerColor="dark" />
 				<Tabs tabs={tabs} />
+				<YouMightLike items={vendorYouMightLikeItems} />
 			</div>
 		</div>
 	);
