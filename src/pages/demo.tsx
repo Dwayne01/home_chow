@@ -551,6 +551,7 @@ const ComponentPage = () => {
 				<h1>Footer</h1>
 				<Footer footerColor="dark" />
 				<Tabs tabs={tabs} />
+				<h1>Places you might like</h1>
 				<YouMightLike items={vendorYouMightLikeItems} />
 			</div>
 		</div>
