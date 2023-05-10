@@ -2,12 +2,17 @@ import AuthenticationLayout from "@/components/layout/AuthenticationLayout";
 import Onboarding from "@/components/onboarding";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import LoginForm from "@/components/userManagement/LoginForm";
-import { useLogin } from "@/hooks/useAuth";
+import { useRouter } from "next/router";
+import { useAuthValidation, useLogin } from "@/hooks/useAuth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { setSessionCookie } from "@/utils/cookies";
 import { auth } from "../../../firebase";
 
 const LoginPage = () => {
 	const { mutateAsync, isLoading } = useLogin();
+	const { mutateAsync: authMutateAsync } = useAuthValidation();
+
+	const router = useRouter();
 
 	const handleLogin = async (params: any) => {
 		await mutateAsync(params);
@@ -18,10 +23,12 @@ const LoginPage = () => {
 	const handleGoogleSignIn = () => {
 		const provider = new GoogleAuthProvider();
 		signInWithPopup(auth, provider)
-			.then((result) => {
+			.then(async (result) => {
 				const credential = GoogleAuthProvider.credentialFromResult(result);
 				// eslint-disable-next-line no-console
-				console.log(credential);
+				const token = await authMutateAsync({ idToken: credential?.idToken });
+				setSessionCookie(token, 30);
+				router.push("/dashboard");
 			})
 			.catch((error) => {
 				// eslint-disable-next-line no-console

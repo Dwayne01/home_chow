@@ -11,6 +11,10 @@ export interface RegisterPayload {
 	password: string;
 }
 
+export interface AuthValidationPayload {
+	idToken?: string;
+}
+
 export interface APPLYVENDORPayload {
 	legalBusinessName: string;
 	businessTradingName: string;

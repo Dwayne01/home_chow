@@ -8,3 +8,8 @@ export const sampleAuthResponseMock = {
         userType:"admin"
 }
 }
+
+export const sampleSocialAuthValidationResponseMock = {
+    token:"ewugfiuebfisebfijds",
+    
+}
