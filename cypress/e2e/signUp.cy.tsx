@@ -14,7 +14,7 @@ describe("sign up page", () => {
 	it("Should render the sign up page", () => {
 		cy.get("#signUp-btn").should("be.visible");
 		cy.get("#signUp-btn").contains(/Sign Up/i);
-		cy.get("#Sign in with Google").should("be.visible");
+		cy.get('[data-testid="Sign in-with-Google"]').should("be.visible");
 		cy.get('[data-testid="Sign in-with-Google"]').contains(
 			/Sign in with Google/i
 		);
