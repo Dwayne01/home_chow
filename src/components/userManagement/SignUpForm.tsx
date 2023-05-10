@@ -146,10 +146,11 @@ const SignUpForm = ({
 					<span className="">{t("Or")}</span>
 					<hr className="flex-1 border" />
 				</div>
-				<div className="flex flex-col w-full gap-3 mt-8 text-black ">
+				<div className="flex flex-col w-full gap-3 mt-8 text-black">
 					<WideIconButton
 						label="Sign in with Google"
 						icon={FcGoogle}
+						data-testid="Sign in-with-Google"
 						rootClass=" justify-start"
 						onClick={handleGoogleSignUp}
 					/>

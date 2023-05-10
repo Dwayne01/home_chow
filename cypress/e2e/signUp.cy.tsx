@@ -14,6 +14,8 @@ describe("sign up page", () => {
 	it("Should render the sign up page", () => {
 		cy.get("#signUp-btn").should("be.visible");
 		cy.get("#signUp-btn").contains(/Sign Up/i);
+		cy.get("#Sign in with Google").should("be.visible");
+		cy.get("#Sign in with Google").contains(/Sign in with Google/i);
 	});
 
 	it("Should show sign up required error when forn is not properly field", () => {
@@ -47,5 +49,20 @@ describe("sign up page", () => {
 		cy.get("#password").type("12345678");
 
 		cy.get("#signUp-btn").click();
+	});
+	describe("WideIconButton component", () => {
+		it("should perform a click action when the button is clicked", () => {
+			cy.get("#Sign in with Google")
+				.contains("Sign in with Google")
+				.click()
+				.should("be.calledOnce");
+		});
+		it("should redirect the user to  dashboard page after success validation", () => {
+			cy.get("#Sign in with Google")
+				.click()
+				.then(() => {
+					cy.url().should("eq", "/dashboard");
+				});
+		});
 	});
 });

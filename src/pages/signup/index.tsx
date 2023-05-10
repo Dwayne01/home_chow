@@ -3,20 +3,26 @@ import Onboarding from "@/components/onboarding";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import SignUpForm from "@/components/userManagement/SignUpForm";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useRegister } from "@/hooks/useAuth";
+import { useAuthValidation, useRegister } from "@/hooks/useAuth";
 import { RegisterPayload } from "@/types/auth";
+import { setSessionCookie } from "@/utils/cookies";
+import { useRouter } from "next/router";
 import { auth } from "../../../firebase";
 
 const SignUpPage = () => {
-	// Google Authentication
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	const { mutateAsync: authMutateAsync } = useAuthValidation();
+
+	const router = useRouter();
+
 	const handleGoogleSignUp = () => {
 		const provider = new GoogleAuthProvider();
 		signInWithPopup(auth, provider)
-			.then((result) => {
+			.then(async (result) => {
 				const credential = GoogleAuthProvider.credentialFromResult(result);
 				// eslint-disable-next-line no-console
-				console.log(credential);
+				const token = await authMutateAsync({ idToken: credential?.idToken });
+				setSessionCookie(token, 30);
+				router.push("/dashboard");
 			})
 			.catch((error) => {
 				// eslint-disable-next-line no-console
