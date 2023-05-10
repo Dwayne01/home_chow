@@ -25,18 +25,17 @@ describe("<WideIconButton />", () => {
 		);
 
 		cy.get('[data-testid="Sign in-with-Google"]').click();
+		cy.wrap(handleGoogleSignIn).should("be.calledOnce");
 
 		cy.get('[data-testid="Sign in-with-Google"]')
 			.should("contain", "Sign in with Google")
 			.should("have.class", "justify-start")
-			.find(".text-2xl")
-			.should("have.length", 1); // Ensure the icon element is present
-		// .find('svg[data-icon="FcGoogle"]') // Assuming the icon is rendered as an SVG with data-icon attribute
-		// .should("exist");
-		// cy.wrap(handleGoogleSignIn).should("be.calledOnce");
-		// cy.get('[data-testid="Sign in-with-Google"]')
-		// 	.should("contain", "Sign in with Google")
-		// 	.should("have.class", "justify-start")
-		// 	.should("have.attr", "icon", "FcGoogle");
+			.should("have.class", "w-[360px]")
+			.should("have.class", "h-[44px]")
+			.should("have.class", "text-base")
+			.should("have.class", "text-grey-dark")
+			.should("have.class", "bg-white")
+			.should("have.class", "border-border-color")
+			.should("have.class", "rounded-[8px]");
 	});
 });
