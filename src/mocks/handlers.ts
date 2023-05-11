@@ -5,7 +5,6 @@ import {
 	getVerifyCodeMock,
 	authLoginMock,
 	authRegisterMock,
-	socialAuthValidationMock,
 } from "./resolvers";
 
 export const handlers = [
@@ -14,9 +13,5 @@ export const handlers = [
 	rest.get("https://homechow.herokuapp.com/verify-code", getVerifyCodeMock),
 	rest.post("https://homechow.herokuapp.com/auth/signup", authRegisterMock),
 	rest.post("https://homechow.herokuapp.com/auth/login", authLoginMock),
-	rest.post(
-		"https://homechow.herokuapp.com/auth/social_auth_validation",
-		socialAuthValidationMock
-	),
 	rest.post("https://homechow.herokuapp.com/applyVendor", applyVendorMock),
 ];

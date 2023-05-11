@@ -9,7 +9,3 @@ export const sampleAuthResponseMock = {
 }
 }
 
-export const sampleSocialAuthValidationResponseMock = {
-    token:"ewugfiuebfisebfijds",
-    
-}
