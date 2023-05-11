@@ -20,5 +20,10 @@
   "Where": "Où",
   "Search location": "Rechercher un lieu...",
   "Add special instructions to restaurants": "Ajouter des instructions spéciales aux restaurants",
-  "Add to cart": "Ajouter au panier"
+  "Add to cart": "Ajouter au panier",
+  "common": {
+    "View Store": "Voir magasin",
+    "Out of stock": "Rupture de stock",
+    "In stock": "En stock"
+  }
 }

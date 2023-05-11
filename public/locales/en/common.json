@@ -19,5 +19,10 @@
   "Where": "Where",
   "Search location": "Search location...",
   "Add special instructions to restaurants": "Add special instructions to restaurants",
-  "Add to cart": "Add to cart"
+  "Add to cart": "Add to cart",
+  "common": {
+    "View Store": "View Store",
+    "Out of stock": "Out of stock",
+    "In stock": "In stock"
+  }
 }
