@@ -38,6 +38,5 @@ next-env.d.ts
 .env
 package.lock
 
-cypress
-
-.env.production
+storybook-static
+cypress/videos

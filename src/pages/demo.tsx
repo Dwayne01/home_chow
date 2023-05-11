@@ -1,7 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import { useState } from "react";
+import { AiOutlineSend } from "react-icons/ai";
 import Countdown from "@/components/countdown";
 import CheckboxButton from "@/components/common/buttons/CheckboxButton";
-import ComingSoonHeader from "@/components/header/ComingSoonHeader";
+import MainHeader from "@/components/header/MainHeader";
+
 import {
 	FaFacebookF,
 	FaFacebook,
@@ -20,10 +24,18 @@ import {
 } from "@/components/form/InputField";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
-import { AiOutlineSend } from "react-icons/ai";
 import CodeInput from "@/components/form/CodeInput";
+import Footer from "@/components/footer/Footer";
+import Slider from "@/components/slider";
 import WideIconButton from "@/components/common/buttons/WideIconButton";
-import ButtonV2 from "../components/common/buttons/Button";
+import Table from "@/components/table";
+import RestaurantCardList from "@/components/card/RestaurantCardList";
+import Cart, { CartItem } from "@/components/cart";
+import Accordion from "@/components/accordion";
+import Tabs, { TabProps } from "@/components/common/tab";
+import Button from "../components/common/buttons";
+import SearchBar from "../components/searchBar";
+import foodImage from "../../public/assets/images/food.jpg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -33,14 +45,277 @@ const ComponentPage = () => {
 		defaultValues: {},
 	});
 
+	const images = [
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+		<img src="https://via.placeholder.com/150" alt="Image" />,
+	];
+
+	const description = (
+		<div className="w-2/3 flex flex-col justify-center items-center">
+			<p className="text-xl font-bold text-center text-primary-color mt-10">
+				{t("easy_ordering")}
+			</p>
+			<p className="text-gray-500 text-lg text-center my-5 ">
+				{t("sign_in_to_explore")}
+			</p>
+		</div>
+	);
+
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = () => {};
 
+	const tableData = [
+		{ name: "John", age: 25, color: "red", weight: "90kg", height: "178cm" },
+		{ name: "Jane", age: 30, color: "blue", weight: "80kg", height: "180cm" },
+		{ name: "Robert", age: 11, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Bob", age: 15, color: "yellow", weight: "50kg", height: "178cm" },
+		{ name: "Paul", age: 45, color: "gray", weight: "80kg", height: "178cm" },
+		{ name: "Emma", age: 34, color: "white", weight: "76kg", height: "178cm" },
+		{ name: "Mary", age: 25, color: "green", weight: "120kg", height: "195cm" },
+		{ name: "Anna", age: 31, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Frank", age: 67, color: "blue", weight: "65kg", height: "158cm" },
+		{
+			name: "Charles",
+			age: 45,
+			color: "black",
+			weight: "80kg",
+			height: "178cm",
+		},
+		{ name: "Bob", age: 18, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Thomas", age: 19, color: "red", weight: "58kg", height: "158cm" },
+		{ name: "William", age: 20, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Clara", age: 47, color: "red", weight: "99kg", height: "178cm" },
+		{ name: "Alice", age: 50, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Emily", age: 22, color: "red", weight: "86kg", height: "178cm" },
+		{ name: "Leo", age: 39, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Lisa", age: 41, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Thomas", age: 19, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "William", age: 20, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Clara", age: 47, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Alice", age: 50, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Emily", age: 22, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Leo", age: 39, color: "red", weight: "80kg", height: "178cm" },
+		{ name: "Lisa", age: 41, color: "red", weight: "80kg", height: "178cm" },
+	];
+
+	const tableColumns = [
+		{ Header: "Name", accessor: "name" },
+		{ Header: "Age", accessor: "age" },
+		{ Header: "Color", accessor: "color" },
+		{ Header: "Weight", accessor: "weight" },
+		{ Header: "Height", accessor: "height" },
+	];
+
+	const restaurants = [
+		{
+			imageUrl: "",
+			name: "Kris Hamburger",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Stella Vegas",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Carisha pancakes",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Boli Salads",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Maya’s Cake",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Stella veges",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Suika Japanese",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Jollibeee",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Sushi Mura",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Breka",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Burger Queen",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Indian Sula",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 4.5,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Subwayy",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+		{
+			imageUrl: "",
+			name: "Pizza Hut",
+			address: "3, Olatunji street, Ojota, Lagos.",
+			deliveryTime: "15 - 20",
+			deliveryFee: 3.0,
+			rating: 5.0,
+			width: "2/3",
+		},
+	];
+
+	type Product = {
+		id: number;
+		name: string;
+		price: number;
+	};
+
+	const [products] = useState<Product[]>([
+		{ id: 1, name: "Burger", price: 12.99 },
+		{ id: 2, name: "Fries", price: 3.99 },
+		{ id: 3, name: "Coke", price: 2.99 },
+	]);
+
+	const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+	const handleAddToCart = (product: Product) => {
+		const existingItem = cartItems.find((item) => item.id === product.id);
+		if (existingItem) {
+			setCartItems((prevCartItems) =>
+				prevCartItems.map((item) =>
+					item.id === product.id
+						? { ...item, quantity: item.quantity + 1 }
+						: item
+				)
+			);
+		} else {
+			setCartItems((prevCartItems) => [
+				...prevCartItems,
+				{
+					id: product.id,
+					name: product.name,
+					price: product.price,
+					quantity: 1,
+				},
+			]);
+		}
+	};
+
+	const handleRemoveFromCart = (itemId: number) => {
+		setCartItems((prevCartItems) =>
+			prevCartItems.filter((item) => item.id !== itemId)
+		);
+	};
+
+	const handleSearch = () => {};
+
+	// Text items for testing accordion component
+	const items = [
+		{
+			title: "White Stew",
+			price: 10.99,
+			content:
+				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
+			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
+			image: foodImage,
+		},
+	];
+
+	const tabs: TabProps[] = [
+		{
+			label: "Tab 1 Title",
+			children: <div>Content for tab 1</div>,
+			onClick: () => {},
+		},
+		{
+			label: "Tab 2 Title Longer",
+			children: <div>Content for tab 2</div>,
+			onClick: () => {},
+		},
+		{
+			label: "Tab 3 Title Even Longer!!!!!!!! ",
+			children: <div>Content for tab 3</div>,
+			onClick: () => {},
+		},
+	];
+
 	return (
 		<div>
-			<ComingSoonHeader />
-
+			<MainHeader />
 			<Countdown />
 			<div className="flex justify-center gap-5">
 				<IconButton icon={FaFacebookF} color="text-primary-color" href="" />
@@ -48,6 +323,13 @@ const ComponentPage = () => {
 				<IconButton icon={FaLinkedinIn} color="text-primary-color" href="" />
 			</div>
 			<div className="flex flex-col items-center gap-5">
+				<Button
+					icon={AiOutlineSend}
+					rootClass="text-white gap-2"
+					label="Notify me"
+					onClick={() => {}}
+					iconPosition="right"
+				/>
 				{/* Social Auth buttons */}
 				<WideIconButton label="Sign in with Google" icon={FcGoogle} />
 				<WideIconButton
@@ -79,6 +361,12 @@ const ComponentPage = () => {
 				/>
 			</div>
 
+			{/* Search Bar */}
+			<div className="flex flex-col items-center gap-5 my-40">
+				<SearchBar placeholder="Anywhere" onSearch={handleSearch} />
+			</div>
+
+			{/* Checkbox Button Group */}
 			<div className="flex flex-col sm:flex-row justify-center sm:mx-10 mx-10 gap-5 mt-10">
 				<CheckboxButton
 					name="customer"
@@ -104,7 +392,17 @@ const ComponentPage = () => {
 					handleClick={() => setSelectedValue("driver")}
 				/>
 			</div>
+			<div className="h-96">
+				<Slider description={description} slides={images} />
+			</div>
 
+			{/* Accordion */}
+			<div className="flex flex-col justify-center items-center gap-5 mx-10 px-20 my-5">
+				<h1>Accordion</h1>
+				<Accordion items={items} />
+			</div>
+
+			{/* Form */}
 			<FormProvider {...form}>
 				<form onSubmit={handleSubmit(handleSubmitForm)}>
 					<div className="p-10">
@@ -191,53 +489,42 @@ const ComponentPage = () => {
 					</div>
 				</form>
 			</FormProvider>
-			<div className=" my-10 mx-5">
-				<h3>New button made by Jaskaran Demo</h3>
-				<div className="flex gap-4 items-center">
-					<ButtonV2
-						type="primary"
-						size="lg"
-						onClick={() => {
-							// eslint-disable-next-line no-console
-							console.log("Hello World");
-						}}
-						LeftIconComponent={AiOutlineSend}
-					>
-						PrimaryLG
-					</ButtonV2>
-
-					<ButtonV2
-						size="md"
-						type="secondary"
-						onClick={() => {
-							// eslint-disable-next-line no-console
-							console.log("Hello World");
-						}}
-					>
-						SecondaryMD
-					</ButtonV2>
-
-					<ButtonV2
-						size="md"
-						type="primary-outline"
-						onClick={() => {
-							// eslint-disable-next-line no-console
-							console.log("Hello World");
-						}}
-					>
-						PrimaryOutlineMD
-					</ButtonV2>
-					<ButtonV2
-						size="sm"
-						type="secondary-outline"
-						onClick={() => {
-							// eslint-disable-next-line no-console
-							console.log("Hello World");
-						}}
-					>
-						SecondaryOutlineSM
-					</ButtonV2>
+			<h1>Table Component</h1>
+			<Table tableTitle="Table Title" data={tableData} columns={tableColumns} />
+			<div className="flex flex-col gap-4 m-10">
+				<h1>Card Component</h1>
+				<RestaurantCardList
+					title="Restaurants Near you"
+					restaurants={restaurants}
+					itemsPerPage={2}
+				/>
+				<div className="container  px-10">
+					<h1 className="text-2xl font-bold my-4">Menu</h1>
+					<ul className="mb-10">
+						{products.map((product) => (
+							<li
+								key={product.id}
+								className="flex items-center justify-between py-2 border-b"
+							>
+								<span>{product.name}</span>
+								<button
+									onClick={() => handleAddToCart(product)}
+									className="bg-primary-color text-white px-4 py-2 rounded-md"
+								>
+									Add to cart (${product.price.toFixed(2)})
+								</button>
+							</li>
+						))}
+					</ul>
+					<Cart
+						items={cartItems}
+						onAddToCart={() => handleAddToCart(products[0])}
+						onRemoveFromCart={handleRemoveFromCart}
+					/>
 				</div>
+				<h1>Footer</h1>
+				<Footer footerColor="dark" />
+				<Tabs tabs={tabs} />
 			</div>
 		</div>
 	);
@@ -248,7 +535,7 @@ export default ComponentPage;
 export async function getStaticProps({ locale }: { locale: string }) {
 	return {
 		props: {
-			...(await serverSideTranslations(locale ?? "en", ["common"])),
+			...(await serverSideTranslations(locale ?? "en", ["common", "footer"])),
 		},
 	};
 }

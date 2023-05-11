@@ -16,10 +16,8 @@
   "lastName": "Last Name",
   "thisFieldIsRequired": "This field is required",
   "invalidEmail": "Invalid Email",
-  "vendor": "Vendor",
-  "customer": "Customer",
-  "driver": "Driver",
-  "question":"What describes you best?",
-  "signUpInfo": "Sign up for updates to be the first to know when we launch. No spam, just important information and exclusive offers.",
-  "onboardBtn": "Notify Me"
+  "Where": "Where",
+  "Search location": "Search location...",
+  "Add special instructions to restaurants": "Add special instructions to restaurants",
+  "Add to cart": "Add to cart"
 }

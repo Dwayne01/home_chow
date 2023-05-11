@@ -52,8 +52,8 @@ const AboutUs = () => {
 				</div>
 				<div className="m-auto mt-20 w-[80%] md:w-[60%] mb-20">
 					<div className="text-center md:text-left">
-						<h1 className="mb-6 text-4xl">{t("ourteam")}</h1>
-						<h2 className="mb-6 text-2xl">
+						<h1 className="mb-6 text-6xl">{t("ourteam")}</h1>
+						<h2 className="mb-6 text-3xl">
 							{t("meet our team")}
 							<br />
 							<span className="text-red">{t("management, developing")} </span>
@@ -127,7 +127,7 @@ const AboutUs = () => {
 						</div>
 					</div>
 				</div>
-				<Footer />
+				<Footer footerColor="light" />
 			</div>
 		</div>
 	);

@@ -16,10 +16,6 @@ const ComingSoonHeader = ({ logoUrl }: { logoUrl?: string }) => {
 
 	const defaultUserOptions = [
 		{
-			label: t("Home"),
-			href: "/",
-		},
-		{
 			label: t("aboutUs"),
 			href: "/about-us",
 		},
@@ -33,18 +29,16 @@ const ComingSoonHeader = ({ logoUrl }: { logoUrl?: string }) => {
 						<Image src={logoUrl || Logo} className="w-48 md:w-60" alt="Logo" />
 					</Link>
 				</div>
-				<div className="flex md:gap-10">
-					<div className="flex justify-between items-center gap-10 ">
+				<div className="flex gap-10">
+					<div>
 						{defaultUserOptions &&
 							defaultUserOptions.map((option) => (
 								<Link
 									key={option.href}
 									href={option.href}
-									className="hidden md:block"
+									className="p-5 hidden md:block"
 								>
-									<h3 className="mt-3 text-xl font-medium hover:border-b-4 border-b-primary-color">
-										{option.label}
-									</h3>
+									<h3 className="mt-3 text-xl">{option.label}</h3>
 								</Link>
 							))}
 					</div>

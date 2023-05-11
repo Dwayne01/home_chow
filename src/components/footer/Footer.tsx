@@ -14,7 +14,7 @@ const Footer = ({
 	footerColor = "light",
 }: {
 	logoUrl?: string;
-	footerColor?: "light" | "dark";
+	footerColor: "light" | "dark";
 }) => {
 	const { t } = useTranslation("footer");
 
