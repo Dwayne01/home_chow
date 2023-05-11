@@ -6,7 +6,6 @@ import Image from "next/image";
 import foodPotImage from "../../../public/assets/images/food_pot.svg";
 import foodBowlImage from "../../../public/assets/images/food_bowl.svg";
 import drinkJarImage from "../../../public/assets/images/drink_jar.svg";
-// eslint-disable-next-line import/no-unresolved
 import member1Image from "../../../public/assets/images/member1.png";
 
 const AboutUs = () => {
@@ -16,21 +15,23 @@ const AboutUs = () => {
 		<div className="min-w-min">
 			<div className="mt-2">
 				<ComingSoonHeader />
-				<div className="md:flex md:flex-row md:flex-1 justify-between gap-16 m-auto mt-14 w-[95%]">
+				<div className="md:flex md:flex-row md:flex-1 justify-between gap-16 m-auto mt-14 w-[80%] md:w-[60%]">
 					<div className="basis-1/2">
-						<h1 className="mb-6">{t("abouts")}</h1>
-						<h2 className="mb-2">
+						<h1 className="mb-6 text-6xl">{t("abouts")}</h1>
+						<h2 className="mb-6 text-3xl">
 							{t("bringing homecooked meals")}
 							<strong className="text-primary-color"> {t("doorstep")}</strong>
 						</h2>
-						<p className="mb-4">{t("modern consumers,limited restaurants")}</p>
-						<p className="mb-4">{t("opportunity in the market")}</p>
+						<p className="mb-4 text-xl">
+							{t("modern consumers,limited restaurants")}
+						</p>
+						<p className="mb-4 text-xl">{t("opportunity in the market")}</p>
 						<Image
 							src={foodPotImage}
 							alt="homemade pot stew"
 							className="rounded-br-large mt-10 mb-10"
 						/>
-						<p className="mt-4 mb-4">{t("platform easy to use")}</p>
+						<p className="mt-4 mb-4 text-xl">{t("platform easy to use")}</p>
 					</div>
 					<div className="basis-1/2">
 						<Image
@@ -38,7 +39,7 @@ const AboutUs = () => {
 							alt="fresh salad bowl"
 							className="rounded-tl-xlarge mb-10"
 						/>
-						<p>
+						<p className="text-xl">
 							<strong>HomeChow</strong>{" "}
 							{t("delivery service that offers freshly made meals")}
 						</p>
@@ -49,7 +50,7 @@ const AboutUs = () => {
 						/>
 					</div>
 				</div>
-				<div className="m-auto mt-20 w-[80%] mb-20">
+				<div className="m-auto mt-20 w-[80%] md:w-[60%] mb-20">
 					<div className="text-center md:text-left">
 						<h1 className="mb-6 text-4xl">{t("ourteam")}</h1>
 						<h2 className="mb-6 text-2xl">
@@ -126,7 +127,7 @@ const AboutUs = () => {
 						</div>
 					</div>
 				</div>
-				<Footer footerColor="dark" />
+				<Footer />
 			</div>
 		</div>
 	);
