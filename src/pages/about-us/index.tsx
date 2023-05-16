@@ -3,9 +3,9 @@ import Footer from "@/components/footer/Footer";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Image from "next/image";
-import foodPotImage from "../../../public/assets/images/food-pot.png";
-import foodBowlImage from "../../../public/assets/images/food-bowl.png";
-import glassJugImage from "../../../public/assets/images/glass-jug.png";
+import foodPotImage from "../../../public/assets/images/food-pot.svg";
+import foodBowlImage from "../../../public/assets/images/food-bowl.svg";
+import glassJugImage from "../../../public/assets/images/glass-jug.svg";
 
 const AboutUs = () => {
 	const { t } = useTranslation(["about", "common", "footer"]);
@@ -14,37 +14,53 @@ const AboutUs = () => {
 		<div className="min-w-min">
 			<div className="mt-2">
 				<ComingSoonHeader />
-				<div className="md:flex md:flex-row md:flex-1 justify-between gap-16 m-auto mt-14 w-[95%]">
-					<div className="basis-1/2">
-						<h1 className="mb-6">{t("abouts")}</h1>
-						<h2 className="mb-2">
+				<div>
+					<div className="mx-4 sm:mx-auto mt-14 md:w-3/4 xl:w-1/2 ">
+						<h1 className="mb-2  sm:ml-4">{t("abouts")}</h1>
+						<h2 className="mb-2  sm:ml-4">
 							{t("bringing homecooked meals")}
 							<strong className="text-primary-color"> {t("doorstep")}</strong>
 						</h2>
-						<p className="mb-4">{t("modern consumers,limited restaurants")}</p>
-						<p className="mb-4">{t("opportunity in the market")}</p>
-						<Image
-							src={foodPotImage}
-							alt="homemade pot stew"
-							className="rounded-br-large mt-10 mb-10"
-						/>
-						<p className="mt-4 mb-4">{t("platform easy to use")}</p>
 					</div>
-					<div className="basis-1/2">
-						<Image
-							src={foodBowlImage}
-							alt="fresh salad bowl"
-							className="rounded-tl-xlarge mb-10"
-						/>
-						<p>
-							<strong>HomeChow</strong>{" "}
-							{t("delivery service that offers freshly made meals")}
-						</p>
-						<Image
-							src={glassJugImage}
-							alt="refreshing fresh juice"
-							className="rounded-tr-large mt-10"
-						/>
+					<div className="flex flex-1 md:w-3/4 xl:w-1/2  gap-8 mx-auto justify-center">
+						<div className="basis-1/2 ml-4">
+							<p className="mb-4  text-xs md:text-base">
+								{t("modern consumers,limited restaurants")}
+							</p>
+							<p className="mb-4  text-xs md:text-base">
+								{t("opportunity in the market")}
+							</p>
+							<aside>
+								<Image
+									src={foodPotImage}
+									alt="homemade pot stew"
+									className=" mt-10 mb-10 w-full"
+								/>
+							</aside>
+							<p className="mt-4 mb-4  text-xs md:text-base">
+								{t("platform easy to use")}
+							</p>
+						</div>
+						<div className="basis-1/2 mr-4">
+							<aside>
+								<Image
+									src={foodBowlImage}
+									alt="fresh salad bowl"
+									className=" mb-10 w-full h-full"
+								/>
+							</aside>
+							<p className=" text-xs md:text-base">
+								<strong>HomeChow</strong>{" "}
+								{t("delivery service that offers freshly made meals")}
+							</p>
+							<aside>
+								<Image
+									src={glassJugImage}
+									alt="refreshing fresh juice"
+									className=" mt-10 w-full"
+								/>
+							</aside>
+						</div>
 					</div>
 				</div>
 				<Footer footerColor="dark" />
