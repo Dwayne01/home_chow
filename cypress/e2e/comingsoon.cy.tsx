@@ -41,7 +41,7 @@ describe("comingsoon page", () => {
 	it("Should show subscribe required error when forn is not properly field", () => {
 		cy.get("#notifyMe-btn").click();
 
-		cy.intercept("POST", "https://homechow.herokuapp.com/subscribe", {
+		cy.intercept("POST", "hhttps://homechow-staging.herokuapp.com/subscribe", {
 			fixture: "comingsoon.json",
 		}).as("subscribe");
 
