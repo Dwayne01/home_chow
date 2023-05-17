@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -18,8 +18,8 @@ const SignUpForm = ({
 	handleSignup,
 	handleGoogleSignUp,
 }: {
-	handleGoogleSignUp: () => void;
-	handleSignup: (params: RegisterPayload) => Promise<boolean>;
+	handleGoogleSignUp: () => unknown;
+	handleSignup: (params: RegisterPayload) => Promise<RegisterPayload>;
 }) => {
 	const [password, setPassword] = useState("");
 	const { t } = useTranslation("authentication");
@@ -31,13 +31,19 @@ const SignUpForm = ({
 		},
 	});
 
-	const router = useRouter();
+	// const router = useRouter();
 
 	const { handleSubmit, register } = form;
 
-	const handleSubmitForm = async (params: RegisterPayload) => {
-		await handleSignup(params);
-		router.push("/verification");
+	const handleSubmitForm = async (params: RegisterPayload): Promise<any> => {
+		try {
+			const data = await handleSignup(params);
+			return data;
+		} catch (error) {
+			return error;
+		}
+
+		// router.push("/verification");
 	};
 
 	return (

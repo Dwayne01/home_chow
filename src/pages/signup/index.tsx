@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import AuthenticationLayout from "@/components/layout/AuthenticationLayout";
 import Onboarding from "@/components/onboarding";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -5,12 +6,13 @@ import SignUpForm from "@/components/userManagement/SignUpForm";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useAuthValidation, useRegister } from "@/hooks/useAuth";
 import { RegisterPayload } from "@/types/auth";
-import { setSessionCookie } from "@/utils/cookies";
+import { AuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/router";
 import { auth } from "../../../firebase";
 
 const SignUpPage = () => {
 	const { mutateAsync: authMutateAsync } = useAuthValidation();
+	const { login } = useContext(AuthContext);
 
 	const router = useRouter();
 
@@ -18,11 +20,16 @@ const SignUpPage = () => {
 		const provider = new GoogleAuthProvider();
 		signInWithPopup(auth, provider)
 			.then(async (result) => {
-				const credential = GoogleAuthProvider.credentialFromResult(result);
+				GoogleAuthProvider.credentialFromResult(result);
 				// eslint-disable-next-line no-console
-				const token = await authMutateAsync({ idToken: credential?.idToken });
-				setSessionCookie(token, 30);
-				router.push("/dashboard");
+				const idToken = await result.user.getIdToken();
+				const token = await authMutateAsync({
+					id_token: idToken,
+				});
+				if (token.status_code === 200) {
+					login(token);
+					router.push("/dashboard");
+				}
 			})
 			.catch((error) => {
 				// eslint-disable-next-line no-console
@@ -33,12 +40,12 @@ const SignUpPage = () => {
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const { mutateAsync } = useRegister();
 
-	const handleSignup = async (params: RegisterPayload) => {
-		const res = await mutateAsync(params);
-
-		if (res.status === "Success") return true;
-
-		return false;
+	const handleSignup = async (
+		params: RegisterPayload
+	): Promise<RegisterPayload> => {
+		const response = await mutateAsync(params);
+		// if (res.status === "Success") return true;
+		return response;
 	};
 
 	return (

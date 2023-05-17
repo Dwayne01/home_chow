@@ -85,15 +85,15 @@ const AuthContextProvider = (props: {
 
 	// call this function when you want to authenticate the user
 	const login = async (data: any, rememberMe?: boolean) => {
-		if (!data.token) return false;
+		if (!data.id_token) return false;
 
 		if (rememberMe) {
-			setSessionCookie(data.token, 30);
+			setSessionCookie(data.id_token, 30);
 		} else {
-			setSessionCookie(data.token);
+			setSessionCookie(data.id_token);
 		}
 
-		setToken(data.token);
+		setToken(data.id_token);
 		setIsSignedIn(true);
 		setUser(data);
 

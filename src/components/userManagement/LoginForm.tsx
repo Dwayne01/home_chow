@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import {
 	Checkbox,
 	PasswordField,
 	TextField,
 } from "@/components/form/InputField";
+import { AuthContext } from "@/context/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import classNames from "classnames";
@@ -12,7 +13,7 @@ import Button from "@/components/common/buttons";
 import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
-import { LoginPayload } from "@/types/auth";
+import { AuthValidationResponse, LoginPayload } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
@@ -23,9 +24,10 @@ const LoginForm = ({
 }: {
 	handleGoogleSignIn: () => void;
 	isLoading: boolean;
-	handleLogin: (params: LoginPayload) => Promise<boolean>;
+	handleLogin: (params: LoginPayload) => Promise<AuthValidationResponse>;
 }) => {
 	const { t } = useTranslation("authentication");
+	const { login } = useContext(AuthContext);
 
 	const form = useForm({
 		defaultValues: {
@@ -39,9 +41,22 @@ const LoginForm = ({
 
 	const { handleSubmit, register } = form;
 
-	const handleSubmitForm = async (params: LoginPayload) => {
-		await handleLogin(params);
-		router.push("/dashboard");
+	const handleSubmitForm = async (params: LoginPayload): Promise<any> => {
+		try {
+			const data = await handleLogin({
+				email: params.email,
+				password: params.password,
+			});
+			if (data && data.status_code === 200) {
+				login(data, params.rememberMe);
+				router.push("/dashboard");
+			} else {
+				throw new Error("Invalid status code");
+			}
+		} catch (error) {
+			throw error;
+		}
+		// return undefined;
 	};
 
 	return (

@@ -12,7 +12,14 @@ export interface RegisterPayload {
 }
 
 export interface AuthValidationPayload {
-	idToken?: string;
+	id_token?: string;
+}
+
+export interface AuthValidationResponse {
+	id_token?: string;
+	message: string;
+	user_id: string;
+	status_code: number;
 }
 
 export interface APPLYVENDORPayload {

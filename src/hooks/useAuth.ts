@@ -1,10 +1,11 @@
 import { useApiMutate } from "@/hooks/useApi";
 import {
 	AuthValidationPayload,
+	AuthValidationResponse,
 	LoginPayload,
 	RegisterPayload,
 } from "@/types/auth";
-import { ApiResponse } from "@/types";
+// import { ApiResponse } from "@/types";
 
 export interface AuthApiResult {
 	token: string;
@@ -16,20 +17,17 @@ export interface AuthApiResult {
 }
 
 export const useLogin = () => {
-	const res = useApiMutate<LoginPayload, ApiResponse<AuthApiResult>>(
-		"post",
-		"/login"
-	);
+	const res = useApiMutate<LoginPayload, any>("post", "/auth/login");
 	return res;
 };
 
 export const useRegister = () => {
-	const res = useApiMutate<RegisterPayload, ApiResponse>("post", "/signup ");
+	const res = useApiMutate<RegisterPayload, any>("post", "/auth/signup");
 	return res;
 };
 
 export const useAuthValidation = () => {
-	const res = useApiMutate<AuthValidationPayload, { token: string }>(
+	const res = useApiMutate<AuthValidationPayload, AuthValidationResponse>(
 		"post",
 		"/auth/social_auth_validation"
 	);

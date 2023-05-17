@@ -1,7 +1,7 @@
 const staging = {
 	env: "development",
-	baseUrl: "https://homechow.herokuapp.com",
-	localBaseURL: "https://homechow.herokuapp.com",
+	baseUrl: "https://homechow-staging.herokuapp.com",
+	localBaseURL: "https://homechow-staging.herokuapp.com",
 	localApi: true,
 	mockApi: true,
 	googleClientId: "AIzaSyDap-mhUpuHbYzDspnaV5R00HHE3Q-QEYg",
