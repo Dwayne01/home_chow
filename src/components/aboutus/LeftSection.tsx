@@ -13,12 +13,13 @@ const LeftSection = () => {
 				{t("diverse_residents_para")}
 			</p>
 
-			<Image
-				src={GreenBowl}
-				className="w-[100%] m-auto"
-				alt="Green Bowl Image"
-			/>
-
+			<aside className="flex-1">
+				<Image
+					src={GreenBowl}
+					className="w-[100%] m-auto"
+					alt="Green Bowl Image"
+				/>
+			</aside>
 			<p className="text-light-color-text my-5 md:my-10 text-xs md:text-base">
 				{t("platform_designed_para")}
 			</p>

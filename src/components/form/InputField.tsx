@@ -11,6 +11,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import ReactTooltip from "react-tooltip";
 import { useTranslation } from "next-i18next";
 import "react-datepicker/dist/react-datepicker.css";
+import Image from "next/image";
 import {
 	formatDateTime,
 	dateToDateTime,
@@ -206,6 +207,57 @@ const TextFieldComponent = (props: any, ref: any) => {
 				ref={ref}
 				className={inputClass}
 			/>
+			{error && <ErrorLabel error={error} />}
+		</div>
+	);
+};
+
+const TextFieldImageComponent = (props: any, ref: any) => {
+	const {
+		label,
+		rootClass,
+		required,
+		infoText,
+		icon,
+		alt,
+		iconContainerClassName,
+		iconClassNames,
+		inputClass,
+		...inputProps
+	} = props;
+	const { errors } = useFormContext();
+	const error = _.get(errors, inputProps.name);
+
+	return (
+		<div className={`flex flex-col ${rootClass}`}>
+			<Label
+				infoText={infoText}
+				label={label}
+				name={inputProps.name}
+				required={required}
+				bold
+			/>
+			<div className={`${icon ? "relative" : ""}`}>
+				<input
+					id={inputProps.name}
+					data-testid={inputProps.name}
+					className={`border-sand border-2 placeholder:text-stone block px-4 py-3 rounded w-full bg-white ${
+						error ? "border-arbutus" : "border-sand"
+					} text-gray-900  ${
+						error ? "focus:border-arbutus" : "focus:border-primary-color"
+					} focus:outline-none focus:ring-0 focus:shadow-input ${inputClass}`}
+					//  InputProps might have it already so not writing it again
+					// In my opinion.
+					// disabled={disabled}
+					{...inputProps}
+					ref={ref}
+				/>
+				{icon && (
+					<div className={`absolute ${iconContainerClassName}`}>
+						<Image src={icon} alt={alt} className={iconClassNames} />
+					</div>
+				)}
+			</div>
 			{error && <ErrorLabel error={error} />}
 		</div>
 	);
@@ -645,6 +697,7 @@ const DatePickerComponent = (
 };
 
 const TextField = React.forwardRef(TextFieldComponent);
+const TextIconField = React.forwardRef(TextFieldImageComponent);
 const CardField = React.forwardRef(CardFieldComponent);
 const CurrencyField = React.forwardRef(CurrencyFieldComponent);
 const PasswordField = React.forwardRef(PasswordFieldComponent);
@@ -657,6 +710,7 @@ const TextAreaField = React.forwardRef(TextAreaComponent);
 
 export {
 	TextField,
+	TextIconField,
 	CardField,
 	CurrencyField,
 	PasswordField,

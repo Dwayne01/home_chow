@@ -51,6 +51,7 @@
 		"react-number-format": "^4.9.3",
 		"react-payment-inputs": "^1.1.9",
 		"react-query": "^3.39.3",
+		"react-time-picker": "^6.0.4",
 		"react-tooltip": "^4.2.21",
 		"start-server-and-test": "^1.15.3",
 		"storybook": "^6.5.16",

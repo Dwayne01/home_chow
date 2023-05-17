@@ -7,20 +7,24 @@ const RightSection = () => {
 	const { t } = useTranslation(["about"]);
 	return (
 		<div className="flex flex-col">
-			<Image
-				src={RedBowlImage}
-				className="w-[100%] m-auto"
-				alt="Red Bowl Image"
-			/>
+			<aside className="flex-1">
+				<Image
+					src={RedBowlImage}
+					className="w-[100%] m-auto"
+					alt="Red Bowl Image"
+				/>
+			</aside>
 			<p className="text-light-color-text my-5 md:my-10 text-xs md:text-base">
 				<span className="font-bold">HomeChow</span>{" "}
 				{t("food_delivery_service_para")}
 			</p>
-			<Image
-				src={YellowBowlImage}
-				className="w-[100%] m-auto"
-				alt="Red Bowl Image"
-			/>
+			<aside className="flex-1">
+				<Image
+					src={YellowBowlImage}
+					className="w-[100%] m-auto"
+					alt="Red Bowl Image"
+				/>
+			</aside>
 		</div>
 	);
 };
