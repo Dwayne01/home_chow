@@ -413,7 +413,11 @@ const ComponentPage = () => {
 
 			{/* Search Bar */}
 			<div className="flex flex-col items-center gap-5 my-40">
-				<SearchBar placeholder="Anywhere" onSearch={handleSearch} />
+				<SearchBar
+					label="Where"
+					placeholder="Anywhere"
+					onSearch={handleSearch}
+				/>
 			</div>
 
 			{/* Checkbox Button Group */}

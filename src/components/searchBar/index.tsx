@@ -1,24 +1,23 @@
 import classNames from "classnames";
 import { FormProvider, useForm } from "react-hook-form";
-import { useTranslation } from "next-i18next";
 import { BiSearch } from "react-icons/bi";
 import { AddressField } from "../form/InputField";
 
 const SearchBar = ({
+	label,
 	placeholder,
 	onSearch,
 	width,
 	iconBgColor,
 	rootClass,
 }: {
+	label?: string;
 	placeholder: string;
 	onSearch: (query: string) => void;
 	width?: string;
 	iconBgColor?: string;
 	rootClass?: string;
 }) => {
-	const { t } = useTranslation("common");
-
 	const form = useForm({
 		defaultValues: {
 			address: "",
@@ -44,7 +43,7 @@ const SearchBar = ({
 				>
 					<div className="w-11/12 ml-2">
 						<div className="px-1">
-							<h6>{t("Where")}</h6>
+							<h6>{label}</h6>
 						</div>
 						<AddressField
 							data-testid="address"

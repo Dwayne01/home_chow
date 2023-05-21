@@ -1,9 +1,8 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import StoreLayout from "@/components/layout/StoreLayout";
 import SearchBar from "@/components/searchBar";
 import Accordion from "@/components/accordion";
 import SimilarVendorCard from "@/components/card/SimilarVendorCard";
-// import MainImage from "../../../public/assets/svg/StoreMain.svg";
+import MainImage from "../../../public/assets/svg/StoreMain.svg";
 import foodImage from "../../../public/assets/images/food.jpg";
 import foodImage2 from "../../../public/assets/svg/foods/souvlaki.svg";
 import foodImage3 from "../../../public/assets/svg/foods/blackSalad.svg";
@@ -42,24 +41,22 @@ const StorePage = () => {
 		},
 	];
 
-	<div>
-		<StoreLayout
-			TopComponent={
-				<SearchBar placeholder="Search..." onSearch={handleSearch} />
-			}
-			LeftComponent={<Accordion items={items} />}
-			RightComponent={<SimilarVendorCard items={similarVendorItems} />}
-			// MainImage={MainImage}
-		/>
-	</div>;
+	return (
+		<div>
+			<StoreLayout
+				TopComponent={
+					<SearchBar
+						placeholder="Search..."
+						onSearch={handleSearch}
+						rootClass="h-14"
+					/>
+				}
+				LeftComponent={<Accordion items={items} />}
+				RightComponent={<SimilarVendorCard items={similarVendorItems} />}
+				MainImage={MainImage}
+			/>
+		</div>
+	);
 };
 
 export default StorePage;
-
-export async function getStaticProps({ locale }: { locale: string }) {
-	return {
-		props: {
-			...(await serverSideTranslations(locale ?? "en", ["common"])),
-		},
-	};
-}

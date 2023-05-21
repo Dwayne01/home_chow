@@ -4,5 +4,5 @@ export interface StoreLayoutProps {
 	TopComponent: ReactNode;
 	LeftComponent: ReactNode;
 	RightComponent: ReactNode;
-	// MainImage: any;
+	MainImage: any;
 }
