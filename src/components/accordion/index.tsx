@@ -140,16 +140,18 @@ const Accordion = ({
 		image: any;
 	}[];
 }) => (
-	<div className="w-full border rounded-md overflow-hidden">
+	<div>
 		{items.map((item, index) => (
-			<AccordionItem
-				key={index}
-				title={item.title}
-				price={item.price}
-				content={item.content}
-				cardList={item.cardList}
-				image={item.image}
-			/>
+			<div className="w-full border rounded-md overflow-hidden mb-6">
+				<AccordionItem
+					key={index}
+					title={item.title}
+					price={item.price}
+					content={item.content}
+					cardList={item.cardList}
+					image={item.image}
+				/>
+			</div>
 		))}
 	</div>
 );

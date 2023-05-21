@@ -22,7 +22,7 @@ const SimilarVendorCard = ({
 			{items.map((item) => (
 				<div
 					key={item.id}
-					className="relative shadow-lg rounded-lg overflow-hidden mt-5"
+					className="relative shadow-lg rounded-lg overflow-hidden my-6"
 				>
 					<Image
 						width={376}
