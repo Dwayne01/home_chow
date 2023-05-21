@@ -4,7 +4,7 @@ import { getSessionCookie } from "./cookies";
 import config from "../../config";
 
 const client = axios.create({
-	baseURL: config.baseUrl,
+	baseURL: !config.localApi ? config.baseUrl : config.localBaseURL,
 });
 
 const apiRequestHandler = async (options: AxiosRequestConfig) => {
@@ -23,7 +23,9 @@ const apiRequestHandler = async (options: AxiosRequestConfig) => {
 
 	const response = axios({
 		...options,
-		url: `${config.baseUrl}${options.url}`,
+		url: `${!config.localApi ? config.baseUrl : config.localBaseURL}${
+			options.url
+		}`,
 	})
 		.then(onSuccess)
 		.catch(onError);
