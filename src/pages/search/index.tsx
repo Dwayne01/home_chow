@@ -1,4 +1,5 @@
 import Footer from "@/components/footer/Footer";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import SearchHeader from "@/components/header/SearchHeader";
 import RestaurantCardList from "@/components/card/RestaurantCardList";
 import YouMightLike, { YouMightLikeCardItem } from "@/components/youMightLike";
@@ -197,3 +198,11 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
+
+export async function getStaticProps({ locale }: { locale: string }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale ?? "en", ["footer"])),
+		},
+	};
+}
