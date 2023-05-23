@@ -23,13 +23,15 @@ const RestaurantCardList = ({
 	};
 
 	return (
-		<div className="flex flex-col gap-6">
-			<h1>{title}</h1>
-			<div className="flex flex-col md:flex-row justify-between items-center flex-wrap gap-6">
-				{currentItems &&
-					currentItems.map((restaurant, index) => (
-						<RestaurantCard key={index} {...restaurant} />
-					))}
+		<div className="flex flex-col gap-6 justify-between h-full">
+			<div className="flex flex-col gap-6">
+				<h1>{title}</h1>
+				<div className="flex flex-col md:flex-row justify-between items-center flex-wrap gap-6">
+					{currentItems &&
+						currentItems.map((restaurant, index) => (
+							<RestaurantCard key={index} {...restaurant} />
+						))}
+				</div>
 			</div>
 			<ReactPaginate
 				nextLabel={<Image src={Next} alt="next page" width={7} />}

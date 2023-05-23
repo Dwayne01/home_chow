@@ -74,7 +74,6 @@ export interface RestaurantsCardProps {
 	deliveryTime: number | string;
 	deliveryFee: number;
 	rating: number;
-	width?: number | string;
 }
 
 export interface RestaurantsCardListProps {
@@ -86,7 +85,6 @@ export interface RestaurantsCardListProps {
 		deliveryTime: number | string;
 		deliveryFee: number;
 		rating: number;
-		width?: number | string;
 	}[];
 	itemsPerPage: number;
 }

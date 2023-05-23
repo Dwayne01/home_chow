@@ -11,17 +11,14 @@ const RestaurantCard = ({
 	deliveryTime,
 	deliveryFee,
 	rating,
-	width,
 }: RestaurantsCardProps) => (
-	<div
-		className={`flex p-6 gap-4 border border-border-neutral rounded-lg bg-white hover:shadow cursor-pointer overflow-hidden w-${width}`}
-	>
-		<div className="flex gap-6 border-r-2 w-1/2 p-4 items-center">
+	<div className="flex p-8 gap-4 border border-border-neutral rounded-lg bg-white hover:shadow cursor-pointer overflow-hidden w-full">
+		<div className="md:flex gap-6 border-r-2 w-1/2 p-4 items-center">
 			<Image
 				src={imageUrl || image}
-				width={120}
-				height={120}
-				className="rounded-lg"
+				width={140}
+				height={140}
+				className="rounded-lg mb-4 md:mb-0"
 				alt="restaurant"
 			/>
 			<h3>{name}</h3>
