@@ -6,6 +6,7 @@ import { BsCheckCircle, BsCalendar4 } from "react-icons/bs";
 import { FiCircle } from "react-icons/fi";
 import NumericFormat from "react-number-format";
 import classNames from "classnames";
+import Image from "next/image";
 import ReactDatePicker from "react-datepicker";
 import { AiOutlineInfoCircle, AiOutlineEyeInvisible } from "react-icons/ai";
 import ReactTooltip from "react-tooltip";
@@ -655,6 +656,57 @@ const DatePickerComponent = (
 	);
 };
 
+const TextFieldImageComponent = (props: any, ref: any) => {
+	const {
+		label,
+		rootClass,
+		required,
+		infoText,
+		icon,
+		alt,
+		iconContainerClassName,
+		iconClassNames,
+		inputClass,
+		...inputProps
+	} = props;
+	const { errors } = useFormContext();
+	const error = _.get(errors, inputProps.name);
+
+	return (
+		<div className={`flex flex-col ${rootClass}`}>
+			<Label
+				infoText={infoText}
+				label={label}
+				name={inputProps.name}
+				required={required}
+				bold
+			/>
+			<div className={`${icon ? "relative" : ""}`}>
+				<input
+					id={inputProps.name}
+					data-testid={inputProps.name}
+					className={`border-sand border-2 placeholder:text-stone block px-4 py-3 rounded w-full bg-white ${
+						error ? "border-arbutus" : "border-sand"
+					} text-gray-900  ${
+						error ? "focus:border-arbutus" : "focus:border-primary-color"
+					} focus:outline-none focus:ring-0 focus:shadow-input ${inputClass}`}
+					//  InputProps might have it already so not writing it again
+					// In my opinion.
+					// disabled={disabled}
+					{...inputProps}
+					ref={ref}
+				/>
+				{icon && (
+					<div className={`absolute ${iconContainerClassName}`}>
+						<Image src={icon} alt={alt} className={iconClassNames} />
+					</div>
+				)}
+			</div>
+			{error && <ErrorLabel error={error} />}
+		</div>
+	);
+};
+
 const TextField = React.forwardRef(TextFieldComponent);
 const CardField = React.forwardRef(CardFieldComponent);
 const CurrencyField = React.forwardRef(CurrencyFieldComponent);
@@ -665,8 +717,10 @@ const RadioField = React.forwardRef(RadioFieldComponent);
 const DatePicker = React.forwardRef(DatePickerComponent);
 const AddressField = React.forwardRef(AutoAddressFieldComponent);
 const TextAreaField = React.forwardRef(TextAreaComponent);
+const TextIconField = React.forwardRef(TextFieldImageComponent);
 
 export {
+	TextIconField,
 	TextField,
 	CardField,
 	CurrencyField,
