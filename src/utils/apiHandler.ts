@@ -21,6 +21,14 @@ const apiRequestHandler = async (options: AxiosRequestConfig) => {
 		return { message: error.message, status: 500 };
 	};
 
+	// eslint-disable-next-line no-console
+	console.log(
+		config.localApi,
+		config.baseUrl,
+		config.localBaseURL
+		// config.localApi ? config.baseUrl : config.localBaseURL
+	);
+
 	const response = axios({
 		...options,
 		url: `${!config.localApi ? config.baseUrl : config.localBaseURL}${

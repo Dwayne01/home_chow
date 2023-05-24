@@ -2,6 +2,7 @@ import AuthenticationLayout from "@/components/layout/AuthenticationLayout";
 import Onboarding from "@/components/onboarding";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import LoginForm from "@/components/userManagement/LoginForm";
+import { LoginPayload } from "@/types/auth";
 import { useRouter } from "next/router";
 import { useAuthValidation, useLogin } from "@/hooks/useAuth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -16,13 +17,9 @@ const LoginPage = () => {
 
 	const router = useRouter();
 
-	const handleLogin = async (params: any) => {
-		try {
-			const response = await mutateAsync(params);
-			return response;
-		} catch (error) {
-			return error;
-		}
+	const handleLogin = async (params: LoginPayload) => {
+		const response = await mutateAsync(params);
+		return response;
 	};
 
 	const handleGoogleSignIn = () => {

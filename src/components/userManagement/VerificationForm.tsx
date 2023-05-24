@@ -3,62 +3,66 @@ import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import classNames from "classnames";
-import { useVerifyCode } from "@/hooks/useVerifyCode";
+import {
+	CodeVerificationPayload,
+	ResendCodePayload,
+	Response,
+} from "@/types/auth";
 import CodeInput from "../form/CodeInput";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 import Email from "../../../public/assets/icons/icon_email.png";
 import Warning from "../../../public/assets/icons/icon_warning.png";
-import VerificationModal from "../modal/VerificationModal";
 import CodeTimer from "../timer/CodeTimer";
+import Button from "../common/buttons";
 
-const VerificationForm = () => {
+const VerificationForm = ({
+	email,
+	handleCodeVerification,
+	firebaseUid,
+	handleResendCode,
+	isLoading,
+}: {
+	firebaseUid: string;
+	email: string;
+	isLoading: boolean;
+	handleResendCode: (params: ResendCodePayload) => Promise<Response>;
+	handleCodeVerification: (
+		params: CodeVerificationPayload
+	) => Promise<Response>;
+}) => {
+	const [errorMessage, setErrorMessage] = useState<string>("");
 	const router = useRouter();
 
 	const { t } = useTranslation("codeVerification");
 	const [code, setCode] = useState<string>("");
 
-	const [mockCode, setMockCode] = useState<any>(t("Check your mail"));
-	const [successModalOpen, setSuccessModalOpen] = useState<boolean>(false);
-	const [failModalOpen, setFailModalOpen] = useState<boolean>(false);
 	const [showTimer, setShowTimer] = useState<boolean>(false);
 
-	const userEmail = "Draxier04123@gmail.com";
+	const handleCodeSubmit = async () => {
+		const res = await handleCodeVerification({
+			code,
+			firebase_uid: firebaseUid,
+			purpose: "AUTHENTICATION",
+		});
 
-	const { data, isLoading } = useVerifyCode();
-
-	const handleCodeSubmit = () => {
-		router.push("/login");
-
-		if (code === mockCode) {
-			setSuccessModalOpen(true);
+		if (res && res.message === "Your account has been verified successfully.") {
+			router.push("/login");
 		} else {
-			setFailModalOpen(true);
+			setErrorMessage(res.message);
 		}
 	};
 
-	const getRandomIndex = (arr: any) => {
-		const randomIndex = Math.floor(Math.random() * arr.length);
-		return arr[randomIndex];
-	};
+	const handleCodeResend = async () => {
+		const res = await handleResendCode({ email });
 
-	const handleMockCode = () => {
-		const requestedCode = data && getRandomIndex(data.results);
-		setMockCode(requestedCode.code);
-	};
-
-	const handleCloseModal = () => {
-		if (successModalOpen) {
-			setSuccessModalOpen(false);
-			router.push("/verification");
-		} else if (failModalOpen) {
-			setFailModalOpen(false);
-			router.push("/verification");
+		if (res && res.status_code === 200) {
+			handleShowTimer();
 		}
 	};
 
-	const handleShowTimer = () => {
-		setShowTimer(true);
+	const handleShowTimer = async () => {
+		setShowTimer(!showTimer);
 	};
 
 	return (
@@ -71,21 +75,14 @@ const VerificationForm = () => {
 					<Image src={Email} className="icon-email" alt="Icon_Email" />
 				</div>
 				<div className="flex flex-col text-center mt-10">
-					<button onClick={handleMockCode}>
-						{isLoading ? (
-							<div>{t("Loading")}...</div>
-						) : (
-							<h2 className="font-semibold text-3xl">{mockCode}</h2>
-						)}
-					</button>
 					<div className="flex flex-col lg:flex-row gap-1 mt-3">
 						<p className="text-font-light">
 							{t("Please enter the 6 digit code sent to")}{" "}
 						</p>
-						<p className="text-primary-color font-semibold">{userEmail}</p>
+						<p className="text-primary-color font-semibold">{email}</p>
 					</div>
 				</div>
-				<div className="my-10 flex justify-center">
+				<div className="my-10 justify-center">
 					<CodeInput
 						code={code}
 						onUpdate={(codeData) => {
@@ -93,13 +90,18 @@ const VerificationForm = () => {
 						}}
 						onSubmit={() => {}}
 					/>
+					<p className="py-4 text-red">{errorMessage}</p>
 				</div>
 				<div className="my-4 flex justify-center">
-					<WideIconButton
+					<Button
 						label={t("Confirm code")}
-						textColor="text-white"
-						bgColor="bg-primary-color"
+						type="submit"
+						loading={isLoading}
+						rootClass={classNames(
+							"rounded-lg whitespace-nowrap w-full px-3 font-bold text-sm text-white"
+						)}
 						onClick={handleCodeSubmit}
+						iconPosition="right"
 					/>
 				</div>
 				<div className="mt-8 mb-4 flex justify-center">
@@ -116,7 +118,7 @@ const VerificationForm = () => {
 							rootClass={classNames(
 								"text-black text-gray-50 bg-white border-[1px] border-border-color"
 							)}
-							onClick={handleShowTimer}
+							onClick={handleCodeResend}
 						/>
 					) : (
 						<>
@@ -128,23 +130,11 @@ const VerificationForm = () => {
 							/>
 							<div className="text-font-light flex gap-1">
 								{t("Resend code in")}
-								<CodeTimer duration={300} />
+								<CodeTimer handleShowTimer={handleShowTimer} duration={300} />
 							</div>
 						</>
 					)}
 				</div>
-
-				{/* Modal for message */}
-				{successModalOpen && (
-					<VerificationModal onClose={handleCloseModal} isOpen>
-						{t("Your code has been confirmed successfully")}
-					</VerificationModal>
-				)}
-				{failModalOpen && (
-					<VerificationModal onClose={handleCloseModal} isOpen>
-						{t("Your code confirmation has failed")}
-					</VerificationModal>
-				)}
 			</div>
 		</div>
 	);

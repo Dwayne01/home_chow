@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import {
 	Checkbox,
@@ -13,7 +13,7 @@ import Button from "@/components/common/buttons";
 import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
-import { AuthValidationResponse, LoginPayload } from "@/types/auth";
+import { LoginPayload, LoginResponse } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
@@ -24,10 +24,11 @@ const LoginForm = ({
 }: {
 	handleGoogleSignIn: () => void;
 	isLoading: boolean;
-	handleLogin: (params: LoginPayload) => Promise<AuthValidationResponse>;
+	handleLogin: (params: LoginPayload) => Promise<LoginResponse>;
 }) => {
 	const { t } = useTranslation("authentication");
 	const { login } = useContext(AuthContext);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const form = useForm({
 		defaultValues: {
@@ -41,22 +42,23 @@ const LoginForm = ({
 
 	const { handleSubmit, register } = form;
 
-	const handleSubmitForm = async (params: LoginPayload): Promise<any> => {
-		try {
-			const data = await handleLogin({
-				email: params.email,
-				password: params.password,
-			});
-			if (data && data.status_code === 200) {
-				login(data, params.rememberMe);
-				router.push("/dashboard");
-			} else {
-				throw new Error("Invalid status code");
-			}
-		} catch (error) {
-			throw error;
+	const handleSubmitForm = async (params: LoginPayload) => {
+		setErrorMessage("");
+		const data = await handleLogin({
+			email: params.email,
+			password: params.password,
+		});
+		if (
+			data &&
+			data.status_code === 200 &&
+			data.message ===
+				"Your account has been created. a code has been sent to your email"
+		) {
+			login(data, params.rememberMe);
+			router.push("/dashboard");
+		} else {
+			setErrorMessage(data.message);
 		}
-		// return undefined;
 	};
 
 	return (
@@ -103,6 +105,7 @@ const LoginForm = ({
 								autoComplete="current-password"
 							/>
 						</div>
+						{errorMessage && <p className="py-4 text-red">{errorMessage}</p>}
 						<div className="flex justify-between items-center mt-6">
 							<Checkbox
 								name="rememberMe"

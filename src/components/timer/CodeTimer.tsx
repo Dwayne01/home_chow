@@ -1,20 +1,32 @@
 import { useEffect, useState } from "react";
 
-const CodeTimer = ({ duration }: { duration: number }) => {
+const CodeTimer = ({
+	duration,
+	handleShowTimer,
+}: {
+	duration: number;
+	handleShowTimer: () => void;
+}) => {
 	const [remainingTime, setRemainingTime] = useState<number>(duration);
+	const [intervalId, setIntervalId] = useState<any>(null);
 
 	useEffect(() => {
-		const intervalId = setInterval(() => {
+		const id = setInterval(() => {
 			setRemainingTime((prevRemainingTime) => prevRemainingTime - 1);
+
+			if (remainingTime === 0) {
+				handleShowTimer();
+				clearInterval(intervalId);
+			}
 		}, 1000);
+		setIntervalId(id);
 		return () => clearInterval(intervalId);
 	}, []);
 
 	useEffect(() => {
 		if (remainingTime === 0) {
-			// Handle timer completion here
-			// eslint-disable-next-line no-console
-			console.log("request new code");
+			handleShowTimer();
+			clearInterval(intervalId);
 		}
 	}, [remainingTime]);
 

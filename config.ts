@@ -19,12 +19,8 @@ const isLocalApi = eval(
 const config = {
 	mockApi: process.env.REACT_APP_MOCK_API || staging.mockApi,
 	env: process.env.REACT_APP_NODE_ENV || staging.env,
-	baseUrl: isLocalApi
-		? staging.baseUrl
-		: process.env.REACT_APP_BASE_URL || staging.baseUrl,
-	localBaseURL: isLocalApi
-		? staging.baseUrl
-		: process.env.REACT_APP_LOCAL_BASE_URL || staging.localBaseURL,
+	baseUrl: process.env.REACT_APP_BASE_URL || staging.baseUrl,
+	localBaseURL: process.env.REACT_APP_LOCAL_BASE_URL || staging.localBaseURL,
 	localApi: isLocalApi,
 	googleClientId: process.env.REACT_GOOGLE_CLIENT_ID || staging.googleClientId,
 	apiKey: process.env.REACT_APP_API_KEY || staging.apiKey,
