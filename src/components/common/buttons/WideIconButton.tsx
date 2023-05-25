@@ -40,6 +40,7 @@ const WideIconButton = ({
 		disabled={disabled}
 		onClick={onClick}
 		id={id}
+		data-testid="Sign in-with-Google"
 		className={classNames(
 			"px-[10px] py-[16px] gap-[12px] flex justify-center items-center leading-6 border font-medium",
 			width || "w-[360px]",

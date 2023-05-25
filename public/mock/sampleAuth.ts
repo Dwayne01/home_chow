@@ -8,3 +8,4 @@ export const sampleAuthResponseMock = {
         userType:"admin"
 }
 }
+
