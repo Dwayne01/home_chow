@@ -51,8 +51,7 @@ const LoginForm = ({
 		if (
 			data &&
 			data.status_code === 200 &&
-			data.message ===
-				"Your account has been created. a code has been sent to your email"
+			data.message === "Logged in successfully."
 		) {
 			login(data, params.rememberMe);
 			router.push("/dashboard");
