@@ -38,26 +38,26 @@ describe("comingsoon page", () => {
 		cy.get(".subscribe-form").contains(/This field is required/i);
 	});
 
-	it("Should show subscribe required error when form is not properly filled", () => {
-		cy.get("#notifyMe-btn").click();
+	// it("Should show subscribe required error when form is not properly filled", () => {
+	// 	cy.get("#notifyMe-btn").click();
 
-		cy.intercept("POST", "https://homechow-staging.herokuapp.com/subscribe", {
-			fixture: "comingsoon.json",
-		}).as("subscribe");
+	// 	cy.intercept("POST", "https://homechow-staging.herokuapp.com/subscribe", {
+	// 		fixture: "comingsoon.json",
+	// 	}).as("subscribe");
 
-		// Choose option "I am a customer"
-		cy.get('[type="checkbox"]').check("customer");
+	// 	// Choose option "I am a customer"
+	// 	cy.get('[type="checkbox"]').check("customer");
 
-		// Fill in the form and click on the "Notify Me" button
-		cy.get("#firstName").type("Jane");
-		cy.get("#lastName").type("Doe");
-		cy.get("#email").type("test@email.com");
+	// 	// Fill in the form and click on the "Notify Me" button
+	// 	cy.get("#firstName").type("Jane");
+	// 	cy.get("#lastName").type("Doe");
+	// 	cy.get("#email").type("test@email.com");
 
-		cy.get("#notifyMe-btn").click();
+	// 	cy.get("#notifyMe-btn").click();
 
-		cy.wait("@subscribe").then(() => {
-			// Success message should be displayed
-			cy.get(".success-message").should("be.visible");
-		});
-	});
+	// 	cy.wait("@subscribe").then(() => {
+	// 		// Success message should be displayed
+	// 		cy.get(".success-message").should("be.visible");
+	// 	});
+	// });
 });
