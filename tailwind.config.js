@@ -1,7 +1,3 @@
-import(
-	"https://fonts.googleapis.com/css2?family=Signika:wght@400;500;700&family=Ubuntu:wght@400;500;700&display=swap"
-);
-
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
@@ -43,10 +39,10 @@ module.exports = {
 			animation: {
 				"bounce-high": "bounce 1s infinite",
 			},
-			fontFamily: {
-				signika: ["Signika", ...defaultTheme.fontFamily.sans],
-				ubuntu: ["Ubuntu", ...defaultTheme.fontFamily.sans],
-			},
+		},
+		fontFamily: {
+			signika: ["Signika", ...defaultTheme.fontFamily.sans],
+			ubuntu: ["Ubuntu", ...defaultTheme.fontFamily.sans],
 		},
 		screens: {
 			sm: "640px",
