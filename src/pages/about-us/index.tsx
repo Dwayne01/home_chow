@@ -3,7 +3,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import ComingSoonHeader from "@/components/header/ComingSoonHeader";
 import Footer from "@/components/footer/Footer";
-import Member from "@/components/about-us/member";
+import Member from "@/components/about-us/Member";
 import foodPotImage from "../../../public/assets/images/food-pot.svg";
 import foodBowlImage from "../../../public/assets/images/food-bowl.svg";
 import glassJugImage from "../../../public/assets/images/glass-jug.svg";
