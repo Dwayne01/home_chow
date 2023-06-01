@@ -1,13 +1,13 @@
 import { useState, FC } from "react";
 import { useTranslation } from "next-i18next";
+import { SubscribeParams } from "@/types/comingsoon";
 import { FormProvider, useForm, SubmitHandler } from "react-hook-form";
 import { TextField } from "@/components/form/InputField";
 import Button from "../common/buttons/Button";
 
 type LandingProps = {
 	handleNavigation: (id: number) => void;
-	isSuccess: boolean;
-	setIsSuccess: (id: boolean) => void;
+	handleSubmit: (params: SubscribeParams) => Promise<string | null>;
 };
 
 type FormValues = {
@@ -16,15 +16,14 @@ type FormValues = {
 	email: string;
 };
 
-type UserType = "customer" | "vendor" | "driver";
+type UserType = "VENDOR" | "CUSTOMER" | "DRIVER";
 
 const LandingForm: FC<LandingProps> = ({
 	handleNavigation,
-	isSuccess,
-	setIsSuccess,
+	handleSubmit: handleFormSubmit,
 }) => {
 	const { t } = useTranslation("comingsoon, common");
-	const [selected, setSelected] = useState<UserType>("customer");
+	const [selected, setSelected] = useState<UserType>("CUSTOMER");
 
 	const form = useForm<FormValues>({
 		defaultValues: {
@@ -36,7 +35,7 @@ const LandingForm: FC<LandingProps> = ({
 
 	const { handleSubmit, register } = form;
 
-	const handleNotifyMe: SubmitHandler<FormValues> = (data) => {
+	const handleNotifyMe: SubmitHandler<FormValues> = async (data) => {
 		const { firstName, lastName, email } = data;
 
 		const submitRequest = {
@@ -46,10 +45,13 @@ const LandingForm: FC<LandingProps> = ({
 			userType: selected,
 		};
 
-		// eslint-disable-next-line no-console
-		console.log(submitRequest);
-		handleNavigation(isSuccess ? 3 : 4);
-		setIsSuccess(false);
+		const res = await handleFormSubmit(submitRequest);
+
+		if (res) {
+			handleNavigation(3);
+		} else {
+			handleNavigation(4);
+		}
 	};
 
 	return (
@@ -62,50 +64,27 @@ const LandingForm: FC<LandingProps> = ({
 					{t("question", { ns: "common" })}
 				</h4>
 				<div className="">
-					<div className="flex justify-between gap-[5px] md:hidden">
+					<div className="flex justify-between gap-[5px]">
 						<Button
 							size="sm"
-							type={selected === "customer" ? "primary" : "primary-outline"}
-							onClick={() => setSelected("customer")}
+							type={selected === "CUSTOMER" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("CUSTOMER")}
 							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
 						>
 							{t("customer", { ns: "common" })}
 						</Button>
 						<Button
 							size="sm"
-							type={selected === "vendor" ? "primary" : "primary-outline"}
-							onClick={() => setSelected("vendor")}
+							type={selected === "VENDOR" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("VENDOR")}
 							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
 						>
 							{t("vendor", { ns: "common" })}
 						</Button>
 						<Button
 							size="sm"
-							type={selected === "driver" ? "primary" : "primary-outline"}
-							onClick={() => setSelected("driver")}
-							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
-						>
-							{t("driver", { ns: "common" })}
-						</Button>
-					</div>
-					<div className="hidden md:flex justify-between items-center gap-[10px] md:max-w-fit md:m-auto">
-						<Button
-							type={selected === "customer" ? "primary" : "primary-outline"}
-							onClick={() => setSelected("customer")}
-							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
-						>
-							{t("customer", { ns: "common" })}
-						</Button>
-						<Button
-							type={selected === "vendor" ? "primary" : "primary-outline"}
-							onClick={() => setSelected("vendor")}
-							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
-						>
-							{t("vendor", { ns: "common" })}
-						</Button>
-						<Button
-							type={selected === "driver" ? "primary" : "primary-outline"}
-							onClick={() => setSelected("driver")}
+							type={selected === "DRIVER" ? "primary" : "primary-outline"}
+							onClick={() => setSelected("DRIVER")}
 							className="flex-1 rounded-[40px] md:w-[120px] justify-center"
 						>
 							{t("driver", { ns: "common" })}

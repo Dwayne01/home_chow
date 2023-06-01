@@ -2,10 +2,9 @@ import { ReactNode } from "react";
 
 export interface SubscribeParams {
 	email: string;
-	firstName?: string;
-	lastName?: string;
-	name?: string;
-	userType: "driver" | "customer" | "vendor";
+	firstName: string;
+	lastName: string;
+	userType: "VENDOR" | "CUSTOMER" | "DRIVER";
 }
 
 export interface ComingSoonLayoutProps {
