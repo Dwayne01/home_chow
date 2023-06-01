@@ -8,6 +8,7 @@ import Button from "../common/buttons/Button";
 type LandingProps = {
 	handleNavigation: (id: number) => void;
 	handleSubmit: (params: SubscribeParams) => Promise<string | null>;
+	isLoading: boolean;
 };
 
 type FormValues = {
@@ -21,6 +22,7 @@ type UserType = "VENDOR" | "CUSTOMER" | "DRIVER";
 const LandingForm: FC<LandingProps> = ({
 	handleNavigation,
 	handleSubmit: handleFormSubmit,
+	isLoading,
 }) => {
 	const { t } = useTranslation("comingsoon, common");
 	const [selected, setSelected] = useState<UserType>("CUSTOMER");
@@ -143,7 +145,7 @@ const LandingForm: FC<LandingProps> = ({
 				</div>
 				<p className="text-base">{t("signUpInfo", { ns: "common" })}</p>
 				<div className="flex justify-center">
-					<Button type="secondary" buttonType="submit">
+					<Button loading={isLoading} type="secondary" buttonType="submit">
 						{t("onboardBtn", { ns: "common" })}
 					</Button>
 				</div>
