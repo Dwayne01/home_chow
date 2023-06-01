@@ -70,9 +70,11 @@ const Footer = ({
 		console.log(params);
 	};
 
+	// I have used font-signika font-family for footer
+	// to show how you can use it anywhere in the project
 	return (
 		<div
-			className={`footer px-10 py-10 mt-5 flex flex-wrap justify-between md:px-10 md:gap-y-14 ${backgroundColor} ${textColor}`}
+			className={`font-signika footer px-10 py-10 mt-5 flex flex-wrap justify-between md:px-10 md:gap-y-14 ${backgroundColor} ${textColor}`}
 		>
 			<div className="w-full md:w-auto">
 				<div className="logo ">
