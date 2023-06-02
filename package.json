@@ -7,6 +7,7 @@
 		"start:prod": "env-cmd -f .env.production next dev -p 3003",
 		"build": "next build",
 		"start": "next start -p 3003",
+		"start:heroku": "next start",
 		"lint": "next lint",
 		"lint:fix": "eslint . --ext ts --ext tsx --ext js --fix",
 		"prettier:fix": "prettier --write \"**/*.{ts,tsx,js,jsx}\"",
