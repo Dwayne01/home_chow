@@ -1,6 +1,9 @@
 name: nextjs-cloud-run
 
-on: [push]
+on:
+  push:
+    branches:
+      - prod
 
 env:
   PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
