@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    ports:
+      - "3003:3003"
+    environment:
+      - NEXT_PUBLIC_BASE_URL=https://api.homechow.ca
+    volumes:
+      - .:/app
