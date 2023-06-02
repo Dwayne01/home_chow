@@ -1,5 +1,6 @@
 import { FC, useState } from "react";
 import Image from "next/image";
+import { SubscribeParams } from "@/types/comingsoon";
 import LandingImage from "../../../public/assets/images/comingsoon/landing-mobile.svg";
 import Onboard from "./Onboard";
 import Success from "./Success";
@@ -20,7 +21,13 @@ type LandingNavigationItem = {
 	current: boolean;
 };
 
-const ComingSoon = () => {
+const ComingSoon = ({
+	isLoading,
+	handleSubmit,
+}: {
+	isLoading: boolean;
+	handleSubmit: (params: SubscribeParams) => Promise<string | null>;
+}) => {
 	const landingNaigation: LandingNavigationItem[] = [
 		{
 			id: 1,
@@ -50,7 +57,6 @@ const ComingSoon = () => {
 
 	const [tabs, setTabs] = useState<Tabs>(landingNaigation);
 	const [statusInfo, setShowStatusInfo] = useState<boolean>(false);
-	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
 	const handleNavigation = (id: number) => {
 		if (id > 3) {
@@ -92,9 +98,9 @@ const ComingSoon = () => {
 						tab.current && (
 							<div key={tab.id}>
 								<tab.Component
+									isLoading={isLoading}
 									handleNavigation={handleNavigation}
-									setIsSuccess={setIsSuccess}
-									isSuccess={isSuccess}
+									handleSubmit={handleSubmit}
 								/>
 							</div>
 						)

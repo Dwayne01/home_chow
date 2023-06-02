@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { ClipLoader } from "react-spinners";
 
 type ButtonProps = {
 	type?:
@@ -16,6 +17,7 @@ type ButtonProps = {
 	disabled?: boolean;
 	buttonType?: "button" | "submit" | "reset" | undefined;
 	className?: string;
+	loading?: boolean;
 };
 
 const Button = ({
@@ -28,6 +30,7 @@ const Button = ({
 	children = "N/A",
 	buttonType = "button",
 	disabled = false,
+	loading = false,
 }: ButtonProps) => {
 	// define all the siezes of the button
 	const sizeMap = new Map([
@@ -97,6 +100,7 @@ const Button = ({
 				type={buttonType}
 				aria-label={typeof children === "string" ? children : ""}
 			>
+				{loading && <ClipLoader size={30} color="#27AE60" />}
 				{LeftIconComponent ? (
 					<LeftIconComponent
 						className={classNames("-ml-0.5 mr-2 h-4 w-4")}

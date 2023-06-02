@@ -80,7 +80,7 @@ const Footer = ({
 				</div>
 				<p className="mt-1 max-w-sm">
 					{t(
-						"Mixer events is an all in one platform that provides services to party lovers, get hosts to create events and vendor to merchandize products quickly"
+						"​​Homechow.ca connects home cooks with customers looking for authentic ethnic home-cooked meals. Our platform offers healthy, affordable, and locally-sourced homemade food options while promoting local and organic produce and reducing food waste."
 					)}
 				</p>
 			</div>

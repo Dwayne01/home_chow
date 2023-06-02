@@ -19,10 +19,10 @@ const ComingSoonHeader = ({ logoUrl }: { logoUrl?: string }) => {
 			label: t("Home"),
 			href: "/",
 		},
-		{
-			label: t("aboutUs"),
-			href: "/about-us",
-		},
+		// {
+		// 	label: t("aboutUs"),
+		// 	href: "/about-us",
+		// },
 	];
 
 	return (
