@@ -365,7 +365,7 @@ const AutoAddressFieldComponent = (props: any, ref: any) => {
 	const { label, rootClass, required, getLocationData, ...inputProps } = props;
 
 	const { isLoaded } = useLoadScript({
-		googleMapsApiKey: config.googleClientId,
+		googleMapsApiKey: config.googleClientId || "",
 		libraries,
 	});
 
