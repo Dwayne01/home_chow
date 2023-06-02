@@ -4,9 +4,6 @@ FROM node:14-alpine AS base
 FROM base AS deps
 WORKDIR /app
 
-# Copy package.json and package-lock.json
-COPY package.json package-lock.json ./
-
 # Install dependencies
 RUN npm ci
 
