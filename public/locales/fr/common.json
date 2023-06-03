@@ -24,6 +24,7 @@
   "common": {
     "View Store": "Voir magasin",
     "Out of stock": "Rupture de stock",
-    "In stock": "En stock"
+    "In stock": "En stock",
+    "Schedule": "Calendrier"
   }
 }
