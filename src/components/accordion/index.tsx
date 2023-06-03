@@ -119,7 +119,7 @@ const AccordionItem = ({
 					<div className="accordion-submit flex justify-center my-10">
 						<WideIconButton
 							label={`${t("Add to cart")} - $${updatedTotalPrice}`}
-							bgColor="bg-primary-color"
+							bgColor="bg-brown-400"
 							textColor="text-white"
 						/>
 					</div>
