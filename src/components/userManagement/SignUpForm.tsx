@@ -1,43 +1,56 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import classNames from "classnames";
 import Button from "@/components/common/buttons";
-import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "next-i18next";
-import { RegisterPayload } from "@/types/auth";
+import { RegisterPayload, RegisterResponse } from "@/types/auth";
 // import { FaFacebook, FaTwitter } from "react-icons/fa";
 import PasswordStrengthBar from "react-password-strength-bar";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
-import { PasswordField, TextField } from "../form/InputField";
+import { PasswordField, PhoneField, TextField } from "../form/InputField";
 
 const SignUpForm = ({
 	handleSignup,
 	handleGoogleSignUp,
+	isLoading,
+	setIsVerification,
 }: {
-	handleGoogleSignUp: () => void;
-	handleSignup: (params: RegisterPayload) => Promise<boolean>;
+	setIsVerification: Dispatch<SetStateAction<boolean>>;
+	isLoading: boolean;
+	handleGoogleSignUp: () => unknown;
+	handleSignup: (params: RegisterPayload) => Promise<RegisterResponse>;
 }) => {
-	const [password, setPassword] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
+
 	const { t } = useTranslation("authentication");
 	const form = useForm({
 		defaultValues: {
 			email: "",
 			password: "",
-			rememberMe: false,
+			first_name: "",
+			last_name: "",
+			phone: "",
 		},
 	});
 
-	const router = useRouter();
+	const { handleSubmit, register, watch } = form;
 
-	const { handleSubmit, register } = form;
+	const password = watch("password");
 
 	const handleSubmitForm = async (params: RegisterPayload) => {
-		await handleSignup(params);
-		router.push("/verification");
+		setErrorMessage("");
+
+		const data = await handleSignup({ ...params, role: ["CUSTOMER"] });
+
+		if (data && data.status_code === 200) {
+			setIsVerification(true);
+		} else {
+			data && setErrorMessage(data.message);
+		}
 	};
 
 	return (
@@ -105,7 +118,24 @@ const SignUpForm = ({
 								})}
 								autoComplete="email"
 							/>
-							<div className="flex flex-col gap-2 col-start-1 col-end-3 relative">
+							<PhoneField
+								data-testid="phone"
+								id="phone"
+								rootClass="mb-1 col-start-1 col-end-3"
+								name="phone"
+								label={t("phone")}
+								required
+								ref={register({
+									required: true,
+									pattern: {
+										value: /[0-9]{5}[-][0-9]{7}[-][0-9]{1}/i,
+										message: t("common:invalidPhone"),
+									},
+								})}
+								autoComplete="phone"
+							/>
+
+							<div className="flex flex-col gap-2 col-start-1 col-end-3">
 								<PasswordField
 									data-testid="password"
 									id="password"
@@ -115,19 +145,18 @@ const SignUpForm = ({
 									required
 									placeholder="∗∗∗∗∗∗∗∗"
 									autoComplete="current-password"
-									onChange={(e: {
-										target: { value: React.SetStateAction<string> };
-									}) => setPassword(e.target.value)}
 								/>
-								<div className="absolute mt-[60px] w-full">
+								<div className="w-full">
 									{password.length > 0 && (
-										<PasswordStrengthBar password={password} />
+										<PasswordStrengthBar minLength={8} password={password} />
 									)}
 								</div>
 							</div>
 						</div>
+						{errorMessage && <p className="py-4 text-red">{errorMessage}</p>}
 						<div className=" mt-10">
 							<Button
+								loading={isLoading}
 								data-testid="signUp-btn"
 								id="signUp-btn"
 								label={t("Sign Up") || ""}
@@ -146,10 +175,11 @@ const SignUpForm = ({
 					<span className="">{t("Or")}</span>
 					<hr className="flex-1 border" />
 				</div>
-				<div className="flex flex-col w-full gap-3 mt-8 text-black ">
+				<div className="flex flex-col w-full gap-3 mt-8 text-black">
 					<WideIconButton
 						label="Sign in with Google"
 						icon={FcGoogle}
+						data-testid="Sign in-with-Google"
 						rootClass=" justify-start"
 						onClick={handleGoogleSignUp}
 					/>

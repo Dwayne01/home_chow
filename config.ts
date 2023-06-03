@@ -1,9 +1,9 @@
 const staging = {
 	env: "development",
-	baseUrl: "https://homechow.herokuapp.com",
-	localBaseURL: "https://homechow.herokuapp.com",
-	localApi: true,
-	mockApi: true,
+	baseUrl: "https://homechow-staging.herokuapp.com",
+	localBaseURL: "http://localhost:8000",
+	localApi: false,
+	mockApi: false,
 	googleClientId: "AIzaSyDap-mhUpuHbYzDspnaV5R00HHE3Q-QEYg",
 	apiKey: "AIzaSyCcTz1UjqXPC8_Dbwy4mJAK0LlWfR-YIfU",
 	projectId: "homechow-5fbeb",
@@ -19,12 +19,8 @@ const isLocalApi = eval(
 const config = {
 	mockApi: process.env.REACT_APP_MOCK_API || staging.mockApi,
 	env: process.env.REACT_APP_NODE_ENV || staging.env,
-	baseUrl: isLocalApi
-		? staging.baseUrl
-		: process.env.REACT_APP_BASE_URL || staging.baseUrl,
-	localBaseURL: isLocalApi
-		? staging.baseUrl
-		: process.env.REACT_APP_LOCAL_BASE_URL || staging.localBaseURL,
+	baseUrl: process.env.REACT_APP_BASE_URL || staging.baseUrl,
+	localBaseURL: process.env.REACT_APP_LOCAL_BASE_URL || staging.localBaseURL,
 	localApi: isLocalApi,
 	googleClientId: process.env.REACT_GOOGLE_CLIENT_ID || staging.googleClientId,
 	apiKey: process.env.REACT_APP_API_KEY || staging.apiKey,

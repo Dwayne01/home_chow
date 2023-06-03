@@ -4,7 +4,7 @@ import classNames from "classnames";
 import Button from "@/components/common/buttons";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
-import { APPLYVENDORPayload } from "@/types/auth";
+import { ApplyVendorPayload } from "@/types/auth";
 import DaysSection from "@/components/DaysSection";
 
 const ApplyVendor = ({
@@ -12,7 +12,7 @@ const ApplyVendor = ({
 	isLoading,
 }: {
 	isLoading: boolean;
-	handleVendor: (params: APPLYVENDORPayload) => Promise<boolean>;
+	handleVendor: (params: ApplyVendorPayload) => Promise<boolean>;
 }) => {
 	const { t } = useTranslation("ApplyVendor");
 
@@ -40,7 +40,7 @@ const ApplyVendor = ({
 
 	const { handleSubmit, register } = form;
 
-	const handleSubmitForm = async (params: APPLYVENDORPayload) => {
+	const handleSubmitForm = async (params: ApplyVendorPayload) => {
 		await handleVendor(params);
 	};
 
