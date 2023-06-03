@@ -3,20 +3,19 @@ import MainHeader from "@/components/header/MainHeader";
 import { StoreLayoutProps } from "@/types/store";
 import Footer from "@/components/footer/Footer";
 
-const StoreLayout = ({
+const ChefSingleLayout = ({
 	TopComponent,
 	TabComponent,
 	LeftComponent,
 	RightComponent,
 	MainImage,
 }: StoreLayoutProps) => (
-	<div className="w-screen h-screen flex flex-col">
+	<div className="h-screen flex flex-col mx-20">
 		<MainHeader />
 		<div>
 			<Image src={MainImage} className="w-full" alt="store-mainImage" />
 		</div>
 		<div className="flex justify-center py-4 my-8">{TopComponent}</div>
-
 		<div className="flex justify-center gap-16">
 			<div className="w-7/12">
 				<div>{TabComponent}</div>
@@ -28,4 +27,4 @@ const StoreLayout = ({
 	</div>
 );
 
-export default StoreLayout;
+export default ChefSingleLayout;

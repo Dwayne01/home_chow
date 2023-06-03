@@ -1,12 +1,12 @@
 import { useState } from "react";
-import StoreLayout from "@/components/layout/StoreLayout";
+import ChefSingleLayout from "@/components/layout/ChefSingleLayout";
 import { Product } from "@/types/store";
 import SearchBar from "@/components/searchBar";
 import Tabs, { TabProps } from "@/components/common/tab";
 import Cart, { CartItem } from "@/components/cart";
 import Accordion from "@/components/accordion";
 import SimilarVendorCard from "@/components/card/SimilarVendorCard";
-import MainImage from "../../../public/assets/svg/StoreMain.svg";
+import MainImage from "../../../public/assets/svg/ChefSingleMain.svg";
 import foodImage from "../../../public/assets/images/food.jpg";
 import foodImage2 from "../../../public/assets/svg/foods/souvlaki.svg";
 import foodImage3 from "../../../public/assets/svg/foods/blackSalad.svg";
@@ -149,7 +149,7 @@ const StorePage = () => {
 
 	return (
 		<div>
-			<StoreLayout
+			<ChefSingleLayout
 				TopComponent={
 					<SearchBar
 						placeholder="Search..."
