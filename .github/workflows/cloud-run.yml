@@ -43,5 +43,5 @@ jobs:
           --region $REGION \
           --image gcr.io/$PROJECT_ID/$REPO_NAME:$GITHUB_SHA \
           --platform "managed" \
-          --update-env-vars "NEXT_PUBLIC_REACT_APP_BASE_URL=https://api.homechow.ca" \
+          --update-env-vars "NEXT_PUBLIC_BASE_URL=https://api.homechow.ca" \
           --quiet
