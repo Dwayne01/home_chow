@@ -589,7 +589,7 @@ const ComponentPage = () => {
 						chefName="Mary Saad"
 						chefRating={4.3}
 						address="265 E 10TH Ave, Vancouver BC V5T4V1"
-						deliveryTime="20-30 mins"
+						deliveryTime="20-30"
 						deliveryFee={5}
 						image={chefProfileImage}
 					/>
