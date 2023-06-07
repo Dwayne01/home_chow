@@ -46,13 +46,13 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 						}}
 						tabIndex={0}
 						className={`${
-							activeTab === index ? "text-primary-color inline-block" : ""
+							activeTab === index ? "text-black font-semibold inline-block" : ""
 						} cursor-pointer`}
 					>
 						<div className="inline-block">
 							<div>{tab.label}</div>
 							{activeTab === index && (
-								<div className="h-1 bg-primary-color rounded-sm mt-2" />
+								<div className="h-1 bg-brown-400 rounded-sm mt-2" />
 							)}
 						</div>
 					</div>

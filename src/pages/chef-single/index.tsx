@@ -1,7 +1,6 @@
 import { useState } from "react";
 import ChefSingleLayout from "@/components/layout/ChefSingleLayout";
 import { Product } from "@/types/store";
-import SearchBar from "@/components/searchBar";
 import Tabs, { TabProps } from "@/components/common/tab";
 import Cart, { CartItem } from "@/components/cart";
 import Accordion from "@/components/accordion";
@@ -13,8 +12,6 @@ import foodImage3 from "../../../public/assets/svg/foods/blackSalad.svg";
 
 const StorePage = () => {
 	const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-	const handleSearch = () => {};
 
 	const items = [
 		{
@@ -80,7 +77,20 @@ const StorePage = () => {
 		},
 	];
 
-	const tabs: TabProps[] = [
+	const tabsTop: TabProps[] = [
+		{
+			label: "Menu",
+			children: <div>Content for tab 1</div>,
+			onClick: () => {},
+		},
+		{
+			label: "About Me",
+			children: <div>Content for tab 2</div>,
+			onClick: () => {},
+		},
+	];
+
+	const tabsLeft: TabProps[] = [
 		{
 			label: "Place Settings",
 			children: <div>Content for tab 1</div>,
@@ -150,14 +160,8 @@ const StorePage = () => {
 	return (
 		<div>
 			<ChefSingleLayout
-				TopComponent={
-					<SearchBar
-						placeholder="Search..."
-						onSearch={handleSearch}
-						rootClass="h-14"
-					/>
-				}
-				TabComponent={<Tabs tabs={tabs} />}
+				TopComponent={<Tabs tabs={tabsTop} />}
+				TabComponent={<Tabs tabs={tabsLeft} />}
 				LeftComponent={<Accordion items={items} />}
 				RightComponent={
 					<>

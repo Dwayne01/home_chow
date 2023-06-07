@@ -15,7 +15,7 @@ const ChefSingleLayout = ({
 		<div>
 			<Image src={MainImage} className="w-full" alt="store-mainImage" />
 		</div>
-		<div className="flex justify-center py-4 my-8">{TopComponent}</div>
+		<div className="py-4 my-8">{TopComponent}</div>
 		<div className="flex justify-center gap-16">
 			<div className="w-7/12">
 				<div>{TabComponent}</div>
