@@ -61,7 +61,7 @@ describe("Home page", () => {
 		days.forEach((day: string) => {
 			cy.get(`#labelfor_${day}`).should("be.visible");
 			cy.get(`#checkboxfor_${day}`).should("be.visible");
-			cy.get(`#checkboxfor_${day}`).click();
+			cy.get(`#checkboxfor_${day}`).click({ force: true });
 			cy.get(`#startTime_${day}`).should("be.visible");
 			cy.get(`#endTime_${day}`).should("be.visible");
 		});

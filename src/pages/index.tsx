@@ -41,8 +41,12 @@ export default function Home() {
 				<div className="m-3 mt-20  md:mt-3 sm:w-2/3 sm:mx-auto">
 					<div className="flex flex-col   md:flex-row justify-center items-center w-full ">
 						<div className="w-full md:w-1/2 mt-3 md:mt-0 order-2 md:order-1">
-							<h1>{t("Start_Business")}</h1>
-							<h1>{t("Set_Rules")}</h1>
+							<h1 className="text-primary-color-theme-light text-5xl">
+								{t("Start_Business")}
+							</h1>
+							<h1 className="text-primary-color-theme text-5xl">
+								{t("Set_Rules")}
+							</h1>
 							<p className="whitespace-wrap text-xs md:text-base">
 								{t("Home_Content")}
 							</p>
@@ -57,8 +61,8 @@ export default function Home() {
 								<button
 									className={`px-4 py-2 mb-3 rounded-lg mr-4 ${
 										!scheduleBtnEnbled
-											? "bg-blue-500 text-white"
-											: "bg-gray-300 text-gray-500 cursor-default"
+											? "bg-primary-color-dark-theme text-white"
+											: "bg-primary-color-theme-light text-white cursor-default opacity-30"
 									}`}
 									disabled={scheduleBtnEnbled}
 								>
@@ -68,7 +72,7 @@ export default function Home() {
 									className={`${
 										!scheduleBtnEnbled
 											? "text-white-500"
-											: "text-gray-300 cursor-default"
+											: "text-gray-300 cursor-default opacity-50"
 									}`}
 								>
 									{t("Profile")}
@@ -78,8 +82,8 @@ export default function Home() {
 								<button
 									className={`px-4 py-2 mb-3 rounded-lg ${
 										scheduleBtnEnbled
-											? "bg-blue-500 text-white"
-											: "bg-gray-300 text-gray-500 cursor-default"
+											? "bg-primary-color-dark-theme text-white"
+											: "bg-primary-color-theme-light text-white cursor-default opacity-30"
 									}`}
 									disabled={!scheduleBtnEnbled}
 									tabIndex={scheduleBtnEnbled ? 0 : -1}
@@ -90,7 +94,7 @@ export default function Home() {
 									className={`${
 										scheduleBtnEnbled
 											? "text-white-500"
-											: "text-gray-300 cursor-default"
+											: "text-gray-300 cursor-default opacity-50"
 									}`}
 								>
 									{t("Schedule")}

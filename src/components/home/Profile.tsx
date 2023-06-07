@@ -47,10 +47,10 @@ const Profile: FC<ProfileProps> = ({ setScheduleBtnEnable }: ProfileProps) => {
 
 	return (
 		<div>
-			<h1>{t("Become_Chef")}</h1>
+			<h1 className="text-primary-color-dark-theme">{t("Become_Chef")}</h1>
 			<h2>{t("Apply_now")}</h2>
 			<p className="mt-3">{t("Please_fill_details")}</p>
-			<div className="mt-5">
+			<div className="mt-16">
 				<FormProvider {...form}>
 					<form
 						className="profile-form"

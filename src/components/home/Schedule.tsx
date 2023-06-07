@@ -102,7 +102,7 @@ const Schedule = () => {
 		const updatedUserSelectedDay = Object.entries(updatedDay)
 			.filter(([, day]) => day.isVisible)
 			.reduce((acc, [day, dayValue]) => {
-				if (dayValue.startTime > dayValue.endTime) {
+				if (dayValue.startTime < dayValue.endTime) {
 					acc[day as Day] = {
 						...dayValue,
 						startTime: dayValue.startTime,
@@ -123,7 +123,6 @@ const Schedule = () => {
 	const handleScheduleForm = () => {
 		// Navigate to the next page
 		// Save it to the db.
-		// console.log("selectedDay", userSelectedDay);
 	};
 
 	return (
@@ -148,40 +147,42 @@ const Schedule = () => {
 								>
 									{day}
 								</label>
-								<input
-									type="checkbox"
-									id={`checkboxfor_${day}`}
-									checked={selectedDay[day as Day].isVisible}
-									onChange={() => handleCheckboxChange(day as Day)}
-								/>
+								<label
+									className="relative mt-5  mb-5 cursor-pointer"
+									htmlFor={`checkboxfor_${day}`}
+								>
+									<input
+										type="checkbox"
+										id={`checkboxfor_${day}`}
+										className="sr-only peer"
+										checked={selectedDay[day as Day].isVisible}
+										onChange={() => handleCheckboxChange(day as Day)}
+									/>
+									<div className="w-9 h-5 bg-toggle-switch-input-color peer-focus:outline-none   rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-toggle-switch-input-color-circle  after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-toggle-switch-input-color" />
+								</label>
+
 								{selectedDay[day as Day].isVisible && (
 									<div className="md:w-1/2 flex flex-row gap-2 max-w-max items-center h-8 mx-auto">
 										<TimePicker
 											name="startTime"
-											onChange={(event) =>
-												handleTimeChange(
-													day as Day,
-													event.target.value,
-													"startTime"
-												)
-											}
+											onChange={(event) => {
+												if (event)
+													handleTimeChange(day as Day, event, "startTime");
+											}}
 											value={selectedDay[day as Day].startTime}
 											disableClock
 											id={`startTime_${day}`}
 											clearIcon={null}
 											format="HH:mm"
-											className="border rounded-md text-sm leading-4 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 .react-time-picker__wrapper:bg-red"
+											className="border rounded-md text-sm leading-4 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 .react-time-picker__wrapper:bg-red "
 										/>
 										<p className="mx-2 md:mx-5">{t("To")}</p>
 										<TimePicker
 											name="endTime"
-											onChange={(event) =>
-												handleTimeChange(
-													day as Day,
-													event.target.value,
-													"endTime"
-												)
-											}
+											onChange={(event) => {
+												if (event)
+													handleTimeChange(day as Day, event, "endTime");
+											}}
 											value={selectedDay[day as Day].endTime}
 											disableClock
 											id={`endTime_${day}`}

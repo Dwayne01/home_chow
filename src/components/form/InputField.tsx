@@ -142,8 +142,8 @@ const TextAreaInputComponent = (props: any, ref: any) => {
 		<textarea
 			id={inputProps.name}
 			data-testid={inputProps.name}
-			className={`border-sand border-2 placeholder:text-stone block px-3 py-2 rounded w-full bg-white ${
-				hasError ? "border-arbutus" : "border-sand"
+			className={`border-primary-color-dark-theme border-2 placeholder:text-stone block px-3 py-2 rounded w-full bg-white ${
+				hasError ? "border-arbutus" : "border-primary-color-dark-theme"
 			} text-gray-900 ${
 				hasError ? "focus:border-arbutus" : "focus:border-primary-color"
 			} focus:outline-none focus:ring-0 focus:shadow-input ${className}`}
@@ -688,7 +688,9 @@ const TextFieldImageComponent = (props: any, ref: any) => {
 					className={`border-sand border-2 placeholder:text-stone block px-4 py-3 rounded w-full bg-white ${
 						error ? "border-arbutus" : "border-sand"
 					} text-gray-900  ${
-						error ? "focus:border-arbutus" : "focus:border-primary-color"
+						error
+							? "focus:border-arbutus"
+							: "focus:border-primary-color-dark-theme"
 					} focus:outline-none focus:ring-0 focus:shadow-input ${inputClass}`}
 					//  InputProps might have it already so not writing it again
 					// In my opinion.

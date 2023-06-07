@@ -31,6 +31,11 @@ module.exports = {
 				"yellow-button": "#FEFDF0",
 				"red-label": "#F04438",
 				"green-label": "#00893A",
+				"primary-color-theme": "#BB671C",
+				"primary-color-theme-light": "#D47500",
+				"primary-color-dark-theme": "#802200",
+				"toggle-switch-input-color": "#A4C9B3",
+				"toggle-switch-input-color-circle": "#499268",
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
