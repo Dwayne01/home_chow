@@ -34,12 +34,14 @@ import Cart, { CartItem } from "@/components/cart";
 import Accordion from "@/components/accordion";
 import Tabs, { TabProps } from "@/components/common/tab";
 import YouMightLike, { YouMightLikeCardItem } from "@/components/youMightLike";
-import Button from "../components/common/buttons";
-import SearchBar from "../components/searchBar";
-import SimilarVendorCard from "../components/card/SimilarVendorCard";
+import ChefProfileCard from "@/components/card/ChefProfileCard";
+import SimilarVendorCard from "@/components/card/SimilarVendorCard";
+import Button from "@/components/common/buttons";
+import SearchBar from "@/components/searchBar";
 import foodImage from "../../public/assets/images/food.jpg";
 import foodImage2 from "../../public/assets/svg/foods/souvlaki.svg";
 import foodImage3 from "../../public/assets/svg/foods/blackSalad.svg";
+import chefProfileImage from "../../public/assets/svg/ChefProfile.svg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -573,11 +575,27 @@ const ComponentPage = () => {
 					/>
 				</div>
 
-				{/* Similar vendor's card */}
+				{/* Similar Vendor's Card */}
 				<div className="p-10">
 					<h2>Similar Vendors</h2>
 					<SimilarVendorCard items={similarVendorItems} />
 				</div>
+
+				{/* Chef Profile Card */}
+				<div className="p-10">
+					<ChefProfileCard
+						id="1"
+						vendorName="Mary's Kitchen"
+						chefName="Mary Saad"
+						chefRating={4.3}
+						address="265 E 10TH Ave, Vancouver BC V5T4V1"
+						deliveryTime="20-30"
+						deliveryFee={5}
+						image={chefProfileImage}
+					/>
+				</div>
+
+				{/* Footer */}
 				<h1>Footer</h1>
 				<Footer footerColor="dark" />
 				<Tabs tabs={tabs} />
