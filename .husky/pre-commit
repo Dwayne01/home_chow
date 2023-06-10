@@ -5,5 +5,5 @@ yarn run prettier:fix
 yarn run lint:fix
 yarn cypress:comp
 yarn build
-git add -A
+git add $(git diff --name-only --cached --diff-filter=d)
 

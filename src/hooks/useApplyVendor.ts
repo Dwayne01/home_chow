@@ -1,5 +1,5 @@
 import { useApiMutate } from "@/hooks/useApi";
-import { APPLYVENDORPayload } from "@/types/auth";
+import { ApplyVendorPayload } from "@/types/auth";
 
 export interface ApplyVendorApiResult {
 	legalBusinessName: string;
@@ -22,7 +22,7 @@ export interface ApplyVendorApiResult {
 }
 
 export const useApplyVendor = () => {
-	const res = useApiMutate<APPLYVENDORPayload, ApplyVendorApiResult>(
+	const res = useApiMutate<ApplyVendorPayload, ApplyVendorApiResult>(
 		"post",
 		"/applyVendor "
 	);

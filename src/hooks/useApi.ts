@@ -39,7 +39,6 @@ export const useApiMutate = <TData, TResponse>(
 				url,
 				data,
 			});
-
 			return response;
 		},
 		mutationConfig

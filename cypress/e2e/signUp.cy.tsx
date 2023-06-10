@@ -14,6 +14,10 @@ describe("sign up page", () => {
 	it("Should render the sign up page", () => {
 		cy.get("#signUp-btn").should("be.visible");
 		cy.get("#signUp-btn").contains(/Sign Up/i);
+		cy.get('[data-testid="Sign in-with-Google"]').should("be.visible");
+		cy.get('[data-testid="Sign in-with-Google"]').contains(
+			/Sign in with Google/i
+		);
 	});
 
 	it("Should show sign up required error when forn is not properly field", () => {
@@ -36,7 +40,7 @@ describe("sign up page", () => {
 	it("Should show sign up required error when form is not properly field", () => {
 		cy.get("#signUp-btn").click();
 
-		cy.intercept("POST", "https://homechow.herokuapp.com/auth/signup", {
+		cy.intercept("POST", "https://homechow-staging.herokuapp.com/auth/signup", {
 			fixture: "signup.json",
 		}).as("signup");
 

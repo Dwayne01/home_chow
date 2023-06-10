@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import {
 	Checkbox,
 	PasswordField,
 	TextField,
 } from "@/components/form/InputField";
+import { AuthContext } from "@/context/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import classNames from "classnames";
@@ -12,7 +13,7 @@ import Button from "@/components/common/buttons";
 import { FcGoogle } from "react-icons/fc";
 import { useTranslation } from "next-i18next";
 import { FormProvider, useForm } from "react-hook-form";
-import { LoginPayload } from "@/types/auth";
+import { LoginPayload, LoginResponse } from "@/types/auth";
 import WideIconButton from "../common/buttons/WideIconButton";
 import Logo from "../../../public/assets/images/logo/HomeChow_Logo.png";
 
@@ -23,9 +24,11 @@ const LoginForm = ({
 }: {
 	handleGoogleSignIn: () => void;
 	isLoading: boolean;
-	handleLogin: (params: LoginPayload) => Promise<boolean>;
+	handleLogin: (params: LoginPayload) => Promise<LoginResponse>;
 }) => {
 	const { t } = useTranslation("authentication");
+	const { login } = useContext(AuthContext);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const form = useForm({
 		defaultValues: {
@@ -40,8 +43,21 @@ const LoginForm = ({
 	const { handleSubmit, register } = form;
 
 	const handleSubmitForm = async (params: LoginPayload) => {
-		await handleLogin(params);
-		router.push("/dashboard");
+		setErrorMessage("");
+		const data = await handleLogin({
+			email: params.email,
+			password: params.password,
+		});
+		if (
+			data &&
+			data.status_code === 200 &&
+			data.message === "Logged in successfully."
+		) {
+			login(data, params.rememberMe);
+			router.push("/dashboard");
+		} else {
+			setErrorMessage(data.message);
+		}
 	};
 
 	return (
@@ -88,6 +104,7 @@ const LoginForm = ({
 								autoComplete="current-password"
 							/>
 						</div>
+						{errorMessage && <p className="py-4 text-red">{errorMessage}</p>}
 						<div className="flex justify-between items-center mt-6">
 							<Checkbox
 								name="rememberMe"

@@ -4,7 +4,7 @@ import { getSessionCookie } from "./cookies";
 import config from "../../config";
 
 const client = axios.create({
-	baseURL: config.baseUrl,
+	baseURL: !config.localApi ? config.baseUrl : config.localBaseURL,
 });
 
 const apiRequestHandler = async (options: AxiosRequestConfig) => {
@@ -21,9 +21,19 @@ const apiRequestHandler = async (options: AxiosRequestConfig) => {
 		return { message: error.message, status: 500 };
 	};
 
+	// eslint-disable-next-line no-console
+	console.log(
+		config.localApi,
+		config.baseUrl,
+		config.localBaseURL
+		// config.localApi ? config.baseUrl : config.localBaseURL
+	);
+
 	const response = axios({
 		...options,
-		url: `${config.baseUrl}${options.url}`,
+		url: `${!config.localApi ? config.baseUrl : config.localBaseURL}${
+			options.url
+		}`,
 	})
 		.then(onSuccess)
 		.catch(onError);

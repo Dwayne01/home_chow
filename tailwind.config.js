@@ -68,6 +68,10 @@ module.exports = {
 				"bounce-high": "bounce 1s infinite",
 			},
 		},
+		fontFamily: {
+			signika: ["Signika", ...defaultTheme.fontFamily.sans],
+			ubuntu: ["Ubuntu", ...defaultTheme.fontFamily.sans],
+		},
 		screens: {
 			sm: "640px",
 			md: "768px",
