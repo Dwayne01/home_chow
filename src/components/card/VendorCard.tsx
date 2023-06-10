@@ -56,7 +56,7 @@ const VendorCard = ({
 							<div className="text-sm font-semibold">{item.chefRating}</div>
 						</div>
 						<div className="flex items-center gap-2 pl-1 mt-3">
-							<CiForkAndKnife className="text-sm font-semibold" />
+							<CiForkAndKnife className="text-sm font-semibold stroke-1" />
 							<p className="text-xs">{item.specialty}</p>
 						</div>
 						<div className="flex items-center gap-2 pl-1 mt-3">
