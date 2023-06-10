@@ -37,9 +37,12 @@ import YouMightLike, { YouMightLikeCardItem } from "@/components/youMightLike";
 import Button from "../components/common/buttons";
 import SearchBar from "../components/searchBar";
 import SimilarVendorCard from "../components/card/SimilarVendorCard";
+import VendorCard from "../components/card/VendorCard";
+import chefImage1 from "../../public/assets/svg/ChefProfile.svg";
 import foodImage from "../../public/assets/images/food.jpg";
 import foodImage2 from "../../public/assets/svg/foods/souvlaki.svg";
 import foodImage3 from "../../public/assets/svg/foods/blackSalad.svg";
+import foodImage4 from "../../public/assets/images/sandwich.jpg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -363,6 +366,21 @@ const ComponentPage = () => {
 		},
 	];
 
+	// Items for testing VendorCard component
+	const vendorCardItem = [
+		{
+			id: 1,
+			title: "Mary's Kitchen",
+			isNew: true,
+			bgImage: foodImage4,
+			chefImage: chefImage1,
+			chefRating: 4.3,
+			deliveryTime: "20-30",
+			deliveryFee: 5,
+			specialty: "India | Punjabi",
+		},
+	];
+
 	return (
 		<div>
 			<MainHeader />
@@ -578,11 +596,18 @@ const ComponentPage = () => {
 					<h2>Similar Vendors</h2>
 					<SimilarVendorCard items={similarVendorItems} />
 				</div>
+
 				<h1>Footer</h1>
 				<Footer footerColor="dark" />
 				<Tabs tabs={tabs} />
 				<h1>Places you might like</h1>
 				<YouMightLike items={vendorYouMightLikeItems} />
+
+				{/* New vendor's card */}
+				<div className="my-10">
+					<h2>Try Something New</h2>
+					<VendorCard items={vendorCardItem} />
+				</div>
 			</div>
 		</div>
 	);

@@ -23,6 +23,9 @@
   "common": {
     "View Store": "View Store",
     "Out of stock": "Out of stock",
-    "In stock": "In stock"
+    "In stock": "In stock",
+    "NEW": "NEW",
+    "Deliver Price": "Deliver Price",
+    "mins": "mins"
   }
 }
