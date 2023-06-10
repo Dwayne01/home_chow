@@ -4,7 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { CiForkAndKnife } from "react-icons/ci";
 import { TbTruckDelivery } from "react-icons/tb";
 
-const SimilarVendorCard = ({
+const VendorCard = ({
 	items,
 }: {
 	items: {
@@ -22,19 +22,26 @@ const SimilarVendorCard = ({
 	const { t } = useTranslation("common");
 
 	return (
-		<div className="w-[360px] h-[260px]">
+		<div>
 			{items.map((item) => (
 				<div
 					key={item.id}
-					className="relative shadow-lg rounded-lg overflow-hidden mt-5"
+					className="relative w-[360px] h-[260px] shadow-lg rounded-lg overflow-hidden mt-5"
 				>
-					<Image width={360} height={160} src={item.bgImage} alt={item.title} />
+					<Image
+						width={360}
+						height={160}
+						src={item.bgImage}
+						alt={item.title}
+						className="object-contain"
+					/>
 					<div className="absolute top-[33%] right-2 p-2 rounded-full">
 						<Image
 							width={96}
 							height={96}
 							src={item.chefImage}
 							alt={item.title}
+							className="object-contain"
 						/>
 					</div>
 					{item.isNew ? (
@@ -66,4 +73,4 @@ const SimilarVendorCard = ({
 	);
 };
 
-export default SimilarVendorCard;
+export default VendorCard;
