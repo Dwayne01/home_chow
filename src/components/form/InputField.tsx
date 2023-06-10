@@ -327,7 +327,7 @@ const PhoneField = (props: any) => {
 	const error = _.get(errors, name);
 
 	let className =
-		"block mb-2 px-4 py-3 pr-2 rounded-sm w-full bg-white text-gray-900 focus:border-primary-color focus:outline-none focus:ring-0 focus:shadow-input";
+		"block mb-2 px-16 py-3 pr-2 rounded-sm w-full bg-white text-gray-900 focus:border-primary-color focus:outline-none focus:ring-0 focus:shadow-input";
 	className += error ? " border-arbutus" : " border-sand";
 	className += hasCountryCode ? " pl-16" : "";
 	className += inputClass

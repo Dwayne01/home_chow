@@ -194,19 +194,6 @@ const Schedule = () => {
 								)}
 							</div>
 						))}
-
-						<div className="w-full flex justify-end">
-							<Button
-								label={t("Save") as string}
-								rootClass="rounded-lg font-bold text-white gap-4 col-auto mt-8 "
-								iconPosition="right"
-								id="ScheduleSave-btn"
-								onClick={() => {
-									// getting you object here to save in the database
-									// Show the Toast notification that it is saved.
-								}}
-							/>
-						</div>
 					</div>
 					<Button
 						label={t("Submit") as string}
