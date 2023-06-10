@@ -7,7 +7,7 @@ const ChefRatingCard = ({
 	items: {
 		id: number;
 		userName: string;
-		userImage: any;
+		chefImage: any;
 		chefName: string;
 		ratingDate: string;
 		chefRating: number;
@@ -24,7 +24,7 @@ const ChefRatingCard = ({
 					<Image
 						width={54}
 						height={53}
-						src={item.userImage}
+						src={item.chefImage}
 						alt={item.chefName}
 						className="object-contain rounded-full"
 					/>
