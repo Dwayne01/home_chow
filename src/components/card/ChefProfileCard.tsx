@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
-import LocationIcon from "../../../public/assets/icons/icon_location.svg";
-import DeliveryIcon from "../../../public/assets/icons/icon_delivery.svg";
-import StarIcon from "../../../public/assets/icons/icon_star.svg";
-import CalendarIcon from "../../../public/assets/icons/icon_calendar.svg";
-import MagnifierIcon from "../../../public/assets/icons/icon_magnifier.svg";
+import { BsStar } from "react-icons/bs";
+import { GoLocation } from "react-icons/go";
+import { TbTruckDelivery } from "react-icons/tb";
+import { HiOutlineCalendar } from "react-icons/hi";
+import { SlMagnifier } from "react-icons/sl";
 
 const ChefProfileCard = ({
 	id,
@@ -42,7 +42,7 @@ const ChefProfileCard = ({
 					<div>
 						<div className="flex gap-2 items-center">
 							<p className="text-2xl  font-bold">{vendorName}</p>
-							<Image src={StarIcon} alt="star-icon" />
+							<BsStar className="text-2xl" />
 							<p className="text-lg font-semibold">{chefRating}</p>
 						</div>
 						<p className="text-sm font-normal">
@@ -50,12 +50,12 @@ const ChefProfileCard = ({
 						</p>
 					</div>
 					<div className="my-4">
-						<div className="flex gap-3 my-2">
-							<Image src={LocationIcon} alt="location-icon" />
+						<div className="flex items-center gap-3 my-2">
+							<GoLocation className="text-sm" />
 							<p className="text-sm font-normal">{address}</p>
 						</div>
-						<div className="flex gap-2 my-2">
-							<Image src={DeliveryIcon} alt="delivery-icon" />
+						<div className="flex items-center gap-2 my-2">
+							<TbTruckDelivery className="text-base" />
 							<p className="text-sm font-normal">
 								{deliveryTime} {t("mins")} | {t("Deliver Price")}:{" "}
 								{`$${deliveryFee}`}
@@ -66,7 +66,7 @@ const ChefProfileCard = ({
 			</div>
 			<div className="flex gap-4 my-8">
 				<button className="flex gap-2 items-center text-brown-400 border border-brown-400 text-lg font-semibold p-3 rounded-[5px]">
-					<Image src={CalendarIcon} alt="calendar-icon" />
+					<HiOutlineCalendar className="text-2xl" />
 					<p className="font-base font-semibold">{t("Schedule")}</p>
 				</button>
 				<div className="relative">
@@ -77,7 +77,7 @@ const ChefProfileCard = ({
 						onChange={() => {}}
 					/>
 					<div className="absolute inset-y-0 left-0 pl-3 flex items-center">
-						<Image src={MagnifierIcon} alt="magnifier-icon" />
+						<SlMagnifier className="text-3xl text-brown-400" />
 					</div>
 				</div>
 			</div>
