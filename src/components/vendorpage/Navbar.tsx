@@ -29,11 +29,11 @@ export function Navbar() {
 
             <div className="flex gap-3">
               <RiSearchLine className="h-6 w-6 block sm:hidden" />
-              <GoMail className="h-6 w-6 hidden sm:block" color="#802200" />
-              <FaRegBell className="h-6 w-6 hidden sm:block" color="#802200" />
+              <GoMail className="h-6 w-6 hidden sm:block" color="brown" />
+              <FaRegBell className="h-6 w-6 hidden sm:block" color="brown" />
             </div>
 
-            <button className="flex items-center justify-between bg-[#802200] p-[6px] rounded-lg">
+            <button className="flex items-center justify-between bg-brown p-[6px] rounded-lg">
               <div className="flex gap-1 text-white">
                 <Image width={26} height={26} src="/assets/images/stella.png" className="rounded-full -left-0.5" alt="stella" />
                 <span className="hidden sm:inline">Stella</span>

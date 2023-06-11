@@ -4,15 +4,15 @@ import Image from 'next/image'
 export function Infocolumn() {
     return (
         <>
-        <section className='flex-col items-center gap-12 px-10'>
-          <div className=' items-center justify-between gap-4 md:flex'>
+        <section className='flex-col items-center gap-12 p-20'>
+          <div className=' items-center justify-around gap-4 mb-6 md:flex'>
               <Image width={237}
                       height={181} 
                       src="/assets/images/Man_studying_financial_analytics.png" 
                       className=" md:w-[500px] md:h-[402px]" alt="stella" />
 
             <div className='flex-col gap-[18px] md:w-[480px] md:h-[136px]'>
-              <h1 className='font-bold text-3xl text-secondary-color flex mb-4  md:text-4xl'>
+              <h1 className='font-bold text-3xl text-secondary-color flex mb-2 md:mb-4  md:text-4xl'>
                   Dashboard
               </h1>
 
@@ -22,10 +22,10 @@ export function Infocolumn() {
             </div>
           </div>
 
-          <div className=' items-center  justify-between gap-4 md:flex'>
+          <div className=' items-center  justify-around gap-4 mb-6 md:flex'>
 
-            <div className='flex-col gap-[18px] md:w-[480px]  md:h-[136px]'>
-              <h1 className='font-bold text-3xl text-secondary-color flex mb-4  md:text-4xl'>
+            <div className='flex-col gap-[18px] md:w-[480px]  md:h-[136px] '>
+              <h1 className='font-bold text-3xl text-secondary-color flex mb-2 md:mb-4  md:text-4xl'>
                   Menu
               </h1>
 
@@ -40,7 +40,7 @@ export function Infocolumn() {
                       className=" md:w-[456px] md:h-[456px]" alt="signup" />
           </div>
 
-          <div className=' items-center justify-between gap-14 md:flex'>
+          <div className=' items-center justify-around gap-4 mb-6 md:flex'>
             <span>
               <Image width={242}
                       height={185} 
@@ -49,7 +49,7 @@ export function Infocolumn() {
             </span>
 
             <div className='flex-col md:w-[480px] md:h-[136px]'>
-              <h1 className='font-bold text-3xl text-secondary-color flex mb-4 md:text-4xl'>
+              <h1 className='font-bold text-3xl text-secondary-color flex mb-2 md:mb-4 md:text-4xl'>
                   Order
               </h1>
 

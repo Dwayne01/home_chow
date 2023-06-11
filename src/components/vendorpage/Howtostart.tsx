@@ -4,13 +4,13 @@ import { Buttonbar } from './Buttonbar';
 export function Howtostart() {
     return(
         <>
-        <div className='flex-col text-center'>
+        <div className='flex-col text-center p-20'>
              <h1 className='font-bold text-3xl text-secondary-color flex gap-3 mb-5 md:text-5xl'>
-                How to  <p className='text-[#802200]'> Start?</p>
+                How to  <span className='text-brown'> Start?</span>
               </h1>
 
           <div className="lg:flex gap-8">
-            <div className="shadow-lg p-10 rounded-xl my-10  dark:bg-white flex-1">
+            <div className="shadow-lg p-10 rounded-xl my-10 rounded-[20px] dark:bg-white flex-1">
               <Image width={80}
                         height={80} 
                         src="/assets/images/tag.png" 
@@ -26,7 +26,7 @@ export function Howtostart() {
                 </div>
               </div>
 
-              <div className=" shadow-lg p-10 rounded-xl my-10  dark:bg-white flex-1">
+              <div className=" shadow-lg p-10 rounded-xl my-10 rounded-[20px] dark:bg-white flex-1">
               <Image width={80}
                         height={80} 
                         src="/assets/images/noodlesbowl.png" 
@@ -42,7 +42,7 @@ export function Howtostart() {
                 </div>
               </div>
 
-              <div className="shadow-lg p-10 rounded-xl my-10  dark:bg-white flex-1">
+              <div className="shadow-lg p-10 rounded-xl my-10 rounded-[20px] dark:bg-white flex-1">
               <Image width={80}
                         height={80} 
                         src="/assets/images/bike.png" 

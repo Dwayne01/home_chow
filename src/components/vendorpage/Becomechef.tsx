@@ -4,7 +4,7 @@ import { Buttonbar } from './Buttonbar';
 export function Becomechef() {
     return (
         <>
-        <div className="  items-center  md:flex p-10 py-10 relative">
+        <div className="  items-center  md:flex p-20  relative">
             <h2 className="text-xl  text-dark-gray-300 font-bold  md:text-4xl">
               Become a chef and start sharing your culinary creation with hungry customers today!
             </h2>
@@ -12,7 +12,7 @@ export function Becomechef() {
             
             <Image width={250} height={268} src="/assets/images/Man_cooked_turkey_for_Thanksgiving.png" className="  md:w-[424px] md:h-[424px] ml-10  " alt="stella" />
 
-            <span className='md:top-96  md:left-12 absolute'>
+            <span className='top-96 lg:top-96 md:top-[490px]  md:left-12 absolute'>
                 <Buttonbar />
             </span>
            
