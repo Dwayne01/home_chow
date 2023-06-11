@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineUser } from "react-icons/ai";
 
 const ChefRatingCard = ({
 	items,
@@ -7,8 +7,8 @@ const ChefRatingCard = ({
 	items: {
 		id: number;
 		userName: string;
-		chefImage: any;
-		chefName: string;
+		userImage?: any;
+		chefName?: string;
 		ratingDate: string;
 		chefRating: number;
 		comment: string;
@@ -20,15 +20,19 @@ const ChefRatingCard = ({
 				key={item.id}
 				className="relative w-[343px] h-[101px] shadow-lg rounded-lg mt-5 pt-1"
 			>
-				<div className="absolute left-3.5 top-1 rounded-full">
-					<Image
-						width={54}
-						height={53}
-						src={item.chefImage}
-						alt={item.chefName}
-						className="object-contain rounded-full"
-					/>
-					<div className="flex items-center gap-1 mt-3 ml-1">
+				<div className="absolute left-3.5 top-1 rounded-full flex flex-col items-center">
+					{item.userImage ? (
+						<Image
+							width={54}
+							height={53}
+							src={item.userImage}
+							alt={item.userName}
+							className="object-contain rounded-full"
+						/>
+					) : (
+						<AiOutlineUser className="text-5xl border-2 border-black rounded-full" />
+					)}
+					<div className="flex items-center gap-1 mt-3">
 						<AiFillStar className="text-xl text-amber-400" />
 						<div className="text-xs font-semibold">{item.chefRating}</div>
 					</div>

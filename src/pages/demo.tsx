@@ -41,8 +41,8 @@ import SearchBar from "@/components/searchBar";
 import ChefRatingCard from "../components/card/ChefRatingCard";
 import VendorCard from "../components/card/VendorCard";
 import chefImage1 from "../../public/assets/svg/ChefProfile.svg";
-import chefImage2 from "../../public/assets/images/chef-demo.png";
-import foodImage from "../../public/assets/images/food.jpg";
+import userImage1 from "../../public/assets/images/chef-demo.png";
+import foodImage1 from "../../public/assets/images/food.jpg";
 import foodImage2 from "../../public/assets/svg/foods/souvlaki.svg";
 import foodImage3 from "../../public/assets/svg/foods/blackSalad.svg";
 import foodImage4 from "../../public/assets/images/sandwich.jpg";
@@ -302,7 +302,7 @@ const ComponentPage = () => {
 			content:
 				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
 			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
-			image: foodImage,
+			image: foodImage1,
 		},
 	];
 
@@ -374,7 +374,7 @@ const ComponentPage = () => {
 		{
 			id: 1,
 			userName: "William",
-			chefImage: chefImage2,
+			userImage: userImage1,
 			chefName: "Mary",
 			ratingDate: "Mar. 20. 2023",
 			chefRating: 4.3,
