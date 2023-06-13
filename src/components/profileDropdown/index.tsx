@@ -47,9 +47,9 @@ const ProfileDropdown = ({ items }: Props) => {
 	return (
 		<>
 			{items.map((item) => (
-				<div key={item.firstName}>
+				<div key={item.firstName} className="flex flex-row-reverse">
 					<button
-						className="hidden md:block bg-primary-color md:w-[139px] md:h-[32px] md:rounded-lg"
+						className="hidden md:block bg-primary-color md:w-[139px] md:h-[32px] md:rounded-lg z-50"
 						onClick={() => setExpanded(!expanded)}
 					>
 						<div className="flex justify-between p-1">
@@ -162,7 +162,7 @@ const ProfileDropdown = ({ items }: Props) => {
 						</div>
 					) : (
 						expanded && (
-							<div className="sm:h-full md:w-[300px] md:h-[650px] shadow-lg mt-[19px] p-4 absolute z-50 bg-white">
+							<div className="sm:h-full md:w-[300px] md:h-[650px] shadow-lg p-4 absolute z-40 bg-white mt-[3.9rem]">
 								<h2 className="hidden md:block md:text-lg md:mb-[14px]">
 									Profile
 								</h2>
