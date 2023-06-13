@@ -38,6 +38,9 @@ import ChefProfileCard from "@/components/card/ChefProfileCard";
 import SimilarVendorCard from "@/components/card/SimilarVendorCard";
 import Button from "@/components/common/buttons";
 import SearchBar from "@/components/searchBar";
+import ProfileDropdown, {
+	ProfileDropdownItems,
+} from "@/components/profileDropdown";
 import foodImage from "../../public/assets/images/food.jpg";
 import foodImage2 from "../../public/assets/svg/foods/souvlaki.svg";
 import foodImage3 from "../../public/assets/svg/foods/blackSalad.svg";
@@ -365,6 +368,15 @@ const ComponentPage = () => {
 		},
 	];
 
+	const profileData: ProfileDropdownItems[] = [
+		{
+			profilePicture: "/assets/images/vendor-profile-picture.png",
+			firstName: "Stella",
+			userType: "Vendor",
+			email: "stella@example.com",
+			walletBalance: 544,
+		},
+	];
 	return (
 		<div>
 			<MainHeader />
@@ -602,6 +614,26 @@ const ComponentPage = () => {
 				<h1>Places you might like</h1>
 				<YouMightLike items={vendorYouMightLikeItems} />
 			</div>
+			<ProfileDropdown items={profileData} />
+			<ul>
+				<li>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati,
+					architecto.
+				</li>
+				<li>Ullam iure eius impedit amet incidunt ex aliquid eum nemo.</li>
+				<li>
+					Sunt numquam est quae odio asperiores perferendis nam excepturi
+					laudantium.
+				</li>
+				<li>
+					Eos cum quod obcaecati, reprehenderit maxime tempora consequuntur a
+					necessitatibus?
+				</li>
+				<li>
+					Placeat veniam sequi debitis quaerat tempore pariatur deleniti omnis
+					dignissimos!
+				</li>
+			</ul>
 		</div>
 	);
 };
