@@ -1,27 +1,36 @@
 import Image from "next/image";
-import { Buttonbar } from "./Buttonbar";
+import Link from "next/link";
 
 export function Becomechef() {
 	return (
-		<div className="  items-center  md:flex p-10 py-10 relative">
-				<h2 className="text-xl  text-dark-gray-300 font-bold  md:text-4xl">
+		<div className="flex flex-col md:flex-row justify-center items-center">
+			<div className="md:w-1/2 p-5">
+				<h2 className="text-2xl  text-dark-gray-300 font-bold  md:text-4xl">
 					Become a chef and start sharing your culinary creation with hungry
 					customers today!
 				</h2>
-
-				<Image
-					width={250}
-					height={268}
-					src="/assets/images/Man_cooked_turkey_for_Thanksgiving.png"
-					className="  md:w-[424px] md:h-[424px] ml-10  "
-					alt="stella"
-				/>
-
-				<span className="md:top-96  md:left-12 absolute">
-					<Buttonbar />
-				</span>
-
-				{/* <button className="w-[343px]  bg-[#802200] hover:bg-opacity-80 hover:scale-105 hover:ease-in px-[38px] py-[14px] rounded-lg mt-10 text-white md:top-96  md:left-12 absolute">Become a Chef</button> */}
+				<Link
+					href="/apply-to-be-vendor"
+					className="hidden md:block w-[343px] text-center  bg-[#802200] hover:bg-opacity-80 hover:scale-105 hover:ease-in px-[38px] py-[14px] rounded-lg mt-10 text_font text-white"
+				>
+					Become a Chef
+				</Link>
 			</div>
+
+			<Image
+				width={250}
+				height={268}
+				src="/assets/images/Man_cooked_turkey_for_Thanksgiving.png"
+				className="  md:w-[424px] md:h-[424px] "
+				alt="stella"
+			/>
+
+			<Link
+				href="/"
+				className="w-[343px] md:hidden text-center bg-[#802200] hover:bg-opacity-80 hover:scale-105 hover:ease-in px-[38px] py-[14px] rounded-lg mt-5 md:mt-10 text_font text-white"
+			>
+				Become a Chef
+			</Link>
+		</div>
 	);
 }
