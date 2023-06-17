@@ -34,6 +34,21 @@ import Cart, { CartItem } from "@/components/cart";
 import Accordion from "@/components/accordion";
 import Tabs, { TabProps } from "@/components/common/tab";
 import YouMightLike, { YouMightLikeCardItem } from "@/components/youMightLike";
+import CategoryCarousel from "@/components/carousel/categoryCarousel";
+import Button from "../components/common/buttons";
+import SearchBar from "../components/searchBar";
+import SimilarVendorCard from "../components/card/SimilarVendorCard";
+import foodImage from "../../public/assets/images/food.jpg";
+import foodImage2 from "../../public/assets/svg/foods/souvlaki.svg";
+import foodImage3 from "../../public/assets/svg/foods/blackSalad.svg";
+import IndianIcon from "../../public/assets/svg/categories/Indian.svg";
+import VietnameseIcon from "../../public/assets/svg/categories/Vietnamese.svg";
+import BurgerIcon from "../../public/assets/svg/categories/Burger.svg";
+import JapaneseIcon from "../../public/assets/svg/categories/Japanese.svg";
+import BakeryIcon from "../../public/assets/svg/categories/Bakery.svg";
+import BentoIcon from "../../public/assets/svg/categories/Bento.svg";
+import ChineseIcon from "../../public/assets/svg/categories/Chinese.svg";
+import ItalianIcon from "../../public/assets/svg/categories/Italian.svg";
 import ChefProfileCard from "@/components/card/ChefProfileCard";
 import SimilarVendorCard from "@/components/card/SimilarVendorCard";
 import Button from "@/components/common/buttons";
@@ -365,6 +380,17 @@ const ComponentPage = () => {
 		},
 	];
 
+	const categories = [
+		{ icon: IndianIcon, title: "Indian" },
+		{ icon: VietnameseIcon, title: "Vietnamese" },
+		{ icon: BurgerIcon, title: "Burger" },
+		{ icon: JapaneseIcon, title: "Japanese" },
+		{ icon: BakeryIcon, title: "Bakery" },
+		{ icon: BentoIcon, title: "Bento" },
+		{ icon: ChineseIcon, title: "Chinese" },
+		{ icon: ItalianIcon, title: "Italian" },
+	];
+
 	return (
 		<div>
 			<MainHeader />
@@ -601,6 +627,8 @@ const ComponentPage = () => {
 				<Tabs tabs={tabs} />
 				<h1>Places you might like</h1>
 				<YouMightLike items={vendorYouMightLikeItems} />
+				<h1>Carousel for categories</h1>
+				<CategoryCarousel categories={categories} />
 			</div>
 		</div>
 	);
