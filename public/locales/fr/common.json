@@ -25,9 +25,15 @@
     "View Store": "Voir magasin",
     "Out of stock": "Rupture de stock",
     "In stock": "En stock",
+<<<<<<< HEAD
+    "NEW": "NOUVEAU",
+    "Deliver Price": "Prix ​​de livraison",
+    "mins": "minutes"
+=======
     "Schedule": "Calendrier",
     "By": "Par",
     "mins": "minutes",
     "Deliver Price": "Prix ​​de livraison"
+>>>>>>> b8e9b4b17069464f2a8b73c6a8d094aff2b81db6
   }
 }

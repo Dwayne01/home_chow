@@ -38,10 +38,14 @@ import ChefProfileCard from "@/components/card/ChefProfileCard";
 import SimilarVendorCard from "@/components/card/SimilarVendorCard";
 import Button from "@/components/common/buttons";
 import SearchBar from "@/components/searchBar";
-import foodImage from "../../public/assets/images/food.jpg";
+import ChefRatingCard from "../components/card/ChefRatingCard";
+import VendorCard from "../components/card/VendorCard";
+import chefImage1 from "../../public/assets/svg/ChefProfile.svg";
+import userImage1 from "../../public/assets/images/chef-demo.png";
+import foodImage1 from "../../public/assets/images/food.jpg";
 import foodImage2 from "../../public/assets/svg/foods/souvlaki.svg";
 import foodImage3 from "../../public/assets/svg/foods/blackSalad.svg";
-import chefProfileImage from "../../public/assets/svg/ChefProfile.svg";
+import foodImage4 from "../../public/assets/images/sandwich.jpg";
 
 const ComponentPage = () => {
 	const [selectedValue, setSelectedValue] = useState<string>("");
@@ -298,7 +302,7 @@ const ComponentPage = () => {
 			content:
 				"Wings tossed in your choice of sauce, served with carrots, celery sticks, and dipping sauce. Choose at least one.",
 			cardList: ["Mild Sauce", "Hot Sauce", "Medium Sauce"],
-			image: foodImage,
+			image: foodImage1,
 		},
 	];
 
@@ -362,6 +366,35 @@ const ComponentPage = () => {
 			serviceType: "Pick up",
 			price: 75.28,
 			review: 4.0,
+		},
+	];
+
+	// Items for testing ChefRatingCard component
+	const chefRatingCardItem = [
+		{
+			id: 1,
+			userName: "William",
+			userImage: userImage1,
+			chefName: "Mary",
+			ratingDate: "Mar. 20. 2023",
+			chefRating: 4.3,
+			comment:
+				"Delicious!! Mary always does an excellent job. We can't wait until the next time!!",
+		},
+	];
+
+	// Items for testing VendorCard component
+	const vendorCardItem = [
+		{
+			id: 1,
+			title: "Mary's Kitchen",
+			isNew: true,
+			bgImage: foodImage4,
+			chefImage: chefImage1,
+			chefRating: 4.3,
+			deliveryTime: "20-30",
+			deliveryFee: 5,
+			specialty: "India | Punjabi",
 		},
 	];
 
@@ -591,7 +624,7 @@ const ComponentPage = () => {
 						address="265 E 10TH Ave, Vancouver BC V5T4V1"
 						deliveryTime="20-30"
 						deliveryFee={5}
-						image={chefProfileImage}
+						image={chefImage1}
 					/>
 				</div>
 
@@ -601,6 +634,18 @@ const ComponentPage = () => {
 				<Tabs tabs={tabs} />
 				<h1>Places you might like</h1>
 				<YouMightLike items={vendorYouMightLikeItems} />
+
+				{/* Chef's rating card */}
+				<div className="my-10">
+					<h2>Similar Chefs Near You</h2>
+					<ChefRatingCard items={chefRatingCardItem} />
+				</div>
+
+				{/* New vendor's card */}
+				<div className="my-10">
+					<h2>Try Something New</h2>
+					<VendorCard items={vendorCardItem} />
+				</div>
 			</div>
 		</div>
 	);

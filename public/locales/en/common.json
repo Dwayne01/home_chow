@@ -24,9 +24,15 @@
     "View Store": "View Store",
     "Out of stock": "Out of stock",
     "In stock": "In stock",
+<<<<<<< HEAD
+    "NEW": "NEW",
+    "Deliver Price": "Deliver Price",
+    "mins": "mins"
+=======
     "Schedule": "Schedule",
     "By": "By",
     "mins": "mins",
     "Deliver Price": "Deliver Price"
+>>>>>>> b8e9b4b17069464f2a8b73c6a8d094aff2b81db6
   }
 }
