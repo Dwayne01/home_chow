@@ -10,30 +10,31 @@ type TabsProps = {
 	tabs: TabProps[];
 };
 
-const Tab: React.FC<TabProps & { active: boolean }> = ({
-	label,
-	children,
-	active,
-	onClick,
-}) => (
-	<button data-cy="tab" className="mb-6 flex flex-col" onClick={onClick}>
-		{label}
-		{active && <div className="">{children}</div>}
-	</button>
-);
+// const Tab: React.FC<TabProps & { active: boolean }> = ({
+// 	// label,
+// 	children,
+// 	active,
+// 	onClick,
+// }) => (
+// 	<button data-cy="tab" className="mb-6 flex flex-col" onClick={onClick}>
+// 		{/* {label} */}
+// 		{active && <div className="">{children}</div>}
+// 	</button>
+// );
 
 const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 	const [activeTab, setActiveTab] = useState(0);
 
 	const handleTabClick = (index: number) => {
-		setActiveTab((prevActiveTab) =>
-			prevActiveTab === index ? prevActiveTab : index
-		);
+		// setActiveTab((prevActiveTab) =>
+		// 	prevActiveTab === index ? prevActiveTab : index
+		// );
+		setActiveTab(index);
 	};
 
 	return (
 		<div>
-			<div className="flex justify-start gap-16 mb-8">
+			<div className="flex w-full justify-start gap-16 mb-8">
 				{tabs.map((tab, index) => (
 					<div
 						key={tab.label}
@@ -58,15 +59,24 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 					</div>
 				))}
 			</div>
-			{tabs.map((tab, index) => (
+			{/* {tabs.map((tab, index) => (
 				<Tab
 					key={tab.label}
 					label={tab.label}
 					active={activeTab === index}
 					onClick={() => handleTabClick(index)}
 				>
-					{tab.children}
+			    {React.cloneElement(tab.children, {
+				isActive: activeTab === index,
+				})}
+
 				</Tab>
+			))} */}
+
+			{tabs.map((tab, index) => (
+				<div key={tab.label} className={activeTab === index ? "" : "hidden"}>
+					{tab.children}
+				</div>
 			))}
 		</div>
 	);

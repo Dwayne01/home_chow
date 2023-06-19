@@ -38,7 +38,7 @@ const Button = ({
 			id={id}
 			className={classNames(
 				rootClass || "",
-				"text-xl p-3 rounded-[10px] flex justify-center items-center hover:bg-primary-color-light hover:text-primary-color hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
+				" p-3 rounded-[10px] flex justify-center items-center hover:bg-primary-color-light hover:text-primary-color hover:border hover:border-primary-color hover:outline-primary-color-light focus:outline-none  focus:ring-4 focus:ring-primary-color-light",
 				disabled ? "bg-gray-400" : "bg-primary-color"
 			)}
 			{...others}

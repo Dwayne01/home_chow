@@ -9,6 +9,7 @@ module.exports = {
 				"primary-color": "var(--color-primary)",
 				"secondary-color": "var(--color-secondary)",
 				white: "#FDFDFD",
+				bgWhite: "#FFFFFF",
 				black: "#1C1C1C",
 				brown: "#802200",
 				"brown-900": "#1A0700",
@@ -58,7 +59,6 @@ module.exports = {
 				"light-gray-300": "#D8D8D8",
 				"light-gray-200": "#EAEAEA",
 				"light-gray-100": "#F8F8F8",
-
 				...defaultTheme.colors,
 			},
 			backgroundColor: (theme) => ({
