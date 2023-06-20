@@ -3,9 +3,6 @@ export interface ProductResponse {
 	status: string;
 	message: string;
 	body: null;
-	user_id: string;
-	id_token: string;
-	refresh_token: string;
 }
 
 export interface AddProductPayload {
@@ -14,7 +11,7 @@ export interface AddProductPayload {
 	listing_category: string;
 	diet_info: {
 		ingredients: string[];
-		nutritional_info: Record<string, any>;
+		nutritional_info: string;
 		dietary_restrictions: string[];
 	};
 	prices: { size: string; price: string }[];

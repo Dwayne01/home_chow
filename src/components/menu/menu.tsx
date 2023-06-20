@@ -3,9 +3,11 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { AddProductPayload } from "@/types/product";
+import { AddProductPayload, ProductResponse } from "@/types/product";
 // import LactoseIcon from "../../../public/assets/svg/lactose.svg";
+import { useRouter } from "next/router";
 import { AiOutlineSend } from "react-icons/ai";
+// import { ErrorResponse } from "@/types";
 import MenuIcon from "../../../public/assets/svg/menu.svg";
 import ArrowLeft from "../../../public/assets/svg/ArrowLeft.svg";
 import Button from "../common/buttons";
@@ -20,13 +22,18 @@ import {
 
 const Menu = ({
 	handleAddProduct,
+	isLoading,
 }: {
-	handleAddProduct: (params: any) => Promise<any>;
+	handleAddProduct: (params: any) => Promise<ProductResponse>;
+	isLoading: boolean;
 }) => {
 	const { t } = useTranslation("dashboard");
+
+	const router = useRouter();
 	const [selectedRestrictions, setSelectedRestrictions] = useState<string[]>(
 		[]
 	);
+	const [errorMessage, setErrorMessage] = useState<string>("");
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [selectedImages, setSelectedImages] = useState<Array<File | null>>([
@@ -34,6 +41,7 @@ const Menu = ({
 	]);
 
 	const onSubmit = async (data: AddProductPayload) => {
+		setErrorMessage("");
 		// eslint-disable-next-line camelcase
 		const { diet_info, prices, ...rest } = data;
 
@@ -64,7 +72,13 @@ const Menu = ({
 			prices: pricesList,
 			diet_info: transformedDietInfo,
 		};
-		handleAddProduct(formData);
+
+		const res = await handleAddProduct(formData);
+		if (data && res.status_code === 201 && res.message === "Success") {
+			router.push("/menu");
+		} else {
+			setErrorMessage(res.message);
+		}
 	};
 
 	const handleImageChange = (index: number, image: File | null): void => {
@@ -83,7 +97,7 @@ const Menu = ({
 			prices: [{ size: "", price: "" }],
 			diet_info: {
 				ingredients: [],
-				nutritional_info: {},
+				nutritional_info: "",
 				dietary_restrictions: [],
 			},
 			description: "",
@@ -154,20 +168,21 @@ const Menu = ({
 				<div className="flex-wrap flex gap-4">
 					<Button
 						icon={AiOutlineSend}
-						rootClass={`bg-white gap-2 border text-brown-400 border-brown-400 ${
+						rootClass={` gap-2 border border-brown-400 ${
 							isRestrictionSelected("Vegetarian")
 								? "bg-blue-500 text-white"
-								: ""
+								: "bg-white text-brown-400"
 						}`}
 						label={t("Vegetarian") || ""}
-						//   className={`px-4 py-2 rounded }
 						onClick={() => handleButtonClick("Vegetarian")}
 						iconPosition="left"
 					/>
 					<Button
 						icon={AiOutlineSend}
-						rootClass={`bg-white gap-2 border text-brown-400 border-brown-400 ${
-							isRestrictionSelected("Halal") ? "bg-blue-500 text-white" : ""
+						rootClass={`gap-2 border border-brown-400 ${
+							isRestrictionSelected("Halal")
+								? "bg-blue-500 text-white"
+								: "bg-white text-brown-400"
 						}`}
 						label={t("Halal") || ""}
 						onClick={() => handleButtonClick("Halal")}
@@ -175,10 +190,10 @@ const Menu = ({
 					/>
 					<Button
 						icon={AiOutlineSend}
-						rootClass={`bg-white gap-2 border text-brown-400 border-brown-400 ${
+						rootClass={`gap-2 border border-brown-400 ${
 							isRestrictionSelected("Gluton-free")
 								? "bg-blue-500 text-white"
-								: ""
+								: "bg-white text-brown-400"
 						}`}
 						label={t("Gluton-free") || ""}
 						onClick={() => handleButtonClick("Gluton-free")}
@@ -186,8 +201,10 @@ const Menu = ({
 					/>
 					<Button
 						icon={AiOutlineSend}
-						rootClass={`bg-white gap-2 border text-brown-400 border-brown-400 ${
-							isRestrictionSelected("Vegan") ? "bg-blue-500 text-white" : ""
+						rootClass={`gap-2 border border-brown-400 ${
+							isRestrictionSelected("Vegan")
+								? "bg-blue-500 text-white"
+								: "bg-white text-brown-400"
 						}`}
 						label={t("Vegan") || ""}
 						onClick={() => handleButtonClick("Vegan")}
@@ -195,10 +212,10 @@ const Menu = ({
 					/>
 					<Button
 						icon={AiOutlineSend}
-						rootClass={`bg-white gap-2 border text-brown-400 border-brown-400 ${
+						rootClass={`gap-2 border border-brown-400 ${
 							isRestrictionSelected("Allergy Friendly")
 								? "bg-blue-500 text-white"
-								: ""
+								: "bg-white text-brown-400"
 						}`}
 						label={t("Allergy Friendly") || ""}
 						onClick={() => handleButtonClick("Allergy Friendly")}
@@ -206,10 +223,10 @@ const Menu = ({
 					/>
 					<Button
 						icon={AiOutlineSend}
-						rootClass={`bg-white gap-2 border text-brown-400 border-brown-400 ${
+						rootClass={`gap-2 border border-brown-400 ${
 							isRestrictionSelected("Lactose Intolerant")
 								? "bg-blue-500 text-white"
-								: ""
+								: "bg-white text-brown-400"
 						}`}
 						label={t("Lactose Intolerant") || ""}
 						onClick={() => handleButtonClick("Lactose Intolerant")}
@@ -217,27 +234,15 @@ const Menu = ({
 					/>
 					<Button
 						icon={AiOutlineSend}
-						rootClass={`bg-white gap-2 border text-brown-400 border-brown-400 ${
+						rootClass={`gap-2 border border-brown-400 hover:bg-white ${
 							isRestrictionSelected("Pescatarian")
-								? "bg-blue-500 text-white"
-								: ""
+								? "bg-blue-500 text-white hover:bg-white"
+								: "bg-white text-brown-400"
 						}`}
 						label={t("Pescatarian") || ""}
 						onClick={() => handleButtonClick("Pescatarian")}
 						iconPosition="left"
 					/>
-
-					{/* <TextAreaField
-						ref={register()}
-						rootClass="items-start"
-						className="mb-5 px-4 py-4 rounded-[8px] items-start w-[600px] h-[200px] bg-gray-textArea"
-						name="diet_info.dietary_restrictions"
-						required
-						data-testid="dietary_restrictions"
-						label={t("Dietary Restrictions")}
-						placeholder={t("Enter dietary restrictions")}
-						autoComplete="dietary_restrictions"
-					/> */}
 				</div>
 			),
 			onClick: () => {},
@@ -250,6 +255,7 @@ const Menu = ({
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className="flex justify-between flex-row items-center">
 						<div className="flex-row items-center gap-x-2 flex">
+							{errorMessage && <p className="py-4 text-red">{errorMessage}</p>}
 							<Image
 								width={24}
 								src={ArrowLeft}
@@ -273,11 +279,13 @@ const Menu = ({
 						<div className="hidden md:flex flex-row items-center gap-x-3">
 							<Button
 								label={t("Save") || ""}
+								loading={isLoading}
 								type="submit"
 								rootClass="rounded-lg whitespace-nowrap px-3 font-medium text-sm w-[152px] border-primary border bg-white text-primary-color text-sm"
 							/>
 						</div>
 					</div>
+
 					<div className="mt-[66px] flex flex-col justify-start">
 						<div className="w-full lg:max-w-screen-sm">
 							<ImageUploadField

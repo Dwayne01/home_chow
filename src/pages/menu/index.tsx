@@ -37,7 +37,7 @@ const MenuPage = () => {
 	const router = useRouter();
 	const { pathname } = router;
 	const [navigation, setNavigation] = useState(nav);
-	const { mutateAsync } = useProduct();
+	const { mutateAsync, isLoading } = useProduct();
 
 	const handleAddProduct = async (params: any) => {
 		const response = await mutateAsync(params);
@@ -59,7 +59,9 @@ const MenuPage = () => {
 		<DashboardLayout
 			HeaderComponent={<DashboardHeader />}
 			LeftMenuComponent={<SideNavigation {...{ navigation }} />}
-			MainComponent={<Menu handleAddProduct={handleAddProduct} />}
+			MainComponent={
+				<Menu handleAddProduct={handleAddProduct} isLoading={isLoading} />
+			}
 		/>
 	);
 };
