@@ -326,17 +326,17 @@ const ComponentPage = () => {
 		{
 			label: "Tab 1 Title",
 			children: <div>Content for tab 1</div>,
-			onClick: () => {},
+			// onClick: () => {},
 		},
 		{
 			label: "Tab 2 Title Longer",
 			children: <div>Content for tab 2</div>,
-			onClick: () => {},
+			// onClick: () => {},
 		},
 		{
 			label: "Tab 3 Title Even Longer!!!!!!!! ",
 			children: <div>Content for tab 3</div>,
-			onClick: () => {},
+			// onClick: () => {},
 		},
 	];
 

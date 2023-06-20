@@ -141,7 +141,7 @@ const Menu = ({
 					/>
 				</div>
 			),
-			onClick: () => {},
+			// onClick: () => {},
 		},
 		{
 			label: "Nutritional Information",
@@ -160,7 +160,7 @@ const Menu = ({
 					/>
 				</div>
 			),
-			onClick: () => {},
+			// onClick: () => {},
 		},
 		{
 			label: "Dietary restrictions ",
@@ -245,7 +245,7 @@ const Menu = ({
 					/>
 				</div>
 			),
-			onClick: () => {},
+			// onClick: () => {},
 		},
 	];
 

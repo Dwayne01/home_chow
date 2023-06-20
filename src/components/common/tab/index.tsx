@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 
 export interface TabProps {
-	label: string;
+	// eslint-disable-next-line react/no-unused-prop-types
+	label?: string;
 	children: React.ReactElement;
-	onClick: () => void;
+	// onClick?: () => void;
+	rootClass?: string;
 }
 
 type TabsProps = {
@@ -22,13 +24,16 @@ type TabsProps = {
 // 	</button>
 // );
 
+const Tab: React.FC<TabProps> = ({ children, rootClass }) => (
+	<div data-cy="tab" className={`mb-6 flex flex-col ${rootClass}`}>
+		<div className="">{children}</div>
+	</div>
+);
+
 const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 	const [activeTab, setActiveTab] = useState(0);
 
 	const handleTabClick = (index: number) => {
-		// setActiveTab((prevActiveTab) =>
-		// 	prevActiveTab === index ? prevActiveTab : index
-		// );
 		setActiveTab(index);
 	};
 
@@ -59,24 +64,10 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 					</div>
 				))}
 			</div>
-			{/* {tabs.map((tab, index) => (
-				<Tab
-					key={tab.label}
-					label={tab.label}
-					active={activeTab === index}
-					onClick={() => handleTabClick(index)}
-				>
-			    {React.cloneElement(tab.children, {
-				isActive: activeTab === index,
-				})}
-
-				</Tab>
-			))} */}
-
 			{tabs.map((tab, index) => (
-				<div key={tab.label} className={activeTab === index ? "" : "hidden"}>
+				<Tab key={tab.label} rootClass={activeTab === index ? "" : "hidden"}>
 					{tab.children}
-				</div>
+				</Tab>
 			))}
 		</div>
 	);
