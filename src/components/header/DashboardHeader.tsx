@@ -4,7 +4,7 @@ import { SlHandbag } from "react-icons/sl";
 import { useTranslation } from "next-i18next";
 import Lable from "../common/Lable";
 import SearchField from "../common/SearchField";
-import AccountButton from "../common/AccountButton";
+import ProfileDropdown from "../profileDropdown";
 
 const DashboardHeader = () => {
 	const { t } = useTranslation("dashboard");
@@ -12,6 +12,16 @@ const DashboardHeader = () => {
 	const [showBalance, setShowBalance] = React.useState(true);
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [search, setSearch] = React.useState<string>("");
+
+	const profileData = [
+		{
+			profilePicture: "/assets/images/vendor-profile-picture.png",
+			firstName: "Stella",
+			userType: "Vendor",
+			email: "stella@example.com",
+			walletBalance: 12457,
+		},
+	];
 
 	return (
 		<div className="flex justify-between items-center  flex-col gap-5 p-3 w-full lg:h-[90px] md:flex-row md:flex-wrap md:pl-9 md:pr-24  ">
@@ -42,9 +52,7 @@ const DashboardHeader = () => {
 						<BiBell />
 					</button>
 				</div>
-				<div className="">
-					<AccountButton profileCompletion={80} notificationCount={5} />
-				</div>
+				<ProfileDropdown items={profileData} />{" "}
 			</div>
 		</div>
 	);

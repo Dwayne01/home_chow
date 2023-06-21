@@ -40,6 +40,12 @@
 	}
 }
 
+@layer components {
+	.dropdown-more-options li {
+		@apply pb-[20px] text-lg
+	}
+}
+
 .hoverButton:hover {
 	color: white;
 }
