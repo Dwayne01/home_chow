@@ -12,7 +12,7 @@ const DashboardLayout = ({
 		</div>
 		<div className="flex-1 flex flex-col">
 			<div className="border-b">{HeaderComponent}</div>
-			<div className="bg-gray-modern flex-1">{MainComponent}</div>
+			<div className="bg-gray-modern">{MainComponent}</div>
 		</div>
 	</div>
 );

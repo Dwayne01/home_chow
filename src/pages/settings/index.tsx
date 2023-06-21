@@ -7,6 +7,7 @@ import SideNavigation from "@/components/SideNavigation";
 import { RxDashboard } from "react-icons/rx";
 import { RiSettings3Line } from "react-icons/ri";
 import Settings from "@/components/Settings";
+import { GiKnifeFork } from "react-icons/gi";
 
 const nav = [
 	{
@@ -15,6 +16,13 @@ const nav = [
 		icon: RxDashboard,
 		current: true,
 	},
+	{
+		label: "Menu",
+		href: "/menu",
+		icon: GiKnifeFork,
+		current: false,
+	},
+
 	{
 		label: "Settings",
 		href: "/settings",

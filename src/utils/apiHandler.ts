@@ -3,14 +3,25 @@ import { ErrorResponse } from "../types/index";
 import { getSessionCookie } from "./cookies";
 import config from "../../config";
 
-const client = axios.create({
-	baseURL: !config.localApi ? config.baseUrl : config.localBaseURL,
-});
+const createApiClient = () => {
+	const instance = axios.create({
+		baseURL: !config.localApi ? config.baseUrl : config.localBaseURL,
+	});
+
+	// eslint-disable-next-line no-shadow
+	instance.interceptors.request.use((config) => {
+		const token = getSessionCookie();
+		if (config.headers) {
+			config.headers.Authorization = `Bearer ${token}`;
+		}
+		return config;
+	});
+
+	return instance;
+};
 
 const apiRequestHandler = async (options: AxiosRequestConfig) => {
-	const token = getSessionCookie();
-
-	client.defaults.headers.common.Authorization = `Bearer ${token}`;
+	const client = createApiClient();
 
 	const onSuccess = (res: any) => res.data;
 	const onError = (error: ErrorResponse) => {
@@ -29,15 +40,12 @@ const apiRequestHandler = async (options: AxiosRequestConfig) => {
 		// config.localApi ? config.baseUrl : config.localBaseURL
 	);
 
-	const response = axios({
-		...options,
-		url: `${!config.localApi ? config.baseUrl : config.localBaseURL}${
-			options.url
-		}`,
-	})
-		.then(onSuccess)
-		.catch(onError);
-	return response;
+	try {
+		const response = await client.request(options);
+		return onSuccess(response);
+	} catch (error) {
+		return onError(error as ErrorResponse);
+	}
 };
 
 export default apiRequestHandler;
