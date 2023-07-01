@@ -6,7 +6,11 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { applyTheme } from "@/theme/utils";
 import { AuthContextProvider } from "@/context/AuthContext";
 // import config from "config";
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material";
 import NextI18NextConfig from "../../next-i18next.config";
+
+const theme = createTheme();
 
 // if (config.env === "development" && config.mockApi) {
 // 	// eslint-disable-next-line global-require
@@ -30,11 +34,13 @@ const App = ({ Component, pageProps }: AppProps) => {
 	}, []);
 
 	return (
-		<QueryClientProvider client={queryClient}>
-			<AuthContextProvider>
-				<Component {...pageProps} />
-			</AuthContextProvider>
-		</QueryClientProvider>
+		<ThemeProvider theme={theme}>
+			<QueryClientProvider client={queryClient}>
+				<AuthContextProvider>
+					<Component {...pageProps} />
+				</AuthContextProvider>
+			</QueryClientProvider>
+		</ThemeProvider>
 	);
 };
 

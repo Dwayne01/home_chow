@@ -1,7 +1,15 @@
 import { useApiMutate } from "@/hooks/useApi";
-import { AddProductPayload } from "@/types/product";
+import { AddProductPayload, SearchProductPayload } from "@/types/product";
 
-export const useProduct = () => {
+export const useAddProduct = () => {
 	const res = useApiMutate<AddProductPayload, any>("post", "/product");
+	return res;
+};
+
+export const useSearchProduct = () => {
+	const res = useApiMutate<SearchProductPayload, any>(
+		"post",
+		"/product/search"
+	);
 	return res;
 };

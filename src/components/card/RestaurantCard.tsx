@@ -21,7 +21,7 @@ const RestaurantCard = ({
 				src={imageUrl || image}
 				width={120}
 				height={120}
-				className="rounded-lg"
+				className="rounded-lg w-full"
 				alt="restaurant"
 			/>
 			<h3>{name}</h3>

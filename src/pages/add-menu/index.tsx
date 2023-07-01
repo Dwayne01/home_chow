@@ -6,9 +6,9 @@ import DashboardHeader from "@/components/header/DashboardHeader";
 import SideNavigation from "@/components/SideNavigation";
 import { RxDashboard } from "react-icons/rx";
 import { RiSettings3Line } from "react-icons/ri";
-import Menu from "@/components/menu/menu";
 import { GiKnifeFork } from "react-icons/gi";
-import { useSearchProduct } from "@/hooks/useProduct";
+import { useAddProduct } from "@/hooks/useProduct";
+import AddProduct from "@/components/menu/add-product";
 // import { AddProductPayload } from "@/types/product";
 
 const nav = [
@@ -33,13 +33,13 @@ const nav = [
 	},
 ];
 
-const MenuPage = () => {
+const AddMenu = () => {
 	const router = useRouter();
 	const { pathname } = router;
 	const [navigation, setNavigation] = useState(nav);
-	const { mutateAsync } = useSearchProduct();
+	const { mutateAsync, isLoading } = useAddProduct();
 
-	const handleSearchProduct = useCallback(
+	const handleAddProduct = useCallback(
 		async (params: any) => {
 			const response = await mutateAsync(params);
 			return response;
@@ -62,12 +62,14 @@ const MenuPage = () => {
 		<DashboardLayout
 			HeaderComponent={<DashboardHeader />}
 			LeftMenuComponent={<SideNavigation {...{ navigation }} />}
-			MainComponent={<Menu handleSearchProduct={handleSearchProduct} />}
+			MainComponent={
+				<AddProduct handleAddProduct={handleAddProduct} isLoading={isLoading} />
+			}
 		/>
 	);
 };
 
-export default MenuPage;
+export default AddMenu;
 
 export async function getStaticProps({ locale }: { locale: string }) {
 	return {
