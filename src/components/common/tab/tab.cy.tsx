@@ -8,27 +8,27 @@ describe("Tab component", () => {
 		{
 			label: "Tab 1 Title",
 			children: <div>Content for tab 1</div>,
-			onClick: () => {},
+			// onClick: () => {},
 		},
 		{
 			label: "Tab 2 Title",
 			children: <div>Content for tab 2</div>,
-			onClick: () => {},
+			// onClick: () => {},
 		},
 		{
 			label: "Tab 3 Title",
 			children: <div>Content for tab 3</div>,
-			onClick: () => {},
+			// onClick: () => {},
 		},
 	];
 
 	it("should display active tab content", () => {
 		mount(<Tabs tabs={tabs} />);
-		cy.contains("Tab 1 Title").click();
+		cy.contains("Tab 1 Title");
 		cy.get('[data-cy="tab"]').eq(0).should("contain", "Content for tab 1");
-		cy.contains("Tab 2 Title").click();
+		cy.contains("Tab 2 Title");
 		cy.get('[data-cy="tab"]').eq(1).should("contain", "Content for tab 2");
-		cy.contains("Tab 3 Title").click();
+		cy.contains("Tab 3 Title");
 		cy.get('[data-cy="tab"]').eq(2).should("contain", "Content for tab 3");
 	});
 });

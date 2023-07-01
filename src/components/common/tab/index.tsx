@@ -1,39 +1,45 @@
 import React, { useState } from "react";
 
 export interface TabProps {
-	label: string;
+	// eslint-disable-next-line react/no-unused-prop-types
+	label?: string;
 	children: React.ReactElement;
-	onClick: () => void;
+	// onClick?: () => void;
+	rootClass?: string;
 }
 
 type TabsProps = {
 	tabs: TabProps[];
 };
 
-const Tab: React.FC<TabProps & { active: boolean }> = ({
-	label,
-	children,
-	active,
-	onClick,
-}) => (
-	<button data-cy="tab" className="mb-6 flex flex-col" onClick={onClick}>
-		{label}
-		{active && <div className="">{children}</div>}
-	</button>
+// const Tab: React.FC<TabProps & { active: boolean }> = ({
+// 	// label,
+// 	children,
+// 	active,
+// 	onClick,
+// }) => (
+// 	<button data-cy="tab" className="mb-6 flex flex-col" onClick={onClick}>
+// 		{/* {label} */}
+// 		{active && <div className="">{children}</div>}
+// 	</button>
+// );
+
+const Tab: React.FC<TabProps> = ({ children, rootClass }) => (
+	<div data-cy="tab" className={`mb-6 flex flex-col ${rootClass}`}>
+		<div className="">{children}</div>
+	</div>
 );
 
 const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 	const [activeTab, setActiveTab] = useState(0);
 
 	const handleTabClick = (index: number) => {
-		setActiveTab((prevActiveTab) =>
-			prevActiveTab === index ? prevActiveTab : index
-		);
+		setActiveTab(index);
 	};
 
 	return (
 		<div>
-			<div className="flex justify-start gap-16 mb-8">
+			<div className="flex w-full justify-start gap-16 mb-8">
 				{tabs.map((tab, index) => (
 					<div
 						key={tab.label}
@@ -59,12 +65,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs }) => {
 				))}
 			</div>
 			{tabs.map((tab, index) => (
-				<Tab
-					key={tab.label}
-					label={tab.label}
-					active={activeTab === index}
-					onClick={() => handleTabClick(index)}
-				>
+				<Tab key={tab.label} rootClass={activeTab === index ? "" : "hidden"}>
 					{tab.children}
 				</Tab>
 			))}

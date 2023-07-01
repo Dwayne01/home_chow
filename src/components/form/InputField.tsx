@@ -3,15 +3,17 @@ import { useFormContext, Controller } from "react-hook-form";
 import _, { isNaN } from "lodash";
 import { useLoadScript, Autocomplete } from "@react-google-maps/api";
 import { BsCheckCircle, BsCalendar4 } from "react-icons/bs";
-import { FiCircle } from "react-icons/fi";
+import { FiCircle, FiUpload } from "react-icons/fi";
 import NumericFormat from "react-number-format";
 import classNames from "classnames";
+import Image from "next/image";
 import ReactDatePicker from "react-datepicker";
 import { AiOutlineInfoCircle, AiOutlineEyeInvisible } from "react-icons/ai";
 import ReactTooltip from "react-tooltip";
 import { useTranslation } from "next-i18next";
 import "react-datepicker/dist/react-datepicker.css";
 import { MdOutlineVisibility } from "react-icons/md";
+import { IoCloudUploadSharp } from "react-icons/io5";
 import {
 	formatDateTime,
 	dateToDateTime,
@@ -135,7 +137,7 @@ const TextInputComponent = (props: any, ref: any) => {
 const TextInput = React.forwardRef(TextInputComponent);
 
 const TextAreaInputComponent = (props: any, ref: any) => {
-	const { hasError, disabled, className, ...inputProps } = props;
+	const { hasError, disabled, name, className, ...inputProps } = props;
 
 	return (
 		<textarea
@@ -149,6 +151,7 @@ const TextAreaInputComponent = (props: any, ref: any) => {
 			disabled={disabled}
 			{...inputProps}
 			ref={ref}
+			name={name}
 		/>
 	);
 };
@@ -267,7 +270,7 @@ const TextAreaComponent = (props: any, ref: any) => {
 				name={name}
 				required={required}
 			/>
-			<TextArea {...inputProps} hasError={!!error} ref={ref} />
+			<TextArea {...inputProps} hasError={!!error} name={name} ref={ref} />
 			{error && <ErrorLabel error={error} />}
 		</div>
 	);
@@ -655,6 +658,104 @@ const DatePickerComponent = (
 	);
 };
 
+const ImageUploadComponent = (
+	props: {
+		placeholderText: string;
+		onImageChange: (image: File | null) => void;
+		name: any;
+	},
+	ref: React.LegacyRef<HTMLInputElement> | undefined
+) => {
+	const { placeholderText, name, onImageChange } = props;
+
+	const { errors } = useFormContext();
+	const error = _.get(errors, name);
+
+	const fileInputRef = useRef<HTMLInputElement>(null);
+	const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+
+	const handleDivClick = (): void => {
+		if (fileInputRef.current) {
+			fileInputRef.current.click();
+		}
+	};
+
+	const handleImageChange = (
+		event: React.ChangeEvent<HTMLInputElement>
+	): void => {
+		const file = event.target.files?.[0];
+
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				const imageDataURL = e.target?.result as string;
+				setUploadedImage(imageDataURL);
+				onImageChange(file);
+			};
+			reader.readAsDataURL(file);
+		}
+	};
+
+	const handleChooseAnotherImage = (): void => {
+		setUploadedImage(null);
+		onImageChange(null);
+
+		if (fileInputRef.current) {
+			fileInputRef.current.value = "";
+		}
+	};
+
+	const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+		if (event.key === "Enter") {
+			handleDivClick();
+		}
+	};
+
+	return (
+		<div
+			className="mb-5 rounded relative border min-h-[200px] bg-white flex-col flex justify-center items-center"
+			onClick={handleDivClick}
+			ref={ref}
+			onKeyDown={handleKeyDown}
+			role="button"
+			tabIndex={0}
+		>
+			{uploadedImage ? (
+				<>
+					<button
+						className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center"
+						onClick={handleChooseAnotherImage}
+					>
+						<IoCloudUploadSharp className="text-4xl text-gray-500" />
+					</button>
+					<Image
+						width={24}
+						height={24}
+						src={uploadedImage}
+						alt="Uploaded Image"
+						className="object-cover w-full h-full"
+					/>
+				</>
+			) : (
+				<div className="flex flex-col items-center">
+					<FiUpload className="text-4xl text-gray-500" />
+					<p>{placeholderText}</p>
+				</div>
+			)}
+
+			<input
+				type="file"
+				accept="image/*"
+				name={name}
+				className="hidden"
+				ref={fileInputRef}
+				onChange={handleImageChange}
+			/>
+			{error && <ErrorLabel error={error} />}
+		</div>
+	);
+};
+
 const TextField = React.forwardRef(TextFieldComponent);
 const CardField = React.forwardRef(CardFieldComponent);
 const CurrencyField = React.forwardRef(CurrencyFieldComponent);
@@ -665,6 +766,7 @@ const RadioField = React.forwardRef(RadioFieldComponent);
 const DatePicker = React.forwardRef(DatePickerComponent);
 const AddressField = React.forwardRef(AutoAddressFieldComponent);
 const TextAreaField = React.forwardRef(TextAreaComponent);
+const ImageUploadField = React.forwardRef(ImageUploadComponent);
 
 export {
 	TextField,
@@ -679,4 +781,5 @@ export {
 	PhoneField,
 	ErrorLabel,
 	TextAreaField,
+	ImageUploadField,
 };

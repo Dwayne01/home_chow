@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -6,8 +6,10 @@ import DashboardHeader from "@/components/header/DashboardHeader";
 import SideNavigation from "@/components/SideNavigation";
 import { RxDashboard } from "react-icons/rx";
 import { RiSettings3Line } from "react-icons/ri";
-import VendorDashboard from "@/components/VendorDashboard";
 import { GiKnifeFork } from "react-icons/gi";
+import { useAddProduct } from "@/hooks/useProduct";
+import AddProduct from "@/components/menu/add-product";
+// import { AddProductPayload } from "@/types/product";
 
 const nav = [
 	{
@@ -22,6 +24,7 @@ const nav = [
 		icon: GiKnifeFork,
 		current: false,
 	},
+
 	{
 		label: "Settings",
 		href: "/settings",
@@ -30,10 +33,19 @@ const nav = [
 	},
 ];
 
-const DashboardPage = () => {
+const AddMenu = () => {
 	const router = useRouter();
 	const { pathname } = router;
 	const [navigation, setNavigation] = useState(nav);
+	const { mutateAsync, isLoading } = useAddProduct();
+
+	const handleAddProduct = useCallback(
+		async (params: any) => {
+			const response = await mutateAsync(params);
+			return response;
+		},
+		[mutateAsync]
+	);
 
 	useEffect(() => {
 		const newNav = navigation.map((item) => {
@@ -50,12 +62,14 @@ const DashboardPage = () => {
 		<DashboardLayout
 			HeaderComponent={<DashboardHeader />}
 			LeftMenuComponent={<SideNavigation {...{ navigation }} />}
-			MainComponent={<VendorDashboard />}
+			MainComponent={
+				<AddProduct handleAddProduct={handleAddProduct} isLoading={isLoading} />
+			}
 		/>
 	);
 };
 
-export default DashboardPage;
+export default AddMenu;
 
 export async function getStaticProps({ locale }: { locale: string }) {
 	return {
@@ -63,6 +77,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 			...(await serverSideTranslations(locale ?? "en", [
 				"common",
 				"dashboard",
+				"settings",
 			])),
 		},
 	};
