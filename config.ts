@@ -1,14 +1,14 @@
 const staging = {
 	env: "development",
-	baseUrl: "https://homechow-staging.herokuapp.com",
+	baseUrl: "",
 	localBaseURL: "http://localhost:8000",
 	localApi: false,
 	mockApi: false,
-	googleClientId: "AIzaSyDap-mhUpuHbYzDspnaV5R00HHE3Q-QEYg",
-	apiKey: "AIzaSyCcTz1UjqXPC8_Dbwy4mJAK0LlWfR-YIfU",
-	projectId: "homechow-5fbeb",
-	messagingSenderId: "231713040487",
-	appId: "1:231713040487:web:4a88cdcac959576e718cc2",
+	googleClientId: "",
+	apiKey: "",
+	projectId: "",
+	messagingSenderId: "",
+	appId: "",
 };
 
 // eslint-disable-next-line no-eval
